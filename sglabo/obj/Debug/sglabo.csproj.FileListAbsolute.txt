@@ -7,3 +7,4 @@ c:\users\cignoir\documents\visual studio 2013\Projects\sglabo\sglabo\obj\Debug\s
 c:\users\cignoir\documents\visual studio 2013\Projects\sglabo\sglabo\obj\Debug\sglabo.csproj.GenerateResource.Cache
 c:\users\cignoir\documents\visual studio 2013\Projects\sglabo\sglabo\obj\Debug\sglabo.exe
 c:\users\cignoir\documents\visual studio 2013\Projects\sglabo\sglabo\obj\Debug\sglabo.pdb
+c:\users\cignoir\documents\visual studio 2013\Projects\sglabo\sglabo\obj\Debug\sglabo.csprojResolveAssemblyReference.cache

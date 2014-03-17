@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace sglabo.entities
 {
-    class PC
+    class GridPosition
     {
-        string code;
-
-        Job job;
-        GridPosition gPos;
+        int x { get; set; }
+        int y { get; set; }
+        int z { get; set; }
     }
 }

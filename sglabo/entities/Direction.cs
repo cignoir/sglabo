@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace sglabo.entities
 {
-    class PC
+    enum Direction
     {
-        string code;
-
-        Job job;
-        GridPosition gPos;
+        NE, NW, SE, SW
     }
 }

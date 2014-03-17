@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace sglabo.entities
 {
-    class PC
+    enum Job
     {
-        string code;
-
-        Job job;
-        GridPosition gPos;
+        戦, 騎, 格, 幻, 賊, 忍, 精, 召, 黒, 錬, 守, 次
     }
 }

@@ -8,5 +8,9 @@ namespace sglabo.entities
 {
     class Skill
     {
+        string name;
+        int ap;
+        int pcCount;
+        int enemyCount;
     }
 }

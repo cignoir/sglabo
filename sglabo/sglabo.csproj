@@ -47,6 +47,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entities\BattleField.cs" />
+    <Compile Include="entities\BattleFieldCell.cs" />
+    <Compile Include="entities\Direction.cs" />
+    <Compile Include="entities\GridPosition.cs" />
+    <Compile Include="entities\Job.cs" />
+    <Compile Include="entities\NPC.cs" />
+    <Compile Include="entities\PC.cs" />
+    <Compile Include="entities\ScreenPosition.cs" />
+    <Compile Include="entities\Skill.cs" />
+    <Compile Include="entities\Vector2.cs" />
+    <Compile Include="entities\Vector3.cs" />
+    <Compile Include="utils\GraphicUtils.cs" />
+    <Compile Include="utils\InputSimulatorExamples.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +68,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="entities\SGWindow.cs" />
+    <Compile Include="utils\Win32API.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

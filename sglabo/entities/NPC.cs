@@ -8,5 +8,7 @@ namespace sglabo.entities
 {
     class NPC
     {
+        string code;
+        GridPosition gPos;
     }
 }
