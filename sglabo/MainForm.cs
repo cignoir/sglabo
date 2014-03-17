@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenCvSharp;
 
 namespace sglabo
 {
@@ -22,13 +23,13 @@ namespace sglabo
             var sg = new SGWindow(proc);
             sg.Activate();
 
-            sg.OpenStatusWindow();
-            sg.CloseStatusWindow();
+            //sg.OpenStatusWindow();
+            //sg.CloseStatusWindow();
 
             var bmp = sg.Capture();
-            Rectangle rect = new Rectangle(362, 239, 100, 40);
-            bmp = bmp.Clone(rect, PixelFormat.Format32bppArgb);
-            bmp.Save(@"C:\hoge.bmp");
+            //Rectangle rect = new Rectangle(362, 239, 100, 40);
+            //bmp = bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            //bmp.Save(@"C:\hoge.bmp");
 
             BitmapData bmpdata = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
@@ -57,7 +58,18 @@ namespace sglabo
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
 
-            MessageBox.Show(whiteCount + ":" + yellowCount + ":" + brownCount);
+            //MessageBox.Show(whiteCount + ":" + yellowCount + ":" + brownCount);
+
+            //var src = bmp.Clone() as Bitmap;
+            //CvMat result = new CvMat(src.Height - tmp.Height + 1, src.Width - tmp.Width + 1, MatrixType.F32C1);
+            //Cv.MatchTemplate(src, tmp, result, MatchTemplateMethod.CCoeffNormed);
+            //CvPoint minPoint = new CvPoint();
+            //CvPoint maxPoint = new CvPoint();
+            //Cv.MinMaxLoc(result, out minPoint, out maxPoint);
+            //img = src.Clone();
+            //CvRect rect = new CvRect(maxPoint, tmp.Size);
+            //img.DrawRect(rect, new CvScalar(0, 0, 255), 2);
+            //pictureBox1.Invalidate();
         }
     }
 }
