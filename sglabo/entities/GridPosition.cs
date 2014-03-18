@@ -8,8 +8,14 @@ namespace sglabo.entities
 {
     class GridPosition
     {
-        int x { get; set; }
-        int y { get; set; }
-        int z { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+
+        public GridPosition(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
     }
 }

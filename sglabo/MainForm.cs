@@ -10,66 +10,32 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenCvSharp;
 
 namespace sglabo
 {
     public partial class MainForm: Form
     {
+        SGWindow sg1;
+
         public MainForm()
         {
             InitializeComponent();
             var proc = Process.GetProcessesByName("ST_231")[0];
-            var sg = new SGWindow(proc);
-            sg.Activate();
+            sg1 = new SGWindow(proc);
+        }
 
-            //sg.OpenStatusWindow();
-            //sg.CloseStatusWindow();
+        private void captureButton_Click(object sender, EventArgs e)
+        {
+            sg1.Activate();
+            sg1.CapturePCNameFromStatus();
+        }
 
-            var bmp = sg.Capture();
-            //Rectangle rect = new Rectangle(362, 239, 100, 40);
-            //bmp = bmp.Clone(rect, PixelFormat.Format32bppArgb);
-            //bmp.Save(@"C:\hoge.bmp");
+        private void detectColorButton_Click(object sender, EventArgs e)
+        {
+            var bmp = Image.FromFile(@"C:\Users\Cignoir\Desktop\battle2.png") as Bitmap;
+            var color = sg1.DetectColor(bmp);
 
-            BitmapData bmpdata = bmp.LockBits(
-                new Rectangle(0, 0, bmp.Width, bmp.Height),
-                ImageLockMode.ReadWrite,
-                PixelFormat.Format32bppArgb
-            );
-
-            byte[] ba = new byte[bmp.Width * bmp.Height * 4];
-            Marshal.Copy(bmpdata.Scan0, ba, 0, ba.Length);
-
-            int whiteCount = 0;
-            int yellowCount = 0;
-            int brownCount = 0;
-            int pixsize = bmp.Width * bmp.Height * 4;
-            for(int i = 0; i < pixsize; i += 4)
-            {
-                var b = ba[i + 0];
-                var g = ba[i + 1];
-                var r = ba[i + 2];
-                var a = ba[i + 3];
-
-                if(r == 255 && g == 255 && b == 255) whiteCount++;
-                if(r == 255 && g == 255 && b == 0) yellowCount++;
-                if(r == 102 && g == 34 && b == 0) brownCount++;
-            }
-            Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
-            bmp.UnlockBits(bmpdata);
-
-            //MessageBox.Show(whiteCount + ":" + yellowCount + ":" + brownCount);
-
-            //var src = bmp.Clone() as Bitmap;
-            //CvMat result = new CvMat(src.Height - tmp.Height + 1, src.Width - tmp.Width + 1, MatrixType.F32C1);
-            //Cv.MatchTemplate(src, tmp, result, MatchTemplateMethod.CCoeffNormed);
-            //CvPoint minPoint = new CvPoint();
-            //CvPoint maxPoint = new CvPoint();
-            //Cv.MinMaxLoc(result, out minPoint, out maxPoint);
-            //img = src.Clone();
-            //CvRect rect = new CvRect(maxPoint, tmp.Size);
-            //img.DrawRect(rect, new CvScalar(0, 0, 255), 2);
-            //pictureBox1.Invalidate();
+            textBox1.Text = color.white + ":" + color.white + ":" + color.brown;
         }
     }
 }

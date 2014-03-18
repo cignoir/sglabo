@@ -4,67 +4,92 @@
 //     ランタイム バージョン:4.0.30319.18444
 //
 //     このファイルへの変更は、以下の状況下で不正な動作の原因になったり、
-//     コードが再生成されるときに損失したりします
+//     コードが再生成されるときに損失したりします。
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace sglabo.Properties
-{
-
-
+namespace sglabo.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
     /// </summary>
     // このクラスは StronglyTypedResourceBuilder クラスが ResGen
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
-    // ResGen を実行し直すか、または VS プロジェクトをリビルドします。
+    // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
-        ///   このクラスに使用される、キャッシュされた ResourceManager のインスタンスを返します。
+        ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("sglabo.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   行	列	高	中心X	中心Y	進入可	※左上端を(0, 0)とする
+        ///0	0	1	484	168	1
+        ///0	1	1	544	193	1
+        ///0	2	0	604	250	1
+        ///1	0	1	439	199	1
+        ///1	1	0	498	257	1
+        ///1	2	0	557	283	1
+        ///2	0	0	391	263	1
+        ///2	1	0	451	290	1
+        ///2	2	0	512	317	1
+        ///3	0	0	341	297	0
+        ///3	1	0	404	325	1
+        ///3	2	0	466	353	0
+        ///4	0	0	295	332	1
+        ///4	1	0	355	360	1
+        ///4	2	0	415	387	1
+        ///5	0	0	244	368	1
+        ///5	1	0	304	395	1
+        ///5	2	0	364	422	1
+        ///6	0	0	191	404	1
+        ///6	1	0	251	431	1
+        ///6	2	0	311	458	1
+        ///7	0	0	136	442	1
+        ///7	1	0	196	470	1
+        ///7	2	0	256	497	1 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ルデンヌA {
+            get {
+                return ResourceManager.GetString("ルデンヌA", resourceCulture);
             }
         }
     }
