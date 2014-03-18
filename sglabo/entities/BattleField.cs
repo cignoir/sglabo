@@ -8,10 +8,10 @@ namespace sglabo.entities
 {
     class BattleField
     {
-        ScreenPosition N;
-        ScreenPosition E;
-        ScreenPosition W;
-        ScreenPosition S;
+        //ScreenPosition N;
+        //ScreenPosition E;
+        //ScreenPosition W;
+        //ScreenPosition S;
 
         BattleFieldCell[,] cells;
 
