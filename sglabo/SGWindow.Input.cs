@@ -9,6 +9,8 @@ namespace sglabo
 {
     partial class SGWindow
     {
+        int globalSleep = 100;
+
         public void OpenItemWindow()
         {
             if(!IsActive()) return;
@@ -16,10 +18,10 @@ namespace sglabo
             input.Keyboard
                 .KeyDown(VirtualKeyCode.LCONTROL)
                 .KeyDown(VirtualKeyCode.VK_I)
-                .Sleep(100)
+                .Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.VK_I)
                 .KeyUp(VirtualKeyCode.LCONTROL)
-                .Sleep(100);
+                .Sleep(globalSleep);
             windowCount++;
         }
 
@@ -29,7 +31,7 @@ namespace sglabo
 
             input.Keyboard
                 .KeyPress(VirtualKeyCode.ESCAPE)
-                .Sleep(100);
+                .Sleep(globalSleep);
             windowCount--;
         }
 
@@ -40,10 +42,10 @@ namespace sglabo
             input.Keyboard
                 .KeyDown(VirtualKeyCode.LCONTROL)
                 .KeyDown(VirtualKeyCode.VK_S)
-                .Sleep(100)
+                .Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.VK_S)
                 .KeyUp(VirtualKeyCode.LCONTROL)
-                .Sleep(100);
+                .Sleep(globalSleep);
             windowCount += 2;
         }
 
@@ -53,9 +55,9 @@ namespace sglabo
 
             input.Keyboard
                 .KeyPress(VirtualKeyCode.ESCAPE)
-                .Sleep(100)
+                .Sleep(globalSleep)
                 .KeyPress(VirtualKeyCode.ESCAPE)
-                .Sleep(100);
+                .Sleep(globalSleep);
             windowCount -= 2;
         }
 
@@ -77,7 +79,7 @@ namespace sglabo
             input.Keyboard
                 .TextEntry(message)
                 .KeyPress(VirtualKeyCode.RETURN)
-                .Sleep(100);
+                .Sleep(globalSleep);
         }
 
         public void HideChatLog()
@@ -86,7 +88,7 @@ namespace sglabo
 
             input.Keyboard
                 .KeyDown(VirtualKeyCode.END)
-                .Sleep(100);
+                .Sleep(globalSleep);
         }
     }
 }

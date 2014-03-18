@@ -22,35 +22,34 @@ namespace sglabo
             return bmp;
         }
 
+        public Bitmap CaptureArea(Rectangle rect)
+        {
+            if(!IsActive()) return null;
+
+            var bmp = Capture();
+            return bmp != null ? bmp.Clone(rect, PixelFormat.Format32bppArgb) : null;
+        }
+
         public Bitmap CapturePCNameFromStatus()
         {
             if(!IsActive()) return null;
 
             CloseStatusWindow();
             OpenStatusWindow();
-            var bmp = Capture();
+            var bmp = CaptureArea(new Rectangle(543, 65, 180, 16));
             CloseStatusWindow();
 
-            Rectangle rect = new Rectangle(543, 65, 180, 16);
-            return bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            return bmp;
         }
 
         public Bitmap CaptureBattleStatus()
         {
-            if(!IsActive()) return null;
-
-            var bmp = Capture();
-            Rectangle rect = new Rectangle(0, 28, 67, 86);
-            return bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            return CaptureArea(new Rectangle(0, 28, 67, 86));
         }
 
         public Bitmap CaptureFieldStatus()
         {
-            if(!IsActive()) return null;
-
-            var bmp = Capture();
-            Rectangle rect = new Rectangle(2, 20, 28, 50);
-            return bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            return CaptureArea(new Rectangle(2, 20, 28, 50));
         }
 
         public SGColor DetectColor(Bitmap bmp)
