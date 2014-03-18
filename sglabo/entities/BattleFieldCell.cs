@@ -43,6 +43,7 @@ namespace sglabo.entities
             {
                 existsPC = false;
                 existsNPC = true;
+                pc = null;
             }
             else if(color.white > 10 && color.brown > 10)
             {
@@ -56,6 +57,7 @@ namespace sglabo.entities
             {
                 existsPC = false;
                 existsNPC = false;
+                pc = null;
             }
         }
 
