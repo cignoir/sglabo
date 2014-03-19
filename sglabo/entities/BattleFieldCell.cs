@@ -6,12 +6,15 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace sglabo.entities
 {
     class BattleFieldCell
     {
-        GridPosition gPos;
+        public GridPosition gPos;
         ScreenPosition sPos;
         int height;
         bool canMove = true;
@@ -20,6 +23,8 @@ namespace sglabo.entities
         bool existsNPC = false;
 
         int pcCode;
+
+        InputSimulator input = new InputSimulator();
 
         public BattleFieldCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
         {

@@ -42,7 +42,7 @@ namespace sglabo
             this.hWnd = proc.MainWindowHandle;
             SetScreenPosition();
 
-            if(IsField() && pcCode == 0 && pcName == null)
+            if(IsField())
             {
                 pcName = CapturePCNameFromStatus();
                 pcCode = DetectColor(pcName).brown;

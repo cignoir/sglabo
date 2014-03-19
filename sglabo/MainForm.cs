@@ -18,11 +18,13 @@ namespace sglabo
     {
         List<PictureBox> pictureBoxes = new List<PictureBox>();
         public static bool isBattleTaskRunning = false;
+        public static bool isStarted = false;
 
         public MainForm()
         {
             InitializeComponent();
 
+            pictureBoxes.Add(pictureBox1);
             RefleshPictures();
         }
 
@@ -71,6 +73,7 @@ namespace sglabo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if(!isStarted) return;
             if(isBattleTaskRunning) return;
 
             var sg = SGWindow.sgList.First();
@@ -87,6 +90,11 @@ namespace sglabo
                 thread.IsBackground = true;
                 thread.Start();
             }
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            isStarted = !isStarted;
         }
 
     }

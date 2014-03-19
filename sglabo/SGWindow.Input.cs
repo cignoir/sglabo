@@ -13,7 +13,7 @@ namespace sglabo
 
         public void OpenItemWindow()
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .KeyDown(VirtualKeyCode.LCONTROL)
@@ -27,7 +27,7 @@ namespace sglabo
 
         public void CloseItemWindow()
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .KeyPress(VirtualKeyCode.ESCAPE)
@@ -37,7 +37,7 @@ namespace sglabo
 
         public void OpenStatusWindow()
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .KeyDown(VirtualKeyCode.LCONTROL)
@@ -51,7 +51,7 @@ namespace sglabo
 
         public void CloseStatusWindow()
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .KeyPress(VirtualKeyCode.ESCAPE)
@@ -63,7 +63,7 @@ namespace sglabo
 
         public void CloseAllWindows()
         {
-            if(!IsActive()) return;
+            Activate();
 
             for(int i = 0; i < windowCount; i++)
             {
@@ -74,7 +74,7 @@ namespace sglabo
 
         public void SendChat(string message)
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .TextEntry(message)
@@ -84,7 +84,7 @@ namespace sglabo
 
         public void HideChatLog()
         {
-            if(!IsActive()) return;
+            Activate();
 
             input.Keyboard
                 .KeyDown(VirtualKeyCode.END)

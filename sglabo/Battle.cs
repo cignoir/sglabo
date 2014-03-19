@@ -41,7 +41,7 @@ namespace sglabo
                     pc.Activate();
                     pc.BattleMove();
                 }
-
+                Thread.Sleep(2000);
                 LoopWait(loopLimit);
 
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
@@ -49,6 +49,7 @@ namespace sglabo
                     pc.Activate();
                     pc.BattleAction();
                 }
+                Thread.Sleep(5000);
             }
 
             foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))

@@ -15,7 +15,7 @@ namespace sglabo
     {
         public Bitmap Capture()
         {
-            if(!IsActive()) return null;
+            Activate();
 
             input.Keyboard.KeyDown(VirtualKeyCode.END).Sleep(100);
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
@@ -25,15 +25,14 @@ namespace sglabo
 
         public Bitmap CaptureRectangle(Rectangle rect)
         {
-            if(!IsActive()) return null;
-
+            Activate();
             var bmp = Capture();
             return bmp != null ? bmp.Clone(rect, PixelFormat.Format32bppArgb) : null;
         }
 
         public Bitmap CapturePCNameFromStatus()
         {
-            if(!IsActive()) return null;
+            Activate();
 
             CloseStatusWindow();
             OpenStatusWindow();
