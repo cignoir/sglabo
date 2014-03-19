@@ -69,11 +69,6 @@ namespace sglabo
             }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if(isBattleTaskRunning) return;

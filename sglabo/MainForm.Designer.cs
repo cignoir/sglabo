@@ -38,7 +38,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.refleshButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,11 +142,6 @@
             this.refleshButton.UseVisualStyleBackColor = true;
             this.refleshButton.Click += new System.EventHandler(this.refleshButton_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -187,7 +181,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button activateButton1;
         private System.Windows.Forms.Button refleshButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Timer timer1;
     }
 }
