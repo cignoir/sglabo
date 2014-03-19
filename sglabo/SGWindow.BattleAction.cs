@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sglabo.entities
+namespace sglabo
 {
-    enum Direction
+    partial class SGWindow
     {
-        NE, NW, SE, SW, D8, D4, D6, D2, D5
+        public void BattleAction()
+        {
+            Go();
+        }
     }
 }

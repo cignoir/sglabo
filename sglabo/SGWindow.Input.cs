@@ -90,5 +90,15 @@ namespace sglabo
                 .KeyDown(VirtualKeyCode.END)
                 .Sleep(globalSleep);
         }
+
+        private void Go()
+        {
+            // Ctrl + B
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.LCONTROL)
+                .KeyDown(VirtualKeyCode.VK_B).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.VK_B)
+                .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+        }
     }
 }

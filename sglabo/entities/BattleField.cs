@@ -27,6 +27,26 @@ namespace sglabo.entities
             Load(map);
         }
 
+        public static string DetectBattleMapName(string areaName)
+        {
+            var memberCount = SGWindow.sgList.Count;
+            switch(memberCount)
+            {
+                case 1:
+                case 2:
+                    break;
+                case 3:
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    break;
+            }
+            // エリアと人数をもとにマップ検出
+            return "ルデンヌA";
+        }
+
         public void Load(string map){
             var lines = map.Split('\n');
             foreach(string line in lines)
@@ -56,13 +76,13 @@ namespace sglabo.entities
 
         public void Scan()
         {
-            for(int row = 0; row < rowCount; row++ )
+            Parallel.For(0, rowCount, row =>
             {
-                for(int col = 0; col < colCount; col++ )
+                Parallel.For(0, colCount, col =>
                 {
                     cells[row, col].Scan();
-                }
-            }
+                });
+            });
         }
     }
 }

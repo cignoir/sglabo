@@ -17,7 +17,7 @@ namespace sglabo
     public partial class MainForm: Form
     {
         List<PictureBox> pictureBoxes = new List<PictureBox>();
-        bool isBattleTaskRunning = false;
+        public static bool isBattleTaskRunning = false;
 
         public MainForm()
         {
@@ -39,7 +39,7 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             var color = sg.DetectColor(bmp);
 
-            toolStripStatusLabel1.Text = color.white + ":" + color.white + ":" + color.brown;
+            statusLabel.Text = color.white + ":" + color.white + ":" + color.brown;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -81,44 +81,18 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg.IsField())
             {
+                statusLabel.Text = "Field";
                 // フィールド移動
-                return;
-            }
-            else if(sg.IsBattleStart() && !isBattleTaskRunning)
-            {
-                // 戦闘処理を別スレッドで実行
             }
             else
             {
-                // ログイン中
-                // エリア移動中
-                // 戦闘アニメーション中
+                statusLabel.Text = "Battle";
+
+                var thread = new Thread(new ThreadStart(new Battle().Run));
+                thread.IsBackground = true;
+                thread.Start();
             }
         }
 
-        private void BattleTask()
-        {
-            isBattleTaskRunning = true;
-
-            while(true)
-            {
-                // マップ判別
-                // マップ構築
-                // セルスキャン
-                // 移動フェイズ
-                // 行動フェイズ
-                // アニメーション
-                // 判別(次のターン or 戦闘終了)
-
-                Thread.Sleep(1000);
-
-                if(true)
-                {
-                    break;
-                }
-            }
-
-            isBattleTaskRunning = false;
-        }
     }
 }

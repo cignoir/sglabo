@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battle.cs" />
     <Compile Include="entities\BattleField.cs" />
     <Compile Include="entities\BattleFieldCell.cs" />
     <Compile Include="entities\Direction.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="entities\Skill.cs" />
     <Compile Include="SGColor.cs" />
+    <Compile Include="SGWindow.BattleAction.cs" />
+    <Compile Include="SGWindow.BattleMove.cs" />
     <Compile Include="SGWindow.Graphics.cs" />
     <Compile Include="utils\GraphicUtils.cs" />
     <Compile Include="utils\InputSimulatorExamples.cs" />

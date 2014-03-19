@@ -25,8 +25,7 @@ namespace sglabo
 
         public Bitmap pcName;
         public int pcCode;
-
-        bool isMain = true;
+        public bool auto = true;
 
         long x;
         long y;
@@ -112,7 +111,7 @@ namespace sglabo
             this.height = Math.Abs(rect.top - rect.bottom);
         }
 
-        public bool IsBattleStart()
+        public bool IsWaitingBattleInput()
         {
             return DetectColor(CaptureBattleStatus()).pink > 0;
         }
@@ -130,6 +129,11 @@ namespace sglabo
         public static void DetectBattleField()
         {
             battleField = new BattleField(Properties.Resources.ルデンヌA);
+        }
+
+        internal void ItemLot()
+        {
+            throw new NotImplementedException();
         }
     }
 }
