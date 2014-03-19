@@ -16,11 +16,15 @@ namespace sglabo
 {
     class SGWindow
     {
+        public static List<SGWindow> sgList = new List<SGWindow>();
+        public static BattleField battleField;
+
         Process proc;
         IntPtr hWnd;
         ScreenPosition sPos;
-        PC pc;
-        BattleField battleField;
+
+        public Bitmap pcName;
+        public int pcCode;
 
         bool isMain = true;
 
@@ -37,9 +41,8 @@ namespace sglabo
         {
             this.proc = proc;
             this.hWnd = proc.MainWindowHandle;
+            sgList.Add(this);
             SetScreenPosition();
-
-            battleField = new BattleField(Properties.Resources.ルデンヌA);
         }
 
         public void Activate()
@@ -104,14 +107,24 @@ namespace sglabo
             this.height = Math.Abs(rect.top - rect.bottom);
         }
 
-        public bool IsBattle()
+        public bool IsBattleStart()
         {
             return DetectColor(CaptureBattleStatus()).pink > 0;
+        }
+
+        public bool IsBattleEnd()
+        {
+            return false;
         }
 
         public bool IsField()
         {
             return DetectColor(CaptureFieldStatus()).green > 0;
+        }
+
+        public static void DetectBattleField()
+        {
+            battleField = new BattleField(Properties.Resources.ルデンヌA);
         }
     }
 }

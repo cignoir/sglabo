@@ -9,15 +9,15 @@ namespace sglabo.entities
 {
     class PC
     {
-        public static List<PC> list = new List<PC>();
+        //public static List<PC> list = new List<PC>();
 
         public string code;
-        Bitmap nameImage;
+        public Bitmap nameImage;
 
-        Job job;
-        GridPosition gPos;
+        public Job job;
+        public GridPosition gPos;
 
-        int ap;
-        int moveCount;
+        public int ap;
+        public int moveCount;
     }
 }

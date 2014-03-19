@@ -19,7 +19,7 @@ namespace sglabo.entities
         bool existsPC = false;
         bool existsNPC = false;
 
-        PC pc;
+        int pcCode;
 
         public BattleFieldCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
         {
@@ -36,28 +36,26 @@ namespace sglabo.entities
             return bmp.Clone(rect, PixelFormat.Format32bppArgb);
         }
 
+        private void InitDinamicInfo()
+        {
+            existsPC = false;
+            existsNPC = false;
+            pcCode = 0;
+        }
+
         public void Scan()
         {
+            InitDinamicInfo();
+
             var color = DetectColor(CaptureName());
             if(color.yellow > 10 && color.brown > 10)
             {
-                existsPC = false;
                 existsNPC = true;
-                pc = null;
             }
             else if(color.white > 10 && color.brown > 10)
             {
                 existsPC = true;
-                existsNPC = false;
-
-                var code = color.brown.ToString();
-                pc = PC.list.Where(x => x.code == code).First();
-            }
-            else
-            {
-                existsPC = false;
-                existsNPC = false;
-                pc = null;
+                pcCode = color.brown;
             }
         }
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using sglabo.entities;
 using WindowsInput.Native;
 
 namespace sglabo
@@ -22,7 +23,7 @@ namespace sglabo
             return bmp;
         }
 
-        public Bitmap CaptureArea(Rectangle rect)
+        public Bitmap CaptureRectangle(Rectangle rect)
         {
             if(!IsActive()) return null;
 
@@ -36,20 +37,20 @@ namespace sglabo
 
             CloseStatusWindow();
             OpenStatusWindow();
-            var bmp = CaptureArea(new Rectangle(543, 65, 180, 16));
+            pcName = CaptureRectangle(new Rectangle(543, 65, 180, 16));
             CloseStatusWindow();
 
-            return bmp;
+            return pcName;
         }
 
         public Bitmap CaptureBattleStatus()
         {
-            return CaptureArea(new Rectangle(0, 28, 67, 86));
+            return CaptureRectangle(new Rectangle(0, 28, 67, 86));
         }
 
         public Bitmap CaptureFieldStatus()
         {
-            return CaptureArea(new Rectangle(2, 20, 28, 50));
+            return CaptureRectangle(new Rectangle(2, 20, 28, 50));
         }
 
         public SGColor DetectColor(Bitmap bmp)
