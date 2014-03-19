@@ -78,9 +78,8 @@
     <Compile Include="entities\PC.cs" />
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="entities\Skill.cs" />
-    <Compile Include="entities\Vector2.cs" />
-    <Compile Include="entities\Vector3.cs" />
     <Compile Include="SGColor.cs" />
+    <Compile Include="SGWindow.Graphics.cs" />
     <Compile Include="utils\GraphicUtils.cs" />
     <Compile Include="utils\InputSimulatorExamples.cs" />
     <Compile Include="MainForm.cs">
@@ -116,6 +115,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\ルデンヌA.map" />
+    <Compile Include="SGWindow.Input.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

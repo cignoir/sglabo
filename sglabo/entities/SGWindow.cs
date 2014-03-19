@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 
 namespace sglabo
 {
-    class SGWindow
+    partial class SGWindow
     {
         public static List<SGWindow> sgList = new List<SGWindow>();
         public static BattleField battleField;
@@ -41,8 +41,13 @@ namespace sglabo
         {
             this.proc = proc;
             this.hWnd = proc.MainWindowHandle;
-            sgList.Add(this);
             SetScreenPosition();
+
+            if(IsField() && pcCode == 0 && pcName == null)
+            {
+                pcName = CapturePCNameFromStatus();
+                pcCode = DetectColor(pcName).brown;
+            }
         }
 
         public void Activate()
