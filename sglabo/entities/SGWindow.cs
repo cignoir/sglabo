@@ -26,6 +26,7 @@ namespace sglabo
 
         public Bitmap pcName;
         public int pcCode;
+        public Job job;
         public bool auto = true;
         public GridPosition gPos;
 

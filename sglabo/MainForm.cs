@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sglabo.entities;
 using WindowsInput;
 
 namespace sglabo
@@ -138,6 +139,13 @@ namespace sglabo
         private void timer2_Tick(object sender, EventArgs e)
         {
             System.GC.Collect();
+        }
+
+        private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Job job = JobConverter.ConvertFrom(jobSelector1.Text);
+            var sg = SGWindow.sgList.ElementAt(0);
+            sg.job = job;
         }
 
     }

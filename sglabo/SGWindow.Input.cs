@@ -9,7 +9,7 @@ namespace sglabo
 {
     partial class SGWindow
     {
-        int globalSleep = 300;
+        int globalSleep = 200;
 
         public void OpenItemWindow()
         {

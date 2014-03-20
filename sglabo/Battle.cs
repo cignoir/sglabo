@@ -45,7 +45,7 @@ namespace sglabo
                 if(inBattle)
                 {
                     battleField.Scan();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
 
                     mainForm.SetStatus("移動中...");
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
@@ -58,7 +58,10 @@ namespace sglabo
                     mainForm.SetStatus("行動フェイズ待機中...");
                     LoopWait(loopLimit);
                     mainForm.SetStatus("行動中...");
+
                     battleField.Scan();
+                    Thread.Sleep(3000);
+
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();

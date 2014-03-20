@@ -125,6 +125,17 @@ namespace sglabo.entities
 
         public void Scan()
         {
+            for(int row = 0; row < rowCount; row++ )
+            {
+                for(int col = 0; col < colCount; col++ )
+                {
+                    cells[row, col].Scan();
+                }
+            }
+        }
+
+        public void ParallelScan()
+        {
             Parallel.For(0, rowCount, row =>
             {
                 Parallel.For(0, colCount, col =>

@@ -35,7 +35,7 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.activateButton1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.jobSelector1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.refleshButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -87,7 +87,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.activateButton1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.jobSelector1);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
@@ -105,10 +105,10 @@
             this.activateButton1.Text = "Activate";
             this.activateButton1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // jobSelector1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.jobSelector1.FormattingEnabled = true;
+            this.jobSelector1.Items.AddRange(new object[] {
             "戦士",
             "騎士",
             "盗賊",
@@ -121,11 +121,12 @@
             "錬金",
             "守護",
             "次元"});
-            this.comboBox1.Location = new System.Drawing.Point(201, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(66, 20);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.Text = "Job";
+            this.jobSelector1.Location = new System.Drawing.Point(201, 14);
+            this.jobSelector1.Name = "jobSelector1";
+            this.jobSelector1.Size = new System.Drawing.Size(66, 20);
+            this.jobSelector1.TabIndex = 7;
+            this.jobSelector1.Text = "Job";
+            this.jobSelector1.SelectedIndexChanged += new System.EventHandler(this.jobSelector1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -229,7 +230,7 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox jobSelector1;
         private System.Windows.Forms.Button activateButton1;
         private System.Windows.Forms.Button refleshButton;
         private System.Windows.Forms.Timer timer1;
