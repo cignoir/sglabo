@@ -19,6 +19,7 @@ namespace sglabo
         List<PictureBox> pictureBoxes = new List<PictureBox>();
         public static bool isBattleTaskRunning = false;
         public static bool isStarted = false;
+        public Thread thread;
 
         public MainForm()
         {
@@ -33,6 +34,7 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             sg.Activate();
             sg.CapturePCNameFromStatus();
+            sg.IsWaitingLot();
         }
 
         private void detectColorButton_Click(object sender, EventArgs e)
@@ -79,22 +81,29 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg.IsField())
             {
-                statusLabel.Text = "Field";
+                SetStatus("Field");
                 // フィールド移動
             }
             else
             {
-                statusLabel.Text = "Battle";
+                SetStatus("Battle");
 
-                var thread = new Thread(new ThreadStart(new Battle().Run));
-                thread.IsBackground = true;
-                thread.Start();
+                if(thread == null && !isBattleTaskRunning){
+                    thread = new Thread(new ThreadStart(new Battle(this).Run));
+                    thread.IsBackground = false;
+                    thread.Start();
+                }
             }
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             isStarted = !isStarted;
+        }
+
+        public void SetStatus(string message)
+        {
+            statusLabel.Text = message;
         }
 
     }

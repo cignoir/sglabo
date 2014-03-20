@@ -78,8 +78,7 @@
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(32, 17);
-            this.statusLabel.Text = "gl hf";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // groupBox1
             // 
@@ -146,7 +145,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 2000;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // startButton

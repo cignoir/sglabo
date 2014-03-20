@@ -11,6 +11,7 @@ using WindowsInput;
 using WindowsInput.Native;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace sglabo
 {
@@ -113,17 +114,17 @@ namespace sglabo
 
         public bool IsWaitingBattleInput()
         {
-            return DetectColor(CaptureBattleStatus()).pink > 0;
+            return DetectColor(CaptureBattleStatus()).pink > 10;
         }
 
-        public bool IsBattleEnd()
+        public bool IsWaitingLot()
         {
-            return DetectColor(GraphicUtils.CaptureActiveWindow()).red > 100;
+            return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 500;
         }
 
         public bool IsField()
         {
-            return DetectColor(CaptureFieldStatus()).green > 0;
+            return DetectColor(CaptureFieldStatus()).green > 10;
         }
 
         public static void DetectBattleField()

@@ -15,7 +15,8 @@ namespace sglabo
             Move(Direction.D8);
             Move(Direction.D8);
             Move(Direction.D8);
-            Move(Direction.D8);
+            Look(Direction.D8);
+            Enter();
             Go();
         }
 
@@ -44,8 +45,18 @@ namespace sglabo
                     break;
             }
 
-            keyboard.KeyPress(vk).Sleep(100)
-                .KeyPress(VirtualKeyCode.RETURN).Sleep(100);
+            keyboard.KeyPress(vk).Sleep(globalSleep)
+                .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
+
+        private void Look(Direction direction)
+        {
+            Move(direction);
+        }
+
+        private void Enter()
+        {
+            input.Keyboard.KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
     }
 }
