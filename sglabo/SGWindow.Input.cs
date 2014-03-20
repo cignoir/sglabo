@@ -100,5 +100,13 @@ namespace sglabo
                 .KeyUp(VirtualKeyCode.VK_B)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
+
+        public void ItemLot()
+        {
+            Activate();
+
+            input.Keyboard
+                .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
     }
 }

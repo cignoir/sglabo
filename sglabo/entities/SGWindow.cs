@@ -118,7 +118,7 @@ namespace sglabo
 
         public bool IsBattleEnd()
         {
-            return false;
+            return DetectColor(GraphicUtils.CaptureActiveWindow()).red > 100;
         }
 
         public bool IsField()
@@ -129,11 +129,6 @@ namespace sglabo
         public static void DetectBattleField()
         {
             battleField = new BattleField(Properties.Resources.ルデンヌA);
-        }
-
-        internal void ItemLot()
-        {
-            throw new NotImplementedException();
         }
     }
 }

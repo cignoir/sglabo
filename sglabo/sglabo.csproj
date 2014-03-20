@@ -80,7 +80,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>98F13CC1D35D6609F42B72FED7474E2F4A3ED6C1</ManifestCertificateThumbprint>
@@ -90,7 +90,8 @@
     </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>sglabo_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -106,7 +107,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsInput">
-      <HintPath>..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
+      <HintPath>..\..\..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +162,6 @@
     </Compile>
     <None Include="Resources\ルデンヌA.map" />
     <Compile Include="SGWindow.Input.cs" />
-    <None Include="sglabo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

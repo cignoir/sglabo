@@ -44,8 +44,10 @@ namespace sglabo.entities
                 default:
                     break;
             }
+
+            var rsc = Properties.Resources.ResourceManager.GetString("ルデンヌA");
             // エリアと人数をもとにマップ検出
-            return "ルデンヌA";
+            return rsc;
         }
 
         public void Load(string map){
@@ -57,6 +59,7 @@ namespace sglabo.entities
                     var elems = line.Split('x');
                     rowCount = int.Parse(elems[0]);
                     colCount = int.Parse(elems[1]);
+                    cells = new BattleFieldCell[rowCount, colCount];
                 }
                 else
                 {
