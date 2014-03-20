@@ -35,7 +35,7 @@ namespace sglabo
         long width;
         long height;
 
-        InputSimulator input = new InputSimulator();
+        public InputSimulator input = new InputSimulator();
 
         int windowCount;
 

@@ -123,6 +123,7 @@
     <Compile Include="entities\PC.cs" />
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="entities\Skill.cs" />
+    <Compile Include="entities\戦士.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

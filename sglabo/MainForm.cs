@@ -107,13 +107,13 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg.IsField())
             {
-                SetStatus("Field");
+                SetStatus("フィールド");
                 // フィールド移動
             }
             else
             {
                 if(!isBattleTaskRunning){
-                    SetStatus("Battle");
+                    SetStatus("エンカウント");
                     if(thread != null && thread.IsAlive) thread.Abort();
 
                     areaSelectorText = areaSelector.Text;

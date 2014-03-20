@@ -51,7 +51,7 @@ namespace sglabo
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();
-                        pc.BattleMove();
+                        pc.BattleMove(battleField);
                     }
                     Thread.Sleep(1000);
 
@@ -70,8 +70,7 @@ namespace sglabo
                     Thread.Sleep(1000);
                 }
             }
-
-            mainForm.SetStatus("戦闘終了");
+            
             if(mainPC.IsWaitingLot()){
                 mainForm.SetStatus("アイテムのロット中...");
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
@@ -80,6 +79,7 @@ namespace sglabo
                     pc.ItemLot();
                 }
             }
+            mainForm.SetStatus("戦闘終了");
 
             MainForm.isBattleTaskRunning = false;
         }

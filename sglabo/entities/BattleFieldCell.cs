@@ -19,8 +19,8 @@ namespace sglabo.entities
         int height;
         bool canMove = true;
 
-        bool existsPC = false;
-        bool existsNPC = false;
+        public bool existsPC = false;
+        public bool existsNPC = false;
 
         int pcCode;
 

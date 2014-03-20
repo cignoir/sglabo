@@ -10,12 +10,7 @@ namespace sglabo.entities
 {
     class BattleField
     {
-        //ScreenPosition N;
-        //ScreenPosition E;
-        //ScreenPosition W;
-        //ScreenPosition S;
-
-        BattleFieldCell[,] cells;
+        public BattleFieldCell[,] cells;
 
         public int turn = 1;
         public int pcCount = 0;
