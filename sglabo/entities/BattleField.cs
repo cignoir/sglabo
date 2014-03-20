@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,29 @@ namespace sglabo.entities
             Load(map);
         }
 
-        public static string DetectBattleMapName(string areaName)
+        //public static string DetectBattleMapName(string areaName)
+        //{
+        //    var memberCount = SGWindow.sgList.Count;
+        //    switch(memberCount)
+        //    {
+        //        case 1:
+        //        case 2:
+        //            break;
+        //        case 3:
+        //        case 4:
+        //            break;
+        //        case 5:
+        //            break;
+        //        default:
+        //            break;
+        //    }
+
+        //    var rsc = Properties.Resources.ResourceManager.GetString("ルデンヌA");
+        //    // エリアと人数をもとにマップ検出
+        //    return rsc;
+        //}
+
+        public static string Detect(Area area)
         {
             var memberCount = SGWindow.sgList.Count;
             switch(memberCount)
@@ -45,12 +68,34 @@ namespace sglabo.entities
                     break;
             }
 
-            var rsc = Properties.Resources.ResourceManager.GetString("ルデンヌA");
-            // エリアと人数をもとにマップ検出
-            return rsc;
+            var sg = SGWindow.sgList.First();
+            sg.Activate();
+
+            Bitmap bmp = null;
+            if(memberCount == 1 || memberCount == 2)
+            {
+                if(area == Area.ルデンヌ大森林)
+                {
+//573,248,40,40
+//8726967	大きな木の4マス
+//3832661	真ん中に一本の道3マス
+//60603230	左に細い木
+
+                    bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40));
+                }
+            }
+
+            int mapCode = bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
+            return Properties.Resources.ResourceManager.GetString("MAP" + mapCode.ToString());
         }
 
         public void Load(string map){
+            // FIXME
+            if(map == null)
+            {
+                map = Properties.Resources.ResourceManager.GetString("MAP60603230");
+            }
+
             var lines = map.Split('\n');
             foreach(string line in lines)
             {

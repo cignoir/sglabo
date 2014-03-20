@@ -23,7 +23,7 @@ namespace sglabo
         private void Move(Direction direction){
             var keyboard = input.Keyboard;
 
-            VirtualKeyCode vk;
+            VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
             {
                 case Direction.D8:
@@ -39,14 +39,21 @@ namespace sglabo
                     vk = VirtualKeyCode.DOWN;
                     break;
                 case Direction.D5:
-                    return;
+                    break;
                 default:
                     vk = VirtualKeyCode.RETURN;
                     break;
             }
 
-            keyboard.KeyPress(vk).Sleep(globalSleep)
-                .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            if(vk != VirtualKeyCode.SPACE){
+                keyboard
+                    .KeyDown(vk).Sleep(globalSleep)
+                    .KeyUp(vk);
+            }
+
+            keyboard
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
         private void Look(Direction direction)
@@ -56,7 +63,9 @@ namespace sglabo
 
         private void Enter()
         {
-            input.Keyboard.KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
     }
 }

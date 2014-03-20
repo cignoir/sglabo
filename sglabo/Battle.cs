@@ -26,7 +26,8 @@ namespace sglabo
             mainPC = SGWindow.sgList.First();
             mainPC.Activate();
 
-            battleField = new BattleField(BattleField.DetectBattleMapName("ルデンヌ大森林"));
+            Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
+            battleField = new BattleField(BattleField.Detect(area));
             battleField.Scan();
         }
 
@@ -44,7 +45,7 @@ namespace sglabo
                 if(inBattle)
                 {
                     battleField.Scan();
-                    //Thread.Sleep(1000);
+                    Thread.Sleep(2000);
 
                     mainForm.SetStatus("移動中...");
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
@@ -57,6 +58,7 @@ namespace sglabo
                     mainForm.SetStatus("行動フェイズ待機中...");
                     LoopWait(loopLimit);
                     mainForm.SetStatus("行動中...");
+                    battleField.Scan();
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();

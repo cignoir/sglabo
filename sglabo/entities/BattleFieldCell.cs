@@ -57,10 +57,12 @@ namespace sglabo.entities
             {
                 existsNPC = true;
             }
-            else if(color.white > 10 && color.brown > 10)
+            else if(color.white > 100 && color.brown > 100 && color.yellow < 50)
             {
                 existsPC = true;
                 pcCode = color.brown;
+
+                SGWindow.sgList.Where(x => x.pcCode == pcCode).First().gPos = this.gPos;
             }
         }
 

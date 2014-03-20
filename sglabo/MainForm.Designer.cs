@@ -40,6 +40,10 @@
             this.refleshButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.startButton = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.areaSelector = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,7 +61,7 @@
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(459, 41);
+            this.detectColorButton.Location = new System.Drawing.Point(459, 87);
             this.detectColorButton.Name = "detectColorButton";
             this.detectColorButton.Size = new System.Drawing.Size(75, 23);
             this.detectColorButton.TabIndex = 2;
@@ -85,7 +89,7 @@
             this.groupBox1.Controls.Add(this.activateButton1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(440, 43);
             this.groupBox1.TabIndex = 4;
@@ -134,7 +138,7 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(459, 70);
+            this.refleshButton.Location = new System.Drawing.Point(459, 116);
             this.refleshButton.Name = "refleshButton";
             this.refleshButton.Size = new System.Drawing.Size(75, 23);
             this.refleshButton.TabIndex = 5;
@@ -150,7 +154,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(459, 100);
+            this.startButton.Location = new System.Drawing.Point(459, 146);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 6;
@@ -158,11 +162,47 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(459, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 19);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.Text = "573,248,40,40";
+            // 
+            // areaSelector
+            // 
+            this.areaSelector.FormattingEnabled = true;
+            this.areaSelector.Items.AddRange(new object[] {
+            "ルデンヌ大森林"});
+            this.areaSelector.Location = new System.Drawing.Point(54, 12);
+            this.areaSelector.Name = "areaSelector";
+            this.areaSelector.Size = new System.Drawing.Size(121, 20);
+            this.areaSelector.TabIndex = 8;
+            this.areaSelector.Text = "ルデンヌ大森林";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "エリア";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 286);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.areaSelector);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.refleshButton);
             this.Controls.Add(this.groupBox1);
@@ -194,6 +234,10 @@
         private System.Windows.Forms.Button refleshButton;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox areaSelector;
+        private System.Windows.Forms.Label label1;
     }
 }
 

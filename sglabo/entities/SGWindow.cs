@@ -22,11 +22,12 @@ namespace sglabo
 
         Process proc;
         IntPtr hWnd;
-        ScreenPosition sPos;
+        public ScreenPosition sPos;
 
         public Bitmap pcName;
         public int pcCode;
         public bool auto = true;
+        public GridPosition gPos;
 
         long x;
         long y;
@@ -119,7 +120,7 @@ namespace sglabo
 
         public bool IsWaitingLot()
         {
-            return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 500;
+            return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 1000;
         }
 
         public bool IsField()
@@ -127,9 +128,9 @@ namespace sglabo
             return DetectColor(CaptureFieldStatus()).green > 10;
         }
 
-        public static void DetectBattleField()
+        public static void CreateBattleField()
         {
-            battleField = new BattleField(Properties.Resources.ルデンヌA);
+            battleField = new BattleField(Properties.Resources.MAP60603230);
         }
     }
 }

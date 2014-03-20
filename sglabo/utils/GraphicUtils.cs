@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -104,6 +105,36 @@ namespace sglabo
             ReleaseDC(hWnd, winDC);
 
             return bmp;
+        }
+
+        public static int GenerateUniqueCode(Bitmap bmp)
+        {
+            BitmapData bmpdata = bmp.LockBits(
+                    new Rectangle(0, 0, bmp.Width, bmp.Height),
+                    ImageLockMode.ReadWrite,
+                    PixelFormat.Format32bppArgb
+                );
+
+            byte[] ba = new byte[bmp.Width * bmp.Height * 4];
+            Marshal.Copy(bmpdata.Scan0, ba, 0, ba.Length);
+            int pixsize = bmp.Width * bmp.Height * 4;
+
+            var parentCode = 0;
+            for(int i = 0; i < ba.Length; i += 4)
+            {
+                var b = ba[i + 0];
+                var g = ba[i + 1];
+                var r = ba[i + 2];
+                var a = ba[i + 3];
+
+                var childCode = (b * g * r * a) / 4;
+                parentCode = Math.Abs((parentCode + childCode) / 2);
+            }
+
+            Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
+            bmp.UnlockBits(bmpdata);
+
+            return parentCode;
         }
     }
 }

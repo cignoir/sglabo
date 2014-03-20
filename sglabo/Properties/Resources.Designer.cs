@@ -61,7 +61,7 @@ namespace sglabo.Properties {
         }
         
         /// <summary>
-        ///   行	列	高	中心X	中心Y	進入可	※左上端を(0, 0)とする
+        ///   8x3
         ///0	0	1	484	168	1
         ///0	1	1	544	193	1
         ///0	2	0	604	250	1
@@ -87,9 +87,9 @@ namespace sglabo.Properties {
         ///7	1	0	196	470	1
         ///7	2	0	256	497	1 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string ルデンヌA {
+        internal static string MAP60603230 {
             get {
-                return ResourceManager.GetString("ルデンヌA", resourceCulture);
+                return ResourceManager.GetString("MAP60603230", resourceCulture);
             }
         }
     }
