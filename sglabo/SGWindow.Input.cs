@@ -95,9 +95,9 @@ namespace sglabo
         {
             // Ctrl + B
             input.Keyboard
-                .KeyDown(VirtualKeyCode.LCONTROL)
+                .KeyDown(VirtualKeyCode.LCONTROL).Sleep(globalSleep)
                 .KeyDown(VirtualKeyCode.VK_B).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.VK_B)
+                .KeyUp(VirtualKeyCode.VK_B).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
@@ -144,7 +144,6 @@ namespace sglabo
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
             Enter();
             Enter();
-            Go();
         }
     }
 }

@@ -112,7 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battle.cs" />
-    <Compile Include="BattleMapDetector.cs" />
     <Compile Include="entities\Area.cs" />
     <Compile Include="entities\BattleField.cs" />
     <Compile Include="entities\BattleFieldCell.cs" />

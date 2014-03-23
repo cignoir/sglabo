@@ -139,5 +139,23 @@ namespace sglabo.entities
                 });
             });
         }
+
+        public BattleFieldCell Cell(int x, int y)
+        {
+            x = x < 0 ? 0 : x;
+            x = x > colCount ? colCount - 1 : x;
+            y = y < 0 ? 0 : y;
+            y = y > rowCount ? rowCount - 1 : y;
+
+            BattleFieldCell cell = null;
+            try
+            {
+                cell = cells[x, y];
+            }
+            catch(IndexOutOfRangeException)
+            {
+            }
+            return cell;
+        }
     }
 }

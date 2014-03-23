@@ -13,7 +13,7 @@ namespace sglabo
         MainForm mainForm;
 
         public BattleField battleField;
-        public int turn;
+        public static int turn;
         public SGWindow mainPC;
         int loopLimit = 100;
         bool inBattle = true;
@@ -45,13 +45,14 @@ namespace sglabo
                 if(inBattle)
                 {
                     battleField.Scan();
-                    Thread.Sleep(3000);
+                    SGWindow.battleField = battleField;
+                    Thread.Sleep(1000);
 
                     mainForm.SetStatus("移動中...");
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();
-                        pc.BattleMove(battleField);
+                        pc.BattleMove();
                     }
                     Thread.Sleep(1000);
 
@@ -60,7 +61,7 @@ namespace sglabo
                     mainForm.SetStatus("行動中...");
 
                     battleField.Scan();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
 
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {

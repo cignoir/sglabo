@@ -62,7 +62,7 @@ namespace sglabo.entities
                 existsPC = true;
                 pcCode = color.brown;
 
-                SGWindow.sgList.Where(x => x.pcCode == pcCode).First().gPos = this.gPos;
+                SGWindow.sgList/*.Where(x => x.pcCode == pcCode)*/.First().gPos = this.gPos;
             }
         }
 

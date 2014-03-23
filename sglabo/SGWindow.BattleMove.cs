@@ -10,14 +10,13 @@ namespace sglabo
 {
     partial class SGWindow
     {
-        public void BattleMove(BattleField battleField)
+        public void BattleMove()
         {
-            if(battleField.turn == 1)
+            if(Battle.turn == 1)
             {
                 Move(Direction.D8);
                 Move(Direction.D8);
                 Move(Direction.D8);
-                Look(Direction.D8);
                 Enter();
             }
             else
