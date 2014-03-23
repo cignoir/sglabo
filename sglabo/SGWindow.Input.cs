@@ -9,7 +9,7 @@ namespace sglabo
 {
     partial class SGWindow
     {
-        int globalSleep = 100;
+        public int globalSleep = 200;
 
         public void OpenItemWindow()
         {
@@ -91,7 +91,7 @@ namespace sglabo
                 .Sleep(globalSleep);
         }
 
-        private void Go()
+        public void Go()
         {
             // Ctrl + B
             input.Keyboard
@@ -99,6 +99,52 @@ namespace sglabo
                 .KeyDown(VirtualKeyCode.VK_B).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.VK_B)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+        }
+
+        public void ItemLot()
+        {
+            Activate();
+
+            input.Keyboard
+                .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
+
+        public void SelectSkill(int index)
+        {
+            VirtualKeyCode vk = VirtualKeyCode.SPACE;
+            switch(index)
+            {
+                case 1:
+                    vk = VirtualKeyCode.VK_1;
+                    break;
+                case 2:
+                    vk = VirtualKeyCode.VK_2;
+                    break;
+                case 3:
+                    vk = VirtualKeyCode.VK_2;
+                    break;
+                case 4:
+                    vk = VirtualKeyCode.VK_2;
+                    break;
+                case 5:
+                    vk = VirtualKeyCode.VK_2;
+                    break;
+                case 6:
+                    vk = VirtualKeyCode.VK_2;
+                    break;
+                default:
+                    vk = VirtualKeyCode.VK_1;
+                    break;
+            }
+
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.LCONTROL).Sleep(globalSleep)
+                .KeyDown(vk).Sleep(globalSleep)
+                .KeyUp(vk).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+            Enter();
+            Enter();
+            Go();
         }
     }
 }

@@ -35,11 +35,15 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.activateButton1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.jobSelector1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.refleshButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.startButton = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.areaSelector = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,7 +61,7 @@
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(459, 41);
+            this.detectColorButton.Location = new System.Drawing.Point(459, 87);
             this.detectColorButton.Name = "detectColorButton";
             this.detectColorButton.Size = new System.Drawing.Size(75, 23);
             this.detectColorButton.TabIndex = 2;
@@ -78,15 +82,14 @@
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(32, 17);
-            this.statusLabel.Text = "gl hf";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.activateButton1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.jobSelector1);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(440, 43);
             this.groupBox1.TabIndex = 4;
@@ -102,10 +105,10 @@
             this.activateButton1.Text = "Activate";
             this.activateButton1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // jobSelector1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.jobSelector1.FormattingEnabled = true;
+            this.jobSelector1.Items.AddRange(new object[] {
             "戦士",
             "騎士",
             "盗賊",
@@ -118,11 +121,12 @@
             "錬金",
             "守護",
             "次元"});
-            this.comboBox1.Location = new System.Drawing.Point(201, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(66, 20);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.Text = "Job";
+            this.jobSelector1.Location = new System.Drawing.Point(201, 14);
+            this.jobSelector1.Name = "jobSelector1";
+            this.jobSelector1.Size = new System.Drawing.Size(66, 20);
+            this.jobSelector1.TabIndex = 7;
+            this.jobSelector1.Text = "Job";
+            this.jobSelector1.SelectedIndexChanged += new System.EventHandler(this.jobSelector1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -135,7 +139,7 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(459, 70);
+            this.refleshButton.Location = new System.Drawing.Point(459, 116);
             this.refleshButton.Name = "refleshButton";
             this.refleshButton.Size = new System.Drawing.Size(75, 23);
             this.refleshButton.TabIndex = 5;
@@ -146,12 +150,12 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 2000;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(459, 100);
+            this.startButton.Location = new System.Drawing.Point(459, 146);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 6;
@@ -159,11 +163,47 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(459, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 19);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.Text = "573,248,40,40";
+            // 
+            // areaSelector
+            // 
+            this.areaSelector.FormattingEnabled = true;
+            this.areaSelector.Items.AddRange(new object[] {
+            "ルデンヌ大森林"});
+            this.areaSelector.Location = new System.Drawing.Point(54, 12);
+            this.areaSelector.Name = "areaSelector";
+            this.areaSelector.Size = new System.Drawing.Size(121, 20);
+            this.areaSelector.TabIndex = 8;
+            this.areaSelector.Text = "ルデンヌ大森林";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "エリア";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 286);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.areaSelector);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.refleshButton);
             this.Controls.Add(this.groupBox1);
@@ -190,11 +230,15 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox jobSelector1;
         private System.Windows.Forms.Button activateButton1;
         private System.Windows.Forms.Button refleshButton;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox areaSelector;
+        private System.Windows.Forms.Label label1;
     }
 }
 

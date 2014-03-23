@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sglabo.entities;
+using WindowsInput;
 
 namespace sglabo
 {
@@ -19,6 +21,8 @@ namespace sglabo
         List<PictureBox> pictureBoxes = new List<PictureBox>();
         public static bool isBattleTaskRunning = false;
         public static bool isStarted = false;
+        public Thread thread;
+        public string areaSelectorText;
 
         public MainForm()
         {
@@ -32,7 +36,29 @@ namespace sglabo
         {
             var sg = SGWindow.sgList.First();
             sg.Activate();
-            sg.CapturePCNameFromStatus();
+
+            if(textBox1.Text.Length != 0)
+            {
+                var rectInfo = textBox1.Text.Split(',');
+                int x = int.Parse(rectInfo[0]);
+                int y = int.Parse(rectInfo[1]);
+                int width = int.Parse(rectInfo[2]);
+                int height = int.Parse(rectInfo[3]);
+
+                var input = new InputSimulator();
+                input.Mouse.MoveMouseTo(sg.sPos.x + 400, sg.sPos.y + 300);
+
+                var rect = new Rectangle(x, y, width, height);
+                var bmp = sg.CaptureRectangle(rect);
+                GraphicUtils.GenerateUniqueCode(bmp);
+
+                statusLabel.Text = GraphicUtils.GenerateUniqueCode(bmp).ToString();
+            }
+            else
+            {
+                sg.CapturePCNameFromStatus();
+                sg.IsWaitingLot();
+            }
         }
 
         private void detectColorButton_Click(object sender, EventArgs e)
@@ -61,6 +87,8 @@ namespace sglabo
                 p.Image = null;
             }
 
+            SGWindow.sgList.Clear();
+
             foreach(Process proc in Process.GetProcessesByName("ST_231").OrderBy(x => x.Id))
             {
                 var sg = new SGWindow(proc);
@@ -79,22 +107,45 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg.IsField())
             {
-                statusLabel.Text = "Field";
+                SetStatus("フィールド");
                 // フィールド移動
             }
             else
             {
-                statusLabel.Text = "Battle";
+                if(!isBattleTaskRunning){
+                    SetStatus("エンカウント");
+                    if(thread != null && thread.IsAlive) thread.Abort();
 
-                var thread = new Thread(new ThreadStart(new Battle().Run));
-                thread.IsBackground = true;
-                thread.Start();
+                    areaSelectorText = areaSelector.Text;
+
+                    thread = new Thread(new ThreadStart(new Battle(this).Run));
+                    thread.IsBackground = false;
+                    thread.Start();
+                }
+
             }
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             isStarted = !isStarted;
+        }
+
+        public void SetStatus(string message)
+        {
+            statusLabel.Text = message;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            System.GC.Collect();
+        }
+
+        private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Job job = JobConverter.ConvertFrom(jobSelector1.Text);
+            var sg = SGWindow.sgList.ElementAt(0);
+            sg.job = job;
         }
 
     }

@@ -10,19 +10,24 @@ namespace sglabo
 {
     class Battle
     {
+        MainForm mainForm;
+
         public BattleField battleField;
         public int turn;
         public SGWindow mainPC;
         int loopLimit = 100;
+        bool inBattle = true;
 
-        public Battle()
+        public Battle(MainForm mainForm)
         {
+            this.mainForm = mainForm;
             MainForm.isBattleTaskRunning = true;
 
             mainPC = SGWindow.sgList.First();
             mainPC.Activate();
 
-            battleField = new BattleField(BattleField.DetectBattleMapName("ルデンヌ大森林"));
+            Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
+            battleField = new BattleField(BattleField.Detect(area));
             battleField.Scan();
         }
 
@@ -30,33 +35,51 @@ namespace sglabo
         {
             mainPC.Activate();
 
-            while(turn == 0 || !mainPC.IsBattleEnd())
+            while(inBattle)
             {
                 turn++;
 
+                mainForm.SetStatus("移動フェイズ待機中...");
                 LoopWait(loopLimit);
 
+                if(inBattle)
+                {
+                    battleField.Scan();
+                    Thread.Sleep(3000);
+
+                    mainForm.SetStatus("移動中...");
+                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
+                    {
+                        pc.Activate();
+                        pc.BattleMove(battleField);
+                    }
+                    Thread.Sleep(1000);
+
+                    mainForm.SetStatus("行動フェイズ待機中...");
+                    LoopWait(loopLimit);
+                    mainForm.SetStatus("行動中...");
+
+                    battleField.Scan();
+                    Thread.Sleep(3000);
+
+                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
+                    {
+                        pc.Activate();
+                        pc.BattleAction();
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+            
+            if(mainPC.IsWaitingLot()){
+                mainForm.SetStatus("アイテムのロット中...");
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                 {
                     pc.Activate();
-                    pc.BattleMove();
+                    pc.ItemLot();
                 }
-                Thread.Sleep(2000);
-                LoopWait(loopLimit);
-
-                foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
-                {
-                    pc.Activate();
-                    pc.BattleAction();
-                }
-                Thread.Sleep(5000);
             }
-
-            foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
-            {
-                pc.Activate();
-                pc.ItemLot();
-            }
+            mainForm.SetStatus("戦闘終了");
 
             MainForm.isBattleTaskRunning = false;
         }
@@ -65,6 +88,11 @@ namespace sglabo
         {
             while(limit > 0)
             {
+                if(mainPC.IsField() || mainPC.IsWaitingLot())
+                {
+                    inBattle = false;
+                    break;
+                }
                 if(mainPC.IsWaitingBattleInput()) break;
 
                 Thread.Sleep(1000);

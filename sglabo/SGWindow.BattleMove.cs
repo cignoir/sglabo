@@ -10,19 +10,27 @@ namespace sglabo
 {
     partial class SGWindow
     {
-        public void BattleMove()
+        public void BattleMove(BattleField battleField)
         {
-            Move(Direction.D8);
-            Move(Direction.D8);
-            Move(Direction.D8);
-            Move(Direction.D8);
+            if(battleField.turn == 1)
+            {
+                Move(Direction.D8);
+                Move(Direction.D8);
+                Move(Direction.D8);
+                Look(Direction.D8);
+                Enter();
+            }
+            else
+            {
+            }
+
             Go();
         }
 
-        private void Move(Direction direction){
+        public void Move(Direction direction){
             var keyboard = input.Keyboard;
 
-            VirtualKeyCode vk;
+            VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
             {
                 case Direction.D8:
@@ -38,14 +46,33 @@ namespace sglabo
                     vk = VirtualKeyCode.DOWN;
                     break;
                 case Direction.D5:
-                    return;
+                    break;
                 default:
                     vk = VirtualKeyCode.RETURN;
                     break;
             }
 
-            keyboard.KeyPress(vk).Sleep(100)
-                .KeyPress(VirtualKeyCode.RETURN).Sleep(100);
+            if(vk != VirtualKeyCode.SPACE){
+                keyboard
+                    .KeyDown(vk).Sleep(globalSleep)
+                    .KeyUp(vk);
+            }
+
+            keyboard
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
+
+        public void Look(Direction direction)
+        {
+            Move(direction);
+        }
+
+        public void Enter()
+        {
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
     }
 }

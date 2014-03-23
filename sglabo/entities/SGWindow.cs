@@ -11,6 +11,7 @@ using WindowsInput;
 using WindowsInput.Native;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace sglabo
 {
@@ -21,18 +22,20 @@ namespace sglabo
 
         Process proc;
         IntPtr hWnd;
-        ScreenPosition sPos;
+        public ScreenPosition sPos;
 
         public Bitmap pcName;
         public int pcCode;
+        public Job job;
         public bool auto = true;
+        public GridPosition gPos;
 
         long x;
         long y;
         long width;
         long height;
 
-        InputSimulator input = new InputSimulator();
+        public InputSimulator input = new InputSimulator();
 
         int windowCount;
 
@@ -113,27 +116,22 @@ namespace sglabo
 
         public bool IsWaitingBattleInput()
         {
-            return DetectColor(CaptureBattleStatus()).pink > 0;
+            return DetectColor(CaptureBattleStatus()).pink > 10;
         }
 
-        public bool IsBattleEnd()
+        public bool IsWaitingLot()
         {
-            return false;
+            return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 1000;
         }
 
         public bool IsField()
         {
-            return DetectColor(CaptureFieldStatus()).green > 0;
+            return DetectColor(CaptureFieldStatus()).green > 10;
         }
 
-        public static void DetectBattleField()
+        public static void CreateBattleField()
         {
-            battleField = new BattleField(Properties.Resources.ルデンヌA);
-        }
-
-        internal void ItemLot()
-        {
-            throw new NotImplementedException();
+            battleField = new BattleField(Properties.Resources.MAP60603230);
         }
     }
 }
