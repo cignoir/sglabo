@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sglabo.entities;
 using WindowsInput.Native;
 
 namespace sglabo
@@ -109,27 +110,27 @@ namespace sglabo
                 .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
-        public void SelectSkill(int index)
+        public void SelectSkill(SkillOrder skill)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
-            switch(index)
+            switch(skill)
             {
-                case 1:
+                case SkillOrder.S1:
                     vk = VirtualKeyCode.VK_1;
                     break;
-                case 2:
+                case SkillOrder.S2:
                     vk = VirtualKeyCode.VK_2;
                     break;
-                case 3:
+                case SkillOrder.S3:
                     vk = VirtualKeyCode.VK_2;
                     break;
-                case 4:
+                case SkillOrder.S4:
                     vk = VirtualKeyCode.VK_2;
                     break;
-                case 5:
+                case SkillOrder.S5:
                     vk = VirtualKeyCode.VK_2;
                     break;
-                case 6:
+                case SkillOrder.S6:
                     vk = VirtualKeyCode.VK_2;
                     break;
                 default:

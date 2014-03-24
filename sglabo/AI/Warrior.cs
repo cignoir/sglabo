@@ -10,8 +10,6 @@ namespace sglabo.AI
 {
     class Warrior
     {
-        
-
         public static void PlaySkill(BattleField bf, SGWindow sg)
         {
             // 1. サイドウェブ
@@ -39,7 +37,7 @@ namespace sglabo.AI
                 || exists66 || exists44 || exists86 || exists84
                 )
             {
-                sg.SelectSkill(2);
+                sg.SelectSkill(SkillOrder.S2);
             }
             else if(
                 exists8 || exists4 || exists6
