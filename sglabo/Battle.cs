@@ -56,7 +56,6 @@ namespace sglabo
                         pc.Activate();
                         pc.BattleMove();
                     }
-                    Thread.Sleep(1000);
 
                     mainForm.SetStatus("行動フェイズ待機中...");
                     LoopWait(loopLimit);

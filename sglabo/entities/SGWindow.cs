@@ -98,6 +98,8 @@ namespace sglabo
                 Win32API.SystemParametersInfoSet(Win32API.SPI_SETFOREGROUNDLOCKTIMEOUT, 0, timeout, 0);
                 Win32API.AttachThreadInput(thisThread, foreThread, false);
             }
+
+            Thread.Sleep(1000);
         }
 
         public bool IsActive()
