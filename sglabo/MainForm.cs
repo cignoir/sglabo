@@ -99,6 +99,8 @@ namespace sglabo
 
         private void captureButton_Click(object sender, EventArgs e)
         {
+            if(SGWindow.sgList.Count == 0) return;
+ 
             var sg = SGWindow.sgList.First();
             sg.Activate();
 
