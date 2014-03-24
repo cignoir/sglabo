@@ -22,7 +22,7 @@ namespace sglabo
         public static BattleField battleField;
 
         Process proc;
-        IntPtr hWnd;
+        public IntPtr hWnd;
         public ScreenPosition sPos;
 
         public Bitmap pcName;

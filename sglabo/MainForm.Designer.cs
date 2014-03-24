@@ -126,7 +126,7 @@
             this.jobSelector1.Name = "jobSelector1";
             this.jobSelector1.Size = new System.Drawing.Size(66, 20);
             this.jobSelector1.TabIndex = 7;
-            this.jobSelector1.Text = "Job";
+            this.jobSelector1.Text = "戦士";
             this.jobSelector1.SelectedIndexChanged += new System.EventHandler(this.jobSelector1_SelectedIndexChanged);
             // 
             // pictureBox1

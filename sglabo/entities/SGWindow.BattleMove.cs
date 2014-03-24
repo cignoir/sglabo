@@ -14,22 +14,23 @@ namespace sglabo
         {
             if(Battle.turn == 1)
             {
-                ESC();
+                Ready();
                 Move(Direction.D8);
                 Move(Direction.D8);
                 Move(Direction.D8);
-                Enter();
-            }
-            else
-            {
             }
 
             Go();
         }
 
-        public void Move(Direction direction){
-            var keyboard = input.Keyboard;
+        public void Ready()
+        {
+            input.Keyboard
+                    .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.UP);
+        }
 
+        public void Move(Direction direction){
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
             {
@@ -53,12 +54,12 @@ namespace sglabo
             }
 
             if(vk != VirtualKeyCode.SPACE){
-                keyboard
+                input.Keyboard
                     .KeyDown(vk).Sleep(globalSleep)
                     .KeyUp(vk);
             }
 
-            keyboard
+            input.Keyboard
                 .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }

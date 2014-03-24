@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sglabo.AI;
 using sglabo.entities;
 using WindowsInput;
 using WindowsInput.Native;
@@ -135,9 +136,21 @@ namespace sglabo
         {
             pictureBoxes.Add(pictureBox1);
 
+            var sg = SGWindow.sgList.First();
+            if(sg == null)
+            {
+                MessageBox.Show("proc:ST_231 が見つかりません");
+                this.Close();
+            }
+            else
+            {
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
+            }
+
             Win32API.RECT rect;
-            Win32API.GetWindowRect(Win32API.GetDesktopWindow(), out rect);
-            this.Location = new Point(rect.right - this.Width, rect.bottom - this.Height);
+            Win32API.GetWindowRect(sg.hWnd, out rect);
+            this.Location = new Point(rect.right + 6, rect.top - 5);
         }
 
         private void refleshButton_Click(object sender, EventArgs e)
@@ -187,7 +200,6 @@ namespace sglabo
             var sg = SGWindow.sgList.ElementAt(0);
             sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
             sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
-            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

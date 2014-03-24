@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using sglabo.entities;
 
 namespace sglabo
@@ -44,6 +45,7 @@ namespace sglabo
 
                 if(inBattle)
                 {
+                    mainForm.SetStatus("マップスキャン...");
                     battleField.Scan();
                     SGWindow.battleField = battleField;
                     Thread.Sleep(1000);
@@ -58,17 +60,22 @@ namespace sglabo
 
                     mainForm.SetStatus("行動フェイズ待機中...");
                     LoopWait(loopLimit);
-                    mainForm.SetStatus("行動中...");
 
+                    mainForm.SetStatus("マップスキャン...");
                     battleField.Scan();
                     Thread.Sleep(1000);
 
+                    mainForm.SetStatus("行動中...");
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         if(pc.ai != null)
                         {
                             pc.Activate();
                             pc.ai.PlaySkill(battleField, pc);
+                        }
+                        else
+                        {
+                            MessageBox.Show("AIがセットされていません");
                         }
                     }
                     Thread.Sleep(1000);
@@ -84,8 +91,9 @@ namespace sglabo
                 }
             }
             mainForm.SetStatus("戦闘終了");
-
             MainForm.isBattleTaskRunning = false;
+
+            Thread.Sleep(3000);
         }
 
         private void LoopWait(int limit = 100)
