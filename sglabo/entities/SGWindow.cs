@@ -12,6 +12,7 @@ using WindowsInput.Native;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using sglabo.AI;
 
 namespace sglabo
 {
@@ -27,6 +28,7 @@ namespace sglabo
         public Bitmap pcName;
         public int pcCode;
         public Job job;
+        public JobAI ai;
         public bool auto = true;
         public GridPosition gPos;
 

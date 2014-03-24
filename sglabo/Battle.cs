@@ -65,8 +65,11 @@ namespace sglabo
 
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
-                        pc.Activate();
-                        pc.BattleAction();
+                        if(pc.ai != null)
+                        {
+                            pc.Activate();
+                            pc.ai.PlaySkill(battleField, pc);
+                        }
                     }
                     Thread.Sleep(1000);
                 }

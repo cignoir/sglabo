@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sglabo.AI;
 
 namespace sglabo.entities
 {
@@ -13,7 +14,7 @@ namespace sglabo.entities
 
     class JobConverter
     {
-        public static Job ConvertFrom(string jobName)
+        public static Job ConvertToJobFrom(string jobName)
         {
             Job job;
             switch(jobName)
@@ -59,6 +60,42 @@ namespace sglabo.entities
                     break;
             }
             return job;
+        }
+
+        public static JobAI ConvertToAIFrom(string jobName)
+        {
+            JobAI ai = null;
+            switch(jobName)
+            {
+                case "戦士":
+                    ai = new Warrior();
+                    break;
+                case "騎士":
+                    break;
+                case "格闘士":
+                    break;
+                case "幻闘士":
+                    break;
+                case "盗賊":
+                    break;
+                case "忍者":
+                    break;
+                case "精霊":
+                    break;
+                case "召喚":
+                    break;
+                case "黒印":
+                    break;
+                case "錬金":
+                    break;
+                case "守護":
+                    break;
+                case "次元":
+                    break;
+                default:
+                    break;
+            }
+            return ai;
         }
     }
 }

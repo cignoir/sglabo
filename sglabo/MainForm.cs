@@ -143,9 +143,10 @@ namespace sglabo
 
         private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Job job = JobConverter.ConvertFrom(jobSelector1.Text);
             var sg = SGWindow.sgList.ElementAt(0);
-            sg.job = job;
+            sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
+            sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
+            
         }
 
     }

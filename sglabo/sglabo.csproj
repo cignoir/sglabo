@@ -111,6 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\JobAI.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="entities\Area.cs" />
     <Compile Include="entities\BattleField.cs" />
@@ -123,13 +124,13 @@
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="entities\Skill.cs" />
     <Compile Include="AI\Warrior.cs" />
+    <Compile Include="entities\SkillOrder.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="entities\SGColor.cs" />
-    <Compile Include="entities\SGWindow.BattleAction.cs" />
     <Compile Include="entities\SGWindow.BattleMove.cs" />
     <Compile Include="entities\SGWindow.Graphics.cs" />
     <Compile Include="utils\GraphicUtils.cs" />

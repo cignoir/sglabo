@@ -8,9 +8,9 @@ using WindowsInput.Native;
 
 namespace sglabo.AI
 {
-    class Warrior
+    class Warrior: JobAI
     {
-        public static void PlaySkill(BattleField bf, SGWindow sg)
+        public void PlaySkill(BattleField bf, SGWindow sg)
         {
             // 1. サイドウェブ
             // 2. バーチカルウェブ 
@@ -44,7 +44,7 @@ namespace sglabo.AI
                 || exists66 || exists44 || exists86 || exists84 || exists88
                 )
             {
-                sg.SelectSkill(1);
+                sg.SelectSkill(SkillOrder.S1);
             }
             else if(
                 exists8 || exists4 || exists6
@@ -52,7 +52,7 @@ namespace sglabo.AI
                 || exists888
                 )
             {
-                sg.SelectSkill(3);
+                sg.SelectSkill(SkillOrder.S3);
             }
 
             sg.Go();
