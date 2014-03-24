@@ -14,7 +14,7 @@ namespace sglabo
         {
             if(job == Job.戦士)
             {
-                戦士.PlaySkill(battleField, this);
+                Warrior.PlaySkill(battleField, this);
             }
         }
     }

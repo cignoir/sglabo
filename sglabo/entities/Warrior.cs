@@ -7,7 +7,7 @@ using WindowsInput.Native;
 
 namespace sglabo.entities
 {
-    class 戦士
+    class Warrior
     {
         
 
