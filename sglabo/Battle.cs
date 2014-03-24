@@ -39,6 +39,9 @@ namespace sglabo
             while(inBattle)
             {
                 turn++;
+                foreach(SGWindow sg in SGWindow.sgList){
+                    sg.ap += 10;
+                }
 
                 mainForm.SetStatus("移動フェイズ待機中...");
                 LoopWait(loopLimit);

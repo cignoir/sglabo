@@ -122,7 +122,6 @@
     <Compile Include="entities\NPC.cs" />
     <Compile Include="entities\PC.cs" />
     <Compile Include="entities\ScreenPosition.cs" />
-    <Compile Include="entities\Skill.cs" />
     <Compile Include="AI\Warrior.cs" />
     <Compile Include="entities\SkillOrder.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

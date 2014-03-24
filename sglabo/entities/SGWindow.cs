@@ -29,6 +29,7 @@ namespace sglabo
         public int pcCode;
         public Job job;
         public JobAI ai;
+        public int ap;
         public bool auto = true;
         public GridPosition gPos;
 

@@ -32,31 +32,39 @@ namespace sglabo.AI
             bool exists84 = bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsPC;
             bool exists884 = bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsPC;
 
-            if(
-                exists8 || exists4 || exists6
-                || exists66 || exists44 || exists86 || exists84
-                )
+            /* 順番を組み替えやすいように、あえて else if を使っていない */
+
+            if(sg.ap >= 8 && ((exists8 && exists88) || (exists88 && exists888) || (exists8 && exists888)))
             {
-                sg.SelectSkill(SkillOrder.S2);
-            }
-            else if(
-                exists8 || exists4 || exists6
-                || exists66 || exists44 || exists86 || exists84 || exists88
-                )
-            {
-                sg.SelectSkill(SkillOrder.S1);
-            }
-            else if(
-                exists8 || exists4 || exists6
-                || exists66 || exists44 || exists86 || exists84 || exists88
-                || exists888
-                )
-            {
+                sg.ap -= 8;
                 sg.SelectSkill(SkillOrder.S3);
+                sg.Go();
+                return;
             }
 
-            sg.Go();
-            sg.Go();
+            if(sg.ap >= 12 && ((exists8 && exists86) || (exists8 && exists84) || (exists84 && exists86)))
+            {
+                sg.ap -= 12;
+                sg.SelectSkill(SkillOrder.S4);
+                sg.Go();
+                return;
+            }
+
+            if(sg.ap >= 3 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84))
+            {
+                sg.ap -= 3;
+                sg.SelectSkill(SkillOrder.S2);
+                sg.Go();
+                return;
+            }
+            
+            if(sg.ap >= 6 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84 || exists88) )
+            {
+                sg.ap -= 6;
+                sg.SelectSkill(SkillOrder.S1);
+                sg.Go();
+                return;
+            }
         }
     }
 }
