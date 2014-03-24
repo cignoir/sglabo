@@ -24,28 +24,6 @@ namespace sglabo.entities
             Load(map);
         }
 
-        //public static string DetectBattleMapName(string areaName)
-        //{
-        //    var memberCount = SGWindow.sgList.Count;
-        //    switch(memberCount)
-        //    {
-        //        case 1:
-        //        case 2:
-        //            break;
-        //        case 3:
-        //        case 4:
-        //            break;
-        //        case 5:
-        //            break;
-        //        default:
-        //            break;
-        //    }
-
-        //    var rsc = Properties.Resources.ResourceManager.GetString("ルデンヌA");
-        //    // エリアと人数をもとにマップ検出
-        //    return rsc;
-        //}
-
         public static string Detect(Area area)
         {
             var memberCount = SGWindow.sgList.Count;
