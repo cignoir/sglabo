@@ -27,7 +27,16 @@ namespace sglabo
         {
             Activate();
             var bmp = Capture();
-            return bmp != null ? bmp.Clone(rect, PixelFormat.Format32bppArgb) : null;
+            if(bmp != null)
+            {
+                var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
+                bmp.Dispose();
+                return copy;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Bitmap CapturePCNameFromStatus()

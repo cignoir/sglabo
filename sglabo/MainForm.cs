@@ -65,6 +65,7 @@ namespace sglabo
             var bmp = Image.FromFile(@"C:\Users\Cignoir\Desktop\battle2.png") as Bitmap;
             var sg = SGWindow.sgList.First();
             var color = sg.DetectColor(bmp);
+            bmp.Dispose();
 
             statusLabel.Text = color.white + ":" + color.white + ":" + color.brown;
         }

@@ -36,7 +36,9 @@ namespace sglabo.entities
         {
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
             Rectangle rect = new Rectangle(sPos.x - 50, sPos.y - 20, 100, 40);
-            return bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
+            bmp.Dispose();
+            return copy;
         }
 
         private void InitDinamicInfo()
@@ -60,7 +62,7 @@ namespace sglabo.entities
                 existsPC = true;
                 pcCode = color.brown;
 
-                // 要調査: pcCodeが一致しないことがある可能性について
+                // 要調査: pcCodeが一致しないことがある可能性について。マウスカーソルの位置に依るかも。
                 SGWindow.sgList/*.Where(x => x.pcCode == pcCode)*/.First().gPos = this.gPos;
             }
         }
@@ -100,6 +102,7 @@ namespace sglabo.entities
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
+            bmp.Dispose();
 
             return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount);
         }
