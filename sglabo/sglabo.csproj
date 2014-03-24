@@ -128,10 +128,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SGColor.cs" />
-    <Compile Include="SGWindow.BattleAction.cs" />
-    <Compile Include="SGWindow.BattleMove.cs" />
-    <Compile Include="SGWindow.Graphics.cs" />
+    <Compile Include="entities\SGColor.cs" />
+    <Compile Include="entities\SGWindow.BattleAction.cs" />
+    <Compile Include="entities\SGWindow.BattleMove.cs" />
+    <Compile Include="entities\SGWindow.Graphics.cs" />
     <Compile Include="utils\GraphicUtils.cs" />
     <Compile Include="utils\InputSimulatorExamples.cs" />
     <Compile Include="MainForm.cs">
@@ -162,7 +162,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SGWindow.Input.cs" />
+    <Compile Include="entities\SGWindow.Input.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
