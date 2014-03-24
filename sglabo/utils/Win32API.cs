@@ -15,6 +15,7 @@ namespace sglabo
         public const int MOD_WIN = 0x0008;
         public const int WM_HOTKEY = 0x0312;
         public const int WM_HOTKEY_STOP = 0x0001;
+        public const int WM_HOTKEY_START = 0x0002;
 
         [DllImport("user32.dll")]
         public extern static int RegisterHotKey(IntPtr HWnd, int ID, int MOD_KEY, int KEY);
@@ -109,7 +110,6 @@ namespace sglabo
         public const int WM_SYSCOMMAND = 274;
         public const int SC_MAXIMIZE = 0xF030;
         public const int SC_MINIMIZE = 0xF020;
-
 
         [StructLayout(LayoutKind.Sequential, Pack = 4)]
         public struct RECT

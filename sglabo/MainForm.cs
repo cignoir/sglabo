@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using sglabo.entities;
 using WindowsInput;
+using WindowsInput.Native;
 
 namespace sglabo
 {
@@ -28,7 +29,8 @@ namespace sglabo
         {
             InitializeComponent();
 
-            Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_CONTROL, (int)Keys.Q);
+            Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_START, Win32API.MOD_ALT, (int)Keys.S);
+            Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_ALT, (int)Keys.Q);
 
             pictureBoxes.Add(pictureBox1);
             RefleshPictures();
@@ -41,11 +43,15 @@ namespace sglabo
             {
                 switch((int)m.WParam)
                 {
+                    case Win32API.WM_HOTKEY_START:
+                        isStarted = !isStarted;
+                        SetStatus(isStarted ? "処理を開始しました" : "処理を中断しました");
+                        break;
                     case Win32API.WM_HOTKEY_STOP:
                         if(thread !=null) thread.Abort();
                         isBattleTaskRunning = false;
                         isStarted = false;
-                        SetStatus("中断しました");
+                        SetStatus("処理を中断しました");
                         break;
                     default:
                         break;
