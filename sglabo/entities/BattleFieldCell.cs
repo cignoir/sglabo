@@ -24,8 +24,6 @@ namespace sglabo.entities
 
         int pcCode;
 
-        InputSimulator input = new InputSimulator();
-
         public BattleFieldCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
         {
             this.gPos = gPos;
@@ -62,6 +60,7 @@ namespace sglabo.entities
                 existsPC = true;
                 pcCode = color.brown;
 
+                // 要調査: pcCodeが一致しないことがある可能性について
                 SGWindow.sgList/*.Where(x => x.pcCode == pcCode)*/.First().gPos = this.gPos;
             }
         }

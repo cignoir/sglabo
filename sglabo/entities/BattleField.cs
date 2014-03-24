@@ -133,6 +133,7 @@ namespace sglabo.entities
             catch(IndexOutOfRangeException)
             {
             }
+
             return cell;
         }
     }
