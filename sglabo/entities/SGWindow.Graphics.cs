@@ -61,7 +61,7 @@ namespace sglabo
             return CaptureRectangle(new Rectangle(2, 20, 28, 50));
         }
 
-        public SGColor DetectColor(Bitmap bmp)
+        public SGColor DetectColor(Bitmap bmp, bool shouldBeDispose = true)
         {
             BitmapData bmpdata = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
@@ -96,7 +96,10 @@ namespace sglabo
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
-            bmp.Dispose();
+            if(shouldBeDispose)
+            {
+                bmp.Dispose();
+            }
 
             return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount);
         }

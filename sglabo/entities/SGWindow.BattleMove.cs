@@ -14,6 +14,7 @@ namespace sglabo
         {
             if(Battle.turn == 1)
             {
+                ESC();
                 Move(Direction.D8);
                 Move(Direction.D8);
                 Move(Direction.D8);
@@ -72,6 +73,13 @@ namespace sglabo
             input.Keyboard
                 .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
+
+        public void ESC()
+        {
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.ESCAPE).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.ESCAPE).Sleep(globalSleep);
         }
     }
 }

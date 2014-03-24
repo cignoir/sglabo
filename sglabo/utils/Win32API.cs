@@ -14,11 +14,7 @@ namespace sglabo
         public const int MOD_SHIFT = 0x0004;
         public const int MOD_WIN = 0x0008;
         public const int WM_HOTKEY = 0x0312;
-        public const int WM_HOTKEY1 = 0x0001;
-        public const int WM_HOTKEY2 = 0x0002;
-        public const int WM_HOTKEY3 = 0x0003;
-        public const int WM_HOTKEY4 = 0x0004;
-        public const int WM_HOTKEY5 = 0x0005;
+        public const int WM_HOTKEY_STOP = 0x0001;
 
         [DllImport("user32.dll")]
         public extern static int RegisterHotKey(IntPtr HWnd, int ID, int MOD_KEY, int KEY);

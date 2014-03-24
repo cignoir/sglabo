@@ -50,7 +50,7 @@ namespace sglabo
             if(IsField())
             {
                 pcName = CapturePCNameFromStatus();
-                pcCode = DetectColor(pcName).brown;
+                pcCode = DetectColor(pcName, false).brown;
             }
         }
 

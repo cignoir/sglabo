@@ -16,7 +16,7 @@ namespace sglabo
         public static int turn;
         public SGWindow mainPC;
         int loopLimit = 100;
-        bool inBattle = true;
+        public bool inBattle = true;
 
         public Battle(MainForm mainForm)
         {

@@ -28,8 +28,54 @@ namespace sglabo
         {
             InitializeComponent();
 
+            Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_CONTROL, (int)Keys.Q);
+
             pictureBoxes.Add(pictureBox1);
             RefleshPictures();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if(m.Msg == Win32API.WM_HOTKEY)
+            {
+                switch((int)m.WParam)
+                {
+                    case Win32API.WM_HOTKEY_STOP:
+                        if(thread !=null) thread.Abort();
+                        isBattleTaskRunning = false;
+                        isStarted = false;
+                        SetStatus("中断しました");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void SetStatus(string message)
+        {
+            statusLabel.Text = message;
+        }
+
+        private void RefleshPictures()
+        {
+            foreach(PictureBox p in pictureBoxes)
+            {
+                p.Image = null;
+            }
+
+            SGWindow.sgList.Clear();
+
+            foreach(Process proc in Process.GetProcessesByName("ST_231").OrderBy(x => x.Id))
+            {
+                var sg = new SGWindow(proc);
+                SGWindow.sgList.Add(sg);
+
+                var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
+                sg.pcName.Save(@"C:\hoge.bmp");
+                pictureBox.Image = sg.pcName;
+            }
         }
 
         private void captureButton_Click(object sender, EventArgs e)
@@ -80,25 +126,6 @@ namespace sglabo
             RefleshPictures();
         }
 
-        private void RefleshPictures()
-        {
-            foreach(PictureBox p in pictureBoxes)
-            {
-                p.Image = null;
-            }
-
-            SGWindow.sgList.Clear();
-
-            foreach(Process proc in Process.GetProcessesByName("ST_231").OrderBy(x => x.Id))
-            {
-                var sg = new SGWindow(proc);
-                SGWindow.sgList.Add(sg);
-
-                var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
-                pictureBox.Image = sg.pcName;
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if(!isStarted) return;
@@ -131,11 +158,6 @@ namespace sglabo
             isStarted = !isStarted;
         }
 
-        public void SetStatus(string message)
-        {
-            statusLabel.Text = message;
-        }
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             System.GC.Collect();
@@ -147,6 +169,11 @@ namespace sglabo
             sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
             sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
             
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
         }
 
     }
