@@ -87,6 +87,7 @@ namespace sglabo
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
+            bmp.Dispose();
 
             return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount);
         }
