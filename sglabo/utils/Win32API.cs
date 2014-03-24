@@ -23,6 +23,9 @@ namespace sglabo
         [DllImport("user32.dll")]
         public extern static int UnregisterHotKey(IntPtr HWnd, int ID);
 
+        [DllImport("User32.Dll")]
+        public static extern IntPtr GetDesktopWindow();
+
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);

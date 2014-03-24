@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.captureButton = new System.Windows.Forms.Button();
             this.detectColorButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -53,17 +54,17 @@
             // 
             this.captureButton.Location = new System.Drawing.Point(459, 12);
             this.captureButton.Name = "captureButton";
-            this.captureButton.Size = new System.Drawing.Size(75, 23);
+            this.captureButton.Size = new System.Drawing.Size(94, 23);
             this.captureButton.TabIndex = 0;
-            this.captureButton.Text = "Capture";
+            this.captureButton.Text = "CaptureMap";
             this.captureButton.UseVisualStyleBackColor = true;
             this.captureButton.Click += new System.EventHandler(this.captureButton_Click);
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(459, 87);
+            this.detectColorButton.Location = new System.Drawing.Point(459, 50);
             this.detectColorButton.Name = "detectColorButton";
-            this.detectColorButton.Size = new System.Drawing.Size(75, 23);
+            this.detectColorButton.Size = new System.Drawing.Size(94, 23);
             this.detectColorButton.TabIndex = 2;
             this.detectColorButton.Text = "Detect";
             this.detectColorButton.UseVisualStyleBackColor = true;
@@ -75,7 +76,7 @@
             this.statusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 264);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(546, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(563, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -139,11 +140,11 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(459, 116);
+            this.refleshButton.Location = new System.Drawing.Point(459, 79);
             this.refleshButton.Name = "refleshButton";
-            this.refleshButton.Size = new System.Drawing.Size(75, 23);
+            this.refleshButton.Size = new System.Drawing.Size(94, 23);
             this.refleshButton.TabIndex = 5;
-            this.refleshButton.Text = "Reflesh";
+            this.refleshButton.Text = "RefleshList";
             this.refleshButton.UseVisualStyleBackColor = true;
             this.refleshButton.Click += new System.EventHandler(this.refleshButton_Click);
             // 
@@ -155,11 +156,11 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(459, 146);
+            this.startButton.Location = new System.Drawing.Point(459, 120);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.Size = new System.Drawing.Size(94, 23);
             this.startButton.TabIndex = 6;
-            this.startButton.Text = "Start";
+            this.startButton.Text = "Start (ALT+S)";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
@@ -170,7 +171,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(459, 41);
+            this.textBox1.Location = new System.Drawing.Point(378, 14);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 7;
@@ -200,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 286);
+            this.ClientSize = new System.Drawing.Size(563, 286);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.areaSelector);
             this.Controls.Add(this.textBox1);
@@ -210,8 +211,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.detectColorButton);
             this.Controls.Add(this.captureButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "sglabo";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);

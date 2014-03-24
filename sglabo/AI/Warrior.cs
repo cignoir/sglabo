@@ -12,8 +12,8 @@ namespace sglabo.AI
     {
         public void PlaySkill(BattleField bf, SGWindow sg)
         {
-            // 1. サイドウェブ
-            // 2. バーチカルウェブ 
+            // 1. バーチカルウェブ 
+            // 2. サイドウェブ
             // 3. スティンガー
             // 4. ストラッシュ
             // 5. クレセント

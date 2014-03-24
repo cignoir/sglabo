@@ -46,6 +46,14 @@ namespace sglabo
                     case Win32API.WM_HOTKEY_START:
                         isStarted = !isStarted;
                         SetStatus(isStarted ? "処理を開始しました" : "処理を中断しました");
+
+                        if(!isStarted)
+                        {
+                            if(thread != null) thread.Abort();
+                            isBattleTaskRunning = false;
+                            isStarted = false;
+                            SetStatus("処理を中断しました");
+                        }
                         break;
                     case Win32API.WM_HOTKEY_STOP:
                         if(thread !=null) thread.Abort();
@@ -103,7 +111,8 @@ namespace sglabo
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
 
-                statusLabel.Text = GraphicUtils.GenerateUniqueCode(bmp).ToString();
+                statusLabel.Text = String.Format("マップ判別コード: {0} をクリップボードにコピーしました", GraphicUtils.GenerateUniqueCode(bmp).ToString());
+                Clipboard.SetDataObject(statusLabel.Text);
             }
             else
             {
@@ -125,6 +134,10 @@ namespace sglabo
         private void MainForm_Load(object sender, EventArgs e)
         {
             pictureBoxes.Add(pictureBox1);
+
+            Win32API.RECT rect;
+            Win32API.GetWindowRect(Win32API.GetDesktopWindow(), out rect);
+            this.Location = new Point(rect.right - this.Width, rect.bottom - this.Height);
         }
 
         private void refleshButton_Click(object sender, EventArgs e)
@@ -179,6 +192,7 @@ namespace sglabo
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_START);
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
         }
 
