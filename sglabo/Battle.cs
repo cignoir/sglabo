@@ -57,7 +57,7 @@ namespace sglabo
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();
-                        pc.BattleMove();
+                        pc.ai.PlayMove(battleField, pc);
                     }
 
                     mainForm.SetStatus("行動フェイズ待機中...");

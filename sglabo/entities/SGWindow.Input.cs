@@ -92,15 +92,7 @@ namespace sglabo
                 .Sleep(globalSleep);
         }
 
-        public void Go()
-        {
-            // Ctrl + B
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.LCONTROL).Sleep(globalSleep)
-                .KeyDown(VirtualKeyCode.VK_B).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.VK_B).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
-        }
+        
 
         public void ItemLot()
         {
@@ -110,41 +102,5 @@ namespace sglabo
                 .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
-        public void SelectSkill(SkillOrder skill)
-        {
-            VirtualKeyCode vk = VirtualKeyCode.SPACE;
-            switch(skill)
-            {
-                case SkillOrder.S1:
-                    vk = VirtualKeyCode.VK_1;
-                    break;
-                case SkillOrder.S2:
-                    vk = VirtualKeyCode.VK_2;
-                    break;
-                case SkillOrder.S3:
-                    vk = VirtualKeyCode.VK_2;
-                    break;
-                case SkillOrder.S4:
-                    vk = VirtualKeyCode.VK_2;
-                    break;
-                case SkillOrder.S5:
-                    vk = VirtualKeyCode.VK_2;
-                    break;
-                case SkillOrder.S6:
-                    vk = VirtualKeyCode.VK_2;
-                    break;
-                default:
-                    vk = VirtualKeyCode.VK_1;
-                    break;
-            }
-
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.LCONTROL).Sleep(globalSleep)
-                .KeyDown(vk).Sleep(globalSleep)
-                .KeyUp(vk).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
-            Enter();
-            Enter();
-        }
     }
 }

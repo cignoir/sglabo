@@ -10,7 +10,20 @@ namespace sglabo.AI
 {
     class Warrior: JobAI
     {
-        public void PlaySkill(BattleField bf, SGWindow sg)
+        override public void PlayMove(BattleField bf, SGWindow sg)
+        {
+            if(Battle.turn == 1)
+            {
+                Ready();
+                Move(Direction.D8);
+                Move(Direction.D8);
+                Move(Direction.D8);
+            }
+
+            Go();
+        }
+
+        override public void PlaySkill(BattleField bf, SGWindow sg)
         {
             // 1. バーチカルウェブ 
             // 2. サイドウェブ
@@ -37,32 +50,32 @@ namespace sglabo.AI
             if(sg.ap >= 8 && ((exists8 && exists88) || (exists88 && exists888) || (exists8 && exists888)))
             {
                 sg.ap -= 8;
-                sg.SelectSkill(SkillOrder.S3);
-                sg.Go();
+                SelectSkill(SkillOrder.S3);
+                Go();
                 return;
             }
 
             if(sg.ap >= 12 && ((exists8 && exists86) || (exists8 && exists84) || (exists84 && exists86)))
             {
                 sg.ap -= 12;
-                sg.SelectSkill(SkillOrder.S4);
-                sg.Go();
+                SelectSkill(SkillOrder.S4);
+                Go();
                 return;
             }
 
             if(sg.ap >= 3 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84))
             {
                 sg.ap -= 3;
-                sg.SelectSkill(SkillOrder.S2);
-                sg.Go();
+                SelectSkill(SkillOrder.S2);
+                Go();
                 return;
             }
             
             if(sg.ap >= 6 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84 || exists88) )
             {
                 sg.ap -= 6;
-                sg.SelectSkill(SkillOrder.S1);
-                sg.Go();
+                SelectSkill(SkillOrder.S1);
+                Go();
                 return;
             }
         }
