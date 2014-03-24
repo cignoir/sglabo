@@ -61,6 +61,42 @@ namespace sglabo.Properties {
         }
         
         /// <summary>
+        ///   戦闘終了 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string BattleEnd {
+            get {
+                return ResourceManager.GetString("BattleEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   戦闘 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string BattleStart {
+            get {
+                return ResourceManager.GetString("BattleStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   フィールド に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Field {
+            get {
+                return ResourceManager.GetString("Field", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   アイテムロット中... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ItemLot {
+            get {
+                return ResourceManager.GetString("ItemLot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   8x3
         ///0	0	1	484	168	1
         ///0	1	1	544	193	1
@@ -90,6 +126,96 @@ namespace sglabo.Properties {
         internal static string MAP60603230 {
             get {
                 return ResourceManager.GetString("MAP60603230", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マップ判別コードを生成してクリップボードにコピーしました に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MapCodeGenerated {
+            get {
+                return ResourceManager.GetString("MapCodeGenerated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   AIが見つかりません に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NoAIFound {
+            get {
+                return ResourceManager.GetString("NoAIFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SGプロセスが見つかりません に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NoProcessesFound {
+            get {
+                return ResourceManager.GetString("NoProcessesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   行動中... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NowActing {
+            get {
+                return ResourceManager.GetString("NowActing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   移動中... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NowMoving {
+            get {
+                return ResourceManager.GetString("NowMoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   処理を開始しました に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ProcessStarted {
+            get {
+                return ResourceManager.GetString("ProcessStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   処理を中断しました に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ProcessStopped {
+            get {
+                return ResourceManager.GetString("ProcessStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マップスキャン... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ScanningBattleMap {
+            get {
+                return ResourceManager.GetString("ScanningBattleMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   行動フェイズ待機中... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WaitingForActionPhase {
+            get {
+                return ResourceManager.GetString("WaitingForActionPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   移動フェイズ待機中... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WaitingForMovingPhase {
+            get {
+                return ResourceManager.GetString("WaitingForMovingPhase", resourceCulture);
             }
         }
     }

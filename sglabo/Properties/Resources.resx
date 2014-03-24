@@ -117,8 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BattleEnd" xml:space="preserve">
+    <value>戦闘終了</value>
+  </data>
+  <data name="BattleStart" xml:space="preserve">
+    <value>戦闘</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>フィールド</value>
+  </data>
+  <data name="ItemLot" xml:space="preserve">
+    <value>アイテムロット中...</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MAP60603230" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MAP60603230.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="MapCodeGenerated" xml:space="preserve">
+    <value>マップ判別コードを生成してクリップボードにコピーしました</value>
+  </data>
+  <data name="NoAIFound" xml:space="preserve">
+    <value>AIが見つかりません</value>
+  </data>
+  <data name="NoProcessesFound" xml:space="preserve">
+    <value>SGプロセスが見つかりません</value>
+  </data>
+  <data name="NowActing" xml:space="preserve">
+    <value>行動中...</value>
+  </data>
+  <data name="NowMoving" xml:space="preserve">
+    <value>移動中...</value>
+  </data>
+  <data name="ProcessStarted" xml:space="preserve">
+    <value>処理を開始しました</value>
+  </data>
+  <data name="ProcessStopped" xml:space="preserve">
+    <value>処理を中断しました</value>
+  </data>
+  <data name="ScanningBattleMap" xml:space="preserve">
+    <value>マップスキャン...</value>
+  </data>
+  <data name="WaitingForActionPhase" xml:space="preserve">
+    <value>行動フェイズ待機中...</value>
+  </data>
+  <data name="WaitingForMovingPhase" xml:space="preserve">
+    <value>移動フェイズ待機中...</value>
   </data>
 </root>

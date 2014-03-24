@@ -46,21 +46,21 @@ namespace sglabo
                 {
                     case Win32API.WM_HOTKEY_START:
                         isStarted = !isStarted;
-                        SetStatus(isStarted ? "処理を開始しました" : "処理を中断しました");
+                        SetStatus(isStarted ? Properties.Resources.ProcessStarted : Properties.Resources.ProcessStopped);
 
                         if(!isStarted)
                         {
                             if(thread != null) thread.Abort();
                             isBattleTaskRunning = false;
                             isStarted = false;
-                            SetStatus("処理を中断しました");
+                            SetStatus(Properties.Resources.ProcessStopped);
                         }
                         break;
                     case Win32API.WM_HOTKEY_STOP:
                         if(thread !=null) thread.Abort();
                         isBattleTaskRunning = false;
                         isStarted = false;
-                        SetStatus("処理を中断しました");
+                        SetStatus(Properties.Resources.ProcessStopped);
                         break;
                     default:
                         break;
@@ -111,9 +111,9 @@ namespace sglabo
 
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
-
-                statusLabel.Text = String.Format("マップ判別コード: {0} をクリップボードにコピーしました", GraphicUtils.GenerateUniqueCode(bmp).ToString());
-                Clipboard.SetDataObject(statusLabel.Text);
+                var code = GraphicUtils.GenerateUniqueCode(bmp).ToString();
+                statusLabel.Text = Properties.Resources.MapCodeGenerated + ":" + code;
+                Clipboard.SetDataObject(code);
             }
             else
             {
@@ -139,7 +139,7 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg == null)
             {
-                MessageBox.Show("proc:ST_231 が見つかりません");
+                MessageBox.Show(Properties.Resources.NoProcessesFound);
                 this.Close();
             }
             else
@@ -166,13 +166,13 @@ namespace sglabo
             var sg = SGWindow.sgList.First();
             if(sg.IsField())
             {
-                SetStatus("フィールド");
+                SetStatus(Properties.Resources.Field);
                 // フィールド移動
             }
             else
             {
                 if(!isBattleTaskRunning){
-                    SetStatus("エンカウント");
+                    SetStatus(Properties.Resources.BattleStart);
                     if(thread != null && thread.IsAlive) thread.Abort();
 
                     areaSelectorText = areaSelector.Text;

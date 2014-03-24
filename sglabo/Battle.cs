@@ -43,31 +43,31 @@ namespace sglabo
                     sg.ap += 10;
                 }
 
-                mainForm.SetStatus("移動フェイズ待機中...");
+                mainForm.SetStatus(Properties.Resources.WaitingForMovingPhase);
                 LoopWait(loopLimit);
 
                 if(inBattle)
                 {
-                    mainForm.SetStatus("マップスキャン...");
+                    mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
                     battleField.Scan();
                     SGWindow.battleField = battleField;
                     Thread.Sleep(1000);
 
-                    mainForm.SetStatus("移動中...");
+                    mainForm.SetStatus(Properties.Resources.NowMoving);
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();
                         pc.ai.PlayMove(battleField, pc);
                     }
 
-                    mainForm.SetStatus("行動フェイズ待機中...");
+                    mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
                     LoopWait(loopLimit);
 
-                    mainForm.SetStatus("マップスキャン...");
+                    mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
                     battleField.Scan();
                     Thread.Sleep(1000);
 
-                    mainForm.SetStatus("行動中...");
+                    mainForm.SetStatus(Properties.Resources.NowActing);
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         if(pc.ai != null)
@@ -77,7 +77,7 @@ namespace sglabo
                         }
                         else
                         {
-                            MessageBox.Show("AIがセットされていません");
+                            MessageBox.Show(Properties.Resources.NoAIFound);
                         }
                     }
                     Thread.Sleep(1000);
@@ -85,14 +85,14 @@ namespace sglabo
             }
             
             if(mainPC.IsWaitingLot()){
-                mainForm.SetStatus("アイテムのロット中...");
+                mainForm.SetStatus(Properties.Resources.ItemLot);
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                 {
                     pc.Activate();
                     pc.ItemLot();
                 }
             }
-            mainForm.SetStatus("戦闘終了");
+            mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
 
             Thread.Sleep(3000);
