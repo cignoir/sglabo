@@ -50,7 +50,6 @@ namespace sglabo
 
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
-                GraphicUtils.GenerateUniqueCode(bmp);
 
                 statusLabel.Text = GraphicUtils.GenerateUniqueCode(bmp).ToString();
             }

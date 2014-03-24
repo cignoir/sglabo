@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sglabo.entities;
 using WindowsInput.Native;
 
-namespace sglabo.entities
+namespace sglabo.AI
 {
     class Warrior
     {
