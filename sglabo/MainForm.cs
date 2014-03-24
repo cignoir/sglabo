@@ -34,6 +34,11 @@ namespace sglabo
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_ALT, (int)Keys.Q);
 
             pictureBoxes.Add(pictureBox1);
+            pictureBoxes.Add(pictureBox2);
+            pictureBoxes.Add(pictureBox3);
+            pictureBoxes.Add(pictureBox4);
+            pictureBoxes.Add(pictureBox5);
+
             RefleshPictures();
         }
 
@@ -88,7 +93,6 @@ namespace sglabo
                 SGWindow.sgList.Add(sg);
 
                 var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
-                sg.pcName.Save(@"C:\hoge.bmp");
                 pictureBox.Image = sg.pcName;
             }
         }
@@ -135,22 +139,22 @@ namespace sglabo
         private void MainForm_Load(object sender, EventArgs e)
         {
             pictureBoxes.Add(pictureBox1);
+            pictureBoxes.Add(pictureBox2);
+            pictureBoxes.Add(pictureBox3);
+            pictureBoxes.Add(pictureBox4);
+            pictureBoxes.Add(pictureBox5);
 
-            var sg = SGWindow.sgList.First();
-            if(sg == null)
-            {
-                MessageBox.Show(Properties.Resources.NoProcessesFound);
-                this.Close();
-            }
-            else
-            {
+            foreach(SGWindow sg in SGWindow.sgList){
                 sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
                 sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
             }
 
-            Win32API.RECT rect;
-            Win32API.GetWindowRect(sg.hWnd, out rect);
-            this.Location = new Point(rect.right + 6, rect.top - 5);
+            if(SGWindow.sgList.Count > 0)
+            {
+                Win32API.RECT rect;
+                Win32API.GetWindowRect(SGWindow.sgList.First().hWnd, out rect);
+                this.Location = new Point(rect.right + 6, rect.top - 5);
+            }
         }
 
         private void refleshButton_Click(object sender, EventArgs e)
@@ -195,18 +199,104 @@ namespace sglabo
             System.GC.Collect();
         }
 
-        private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var sg = SGWindow.sgList.ElementAt(0);
-            sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
-            sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_START);
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
         }
 
+        private void activateButton1_Click(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 1){
+                var sg = SGWindow.sgList.ElementAt(0);
+                if(sg != null) sg.Activate();
+            }
+        }
+
+        private void activateButton2_Click(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 2)
+            {
+                var sg = SGWindow.sgList.ElementAt(1);
+                if(sg != null) sg.Activate();
+            }
+        }
+
+        private void activateButton3_Click(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 3)
+            {
+                var sg = SGWindow.sgList.ElementAt(2);
+                if(sg != null) sg.Activate();
+            }
+        }
+
+        private void activateButton4_Click(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 4)
+            {
+                var sg = SGWindow.sgList.ElementAt(3);
+                if(sg != null) sg.Activate();
+            }
+        }
+
+        private void activateButton5_Click(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count == 5)
+            {
+                var sg = SGWindow.sgList.ElementAt(4);
+                if(sg != null) sg.Activate();
+            }
+        }
+
+        private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 1)
+            {
+                var sg = SGWindow.sgList.ElementAt(0);
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
+            }
+        }
+
+        private void jobSelector2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 2)
+            {
+                var sg = SGWindow.sgList.ElementAt(1);
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector2.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector2.Text);
+            }
+        }
+
+        private void jobSelector3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 3)
+            {
+                var sg = SGWindow.sgList.ElementAt(2);
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector3.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector3.Text);
+            }
+        }
+
+        private void jobSelector4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 4)
+            {
+                var sg = SGWindow.sgList.ElementAt(3);
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector4.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector4.Text);
+            }
+        }
+
+        private void jobSelector5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 5)
+            {
+                var sg = SGWindow.sgList.ElementAt(4);
+                sg.job = JobConverter.ConvertToJobFrom(jobSelector5.Text);
+                sg.ai = JobConverter.ConvertToAIFrom(jobSelector5.Text);
+            }
+        }
     }
 }
