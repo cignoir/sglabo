@@ -70,8 +70,8 @@ namespace sglabo.AI
                 Go();
                 return;
             }
-            
-            if(sg.ap >= 6 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84 || exists88) )
+
+            if(sg.ap >= 6 && (exists8 || exists4 || exists6 || exists66 || exists44 || exists86 || exists84 || exists88))
             {
                 sg.ap -= 6;
                 SelectSkill(SkillOrder.S1);

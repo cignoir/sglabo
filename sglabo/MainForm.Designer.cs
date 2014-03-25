@@ -75,6 +75,7 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.captureWindow = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,7 +103,7 @@
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(532, 48);
+            this.detectColorButton.Location = new System.Drawing.Point(532, 99);
             this.detectColorButton.Name = "detectColorButton";
             this.detectColorButton.Size = new System.Drawing.Size(94, 23);
             this.detectColorButton.TabIndex = 2;
@@ -181,7 +182,7 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(532, 77);
+            this.refleshButton.Location = new System.Drawing.Point(532, 128);
             this.refleshButton.Name = "refleshButton";
             this.refleshButton.Size = new System.Drawing.Size(94, 23);
             this.refleshButton.TabIndex = 5;
@@ -197,7 +198,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(532, 118);
+            this.startButton.Location = new System.Drawing.Point(532, 169);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(94, 23);
             this.startButton.TabIndex = 6;
@@ -614,11 +615,22 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "A";
             // 
+            // captureWindow
+            // 
+            this.captureWindow.Location = new System.Drawing.Point(532, 40);
+            this.captureWindow.Name = "captureWindow";
+            this.captureWindow.Size = new System.Drawing.Size(93, 23);
+            this.captureWindow.TabIndex = 18;
+            this.captureWindow.Text = "CaptureWindow";
+            this.captureWindow.UseVisualStyleBackColor = true;
+            this.captureWindow.Click += new System.EventHandler(this.captureWindow_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 328);
+            this.Controls.Add(this.captureWindow);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.label2);
@@ -710,6 +722,7 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button captureWindow;
     }
 }
 

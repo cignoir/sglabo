@@ -48,6 +48,7 @@ namespace sglabo
             this.proc = proc;
             this.hWnd = proc.MainWindowHandle;
             SetScreenPosition();
+            this.IsCenter = isCenter;
 
             if(IsField())
             {

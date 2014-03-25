@@ -112,11 +112,12 @@ namespace sglabo
                 int width = int.Parse(rectInfo[2]);
                 int height = int.Parse(rectInfo[3]);
 
-                var input = new InputSimulator();
-                input.Mouse.MoveMouseTo(sg.sPos.x + 400, sg.sPos.y + 300);
+                //var input = new InputSimulator();
+                //input.Mouse.MoveMouseTo(sg.sPos.x + 400, sg.sPos.y + 300);
 
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
+                bmp.Save(@"C:\map.bmp");
                 var code = GraphicUtils.GenerateUniqueCode(bmp).ToString();
                 statusLabel.Text = Properties.Resources.MapCodeGenerated + ":" + code;
                 Clipboard.SetDataObject(code);
@@ -135,7 +136,7 @@ namespace sglabo
             var color = sg.DetectColor(bmp);
             bmp.Dispose();
 
-            statusLabel.Text = color.white + ":" + color.white + ":" + color.brown;
+            statusLabel.Text = color.white + ":" + color.yellow + ":" + color.brown;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -397,5 +398,12 @@ namespace sglabo
             }
         }
         #endregion
+
+        private void captureWindow_Click(object sender, EventArgs e)
+        {
+            var sg = SGWindow.sgList.First();
+            var bmp = sg.Capture();
+            bmp.Save(@"C:\screenshot.bmp");
+        }
     }
 }
