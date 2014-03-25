@@ -138,7 +138,8 @@ namespace sglabo
 
         public static SGWindow MainPC()
         {
-            return sgList.Where(x => x.IsCenter).First();
+            var centerList = sgList.Where(x => x.IsCenter);
+            return centerList.Count() > 0 ? centerList.First() : sgList.First();
         }
 
         public static PTSize GetPTSize(){

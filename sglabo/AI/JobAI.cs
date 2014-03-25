@@ -46,8 +46,9 @@ namespace sglabo.AI
             input.Keyboard
                     .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
                     .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep)
-                    .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep);
+                    /*.KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)*/;
+            ESC();
         }
 
         public void Go()
@@ -60,7 +61,7 @@ namespace sglabo.AI
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
-        public void Move(Direction direction, bool withEnter = false)
+        public void Move(Direction direction)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
@@ -78,9 +79,9 @@ namespace sglabo.AI
                     vk = VirtualKeyCode.DOWN;
                     break;
                 case Direction.D5:
+                    vk = VirtualKeyCode.RETURN;
                     break;
                 default:
-                    vk = VirtualKeyCode.RETURN;
                     break;
             }
 
@@ -88,15 +89,12 @@ namespace sglabo.AI
             {
                 input.Keyboard
                     .KeyDown(vk).Sleep(globalSleep)
-                    .KeyUp(vk);
+                    .KeyUp(vk).Sleep(globalSleep);
             }
 
-            if(withEnter)
-            {
-                input.Keyboard
-                    .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
-            }
+            input.Keyboard
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
         public void MoveTo(GridPosition g)
@@ -136,30 +134,31 @@ namespace sglabo.AI
 
         public void Look(Direction direction)
         {
-            Move(direction, true);
+            Enter();
+            Move(direction);
         }
 
-        public bool ShouldBeStack(Direction d)
+        public bool ShouldStack(Direction d)
         {
-            bool shouldBeStack = false;
+            bool shouldStack = false;
             switch(d)
             {
                 case Direction.D8:
-                    shouldBeStack = bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC;
+                    shouldStack = bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC;
                     break;
                 case Direction.D6:
-                    shouldBeStack = bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC;
+                    shouldStack = bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC;
                     break;
                 case Direction.D4:
-                    shouldBeStack = bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x -3, sg.gPos.y).existsNPC;
+                    shouldStack = bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x -3, sg.gPos.y).existsNPC;
                     break;
                 case Direction.D2:
-                    shouldBeStack = bf.Cell(sg.gPos.x, sg.gPos.y + 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 3).existsNPC;
+                    shouldStack = bf.Cell(sg.gPos.x, sg.gPos.y + 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 3).existsNPC;
                     break;
                 default:
                     break;
             }
-            return shouldBeStack;
+            return shouldStack;
         }
 
         public void Stack(Direction d)
@@ -167,23 +166,23 @@ namespace sglabo.AI
             switch(d)
             {
                 case Direction.D8:
-                    Move(Direction.D8, true);
-                    Move(Direction.D2, true);
+                    Move(Direction.D8);
+                    Move(Direction.D2);
                     Look(Direction.D8);
                     break;
                 case Direction.D6:
-                    Move(Direction.D6, true);
-                    Move(Direction.D4, true);
+                    Move(Direction.D6);
+                    Move(Direction.D4);
                     Look(Direction.D6);
                     break;
                 case Direction.D4:
-                    Move(Direction.D4, true);
-                    Move(Direction.D6, true);
+                    Move(Direction.D4);
+                    Move(Direction.D6);
                     Look(Direction.D4);
                     break;
                 case Direction.D2:
-                    Move(Direction.D2, true);
-                    Move(Direction.D8, true);
+                    Move(Direction.D2);
+                    Move(Direction.D8);
                     Look(Direction.D2);
                     break;
                 default:

@@ -59,6 +59,7 @@ namespace sglabo
                         if(pc.ai != null)
                         {
                             pc.Activate();
+                            Thread.Sleep(500);
                             pc.ai.UpdateSituation(battleField, pc);
                             pc.ai.PlayMove();
                         }
@@ -81,6 +82,7 @@ namespace sglabo
                         if(pc.ai != null)
                         {
                             pc.Activate();
+                            Thread.Sleep(500);
                             pc.ai.UpdateSituation(battleField, pc);
                             pc.ai.PlaySkill();
                         }

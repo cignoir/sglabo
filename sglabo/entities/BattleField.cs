@@ -46,7 +46,7 @@ namespace sglabo.entities
                 case Area.ナビア北限地帯:
                     switch(ptSize)
                     {
-                        case PTSize.LARGE: sg.CaptureRectangle(new Rectangle(573, 248, 40, 40)); break;
+                        case PTSize.LARGE: bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40)); break;
                         case PTSize.MEDIUM: break;
                         case PTSize.SMALL: break;
                     }
@@ -56,16 +56,17 @@ namespace sglabo.entities
             }
 
             mapCode = bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
+            MessageBox.Show(mapCode.ToString());
             return Properties.Resources.ResourceManager.GetString("MAP" + mapCode.ToString());
         }
 
         public BattleFieldCell[,] Parse(string mapData)
         {
             // FIXME
-            if(mapData == null)
-            {
-                mapData = Properties.Resources.ResourceManager.GetString("MAP60603230");
-            }
+            //if(mapData == null)
+            //{
+            //    mapData = Properties.Resources.ResourceManager.GetString("MAP60603230");
+            //}
 
             BattleFieldCell[,] cells = null;
 

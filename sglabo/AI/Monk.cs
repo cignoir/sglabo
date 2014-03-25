@@ -40,21 +40,20 @@ namespace sglabo.AI
                 {
                     case 21448090:
                         Move(Direction.D8);
-                        Move(Direction.D8, true);
+                        Move(Direction.D8);
                         Look(Direction.D8);
-                        Go();
                         break;
                     case 5409959:
                         Move(Direction.D8);
                         Move(Direction.D8);
-                        Move(Direction.D8, true);
+                        Move(Direction.D8);
                         Look(Direction.D4);
                         break;
                 }
             }
             else
             {
-                if(ShouldBeStack(Direction.D8))
+                if(ShouldStack(Direction.D8))
                 {
                     Stack(Direction.D8);
                 }

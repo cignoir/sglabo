@@ -40,6 +40,8 @@ namespace sglabo
             pictureBoxes.Add(pictureBox5);
 
             RefleshPictures();
+
+            SGWindow.MainPC().Activate();
         }
 
         protected override void WndProc(ref Message m)
@@ -301,8 +303,8 @@ namespace sglabo
 
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
-                bmp.Save(@"C:\map.bmp");
                 var code = GraphicUtils.GenerateUniqueCode(bmp).ToString();
+                bmp.Save(@"C:\" + code + ".bmp");
                 statusLabel.Text = Properties.Resources.MapCodeGenerated + ":" + code;
                 Clipboard.SetDataObject(code);
             }
