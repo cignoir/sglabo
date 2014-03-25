@@ -21,27 +21,13 @@ namespace sglabo.entities
 
         public BattleField(string map)
         {
-            Load(map);
+            Parse(map);
         }
 
         public static string Detect(Area area)
         {
             var memberCount = SGWindow.sgList.Count;
-            switch(memberCount)
-            {
-                case 1:
-                case 2:
-                    break;
-                case 3:
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    break;
-            }
-
-            var sg = SGWindow.sgList.Where(x => x.IsCenter).First();
+            var sg = SGWindow.Main();
             sg.Activate();
 
             Bitmap bmp = null;
@@ -49,12 +35,21 @@ namespace sglabo.entities
             {
                 if(area == Area.ルデンヌ大森林)
                 {
-//573,248,40,40
-//8726967	大きな木の4マス
-//3832661	真ん中に一本の道3マス
-//60603230	左に細い木
+                    //573,248,40,40
+                    //8726967	大きな木の4マス
+                    //3832661	真ん中に一本の道3マス
+                    //60603230	左に細い木
 
                     bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40));
+                }
+            } else if(memberCount == 3 || memberCount == 4){
+
+            }
+            else if(memberCount == 5)
+            {
+                if(area == Area.ナビア北限地帯){
+                    //2パターン
+                    //bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40));
                 }
             }
 
@@ -62,14 +57,14 @@ namespace sglabo.entities
             return Properties.Resources.ResourceManager.GetString("MAP" + mapCode.ToString());
         }
 
-        public void Load(string map){
+        public void Parse(string mapData){
             // FIXME
-            if(map == null)
+            if(mapData == null)
             {
-                map = Properties.Resources.ResourceManager.GetString("MAP60603230");
+                mapData = Properties.Resources.ResourceManager.GetString("MAP60603230");
             }
 
-            var lines = map.Split('\n');
+            var lines = mapData.Split('\n');
             foreach(string line in lines)
             {
                 if(line.Contains("x"))

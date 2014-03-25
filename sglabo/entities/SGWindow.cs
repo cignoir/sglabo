@@ -139,5 +139,10 @@ namespace sglabo
         {
             battleField = new BattleField(Properties.Resources.MAP60603230);
         }
+
+        public static SGWindow Main()
+        {
+            return sgList.Where(x => x.IsCenter).First();
+        }
     }
 }
