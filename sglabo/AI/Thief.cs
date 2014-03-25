@@ -33,16 +33,41 @@ namespace sglabo.AI
         override public void PlayMove()
         {
             Ready();
-
-            if(ShouldBeStack(Direction.D8))
+            if(bf.turn == 1)
             {
-                Stack(Direction.D8);
+                switch(BattleField.mapCode)
+                {
+                    case 21448090:
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, true);
+                        Look(Direction.D6);
+                        Go();
+                        break;
+                    case 5409959:
+                        Move(Direction.D8);
+                        Move(Direction.D8, true);
+                        Look(Direction.D8);
+                        break;
+                }
             }
             else
             {
-                MoveTo(goal);
-                Look(Direction.D8);
+                if(ShouldBeStack(Direction.D8))
+                {
+                    Stack(Direction.D8);
+                }
             }
+
+            //if(ShouldBeStack(Direction.D8))
+            //{
+            //    Stack(Direction.D8);
+            //}
+            //else
+            //{
+            //    //MoveTo(goal);
+            //    //Look(Direction.D8);
+            //}
 
             Go();
         }

@@ -46,7 +46,7 @@ namespace sglabo.entities
                 case Area.ナビア北限地帯:
                     switch(ptSize)
                     {
-                        case PTSize.LARGE: break;
+                        case PTSize.LARGE: sg.CaptureRectangle(new Rectangle(573, 248, 40, 40)); break;
                         case PTSize.MEDIUM: break;
                         case PTSize.SMALL: break;
                     }

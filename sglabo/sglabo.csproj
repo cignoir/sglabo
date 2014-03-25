@@ -107,7 +107,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsInput">
-      <HintPath>..\..\..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +189,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MAP60603230.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MAP21448090.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MAP5409959.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
