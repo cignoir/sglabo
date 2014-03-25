@@ -21,48 +21,51 @@ namespace sglabo.entities
 
         public BattleField(string map)
         {
-            Parse(map);
+            this.cells = Parse(map);
         }
 
         public static string Detect(Area area)
         {
-            var memberCount = SGWindow.sgList.Count;
-            var sg = SGWindow.Main();
+            var sg = SGWindow.MainPC();
             sg.Activate();
 
             Bitmap bmp = null;
-            if(memberCount == 1 || memberCount == 2)
-            {
-                if(area == Area.ルデンヌ大森林)
-                {
-                    //573,248,40,40
-                    //8726967	大きな木の4マス
-                    //3832661	真ん中に一本の道3マス
-                    //60603230	左に細い木
 
-                    bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40));
-                }
-            } else if(memberCount == 3 || memberCount == 4){
-
-            }
-            else if(memberCount == 5)
-            {
-                if(area == Area.ナビア北限地帯){
-                    //2パターン
-                    //bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40));
-                }
+            var ptSize = SGWindow.GetPTSize();
+            switch(area){
+                case Area.ルデンヌ大森林:
+                    switch(ptSize)
+                    {
+                        case PTSize.LARGE: break;
+                        case PTSize.MEDIUM: break;
+                        case PTSize.SMALL: bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40)); break;
+                    }
+                    break;
+                case Area.ナビア北限地帯:
+                    switch(ptSize)
+                    {
+                        case PTSize.LARGE: break;
+                        case PTSize.MEDIUM: break;
+                        case PTSize.SMALL: break;
+                    }
+                    break;
+                default:
+                    break;
             }
 
             int mapCode = bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
             return Properties.Resources.ResourceManager.GetString("MAP" + mapCode.ToString());
         }
 
-        public void Parse(string mapData){
+        public BattleFieldCell[,] Parse(string mapData)
+        {
             // FIXME
             if(mapData == null)
             {
                 mapData = Properties.Resources.ResourceManager.GetString("MAP60603230");
             }
+
+            BattleFieldCell[,] cells = null;
 
             var lines = mapData.Split('\n');
             foreach(string line in lines)
@@ -80,15 +83,15 @@ namespace sglabo.entities
                     if(elems.Length == 6)
                     {
                         var gPos = new GridPosition(int.Parse(elems[0]), int.Parse(elems[1]));
-                        var sPos = new ScreenPosition(int.Parse(elems[3]), int.Parse(elems[4]));
                         var height = int.Parse(elems[2]);
+                        var sPos = new ScreenPosition(int.Parse(elems[3]), int.Parse(elems[4]));
                         var canMove = int.Parse(elems[5]) == 1;
                         var cell = new BattleFieldCell(gPos, sPos, height, canMove);
                         cells[gPos.x, gPos.y] = cell;
                     }
                 }
-
             }
+            return cells;
         }
 
         public void Scan()

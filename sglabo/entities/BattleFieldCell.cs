@@ -22,6 +22,9 @@ namespace sglabo.entities
         public bool existsPC = false;
         public bool existsNPC = false;
 
+        public bool sealedCross = false;
+        public bool sealedDot = false;
+
         int pcCode;
 
         public BattleFieldCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)

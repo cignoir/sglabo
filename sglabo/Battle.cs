@@ -24,7 +24,7 @@ namespace sglabo
             this.mainForm = mainForm;
             MainForm.isBattleTaskRunning = true;
 
-            mainPC = SGWindow.Main();
+            mainPC = SGWindow.MainPC();
             mainPC.Activate();
 
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
@@ -49,7 +49,7 @@ namespace sglabo
                 if(inBattle)
                 {
                     mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                    battleField.Scan();
+                    battleField.ParallelScan();
                     SGWindow.battleField = battleField;
                     Thread.Sleep(1000);
 
@@ -64,7 +64,7 @@ namespace sglabo
                     LoopWait(loopLimit);
 
                     mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                    battleField.Scan();
+                    battleField.ParallelScan();
                     Thread.Sleep(1000);
 
                     mainForm.SetStatus(Properties.Resources.NowActing);

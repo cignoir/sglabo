@@ -140,9 +140,18 @@ namespace sglabo
             battleField = new BattleField(Properties.Resources.MAP60603230);
         }
 
-        public static SGWindow Main()
+        public static SGWindow MainPC()
         {
             return sgList.Where(x => x.IsCenter).First();
+        }
+
+        public static PTSize GetPTSize(){
+            PTSize size = PTSize.SMALL;
+
+            if(sgList.Count == 3 || sgList.Count == 4) size = PTSize.MEDIUM;
+            else if(sgList.Count == 5) size = PTSize.LARGE;
+
+            return size;
         }
     }
 }
