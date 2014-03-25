@@ -61,6 +61,13 @@
             this.activateButton5 = new System.Windows.Forms.Button();
             this.jobSelector5 = new System.Windows.Forms.ComboBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,11 +79,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // captureButton
             // 
-            this.captureButton.Location = new System.Drawing.Point(459, 12);
+            this.captureButton.Location = new System.Drawing.Point(532, 10);
             this.captureButton.Name = "captureButton";
             this.captureButton.Size = new System.Drawing.Size(94, 23);
             this.captureButton.TabIndex = 0;
@@ -86,7 +94,7 @@
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(459, 50);
+            this.detectColorButton.Location = new System.Drawing.Point(532, 48);
             this.detectColorButton.Name = "detectColorButton";
             this.detectColorButton.Size = new System.Drawing.Size(94, 23);
             this.detectColorButton.TabIndex = 2;
@@ -100,7 +108,7 @@
             this.statusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 306);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(563, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(637, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -116,7 +124,7 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 43);
+            this.groupBox1.Size = new System.Drawing.Size(379, 43);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "proc1";
@@ -165,7 +173,7 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(459, 79);
+            this.refleshButton.Location = new System.Drawing.Point(532, 77);
             this.refleshButton.Name = "refleshButton";
             this.refleshButton.Size = new System.Drawing.Size(94, 23);
             this.refleshButton.TabIndex = 5;
@@ -181,7 +189,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(459, 120);
+            this.startButton.Location = new System.Drawing.Point(532, 118);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(94, 23);
             this.startButton.TabIndex = 6;
@@ -196,7 +204,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(378, 14);
+            this.textBox1.Location = new System.Drawing.Point(451, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 7;
@@ -206,7 +214,11 @@
             // 
             this.areaSelector.FormattingEnabled = true;
             this.areaSelector.Items.AddRange(new object[] {
-            "ルデンヌ大森林"});
+            "ルデンヌ大森林",
+            "イレネイド山脈",
+            "ナビア北限地帯",
+            "シュロ陸峡",
+            "グランドロン"});
             this.areaSelector.Location = new System.Drawing.Point(54, 12);
             this.areaSelector.Name = "areaSelector";
             this.areaSelector.Size = new System.Drawing.Size(121, 20);
@@ -229,7 +241,7 @@
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Location = new System.Drawing.Point(12, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(440, 43);
+            this.groupBox2.Size = new System.Drawing.Size(379, 43);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "proc2";
@@ -283,7 +295,7 @@
             this.groupBox3.Controls.Add(this.pictureBox3);
             this.groupBox3.Location = new System.Drawing.Point(12, 149);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(440, 43);
+            this.groupBox3.Size = new System.Drawing.Size(379, 43);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "proc3";
@@ -337,7 +349,7 @@
             this.groupBox4.Controls.Add(this.pictureBox4);
             this.groupBox4.Location = new System.Drawing.Point(12, 198);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(440, 43);
+            this.groupBox4.Size = new System.Drawing.Size(379, 43);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "proc4";
@@ -391,7 +403,7 @@
             this.groupBox5.Controls.Add(this.pictureBox5);
             this.groupBox5.Location = new System.Drawing.Point(12, 247);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(440, 43);
+            this.groupBox5.Size = new System.Drawing.Size(379, 43);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "proc5";
@@ -438,11 +450,82 @@
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.radioButton5);
+            this.groupBox6.Controls.Add(this.radioButton4);
+            this.groupBox6.Controls.Add(this.radioButton3);
+            this.groupBox6.Controls.Add(this.radioButton2);
+            this.groupBox6.Controls.Add(this.radioButton1);
+            this.groupBox6.Location = new System.Drawing.Point(401, 50);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(25, 240);
+            this.groupBox6.TabIndex = 14;
+            this.groupBox6.TabStop = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 17);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(14, 13);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(6, 67);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(14, 13);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 116);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(14, 13);
+            this.radioButton3.TabIndex = 15;
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 165);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(14, 13);
+            this.radioButton4.TabIndex = 16;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(6, 214);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(14, 13);
+            this.radioButton5.TabIndex = 17;
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(395, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 12);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Center";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 328);
+            this.ClientSize = new System.Drawing.Size(637, 328);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -474,6 +557,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,6 +597,13 @@
         private System.Windows.Forms.Button activateButton5;
         private System.Windows.Forms.ComboBox jobSelector5;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
