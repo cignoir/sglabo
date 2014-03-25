@@ -119,8 +119,6 @@
     <Compile Include="entities\Direction.cs" />
     <Compile Include="entities\GridPosition.cs" />
     <Compile Include="entities\Job.cs" />
-    <Compile Include="entities\NPC.cs" />
-    <Compile Include="entities\PC.cs" />
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="AI\Warrior.cs" />
     <Compile Include="entities\SkillOrder.cs" />

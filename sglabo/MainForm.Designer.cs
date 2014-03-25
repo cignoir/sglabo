@@ -167,7 +167,7 @@
             this.jobSelector1.Name = "jobSelector1";
             this.jobSelector1.Size = new System.Drawing.Size(66, 20);
             this.jobSelector1.TabIndex = 7;
-            this.jobSelector1.Text = "戦士";
+            this.jobSelector1.Text = "精霊";
             this.jobSelector1.SelectedIndexChanged += new System.EventHandler(this.jobSelector1_SelectedIndexChanged);
             // 
             // pictureBox1
@@ -338,7 +338,7 @@
             this.jobSelector3.Name = "jobSelector3";
             this.jobSelector3.Size = new System.Drawing.Size(66, 20);
             this.jobSelector3.TabIndex = 7;
-            this.jobSelector3.Text = "戦士";
+            this.jobSelector3.Text = "守護";
             this.jobSelector3.SelectedIndexChanged += new System.EventHandler(this.jobSelector3_SelectedIndexChanged);
             // 
             // pictureBox3
@@ -392,7 +392,7 @@
             this.jobSelector4.Name = "jobSelector4";
             this.jobSelector4.Size = new System.Drawing.Size(66, 20);
             this.jobSelector4.TabIndex = 7;
-            this.jobSelector4.Text = "戦士";
+            this.jobSelector4.Text = "黒印";
             this.jobSelector4.SelectedIndexChanged += new System.EventHandler(this.jobSelector4_SelectedIndexChanged);
             // 
             // pictureBox4
@@ -446,7 +446,7 @@
             this.jobSelector5.Name = "jobSelector5";
             this.jobSelector5.Size = new System.Drawing.Size(66, 20);
             this.jobSelector5.TabIndex = 7;
-            this.jobSelector5.Text = "戦士";
+            this.jobSelector5.Text = "盗賊";
             this.jobSelector5.SelectedIndexChanged += new System.EventHandler(this.jobSelector5_SelectedIndexChanged);
             // 
             // pictureBox5
