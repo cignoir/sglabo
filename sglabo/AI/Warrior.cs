@@ -28,7 +28,7 @@ namespace sglabo.AI
             switch(BattleField.mapCode)
             {
                 default:
-                    goal = new GridPosition(3, 1);
+                    goal = new GridPosition(1, 3);
                     break;
             }
         }
@@ -92,6 +92,8 @@ namespace sglabo.AI
                 Go();
                 return;
             }
+
+            Go();
         }
     }
 }

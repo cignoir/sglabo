@@ -34,6 +34,7 @@ namespace sglabo.AI
 
         public void UpdateSituation(BattleField bf, SGWindow sg)
         {
+            sg.ai.SetGoal();
             this.bf = bf;
             this.sg = sg;
         }

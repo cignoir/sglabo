@@ -56,18 +56,21 @@ namespace sglabo.entities
             InitDinamicInfo();
 
             var color = DetectColor(CaptureName());
-            if(color.yellow > 10 && color.brown > 10)
+            if(color.yellow > 100 && color.brown > 100)
             {
                 existsNPC = true;
             }
-            else if(color.white > 100 && color.brown > 100 && color.yellow < 50)
+            else if(color.brown > 100 && color.white > 100 && color.yellow < 30)
             {
-                existsPC = true;
-                pcCode = color.brown;
+                if(SGWindow.sgList.Where(x => x.pcCode == color.brown).Count() > 0)
+                {
+                    existsPC = true;
+                    pcCode = color.brown;
 
-                // 要調査: pcCodeが一致しないことがある可能性について
-                var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
-                if(pc != null) pc.gPos = this.gPos;
+                    // 要調査: pcCodeが一致しないことがある可能性について
+                    var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
+                    if(pc != null) pc.gPos = this.gPos;
+                }
             }
         }
 

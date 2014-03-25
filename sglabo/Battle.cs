@@ -49,23 +49,30 @@ namespace sglabo
                 if(inBattle)
                 {
                     mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                    battleField.ParallelScan();
+                    battleField.Scan();
                     SGWindow.battleField = battleField;
                     Thread.Sleep(1000);
 
                     mainForm.SetStatus(Properties.Resources.NowMoving);
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
-                        pc.Activate();
-                        pc.ai.UpdateSituation(battleField, pc);
-                        pc.ai.PlayMove();
+                        if(pc.ai != null)
+                        {
+                            pc.Activate();
+                            pc.ai.UpdateSituation(battleField, pc);
+                            pc.ai.PlayMove();
+                        }
+                        else
+                        {
+                            MessageBox.Show(Properties.Resources.NoAIFound);
+                        }
                     }
 
                     mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
                     LoopWait(loopLimit);
 
                     mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                    battleField.ParallelScan();
+                    battleField.Scan();
                     Thread.Sleep(1000);
 
                     mainForm.SetStatus(Properties.Resources.NowActing);
