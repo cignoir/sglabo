@@ -206,6 +206,7 @@ namespace sglabo
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
         }
 
+        #region Activateボタン
         private void activateButton1_Click(object sender, EventArgs e)
         {
             if(SGWindow.sgList.Count >= 1){
@@ -249,7 +250,9 @@ namespace sglabo
                 if(sg != null) sg.Activate();
             }
         }
+        #endregion
 
+        #region ジョブ選択コンボボックス
         private void jobSelector1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(SGWindow.sgList.Count >= 1)
@@ -299,7 +302,9 @@ namespace sglabo
                 sg.ai = JobConverter.ConvertToAIFrom(jobSelector5.Text);
             }
         }
+        #endregion
 
+        #region 中央配置選択ラヂオボタン
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if(SGWindow.sgList.Count >= 1)
@@ -344,5 +349,53 @@ namespace sglabo
                 sg.IsCenter = radioButton5.Checked;
             }
         }
+        #endregion
+
+        #region autoチェックボックス
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 1)
+            {
+                var sg = SGWindow.sgList.ElementAt(0);
+                sg.auto = checkBox1.Checked;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 2)
+            {
+                var sg = SGWindow.sgList.ElementAt(1);
+                sg.auto = checkBox2.Checked;
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 3)
+            {
+                var sg = SGWindow.sgList.ElementAt(2);
+                sg.auto = checkBox3.Checked;
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 4)
+            {
+                var sg = SGWindow.sgList.ElementAt(3);
+                sg.auto = checkBox4.Checked;
+            }
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 5)
+            {
+                var sg = SGWindow.sgList.ElementAt(4);
+                sg.auto = checkBox5.Checked;
+            }
+        }
+        #endregion
     }
 }
