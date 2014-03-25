@@ -77,14 +77,14 @@ namespace sglabo.entities
                     var elems = line.Split('x');
                     rowCount = int.Parse(elems[0]);
                     colCount = int.Parse(elems[1]);
-                    cells = new BattleFieldCell[rowCount, colCount];
+                    cells = new BattleFieldCell[colCount, rowCount];
                 }
                 else
                 {
                     var elems = line.Split('\t');
                     if(elems.Length == 6)
                     {
-                        var gPos = new GridPosition(int.Parse(elems[0]), int.Parse(elems[1]));
+                        var gPos = new GridPosition(int.Parse(elems[1]), int.Parse(elems[0]));
                         var height = int.Parse(elems[2]);
                         var sPos = new ScreenPosition(int.Parse(elems[3]), int.Parse(elems[4]));
                         var canMove = int.Parse(elems[5]) == 1;
@@ -102,7 +102,7 @@ namespace sglabo.entities
             {
                 for(int col = 0; col < colCount; col++ )
                 {
-                    cells[row, col].Scan();
+                    cells[col, row].Scan();
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace sglabo.entities
             {
                 Parallel.For(0, colCount, col =>
                 {
-                    cells[row, col].Scan();
+                    cells[col, row].Scan();
                 });
             });
         }
@@ -121,9 +121,9 @@ namespace sglabo.entities
         public BattleFieldCell Cell(int x, int y)
         {
             x = x < 0 ? 0 : x;
-            x = x > colCount ? colCount - 1 : x;
+            x = x >= colCount ? colCount - 1 : x;
             y = y < 0 ? 0 : y;
-            y = y > rowCount ? rowCount - 1 : y;
+            y = y >= rowCount ? rowCount - 1 : y;
 
             BattleFieldCell cell = null;
             try

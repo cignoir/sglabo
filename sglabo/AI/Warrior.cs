@@ -10,7 +10,7 @@ namespace sglabo.AI
 {
     class Warrior: JobAI
     {
-        public GridPosition goal = new GridPosition(0, 1);
+        public GridPosition goal = new GridPosition(1, 3);
 
         public Warrior()
         {
@@ -28,7 +28,7 @@ namespace sglabo.AI
             switch(BattleField.mapCode)
             {
                 default:
-                    goal = new GridPosition(1, 3);
+                    goal = new GridPosition(1, 4);
                     break;
             }
         }
