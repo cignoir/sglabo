@@ -11,6 +11,8 @@ namespace sglabo.AI
 {
     abstract class JobAI
     {
+        public GridPosition goal = new GridPosition(1, 3);
+
         public BattleField bf;
         public SGWindow sg;
 

@@ -112,6 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\JobAI.cs" />
+    <Compile Include="AI\Monk.cs" />
+    <Compile Include="AI\ProtectionMage.cs" />
+    <Compile Include="AI\SealMage.cs" />
+    <Compile Include="AI\SpiritMage.cs" />
+    <Compile Include="AI\Thief.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="entities\Area.cs" />
     <Compile Include="entities\BattleField.cs" />

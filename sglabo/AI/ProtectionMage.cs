@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sglabo.entities;
-using WindowsInput.Native;
 
 namespace sglabo.AI
 {
-    class Warrior: JobAI
+    class ProtectionMage: JobAI
     {
-        public Warrior()
+        public ProtectionMage()
         {
 
         }
 
-        public Warrior(BattleField bf, SGWindow sg)
+        public ProtectionMage(BattleField bf, SGWindow sg)
         {
             this.bf = bf;
             this.sg = sg;
@@ -56,7 +55,7 @@ namespace sglabo.AI
             // 4. ストラッシュ
             // 5. クレセント
             // 6. リボルバースティング
-            
+
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
             if(sg.ap >= 8 && ((Exists8() && Exists88()) || (Exists88() && Exists888()) || (Exists8() && Exists888())))
