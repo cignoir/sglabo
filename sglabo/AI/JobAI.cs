@@ -17,6 +17,7 @@ namespace sglabo.AI
         InputSimulator input = new InputSimulator();
         int globalSleep = 200;
 
+        abstract public void SetGoal();
         abstract public void PlayMove();
         abstract public void PlaySkill();
 
@@ -234,6 +235,7 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+            // TODO: ターゲット選択
             Enter();
             Enter();
         }

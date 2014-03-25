@@ -19,6 +19,8 @@ namespace sglabo.entities
         public int rowCount { get; set; }
         public int colCount { get; set; }
 
+        public static int mapCode;
+
         public BattleField(string map)
         {
             this.cells = Parse(map);
@@ -53,7 +55,7 @@ namespace sglabo.entities
                     break;
             }
 
-            int mapCode = bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
+            mapCode = bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
             return Properties.Resources.ResourceManager.GetString("MAP" + mapCode.ToString());
         }
 

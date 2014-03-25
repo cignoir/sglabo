@@ -10,7 +10,7 @@ namespace sglabo.AI
 {
     class Warrior: JobAI
     {
-        GridPosition goal;
+        public GridPosition goal = new GridPosition(0, 1);
 
         public Warrior()
         {
@@ -23,31 +23,28 @@ namespace sglabo.AI
             this.sg = sg;
         }
 
+        override public void SetGoal()
+        {
+            switch(BattleField.mapCode)
+            {
+                default:
+                    goal = new GridPosition(3, 1);
+                    break;
+            }
+        }
+
         override public void PlayMove()
         {
-            // マップによって移動のゴールが違う
-            // 2T目以降、ゴール地点と違う場所にいたらゴールに移動しなければならない
-            if(Battle.turn == 1)
+            Ready();
+
+            if(ShouldBeStack(Direction.D8))
             {
-                Ready();
-                Move(Direction.D8);
-                Move(Direction.D8);
-                Move(Direction.D8, true);
-                Look(Direction.D8);
+                Stack(Direction.D8);
             }
             else
             {
-                Ready();
-
-                if(ShouldBeStack(Direction.D8))
-                {
-                    Stack(Direction.D8);
-                }
-                else
-                {
-                    MoveTo(goal);
-                    Look(Direction.D8);
-                }
+                MoveTo(goal);
+                Look(Direction.D8);
             }
 
             Go();
