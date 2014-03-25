@@ -124,7 +124,7 @@ namespace sglabo
             else
             {
                 sg.CapturePCNameFromStatus();
-                sg.IsWaitingLot();
+                sg.IsWaitingForLot();
             }
         }
 
@@ -170,12 +170,7 @@ namespace sglabo
             if(isBattleTaskRunning) return;
 
             var sg = SGWindow.sgList.First();
-            if(sg.IsField())
-            {
-                SetStatus(Properties.Resources.Field);
-                // フィールド移動
-            }
-            else
+            if(sg.IsWaitingForBattleInput())
             {
                 if(!isBattleTaskRunning){
                     SetStatus(Properties.Resources.BattleStart);
@@ -187,7 +182,11 @@ namespace sglabo
                     thread.IsBackground = false;
                     thread.Start();
                 }
-
+            }
+            else
+            {
+                SetStatus(Properties.Resources.Field);
+                // フィールド移動
             }
         }
 

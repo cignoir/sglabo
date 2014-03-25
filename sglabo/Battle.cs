@@ -44,7 +44,7 @@ namespace sglabo
                 }
 
                 mainForm.SetStatus(Properties.Resources.WaitingForMovingPhase);
-                LoopWait(loopLimit);
+                if(turn > 1) LoopWait(loopLimit);
 
                 if(inBattle)
                 {
@@ -84,7 +84,7 @@ namespace sglabo
                 }
             }
             
-            if(mainPC.IsWaitingLot()){
+            if(mainPC.IsWaitingForLot()){
                 mainForm.SetStatus(Properties.Resources.ItemLot);
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                 {
@@ -102,12 +102,12 @@ namespace sglabo
         {
             while(limit > 0)
             {
-                if(mainPC.IsField() || mainPC.IsWaitingLot())
+                if(mainPC.IsField() || mainPC.IsWaitingForLot())
                 {
                     inBattle = false;
                     break;
                 }
-                if(mainPC.IsWaitingBattleInput()) break;
+                if(mainPC.IsWaitingForBattleInput()) break;
 
                 Thread.Sleep(1000);
                 limit--;

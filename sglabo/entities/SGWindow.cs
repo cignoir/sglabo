@@ -119,12 +119,12 @@ namespace sglabo
             this.height = Math.Abs(rect.top - rect.bottom);
         }
 
-        public bool IsWaitingBattleInput()
+        public bool IsWaitingForBattleInput()
         {
             return DetectColor(CaptureBattleStatus()).pink > 10;
         }
 
-        public bool IsWaitingLot()
+        public bool IsWaitingForLot()
         {
             return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 1000;
         }
