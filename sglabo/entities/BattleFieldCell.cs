@@ -62,8 +62,9 @@ namespace sglabo.entities
                 existsPC = true;
                 pcCode = color.brown;
 
-                // 要調査: pcCodeが一致しないことがある可能性について。マウスカーソルの位置に依るかも。
-                SGWindow.sgList/*.Where(x => x.pcCode == pcCode)*/.First().gPos = this.gPos;
+                // 要調査: pcCodeが一致しないことがある可能性について
+                var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
+                if(pc != null) pc.gPos = this.gPos;
             }
         }
 

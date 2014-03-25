@@ -41,7 +41,7 @@ namespace sglabo.entities
                     break;
             }
 
-            var sg = SGWindow.sgList.First();
+            var sg = SGWindow.sgList.Where(x => x.IsCenter).First();
             sg.Activate();
 
             Bitmap bmp = null;

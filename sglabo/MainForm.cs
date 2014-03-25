@@ -89,7 +89,7 @@ namespace sglabo
 
             foreach(Process proc in Process.GetProcessesByName("ST_231").OrderBy(x => x.Id))
             {
-                var sg = new SGWindow(proc);
+                var sg = new SGWindow(proc, SGWindow.sgList.Count == 0);
                 SGWindow.sgList.Add(sg);
 
                 var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
@@ -297,6 +297,51 @@ namespace sglabo
                 var sg = SGWindow.sgList.ElementAt(4);
                 sg.job = JobConverter.ConvertToJobFrom(jobSelector5.Text);
                 sg.ai = JobConverter.ConvertToAIFrom(jobSelector5.Text);
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 1)
+            {
+                var sg = SGWindow.sgList.ElementAt(0);
+                sg.IsCenter = radioButton1.Checked;
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 2)
+            {
+                var sg = SGWindow.sgList.ElementAt(1);
+                sg.IsCenter = radioButton2.Checked;
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 3)
+            {
+                var sg = SGWindow.sgList.ElementAt(2);
+                sg.IsCenter = radioButton3.Checked;
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 4)
+            {
+                var sg = SGWindow.sgList.ElementAt(3);
+                sg.IsCenter = radioButton4.Checked;
+            }
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SGWindow.sgList.Count >= 5)
+            {
+                var sg = SGWindow.sgList.ElementAt(4);
+                sg.IsCenter = radioButton5.Checked;
             }
         }
     }

@@ -24,7 +24,7 @@ namespace sglabo
             this.mainForm = mainForm;
             MainForm.isBattleTaskRunning = true;
 
-            mainPC = SGWindow.sgList.First();
+            mainPC = SGWindow.sgList.Where(x => x.IsCenter).First();
             mainPC.Activate();
 
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);

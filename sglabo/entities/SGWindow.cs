@@ -37,12 +37,13 @@ namespace sglabo
         long y;
         long width;
         long height;
+        public bool IsCenter = false;
 
         public InputSimulator input = new InputSimulator();
 
         int windowCount;
 
-        public SGWindow(Process proc)
+        public SGWindow(Process proc, bool isCenter)
         {
             this.proc = proc;
             this.hWnd = proc.MainWindowHandle;

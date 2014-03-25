@@ -130,7 +130,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="entities\SGColor.cs" />
-    <Compile Include="entities\SGWindow.BattleMove.cs" />
     <Compile Include="entities\SGWindow.Graphics.cs" />
     <Compile Include="utils\GraphicUtils.cs" />
     <Compile Include="utils\InputSimulatorExamples.cs" />
