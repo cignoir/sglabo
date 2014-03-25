@@ -136,11 +136,6 @@ namespace sglabo
             return DetectColor(CaptureFieldStatus()).green > 10;
         }
 
-        public static void CreateBattleField()
-        {
-            battleField = new BattleField(Properties.Resources.MAP60603230);
-        }
-
         public static SGWindow MainPC()
         {
             return sgList.Where(x => x.IsCenter).First();
