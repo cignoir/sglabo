@@ -57,7 +57,8 @@ namespace sglabo
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         pc.Activate();
-                        pc.ai.PlayMove(battleField, pc);
+                        pc.ai.UpdateSituation(battleField, pc);
+                        pc.ai.PlayMove();
                     }
 
                     mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
@@ -73,7 +74,8 @@ namespace sglabo
                         if(pc.ai != null)
                         {
                             pc.Activate();
-                            pc.ai.PlaySkill(battleField, pc);
+                            pc.ai.UpdateSituation(battleField, pc);
+                            pc.ai.PlaySkill();
                         }
                         else
                         {

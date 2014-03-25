@@ -11,11 +11,31 @@ namespace sglabo.AI
 {
     abstract class JobAI
     {
+        public BattleField bf;
+        public SGWindow sg;
+
         InputSimulator input = new InputSimulator();
         int globalSleep = 200;
 
-        abstract public void PlayMove(BattleField bf, SGWindow sg);
-        abstract public void PlaySkill(BattleField bf, SGWindow sg);
+        abstract public void PlayMove();
+        abstract public void PlaySkill();
+
+        public JobAI()
+        {
+
+        }
+
+        public JobAI(BattleField bf, SGWindow sg)
+        {
+            this.bf = bf;
+            this.sg = sg;
+        }
+
+        public void UpdateSituation(BattleField bf, SGWindow sg)
+        {
+            this.bf = bf;
+            this.sg = sg;
+        }
 
         public void Ready()
         {
@@ -36,7 +56,7 @@ namespace sglabo.AI
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
-        public void Move(Direction direction)
+        public void Move(Direction direction, bool withEnter = false)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
@@ -67,14 +87,104 @@ namespace sglabo.AI
                     .KeyUp(vk);
             }
 
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            if(withEnter)
+            {
+                input.Keyboard
+                    .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            }
+        }
+
+        public void MoveTo(GridPosition g)
+        {
+            if(g.x < sg.gPos.x)
+            {
+                for(int i = sg.gPos.x; i > g.x; i--)
+                {
+                    Move(Direction.D4);
+                }
+            }
+            else if(g.x > sg.gPos.x)
+            {
+                for(int i = sg.gPos.x; i < g.x; i++)
+                {
+                    Move(Direction.D6);
+                }
+            }
+
+            if(g.y < sg.gPos.y)
+            {
+                for(int i = sg.gPos.y; i > g.y; i--)
+                {
+                    Move(Direction.D8);
+                }
+            }
+            else if(g.y > sg.gPos.y)
+            {
+                for(int i = sg.gPos.y; i < g.y; i++)
+                {
+                    Move(Direction.D2);
+                }
+            }
+
+            Enter();
         }
 
         public void Look(Direction direction)
         {
-            Move(direction);
+            Move(direction, true);
+        }
+
+        public bool ShouldBeStack(Direction d)
+        {
+            bool shouldBeStack = false;
+            switch(d)
+            {
+                case Direction.D8:
+                    shouldBeStack = bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC;
+                    break;
+                case Direction.D6:
+                    shouldBeStack = bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC;
+                    break;
+                case Direction.D4:
+                    shouldBeStack = bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x -3, sg.gPos.y).existsNPC;
+                    break;
+                case Direction.D2:
+                    shouldBeStack = bf.Cell(sg.gPos.x, sg.gPos.y + 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 3).existsNPC;
+                    break;
+                default:
+                    break;
+            }
+            return shouldBeStack;
+        }
+
+        public void Stack(Direction d)
+        {
+            switch(d)
+            {
+                case Direction.D8:
+                    Move(Direction.D8, true);
+                    Move(Direction.D2, true);
+                    Look(Direction.D8);
+                    break;
+                case Direction.D6:
+                    Move(Direction.D6, true);
+                    Move(Direction.D4, true);
+                    Look(Direction.D6);
+                    break;
+                case Direction.D4:
+                    Move(Direction.D4, true);
+                    Move(Direction.D6, true);
+                    Look(Direction.D4);
+                    break;
+                case Direction.D2:
+                    Move(Direction.D2, true);
+                    Move(Direction.D8, true);
+                    Look(Direction.D2);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Enter()
@@ -127,5 +237,82 @@ namespace sglabo.AI
             Enter();
             Enter();
         }
+
+        #region ExistsXXX
+        public bool Exists8()
+        {
+            return bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsPC;
+        }
+
+        public bool Exists88()
+        {
+            return bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsPC;
+        }
+
+        public bool Exists888()
+        {
+            return bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsPC;
+        }
+
+        public bool Exists8888()
+        {
+            return bf.Cell(sg.gPos.x, sg.gPos.y - 4).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 4).existsPC;
+        }
+
+        public bool Exists88888()
+        {
+            return bf.Cell(sg.gPos.x, sg.gPos.y - 5).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 5).existsPC;
+        }
+
+        public bool Exists6()
+        {
+            return bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists66()
+        {
+            return bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists666()
+        {
+            return bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists4()
+        {
+            return bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists44()
+        {
+            return bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists444()
+        {
+            return bf.Cell(sg.gPos.x - 3, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 3, sg.gPos.y).existsPC;
+        }
+
+        public bool Exists86()
+        {
+            return bf.Cell(sg.gPos.x + 1, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y - 1).existsPC;
+        }
+
+        public bool Exists886()
+        {
+            return bf.Cell(sg.gPos.x + 1, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y - 2).existsPC;
+        }
+
+        public bool Exists84()
+        {
+            return bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsPC;
+        }
+
+        public bool Exists884()
+        {
+            return bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsPC;
+        }
+        #endregion
     }
 }
