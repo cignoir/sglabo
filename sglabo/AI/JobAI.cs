@@ -21,7 +21,9 @@ namespace sglabo.AI
         {
             input.Keyboard
                     .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.UP);
+                    .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep)
+                    .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep);
         }
 
         public void Go()
