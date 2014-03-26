@@ -635,45 +635,40 @@
             this.codeLabel1.AutoSize = true;
             this.codeLabel1.Location = new System.Drawing.Point(472, 67);
             this.codeLabel1.Name = "codeLabel1";
-            this.codeLabel1.Size = new System.Drawing.Size(35, 12);
+            this.codeLabel1.Size = new System.Drawing.Size(0, 12);
             this.codeLabel1.TabIndex = 19;
-            this.codeLabel1.Text = "label4";
             // 
             // codeLabel2
             // 
             this.codeLabel2.AutoSize = true;
             this.codeLabel2.Location = new System.Drawing.Point(472, 117);
             this.codeLabel2.Name = "codeLabel2";
-            this.codeLabel2.Size = new System.Drawing.Size(35, 12);
+            this.codeLabel2.Size = new System.Drawing.Size(0, 12);
             this.codeLabel2.TabIndex = 20;
-            this.codeLabel2.Text = "label4";
             // 
             // codeLabel3
             // 
             this.codeLabel3.AutoSize = true;
             this.codeLabel3.Location = new System.Drawing.Point(472, 166);
             this.codeLabel3.Name = "codeLabel3";
-            this.codeLabel3.Size = new System.Drawing.Size(35, 12);
+            this.codeLabel3.Size = new System.Drawing.Size(0, 12);
             this.codeLabel3.TabIndex = 21;
-            this.codeLabel3.Text = "label5";
             // 
             // codeLabel4
             // 
             this.codeLabel4.AutoSize = true;
             this.codeLabel4.Location = new System.Drawing.Point(472, 215);
             this.codeLabel4.Name = "codeLabel4";
-            this.codeLabel4.Size = new System.Drawing.Size(35, 12);
+            this.codeLabel4.Size = new System.Drawing.Size(0, 12);
             this.codeLabel4.TabIndex = 22;
-            this.codeLabel4.Text = "label6";
             // 
             // codeLabel5
             // 
             this.codeLabel5.AutoSize = true;
             this.codeLabel5.Location = new System.Drawing.Point(472, 264);
             this.codeLabel5.Name = "codeLabel5";
-            this.codeLabel5.Size = new System.Drawing.Size(35, 12);
+            this.codeLabel5.Size = new System.Drawing.Size(0, 12);
             this.codeLabel5.TabIndex = 23;
-            this.codeLabel5.Text = "label7";
             // 
             // MainForm
             // 

@@ -84,7 +84,7 @@ namespace sglabo
                             pc.Activate();
                             Thread.Sleep(500);
                             pc.ai.UpdateSituation(battleField, pc);
-                            pc.ai.PlaySkill();
+                            //pc.ai.PlaySkill();
                         }
                         else
                         {

@@ -43,12 +43,22 @@ namespace sglabo.AI
 
         public void Ready()
         {
-            input.Keyboard
-                    .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep)
-                    /*.KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)*/;
-            ESC();
+            // win7
+            var os = Environment.OSVersion.Version;
+            if(os.Major <= 7)
+            {
+                input.Keyboard
+                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+            }
+            else if(os.Major > 7)
+            {
+                input.Keyboard
+                        .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
+                        .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)
+                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+            }
         }
 
         public void Go()
@@ -61,7 +71,7 @@ namespace sglabo.AI
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
-        public void Move(Direction direction)
+        public void Move(Direction direction, bool max = false)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
@@ -92,9 +102,12 @@ namespace sglabo.AI
                     .KeyUp(vk).Sleep(globalSleep);
             }
 
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            if(!max)
+            {
+                input.Keyboard
+                    .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            }
         }
 
         public void MoveTo(GridPosition g)

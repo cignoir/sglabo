@@ -54,6 +54,12 @@ namespace sglabo.AI
                         Move(Direction.D8);
                         Look(Direction.D4);
                         break;
+                    default:
+                        // test
+                        Move(Direction.D4);
+                        Move(Direction.D2);
+                        Look(Direction.D8);
+                        break;
                 }
             }
             else
