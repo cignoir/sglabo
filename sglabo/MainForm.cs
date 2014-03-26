@@ -32,16 +32,6 @@ namespace sglabo
 
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_START, Win32API.MOD_ALT, (int)Keys.S);
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_ALT, (int)Keys.Q);
-
-            pictureBoxes.Add(pictureBox1);
-            pictureBoxes.Add(pictureBox2);
-            pictureBoxes.Add(pictureBox3);
-            pictureBoxes.Add(pictureBox4);
-            pictureBoxes.Add(pictureBox5);
-
-            RefleshPictures();
-
-            SGWindow.MainPC().Activate();
         }
 
         protected override void WndProc(ref Message m)
@@ -80,7 +70,7 @@ namespace sglabo
             statusLabel.Text = message;
         }
 
-        private void RefleshPictures()
+        private void RefleshView()
         {
             foreach(PictureBox p in pictureBoxes)
             {
@@ -281,6 +271,7 @@ namespace sglabo
             if(SGWindow.sgList.Count > 3) codeLabel4.Text = SGWindow.sgList.ElementAt(3).pcCode.ToString();
             if(SGWindow.sgList.Count > 4) codeLabel5.Text = SGWindow.sgList.ElementAt(4).pcCode.ToString();
 
+            SGWindow.MainPC().Activate();
         }
 
         private void captureButton_Click(object sender, EventArgs e)
@@ -297,9 +288,6 @@ namespace sglabo
                 int y = int.Parse(rectInfo[1]);
                 int width = int.Parse(rectInfo[2]);
                 int height = int.Parse(rectInfo[3]);
-
-                //var input = new InputSimulator();
-                //input.Mouse.MoveMouseTo(sg.sPos.x + 400, sg.sPos.y + 300);
 
                 var rect = new Rectangle(x, y, width, height);
                 var bmp = sg.CaptureRectangle(rect);
@@ -327,16 +315,14 @@ namespace sglabo
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            pictureBoxes.Add(pictureBox1);
-            pictureBoxes.Add(pictureBox2);
-            pictureBoxes.Add(pictureBox3);
-            pictureBoxes.Add(pictureBox4);
-            pictureBoxes.Add(pictureBox5);
+            //pictureBoxes = new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5 };
+            //foreach(SGWindow sg in SGWindow.sgList){
+            //    sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
+            //    sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
+            //}
 
-            foreach(SGWindow sg in SGWindow.sgList){
-                sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
-                sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
-            }
+            pictureBoxes = new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5 };
+            RefleshView();
 
             if(SGWindow.sgList.Count > 0)
             {
@@ -344,11 +330,13 @@ namespace sglabo
                 Win32API.GetWindowRect(SGWindow.sgList.First().hWnd, out rect);
                 this.Location = new Point(rect.right + 6, rect.top - 5);
             }
+
+            SGWindow.MainPC().Activate();
         }
 
         private void refleshButton_Click(object sender, EventArgs e)
         {
-            RefleshPictures();
+            RefleshView();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -357,23 +345,21 @@ namespace sglabo
             if(isBattleTaskRunning) return;
 
             var sg = SGWindow.sgList.First();
-            if(sg.IsWaitingForBattleInput())
+            if(!isBattleTaskRunning && sg.IsWaitingForBattleInput())
             {
-                if(!isBattleTaskRunning){
-                    SetStatus(Properties.Resources.BattleStart);
-                    if(thread != null && thread.IsAlive) thread.Abort();
+                SetStatus(Properties.Resources.BattleStart);
+                if(thread != null && thread.IsAlive) thread.Abort();
 
-                    areaSelectorText = areaSelector.Text;
+                areaSelectorText = areaSelector.Text;
 
-                    thread = new Thread(new ThreadStart(new Battle(this).Run));
-                    thread.IsBackground = false;
-                    thread.Start();
-                }
+                thread = new Thread(new ThreadStart(new Battle(this).Run));
+                thread.IsBackground = false;
+                thread.Start();
             }
             else
             {
-                SetStatus(Properties.Resources.Field);
                 // フィールド移動
+                SetStatus(Properties.Resources.Field);
             }
         }
 
@@ -391,6 +377,13 @@ namespace sglabo
         {
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_START);
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
+        }
+
+        private void captureWindow_Click(object sender, EventArgs e)
+        {
+            var sg = SGWindow.sgList.First();
+            var bmp = sg.Capture();
+            bmp.Save(@"C:\screenshot.bmp");
         }
 
         #region Activateボタン
@@ -585,11 +578,5 @@ namespace sglabo
         }
         #endregion
 
-        private void captureWindow_Click(object sender, EventArgs e)
-        {
-            var sg = SGWindow.sgList.First();
-            var bmp = sg.Capture();
-            bmp.Save(@"C:\screenshot.bmp");
-        }
     }
 }
