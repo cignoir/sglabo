@@ -107,7 +107,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsInput">
-      <HintPath>..\..\..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\lib\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

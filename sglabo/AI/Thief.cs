@@ -68,18 +68,26 @@ namespace sglabo.AI
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
             if(sg.ap >= 4 
-                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
-              )
+                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists86() || cube.Exists84() || cube.Exists88())
+                    || direction == Direction.D4 && (cube.Exists4() || cube.Exists44() || cube.Exists84())
+                    || direction == Direction.D6 && (cube.Exists6() || cube.Exists66() || cube.Exists86())
+                   )
+                )
             {
-                sg.ap -= 6;
+                sg.ap -= 4;
                 SelectSkill(SkillOrder.S1);
                 Go();
                 return;
             }
 
-            if(sg.ap >= 3 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84()))
+            if(sg.ap >= 9 
+                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6())
+                    || direction == Direction.D6 && (cube.Exists8() || cube.Exists6())
+                    || direction == Direction.D4 && (cube.Exists8() || cube.Exists4())
+                   )
+                )
             {
-                sg.ap -= 3;
+                sg.ap -= 9;
                 SelectSkill(SkillOrder.S2);
                 Go();
                 return;
