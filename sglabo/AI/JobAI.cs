@@ -49,8 +49,8 @@ namespace sglabo.AI
         {
             sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
-                .LeftButtonClick()
-                .RightButtonClick()
+                .LeftButtonClick().Sleep(globalSleep)
+                .RightButtonClick().Sleep(globalSleep)
                 .RightButtonClick();
 
             Press(VirtualKeyCode.UP);

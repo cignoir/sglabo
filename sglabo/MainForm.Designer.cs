@@ -674,9 +674,10 @@
             // 
             // mapPictureBox
             // 
-            this.mapPictureBox.Location = new System.Drawing.Point(532, 185);
+            this.mapPictureBox.Location = new System.Drawing.Point(532, 194);
             this.mapPictureBox.Name = "mapPictureBox";
-            this.mapPictureBox.Size = new System.Drawing.Size(100, 105);
+            this.mapPictureBox.Size = new System.Drawing.Size(94, 96);
+            this.mapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mapPictureBox.TabIndex = 24;
             this.mapPictureBox.TabStop = false;
             // 
