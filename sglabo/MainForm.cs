@@ -30,6 +30,10 @@ namespace sglabo
         {
             InitializeComponent();
 
+            new InputSimulator().Mouse
+               .MoveMouseTo(0, 0)
+               .MoveMouseBy(401, 320);
+
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_START, Win32API.MOD_ALT, (int)Keys.S);
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_ALT, (int)Keys.Q);
         }
@@ -323,9 +327,8 @@ namespace sglabo
                 Win32API.RECT rect;
                 Win32API.GetWindowRect(SGWindow.sgList.First().hWnd, out rect);
                 this.Location = new Point(rect.right + 6, rect.top - 5);
+                SGWindow.MainPC().Activate();
             }
-
-            SGWindow.MainPC().Activate();
         }
 
         private void refleshButton_Click(object sender, EventArgs e)

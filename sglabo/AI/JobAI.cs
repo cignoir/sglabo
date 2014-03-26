@@ -47,13 +47,10 @@ namespace sglabo.AI
 
         public void Ready()
         {
-            //FIXMEマウスカーソルが移動しない
-
-            //input.Mouse
-            //    .MoveMouseToPositionOnVirtualDesktop(cube.core.x, cube.core.y)
-            //    .LeftButtonClick()
-            //    .Sleep(100)
-            //    .RightButtonClick();
+            MoveMouseToCenter();
+            input.Mouse
+                .LeftButtonClick()
+                .RightButtonClick();
             
 
             if(IsFirstInput)
@@ -71,6 +68,13 @@ namespace sglabo.AI
                         .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
                         .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
             }
+        }
+
+        public void MoveMouseToCenter()
+        {
+            input.Mouse
+               .MoveMouseTo(0, 0)
+               .MoveMouseBy(sg.sPos.x + cube.core.x, sg.sPos.y + cube.core.y);
         }
 
         public void Press(VirtualKeyCode vk)
