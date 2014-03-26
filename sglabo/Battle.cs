@@ -61,7 +61,7 @@ namespace sglabo
 
                             try
                             {
-                                var cube = new BattleCube(new ScreenPosition(401, 320));
+                                var cube = new BattleCube(Core());
                                 pc.ai.UpdateSituation(pc, cube.Scan());
                                 pc.ai.PlayMove();
                             }
@@ -82,7 +82,7 @@ namespace sglabo
                             pc.Activate();
 
                             mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                            var cube = new BattleCube(new ScreenPosition(401, 320));
+                            var cube = new BattleCube(Core());
                     
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
@@ -158,6 +158,27 @@ namespace sglabo
             }
 
             return bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;
+        }
+
+        public ScreenPosition Core()
+        {
+            // FIXME
+            // LARGE以外は移動でCOREが変動する
+
+            ScreenPosition core = new ScreenPosition(0, 0);
+            switch(SGWindow.GetPTSize())
+            {
+                case PTSize.LARGE:
+                    core = new ScreenPosition(401, 320);
+                    break;
+                case PTSize.MEDIUM:
+                case PTSize.SMALL:
+                    core = new ScreenPosition(300, 389);
+                    break;
+                default:
+                    break;
+            }
+            return core;
         }
     }
 }

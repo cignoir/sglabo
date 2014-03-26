@@ -50,25 +50,10 @@ namespace sglabo.AI
             sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
                 .LeftButtonClick()
+                .RightButtonClick()
                 .RightButtonClick();
 
             Press(VirtualKeyCode.UP);
-
-            //if(IsFirstInput)
-            //{
-            //    input.Keyboard
-            //            .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
-            //            .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)
-            //            .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-            //            .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
-            //    IsFirstInput = false;
-            //}
-            //else
-            //{
-            //    input.Keyboard
-            //            .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-            //            .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
-            //}
         }
 
         public void Press(VirtualKeyCode vk)
@@ -88,7 +73,7 @@ namespace sglabo.AI
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
-        public void Move(Direction direction, bool max = false)
+        public void Move(Direction direction, bool withEnter = true)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
@@ -117,7 +102,7 @@ namespace sglabo.AI
                 Press(vk);
             }
 
-            if(!max)
+            if(withEnter)
             {
                 Press(VirtualKeyCode.RETURN);
             }
