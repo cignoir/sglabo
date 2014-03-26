@@ -11,8 +11,8 @@ namespace sglabo.entities
     {
         BattleCubeCell[,,] cells = new BattleCubeCell[5, 7, 5];
         
-        public const int SCAN_RANGE_X_MIN = 1;
-        public const int SCAN_RANGE_X_MAX = 3;
+        public const int SCAN_RANGE_X_MIN = 0;
+        public const int SCAN_RANGE_X_MAX = 4;
 
         public const int SCAN_RANGE_Y_MIN = 1;
         public const int SCAN_RANGE_Y_MAX = 4;
@@ -127,9 +127,19 @@ namespace sglabo.entities
             return Exists(1, 0);
         }
 
+        public bool Exists66()
+        {
+            return Exists(2, 0);
+        }
+
         public bool Exists4()
         {
             return Exists(-1, 0);
+        }
+
+        public bool Exists44()
+        {
+            return Exists(-2, 0);
         }
 
         public bool Exists86()

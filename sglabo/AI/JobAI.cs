@@ -22,6 +22,8 @@ namespace sglabo.AI
         abstract public void PlayMove();
         abstract public void PlaySkill();
 
+        Direction direction = Direction.D8;
+
         public JobAI()
         {
 
@@ -147,22 +149,22 @@ namespace sglabo.AI
         {
             Enter();
             Move(direction);
+            this.direction = direction;
         }
 
         public bool ShouldStack(Direction d)
         {
-            //FIXME 向き考慮
             bool shouldStack = false;
             switch(d)
             {
                 case Direction.D8:
-                    shouldStack = cube.Exists8() && !cube.Exists88() && !cube.Exists888();
+                    shouldStack = direction == Direction.D8 && cube.Exists8() && !cube.Exists88() && !cube.Exists888();
                     break;
                 case Direction.D6:
-                    shouldStack = cube.Exists6(); 
+                    shouldStack = direction == Direction.D6 && cube.Exists6() && !cube.Exists66();
                     break;
                 case Direction.D4:
-                    shouldStack = cube.Exists4();
+                    shouldStack = direction == Direction.D4 && cube.Exists4() && !cube.Exists44();
                     break;
                 default:
                     break;
