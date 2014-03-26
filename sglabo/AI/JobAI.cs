@@ -224,7 +224,7 @@ namespace sglabo.AI
             Press(VirtualKeyCode.ESCAPE);
         }
 
-        public void SelectSkill(SkillOrder skill, Direction target = Direction.DUMMY)
+        public void SelectSkill(SkillOrder skill)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(skill)
@@ -257,29 +257,12 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
-            
-            if(target != Direction.DUMMY)
-            {
-                VirtualKeyCode targetKey = VirtualKeyCode.NONAME;
-                switch(target)
-                {
-                    case Direction.D8:
-                        targetKey = VirtualKeyCode.UP;
-                        break;
-                    case Direction.D6:
-                        targetKey = VirtualKeyCode.RIGHT;
-                        break;
-                    case Direction.D4:
-                        targetKey = VirtualKeyCode.LEFT;
-                        break;
-                    case Direction.D2:
-                        targetKey = VirtualKeyCode.DOWN;
-                        break;
-                    default:
-                        break;
-                }
+        }
 
-                if(vk != VirtualKeyCode.NONAME) Press(targetKey);
+        public void SelectTarget(params Direction[] inputQueue)
+        {
+            foreach(Direction direction in inputQueue){
+                Move(direction, true);
             }
 
             Enter();

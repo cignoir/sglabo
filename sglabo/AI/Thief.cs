@@ -76,6 +76,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 4;
                 SelectSkill(SkillOrder.S1);
+                SelectTarget();
                 Go();
                 return;
             }
@@ -89,6 +90,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 9;
                 SelectSkill(SkillOrder.S2);
+                SelectTarget();
                 Go();
                 return;
             }
