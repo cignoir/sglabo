@@ -47,34 +47,28 @@ namespace sglabo.AI
 
         public void Ready()
         {
-            MoveMouseToCenter();
+            sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
                 .LeftButtonClick()
                 .RightButtonClick();
-            
 
-            if(IsFirstInput)
-            {
-                input.Keyboard
-                        .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
-                        .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)
-                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
-                IsFirstInput = false;
-            }
-            else
-            {
-                input.Keyboard
-                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
-            }
-        }
+            Press(VirtualKeyCode.UP);
 
-        public void MoveMouseToCenter()
-        {
-            input.Mouse
-               .MoveMouseTo(0, 0)
-               .MoveMouseBy(sg.sPos.x + cube.core.x, sg.sPos.y + cube.core.y);
+            //if(IsFirstInput)
+            //{
+            //    input.Keyboard
+            //            .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
+            //            .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)
+            //            .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+            //            .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+            //    IsFirstInput = false;
+            //}
+            //else
+            //{
+            //    input.Keyboard
+            //            .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+            //            .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+            //}
         }
 
         public void Press(VirtualKeyCode vk)
