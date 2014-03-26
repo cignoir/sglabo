@@ -61,6 +61,13 @@ namespace sglabo.AI
             }
         }
 
+        public void Press(VirtualKeyCode vk)
+        {
+            input.Keyboard
+                .KeyDown(vk).Sleep(globalSleep)
+                .KeyUp(vk).Sleep(globalSleep);
+        }
+
         public void Go()
         {
             // Ctrl + B
@@ -97,16 +104,12 @@ namespace sglabo.AI
 
             if(vk != VirtualKeyCode.SPACE)
             {
-                input.Keyboard
-                    .KeyDown(vk).Sleep(globalSleep)
-                    .KeyUp(vk).Sleep(globalSleep);
+                Press(vk);
             }
 
             if(!max)
             {
-                input.Keyboard
-                    .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
-                    .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+                Press(VirtualKeyCode.RETURN);
             }
         }
 
@@ -203,19 +206,15 @@ namespace sglabo.AI
 
         public void Enter()
         {
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+            Press(VirtualKeyCode.RETURN);
         }
 
         public void ESC()
         {
-            input.Keyboard
-                .KeyDown(VirtualKeyCode.ESCAPE).Sleep(globalSleep)
-                .KeyUp(VirtualKeyCode.ESCAPE).Sleep(globalSleep);
+            Press(VirtualKeyCode.ESCAPE);
         }
 
-        public void SelectSkill(SkillOrder skill)
+        public void SelectSkill(SkillOrder skill, Direction target = Direction.DUMMY)
         {
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(skill)
@@ -248,7 +247,31 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
-            // TODO: ターゲット選択
+            
+            if(target != Direction.DUMMY)
+            {
+                VirtualKeyCode targetKey = VirtualKeyCode.NONAME;
+                switch(target)
+                {
+                    case Direction.D8:
+                        targetKey = VirtualKeyCode.UP;
+                        break;
+                    case Direction.D6:
+                        targetKey = VirtualKeyCode.RIGHT;
+                        break;
+                    case Direction.D4:
+                        targetKey = VirtualKeyCode.LEFT;
+                        break;
+                    case Direction.D2:
+                        targetKey = VirtualKeyCode.DOWN;
+                        break;
+                    default:
+                        break;
+                }
+
+                if(vk != VirtualKeyCode.NONAME) Press(targetKey);
+            }
+
             Enter();
             Enter();
         }

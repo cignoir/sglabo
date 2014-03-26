@@ -77,7 +77,7 @@ namespace sglabo
                     
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
-                            pc.ai.PlaySkill();
+                            //pc.ai.PlaySkill();
                         }
                     }
                     Thread.Sleep(1000);

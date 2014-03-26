@@ -60,43 +60,33 @@ namespace sglabo.AI
 
         override public void PlaySkill()
         {
-            // 1. バーチカルウェブ 
-            // 2. サイドウェブ
-            // 3. スティンガー
-            // 4. ストラッシュ
-            // 5. クレセント
-            // 6. リボルバースティング
+            // 1. リトルフォース
+            // 2. アクアボール
+            // 3. ウィンドエッジ
+            // 4. アクアサービスボール
+            // 5. リーフブレード
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
-            if(sg.ap >= 8 && ((cube.Exists8() && cube.Exists88()) || (cube.Exists88() && cube.Exists888()) || (cube.Exists8() && cube.Exists888())))
-            {
-                sg.ap -= 8;
-                SelectSkill(SkillOrder.S3);
-                Go();
-                return;
-            }
-
-            if(sg.ap >= 12 && ((cube.Exists8() && cube.Exists86()) || (cube.Exists8() && cube.Exists84()) || (cube.Exists84() && cube.Exists86())))
-            {
-                sg.ap -= 12;
-                SelectSkill(SkillOrder.S4);
-                Go();
-                return;
-            }
-
-            if(sg.ap >= 3 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84()))
+            int cnt = 0;
+            cnt += cube.Exists8() ? 1 : 0;
+            cnt += cube.Exists88() ? 1 : 0;
+            cnt += cube.Exists888() ? 1 : 0;
+            cnt += cube.Exists886() ? 1 : 0;
+            cnt += cube.Exists884() ? 1 : 0;
+            if(sg.ap >= 3 && direction == Direction.D8 && cnt >= 2)
             {
                 sg.ap -= 3;
-                SelectSkill(SkillOrder.S2);
+                SelectSkill(SkillOrder.S1, Direction.D8);
                 Go();
                 return;
             }
 
-            if(sg.ap >= 6 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
+            if(sg.ap >= 6 && direction == Direction.D8
+                && (cube.Exists88() || cube.Exists888() || cube.Exists8888() || cube.Exists8886() || cube.Exists8884() || cube.Exists886() || cube.Exists884() || cube.Exists86() || cube.Exists84()))
             {
                 sg.ap -= 6;
-                SelectSkill(SkillOrder.S1);
+                SelectSkill(SkillOrder.S2);
                 Go();
                 return;
             }
