@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sglabo.AI;
 using sglabo.entities;
 
 namespace sglabo
@@ -57,9 +58,17 @@ namespace sglabo
                             pc.Activate();
 
                             mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                            var cube = new BattleCube(new ScreenPosition(0, 0));
-                            pc.ai.UpdateSituation(pc, cube.Scan());
-                            pc.ai.PlayMove();
+
+                            try
+                            {
+                                var cube = new BattleCube(new ScreenPosition(401, 320));
+                                pc.ai.UpdateSituation(pc, cube.Scan());
+                                pc.ai.PlayMove();
+                            }
+                            catch(Exception e)
+                            {
+                                MessageBox.Show(e.Source + ":" + e.Message + ":" + e.StackTrace);
+                            }
                         }
                     }
 
@@ -73,11 +82,11 @@ namespace sglabo
                             pc.Activate();
 
                             mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                            var cube = new BattleCube(new ScreenPosition(0, 0));
+                            var cube = new BattleCube(new ScreenPosition(401, 320));
                     
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
-                            //pc.ai.PlaySkill();
+                            pc.ai.PlaySkill();
                         }
                     }
                     Thread.Sleep(1000);
@@ -94,6 +103,7 @@ namespace sglabo
             }
             mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
+            JobAI.IsFirstInput = true;
 
             Thread.Sleep(3000);
         }
@@ -114,7 +124,7 @@ namespace sglabo
             }
         }
 
-        public static int DetectMap(Area area)
+        public int DetectMap(Area area)
         {
             var sg = SGWindow.MainPC();
             sg.Activate();
@@ -141,6 +151,10 @@ namespace sglabo
                     break;
                 default:
                     break;
+            }
+
+            if(bmp != null){
+                mainForm.ShowMapImage(bmp.Clone() as Bitmap);
             }
 
             return bmp != null ? GraphicUtils.GenerateUniqueCode(bmp) : 0;

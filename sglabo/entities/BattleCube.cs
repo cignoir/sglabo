@@ -9,6 +9,8 @@ namespace sglabo.entities
 {
     class BattleCube
     {
+        public ScreenPosition core;
+
         BattleCubeCell[,,] cells = new BattleCubeCell[5, 7, 5];
         
         public const int SCAN_RANGE_X_MIN = 0;
@@ -26,7 +28,19 @@ namespace sglabo.entities
 
         public BattleCube(ScreenPosition core)
         {
+            this.core = core;
+
             cells = new BattleCubeCell[5, 7, 5];
+            for(int x = 0; x < 5; x++)
+            {
+                for(int y = 0; y < 7; y++)
+                {
+                    for(int z = 0; z < 5; z++ )
+                    {
+                        cells[x, y, z] = new BattleCubeCell();
+                    }
+                }
+            }
 
             cells[0, 4, 2].sPos = new ScreenPosition(core.x - 63 * 2, core.y - 32 * 2);
             cells[1, 4, 2].sPos = new ScreenPosition(core.x - 63 * 1, core.y - 32 * 1);
@@ -54,17 +68,10 @@ namespace sglabo.entities
             {
                 for(int y = 0; y < 7; y++)
                 {
-                    cells[x, y, 1].sPos.x = cells[x, y, 2].sPos.x;
-                    cells[x, y, 1].sPos.y = cells[x, y, 2].sPos.y - 34;
-
-                    cells[x, y, 0].sPos.x = cells[x, y, 1].sPos.x;
-                    cells[x, y, 0].sPos.y = cells[x, y, 1].sPos.y - 34;
-
-                    cells[x, y, 3].sPos.x = cells[x, y, 2].sPos.x;
-                    cells[x, y, 3].sPos.y = cells[x, y, 2].sPos.y + 34;
-
-                    cells[x, y, 4].sPos.x = cells[x, y, 3].sPos.x;
-                    cells[x, y, 4].sPos.y = cells[x, y, 3].sPos.y + 34;
+                    cells[x, y, 1].sPos = new ScreenPosition(cells[x, y, 2].sPos.x, cells[x, y, 2].sPos.y - 34);
+                    cells[x, y, 0].sPos = new ScreenPosition(cells[x, y, 1].sPos.x, cells[x, y, 1].sPos.y - 34);
+                    cells[x, y, 3].sPos = new ScreenPosition(cells[x, y, 2].sPos.x, cells[x, y, 2].sPos.y + 34);
+                    cells[x, y, 4].sPos = new ScreenPosition(cells[x, y, 3].sPos.x, cells[x, y, 3].sPos.y + 34);
                 }
             }
         }

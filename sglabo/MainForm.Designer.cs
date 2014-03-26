@@ -81,6 +81,7 @@
             this.codeLabel3 = new System.Windows.Forms.Label();
             this.codeLabel4 = new System.Windows.Forms.Label();
             this.codeLabel5 = new System.Windows.Forms.Label();
+            this.mapPictureBox = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // captureButton
@@ -203,7 +205,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(532, 169);
+            this.startButton.Location = new System.Drawing.Point(531, 156);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(94, 23);
             this.startButton.TabIndex = 6;
@@ -237,7 +239,7 @@
             this.areaSelector.Name = "areaSelector";
             this.areaSelector.Size = new System.Drawing.Size(121, 20);
             this.areaSelector.TabIndex = 8;
-            this.areaSelector.Text = "ルデンヌ大森林";
+            this.areaSelector.Text = "ナビア北限地帯";
             // 
             // label1
             // 
@@ -670,11 +672,20 @@
             this.codeLabel5.Size = new System.Drawing.Size(0, 12);
             this.codeLabel5.TabIndex = 23;
             // 
+            // mapPictureBox
+            // 
+            this.mapPictureBox.Location = new System.Drawing.Point(532, 185);
+            this.mapPictureBox.Name = "mapPictureBox";
+            this.mapPictureBox.Size = new System.Drawing.Size(100, 105);
+            this.mapPictureBox.TabIndex = 24;
+            this.mapPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 328);
+            this.Controls.Add(this.mapPictureBox);
             this.Controls.Add(this.codeLabel5);
             this.Controls.Add(this.codeLabel4);
             this.Controls.Add(this.codeLabel3);
@@ -720,6 +731,7 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -778,6 +790,7 @@
         private System.Windows.Forms.Label codeLabel3;
         private System.Windows.Forms.Label codeLabel4;
         private System.Windows.Forms.Label codeLabel5;
+        private System.Windows.Forms.PictureBox mapPictureBox;
     }
 }
 

@@ -39,7 +39,7 @@ namespace sglabo.AI
                         // ナビアB
                         Move(Direction.D8);
                         Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, true);
                         Look(Direction.D4);
                         break;
                     default:

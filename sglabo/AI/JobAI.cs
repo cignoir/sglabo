@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using sglabo.entities;
 using WindowsInput;
 using WindowsInput.Native;
@@ -17,12 +19,14 @@ namespace sglabo.AI
         public BattleCube cube;
 
         InputSimulator input = new InputSimulator();
-        int globalSleep = 200;
+        int globalSleep = 100;
 
         abstract public void PlayMove();
         abstract public void PlaySkill();
 
         protected Direction direction = Direction.D8;
+
+        public static bool IsFirstInput = true;
 
         public JobAI()
         {
@@ -43,19 +47,27 @@ namespace sglabo.AI
 
         public void Ready()
         {
-            // win7
-            var os = Environment.OSVersion.Version;
-            if(os.Major <= 7)
-            {
-                input.Keyboard
-                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
-                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
-            }
-            else if(os.Major > 7)
+            //FIXMEマウスカーソルが移動しない
+
+            //input.Mouse
+            //    .MoveMouseToPositionOnVirtualDesktop(cube.core.x, cube.core.y)
+            //    .LeftButtonClick()
+            //    .Sleep(100)
+            //    .RightButtonClick();
+            
+
+            if(IsFirstInput)
             {
                 input.Keyboard
                         .KeyDown(VirtualKeyCode.DOWN).Sleep(globalSleep)
                         .KeyUp(VirtualKeyCode.DOWN).Sleep(globalSleep)
+                        .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
+                        .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+                IsFirstInput = false;
+            }
+            else
+            {
+                input.Keyboard
                         .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep)
                         .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
             }

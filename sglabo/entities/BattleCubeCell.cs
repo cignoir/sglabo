@@ -27,6 +27,11 @@ namespace sglabo.entities
 
         int pcCode;
 
+        public BattleCubeCell()
+        {
+            this.sPos = new ScreenPosition(0, 0);
+        }
+
         public BattleCubeCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
         {
             this.gPos = gPos;

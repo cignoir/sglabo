@@ -315,12 +315,6 @@ namespace sglabo
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //pictureBoxes = new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5 };
-            //foreach(SGWindow sg in SGWindow.sgList){
-            //    sg.job = JobConverter.ConvertToJobFrom(jobSelector1.Text);
-            //    sg.ai = JobConverter.ConvertToAIFrom(jobSelector1.Text);
-            //}
-
             pictureBoxes = new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5 };
             RefleshView();
 
@@ -344,7 +338,7 @@ namespace sglabo
             if(!isStarted) return;
             if(isBattleTaskRunning) return;
 
-            var sg = SGWindow.sgList.First();
+            var sg = SGWindow.MainPC();
             if(!isBattleTaskRunning && sg.IsWaitingForBattleInput())
             {
                 SetStatus(Properties.Resources.BattleStart);
@@ -578,5 +572,10 @@ namespace sglabo
         }
         #endregion
 
+
+        public void ShowMapImage(Bitmap bmp)
+        {
+            mapPictureBox.Image = bmp;
+        }
     }
 }
