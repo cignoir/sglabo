@@ -119,8 +119,8 @@
     <Compile Include="AI\Thief.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="entities\Area.cs" />
-    <Compile Include="entities\BattleField.cs" />
-    <Compile Include="entities\BattleFieldCell.cs" />
+    <Compile Include="entities\BattleCube.cs" />
+    <Compile Include="entities\BattleCubeCell.cs" />
     <Compile Include="entities\Direction.cs" />
     <Compile Include="entities\GridPosition.cs" />
     <Compile Include="entities\Job.cs" />

@@ -12,10 +12,10 @@ using WindowsInput.Native;
 
 namespace sglabo.entities
 {
-    class BattleFieldCell
+    class BattleCubeCell
     {
         public GridPosition gPos;
-        ScreenPosition sPos;
+        public ScreenPosition sPos;
         int height;
         bool canMove = true;
 
@@ -27,7 +27,7 @@ namespace sglabo.entities
 
         int pcCode;
 
-        public BattleFieldCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
+        public BattleCubeCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
         {
             this.gPos = gPos;
             this.sPos = sPos;
@@ -68,8 +68,8 @@ namespace sglabo.entities
                     pcCode = color.brown;
 
                     // 要調査: pcCodeが一致しないことがある可能性について
-                    var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
-                    if(pc != null) pc.gPos = this.gPos;
+                    //var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
+                    //if(pc != null) pc.gPos = this.gPos;
                 }
             }
         }

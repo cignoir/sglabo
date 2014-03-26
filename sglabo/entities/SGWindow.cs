@@ -19,7 +19,6 @@ namespace sglabo
     partial class SGWindow
     {
         public static List<SGWindow> sgList = new List<SGWindow>();
-        public static BattleField battleField;
 
         Process proc;
         public IntPtr hWnd;

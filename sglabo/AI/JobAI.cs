@@ -13,13 +13,12 @@ namespace sglabo.AI
     {
         public GridPosition goal = new GridPosition(1, 3);
 
-        public BattleField bf;
         public SGWindow sg;
+        public BattleCube cube;
 
         InputSimulator input = new InputSimulator();
         int globalSleep = 200;
 
-        abstract public void SetGoal();
         abstract public void PlayMove();
         abstract public void PlaySkill();
 
@@ -28,17 +27,16 @@ namespace sglabo.AI
 
         }
 
-        public JobAI(BattleField bf, SGWindow sg)
+        public JobAI(SGWindow sg, BattleCube cube)
         {
-            this.bf = bf;
             this.sg = sg;
+            this.cube = cube;
         }
 
-        public void UpdateSituation(BattleField bf, SGWindow sg)
+        public void UpdateSituation(SGWindow sg, BattleCube cube)
         {
-            //sg.ai.SetGoal();
-            this.bf = bf;
             this.sg = sg;
+            this.cube = cube;
         }
 
         public void Ready()
@@ -153,20 +151,18 @@ namespace sglabo.AI
 
         public bool ShouldStack(Direction d)
         {
+            //FIXME 向き考慮
             bool shouldStack = false;
             switch(d)
             {
                 case Direction.D8:
-                    shouldStack = bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC;
+                    shouldStack = cube.Exists8() && !cube.Exists88() && !cube.Exists888();
                     break;
                 case Direction.D6:
-                    shouldStack = bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC;
+                    shouldStack = cube.Exists6(); 
                     break;
                 case Direction.D4:
-                    shouldStack = bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x -3, sg.gPos.y).existsNPC;
-                    break;
-                case Direction.D2:
-                    shouldStack = bf.Cell(sg.gPos.x, sg.gPos.y + 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y + 3).existsNPC;
+                    shouldStack = cube.Exists4();
                     break;
                 default:
                     break;
@@ -254,82 +250,5 @@ namespace sglabo.AI
             Enter();
             Enter();
         }
-
-        #region ExistsXXX
-        public bool Exists8()
-        {
-            return bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 1).existsPC;
-        }
-
-        public bool Exists88()
-        {
-            return bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 2).existsPC;
-        }
-
-        public bool Exists888()
-        {
-            return bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 3).existsPC;
-        }
-
-        public bool Exists8888()
-        {
-            return bf.Cell(sg.gPos.x, sg.gPos.y - 4).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 4).existsPC;
-        }
-
-        public bool Exists88888()
-        {
-            return bf.Cell(sg.gPos.x, sg.gPos.y - 5).existsNPC && !bf.Cell(sg.gPos.x, sg.gPos.y - 5).existsPC;
-        }
-
-        public bool Exists6()
-        {
-            return bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists66()
-        {
-            return bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 2, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists666()
-        {
-            return bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x + 3, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists4()
-        {
-            return bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists44()
-        {
-            return bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 2, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists444()
-        {
-            return bf.Cell(sg.gPos.x - 3, sg.gPos.y).existsNPC && !bf.Cell(sg.gPos.x - 3, sg.gPos.y).existsPC;
-        }
-
-        public bool Exists86()
-        {
-            return bf.Cell(sg.gPos.x + 1, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y - 1).existsPC;
-        }
-
-        public bool Exists886()
-        {
-            return bf.Cell(sg.gPos.x + 1, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x + 1, sg.gPos.y - 2).existsPC;
-        }
-
-        public bool Exists84()
-        {
-            return bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 1).existsPC;
-        }
-
-        public bool Exists884()
-        {
-            return bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsNPC && !bf.Cell(sg.gPos.x - 1, sg.gPos.y - 2).existsPC;
-        }
-        #endregion
     }
 }
