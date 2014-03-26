@@ -22,7 +22,7 @@ namespace sglabo.AI
         abstract public void PlayMove();
         abstract public void PlaySkill();
 
-        Direction direction = Direction.D8;
+        protected Direction direction = Direction.D8;
 
         public JobAI()
         {

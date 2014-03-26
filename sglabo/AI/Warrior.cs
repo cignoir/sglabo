@@ -80,7 +80,7 @@ namespace sglabo.AI
                 return;
             }
 
-            if(sg.ap >= 12 && ((cube.Exists8() && cube.Exists86()) || (cube.Exists8() && cube.Exists84()) || (cube.Exists84() && cube.Exists86())))
+            if(direction == Direction.D8 && sg.ap >= 12 && ((cube.Exists8() && cube.Exists86()) || (cube.Exists8() && cube.Exists84()) || (cube.Exists84() && cube.Exists86())))
             {
                 sg.ap -= 12;
                 SelectSkill(SkillOrder.S4);
@@ -96,7 +96,13 @@ namespace sglabo.AI
                 return;
             }
 
-            if(sg.ap >= 6 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
+            if(sg.ap >= 6
+                && (
+                    (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
+                    || (direction == Direction.D6 && (cube.Exists8() || cube.Exists6() || cube.Exists86() || cube.Exists66()))
+                    || (direction == Direction.D4 && (cube.Exists8() || cube.Exists4() || cube.Exists84() || cube.Exists44()))
+                    )
+              )
             {
                 sg.ap -= 6;
                 SelectSkill(SkillOrder.S1);

@@ -62,27 +62,17 @@ namespace sglabo.AI
 
         override public void PlaySkill()
         {
-            // 1. バーチカルウェブ 
-            // 2. サイドウェブ
-            // 3. スティンガー
-            // 4. ストラッシュ
-            // 5. クレセント
-            // 6. リボルバースティング
+            // 1. ダイアゴナル 
+            // 2. ライトニングディルク
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
-            if(sg.ap >= 8 && ((cube.Exists8() && cube.Exists88()) || (cube.Exists88() && cube.Exists888()) || (cube.Exists8() && cube.Exists888())))
+            if(sg.ap >= 4 
+                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
+              )
             {
-                sg.ap -= 8;
-                SelectSkill(SkillOrder.S3);
-                Go();
-                return;
-            }
-
-            if(sg.ap >= 12 && ((cube.Exists8() && cube.Exists86()) || (cube.Exists8() && cube.Exists84()) || (cube.Exists84() && cube.Exists86())))
-            {
-                sg.ap -= 12;
-                SelectSkill(SkillOrder.S4);
+                sg.ap -= 6;
+                SelectSkill(SkillOrder.S1);
                 Go();
                 return;
             }
@@ -95,13 +85,6 @@ namespace sglabo.AI
                 return;
             }
 
-            if(sg.ap >= 6 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
-            {
-                sg.ap -= 6;
-                SelectSkill(SkillOrder.S1);
-                Go();
-                return;
-            }
 
             Go();
         }
