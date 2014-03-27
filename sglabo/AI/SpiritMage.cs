@@ -68,30 +68,30 @@ namespace sglabo.AI
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
-            int cnt = 0;
-            cnt += cube.Exists8() ? 1 : 0;
-            cnt += cube.Exists88() ? 1 : 0;
-            cnt += cube.Exists888() ? 1 : 0;
-            cnt += cube.Exists886() ? 1 : 0;
-            cnt += cube.Exists884() ? 1 : 0;
-            if(sg.ap >= 3 && direction == Direction.D8 && cnt >= 2)
-            {
-                sg.ap -= 3;
-                SelectSkill(SkillOrder.S1);
-                SelectTarget(Direction.D8, Direction.D8);
-                Go();
-                return;
-            }
+            //int cnt = 0;
+            //cnt += cube.Exists8() ? 1 : 0;
+            //cnt += cube.Exists88() ? 1 : 0;
+            //cnt += cube.Exists888() ? 1 : 0;
+            //cnt += cube.Exists886() ? 1 : 0;
+            //cnt += cube.Exists884() ? 1 : 0;
+            //if(sg.ap >= 3 && direction == Direction.D8 && cnt >= 2)
+            //{
+            //    sg.ap -= 3;
+            //    SelectSkill(SkillOrder.S1);
+            //    SelectTarget(Direction.D8, Direction.D8);
+            //    Go();
+            //    return;
+            //}
 
-            if(sg.ap >= 6 && direction == Direction.D8
-                && (cube.Exists88() || cube.Exists888() || cube.Exists8888() || cube.Exists8886() || cube.Exists8884() || cube.Exists886() || cube.Exists884() || cube.Exists86() || cube.Exists84()))
-            {
-                sg.ap -= 6;
-                SelectSkill(SkillOrder.S2);
-                SelectTarget();
-                Go();
-                return;
-            }
+            //if(sg.ap >= 6 && direction == Direction.D8
+            //    && (cube.Exists88() || cube.Exists888() || cube.Exists8888() || cube.Exists8886() || cube.Exists8884() || cube.Exists886() || cube.Exists884() || cube.Exists86() || cube.Exists84()))
+            //{
+            //    sg.ap -= 6;
+            //    SelectSkill(SkillOrder.S2);
+            //    SelectTarget();
+            //    Go();
+            //    return;
+            //}
 
             Go();
         }

@@ -14,8 +14,8 @@ namespace sglabo
         public const int MOD_SHIFT = 0x0004;
         public const int MOD_WIN = 0x0008;
         public const int WM_HOTKEY = 0x0312;
-        public const int WM_HOTKEY_STOP = 0x0016;
-        public const int WM_HOTKEY_START = 0x0017;
+        public const int WM_HOTKEY_STOP = 0x0001;
+        public const int WM_HOTKEY_START = 0x0002;
         public const int WM_HOTKEY1 = 0x0021;
         public const int WM_HOTKEY2 = 0x0022;
         public const int WM_HOTKEY3 = 0x0023;

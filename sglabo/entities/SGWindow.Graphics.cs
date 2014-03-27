@@ -78,6 +78,7 @@ namespace sglabo
             int pinkCount = 0;
             int greenCount = 0;
             int redCount = 0;
+            int enemyPinkCount = 0;
 
             int pixsize = bmp.Width * bmp.Height * 4;
             for(int i = 0; i < pixsize; i += 4)
@@ -92,7 +93,8 @@ namespace sglabo
                 if(r == 102 && g == 34 && b == 0) brownCount++;
                 if(r == 255 && g == 120 && b == 255) pinkCount++;
                 if(r == 102 && g == 221 && b == 204) greenCount++;
-                if(r == 255 && g == 0 && b == 0) redCount++;
+                if(r == 255 && g == 0 && b == 0) redCount++;//245,105,80
+                if(r == 245 && g == 105 && b == 80) enemyPinkCount++;
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
@@ -101,7 +103,7 @@ namespace sglabo
                 bmp.Dispose();
             }
 
-            return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount);
+            return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount, enemyPinkCount);
         }
     }
 }

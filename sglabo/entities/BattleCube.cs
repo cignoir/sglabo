@@ -9,69 +9,72 @@ namespace sglabo.entities
 {
     class BattleCube
     {
-        public ScreenPosition core;
-
-        BattleCubeCell[,,] cells = new BattleCubeCell[5, 7, 5];
+        public ScreenPosition core = new ScreenPosition(400, 320);
+        public BattleCubeCell[,,] cells = new BattleCubeCell[5, 5, 3];
         
         public const int SCAN_RANGE_X_MIN = 0;
         public const int SCAN_RANGE_X_MAX = 4;
 
-        public const int SCAN_RANGE_Y_MIN = 1;
+        public const int SCAN_RANGE_Y_MIN = 0;
         public const int SCAN_RANGE_Y_MAX = 4;
 
-        public const int SCAN_RANGE_Z_MIN = 1;
-        public const int SCAN_RANGE_Z_MAX = 3;
+        public const int SCAN_RANGE_Z_MIN = 0;
+        public const int SCAN_RANGE_Z_MAX = 2;
 
         public const int CORE_X = 2;
         public const int CORE_Y = 4;
-        public const int CORE_Z = 2;
+        public const int CORE_Z = 1;
 
-        public BattleCube(ScreenPosition core)
+        public BattleCube()
         {
-            this.core = core;
-
-            cells = new BattleCubeCell[5, 7, 5];
+            cells = new BattleCubeCell[5, 5, 3];
             for(int x = 0; x < 5; x++)
             {
-                for(int y = 0; y < 7; y++)
+                for(int y = 0; y < 5; y++)
                 {
-                    for(int z = 0; z < 5; z++ )
+                    for(int z = 0; z < 3; z++ )
                     {
                         cells[x, y, z] = new BattleCubeCell(new GridPosition(x, y, z));
                     }
                 }
             }
 
-            cells[0, 4, 2].sPos = new ScreenPosition(core.x - 63 * 2, core.y - 32 * 2);
-            cells[1, 4, 2].sPos = new ScreenPosition(core.x - 63 * 1, core.y - 32 * 1);
-            cells[2, 4, 2].sPos = core;
-            cells[3, 4, 2].sPos = new ScreenPosition(core.x + 63 * 1, core.y + 32 * 1);
-            cells[4, 4, 2].sPos = new ScreenPosition(core.x + 63 * 2, core.y + 32 * 2);
+            cells[0, 0, 1].sPos = new ScreenPosition(466, 141);
+            cells[1, 0, 1].sPos = new ScreenPosition(528, 161);
+            cells[2, 0, 1].sPos = new ScreenPosition(583, 189);
+            cells[3, 0, 1].sPos = new ScreenPosition(648, 209);
+            cells[4, 0, 1].sPos = new ScreenPosition(710, 236);
 
-            for(int y = 3; y >= 0; y--)
-            {
-                for(int x = 0; x < 5; x++)
-                {
-                    cells[x, y, 2].sPos = new ScreenPosition(cells[x, y + 1, 2].sPos.x + 55, cells[x, y + 1, 2].sPos.y - 40);
-                }
-            }
+            cells[0, 1, 1].sPos = new ScreenPosition(426, 166);
+            cells[1, 1, 1].sPos = new ScreenPosition(484, 191);
+            cells[2, 1, 1].sPos = new ScreenPosition(539, 219);
+            cells[3, 1, 1].sPos = new ScreenPosition(604, 242);
+            cells[4, 1, 1].sPos = new ScreenPosition(667, 268);
 
-            for(int y = 5; y <= 6; y++)
-            {
-                for(int x = 0; x < 5; x++)
-                {
-                    cells[x, y, 2].sPos = new ScreenPosition(cells[x, y - 1, 2].sPos.x - 55, cells[x, y - 1, 2].sPos.y + 40);
-                }
-            }
+            cells[0, 2, 1].sPos = new ScreenPosition(377, 200);
+            cells[1, 2, 1].sPos = new ScreenPosition(435, 225);
+            cells[2, 2, 1].sPos = new ScreenPosition(493, 252);
+            cells[3, 2, 1].sPos = new ScreenPosition(557, 278);
+            cells[4, 2, 1].sPos = new ScreenPosition(620, 305);
 
-            for(int x = 0; x < 5; x++)
+            cells[0, 3, 1].sPos = new ScreenPosition(329, 231);
+            cells[1, 3, 1].sPos = new ScreenPosition(389, 259);
+            cells[2, 3, 1].sPos = new ScreenPosition(449, 284);
+            cells[3, 3, 1].sPos = new ScreenPosition(510, 313);
+            cells[4, 3, 1].sPos = new ScreenPosition(574, 341);
+
+            cells[0, 4, 1].sPos = new ScreenPosition(281, 264);
+            cells[1, 4, 1].sPos = new ScreenPosition(340, 291);
+            cells[2, 4, 1].sPos = new ScreenPosition(400, 320);
+            cells[3, 4, 1].sPos = new ScreenPosition(463, 348);
+            cells[4, 4, 1].sPos = new ScreenPosition(526, 377);
+
+            for(int x = 0; x <= 4; x++)
             {
-                for(int y = 0; y < 7; y++)
+                for(int y = 0; y <= 4; y++)
                 {
-                    cells[x, y, 1].sPos = new ScreenPosition(cells[x, y, 2].sPos.x, cells[x, y, 2].sPos.y - 34);
-                    cells[x, y, 0].sPos = new ScreenPosition(cells[x, y, 1].sPos.x, cells[x, y, 1].sPos.y - 34);
-                    cells[x, y, 3].sPos = new ScreenPosition(cells[x, y, 2].sPos.x, cells[x, y, 2].sPos.y + 34);
-                    cells[x, y, 4].sPos = new ScreenPosition(cells[x, y, 3].sPos.x, cells[x, y, 3].sPos.y + 34);
+                    cells[x, y, 0].sPos = new ScreenPosition(cells[x, y, 1].sPos.x, cells[x, y, 1].sPos.y - 30);
+                    cells[x, y, 2].sPos = new ScreenPosition(cells[x, y, 1].sPos.x, cells[x, y, 1].sPos.y + 30);
                 }
             }
         }
@@ -97,15 +100,15 @@ namespace sglabo.entities
 
             result = cells[CORE_X + diffX, CORE_Y + diffY, CORE_Z].existsNPC;
 
-            if(!result)
-            {
-                for(int z = SCAN_RANGE_Z_MIN; z <= SCAN_RANGE_Z_MAX; z++)
-                {
-                    if(z == CORE_Z) continue;
-                    result = cells[CORE_X + diffX, CORE_Y + diffY, z].existsNPC;
-                    if(result) break;
-                }
-            }
+            //if(!result)
+            //{
+            //    for(int z = SCAN_RANGE_Z_MIN; z <= SCAN_RANGE_Z_MAX; z++)
+            //    {
+            //        if(z == CORE_Z) continue;
+            //        result = cells[CORE_X + diffX, CORE_Y + diffY, z].existsNPC;
+            //        if(result) break;
+            //    }
+            //}
 
             return result;
         }

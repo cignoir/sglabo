@@ -14,8 +14,9 @@ namespace sglabo
         public int pink;
         public int green;
         public int red;
+        public int enemyPink;
 
-        public SGColor(int white, int yellow, int brown, int pink, int green, int red)
+        public SGColor(int white, int yellow, int brown, int pink, int green, int red, int enemyPink)
         {
             this.white = white;
             this.yellow = yellow;
@@ -23,6 +24,7 @@ namespace sglabo
             this.pink = pink;
             this.green = green;
             this.red = red;
+            this.enemyPink = enemyPink;
         }
     }
 }

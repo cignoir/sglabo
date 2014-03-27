@@ -44,7 +44,7 @@ namespace sglabo.entities
         public Bitmap CaptureName()
         {
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
-            Rectangle rect = new Rectangle(sPos.x - 50, sPos.y - 6, 100, 12);
+            Rectangle rect = new Rectangle(sPos.x - 12, sPos.y - 12, 24, 24);
             var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
             bmp.Dispose();
             return copy;
@@ -62,11 +62,11 @@ namespace sglabo.entities
             InitDinamicInfo();
 
             var color = DetectColor(CaptureName());
-            if(color.yellow > 100 && color.brown > 100)
+            if(color.yellow > 0 && color.brown > 0 && color.enemyPink > 0)
             {
                 existsNPC = true;
             }
-            else if(color.brown > 100 && color.white > 100 && color.yellow < 30)
+            else if(color.brown > 0 && color.white > 0 && color.yellow < 1)
             {
                 if(SGWindow.sgList.Where(x => x.pcCode == color.brown).Count() > 0)
                 {
@@ -97,6 +97,7 @@ namespace sglabo.entities
             int pinkCount = 0;
             int greenCount = 0;
             int redCount = 0;
+            int enemyPinkCount = 0;
 
             int pixsize = bmp.Width * bmp.Height * 4;
             for(int i = 0; i < pixsize; i += 4)
@@ -112,12 +113,13 @@ namespace sglabo.entities
                 if(r == 255 && g == 120 && b == 255) pinkCount++;
                 if(r == 102 && g == 221 && b == 204) greenCount++;
                 if(r == 255 && g == 0 && b == 0) redCount++;
+                if(r == 245 && g == 105 && b == 80) enemyPinkCount++;
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
             bmp.Dispose();
 
-            return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount);
+            return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount, enemyPinkCount);
         }
     }
 }

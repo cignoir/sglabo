@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -30,6 +31,7 @@ namespace sglabo
             mainPC.Activate();
 
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
+            Thread.Sleep(2000);
             mapCode = DetectMap(area);
         }
 
@@ -59,7 +61,7 @@ namespace sglabo
                             try
                             {
                                 mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                                var cube = new BattleCube(Core());
+                                var cube = new BattleCube();
                                 pc.ai.UpdateSituation(pc, cube); // no scan
 
                                 mainForm.SetStatus(Properties.Resources.NowMoving);
@@ -82,13 +84,29 @@ namespace sglabo
                             pc.Activate();
 
                             mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                            var cube = new BattleCube(Core());
+                            var cube = new BattleCube();
                     
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
+
+                            if(pc.job == Job.精霊 && turn == 2)
+                            {
+                                string dest = "";
+                                for(int x = BattleCube.SCAN_RANGE_X_MIN; x <= BattleCube.SCAN_RANGE_X_MAX; x++)
+                                {
+                                    for(int y = BattleCube.SCAN_RANGE_Y_MIN; y <= BattleCube.SCAN_RANGE_Y_MAX; y++)
+                                    {
+                                        for(int z = BattleCube.SCAN_RANGE_Z_MIN; z <= BattleCube.SCAN_RANGE_Z_MAX; z++)
+                                        {
+                                            var res = pc.ai.cube.cells[x, y, z].existsNPC;
+                                            dest += String.Format("({0},{1},{2})({3},{4})={5}\n", x, y, z, pc.ai.cube.cells[x, y, z].sPos.x, pc.ai.cube.cells[x, y, z].sPos.y, res.ToString());
+                                        }
+                                    }
+                                }
+                                pc.Capture().Save(@"C:\dest.bmp");
+                                File.WriteAllText(@"C:\dest.txt", dest);
+                            }
                             pc.ai.PlaySkill();
-                            
-                            
                         }
                     }
                     Thread.Sleep(1000);
@@ -171,7 +189,7 @@ namespace sglabo
             switch(SGWindow.GetPTSize())
             {
                 case PTSize.LARGE:
-                    core = new ScreenPosition(401, 320);
+                    core = new ScreenPosition(404, 316);
                     break;
                 case PTSize.MEDIUM:
                 case PTSize.SMALL:
