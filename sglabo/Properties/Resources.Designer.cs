@@ -97,57 +97,6 @@ namespace sglabo.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string MAP21448090 {
-            get {
-                return ResourceManager.GetString("MAP21448090", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string MAP5409959 {
-            get {
-                return ResourceManager.GetString("MAP5409959", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   8x3
-        ///0	0	1	484	168	1
-        ///0	1	1	544	193	1
-        ///0	2	0	604	250	1
-        ///1	0	1	439	199	1
-        ///1	1	0	498	257	1
-        ///1	2	0	557	283	1
-        ///2	0	0	391	263	1
-        ///2	1	0	451	290	1
-        ///2	2	0	512	317	1
-        ///3	0	0	341	297	0
-        ///3	1	0	404	325	1
-        ///3	2	0	466	353	0
-        ///4	0	0	295	332	1
-        ///4	1	0	355	360	1
-        ///4	2	0	415	387	1
-        ///5	0	0	244	368	1
-        ///5	1	0	304	395	1
-        ///5	2	0	364	422	1
-        ///6	0	0	191	404	1
-        ///6	1	0	251	431	1
-        ///6	2	0	311	458	1
-        ///7	0	0	136	442	1
-        ///7	1	0	196	470	1
-        ///7	2	0	256	497	1 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string MAP60603230 {
-            get {
-                return ResourceManager.GetString("MAP60603230", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   マップ判別コードを生成してクリップボードにコピーしました に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MapCodeGenerated {

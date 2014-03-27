@@ -129,16 +129,6 @@
   <data name="ItemLot" xml:space="preserve">
     <value>アイテムロット中...</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MAP21448090" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MAP21448090.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="MAP5409959" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MAP5409959.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="MAP60603230" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MAP60603230.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
   <data name="MapCodeGenerated" xml:space="preserve">
     <value>マップ判別コードを生成してクリップボードにコピーしました</value>
   </data>
