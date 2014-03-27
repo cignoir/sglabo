@@ -175,7 +175,7 @@ namespace sglabo
                     break;
                 case PTSize.MEDIUM:
                 case PTSize.SMALL:
-                    core = new ScreenPosition(300, 389);
+                    core = new ScreenPosition(302, 422);
                     break;
                 default:
                     break;
