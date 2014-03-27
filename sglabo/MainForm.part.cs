@@ -278,6 +278,10 @@ namespace sglabo
             if(SGWindow.sgList.Count > 3) codeLabel4.Text = SGWindow.sgList.ElementAt(3).pcCode.ToString();
             if(SGWindow.sgList.Count > 4) codeLabel5.Text = SGWindow.sgList.ElementAt(4).pcCode.ToString();
 
+            if(SGWindow.sgList.Count > 0 && SGWindow.sgList.Where(x => x.IsCenter).Count() == 0){
+                SGWindow.sgList.First().IsCenter = true;
+            }
+
             SGWindow.MainPC().Activate();
         }
 
