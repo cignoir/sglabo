@@ -44,7 +44,7 @@ namespace sglabo.entities
         public Bitmap CaptureName()
         {
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
-            Rectangle rect = new Rectangle(sPos.x - 3 - 50, sPos.y - 10 - 6, 100, 12);
+            Rectangle rect = new Rectangle(sPos.x - 50, sPos.y - 6, 100, 12);
             var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
             bmp.Dispose();
             return copy;
