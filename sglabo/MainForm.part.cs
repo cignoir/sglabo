@@ -40,26 +40,33 @@ namespace sglabo
                         isStarted = false;
                         SetStatus(Properties.Resources.ProcessStopped);
                         break;
-                    case Win32API.WM_HOTKEY1:
-                        this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 228) as List<SGWindow>;
-                        if(tmpList.Count() > 0) tmpList.First().Activate();
-                        break;
-                    case Win32API.WM_HOTKEY2:
-                        this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 197) as List<SGWindow>;
-                        if(tmpList.Count() > 0) tmpList.First().Activate();
-                        break;
-                    case Win32API.WM_HOTKEY3:
-                        this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 216) as List<SGWindow>;
-                        if(tmpList.Count() > 0) tmpList.First().Activate();
-                        break;
-                    case Win32API.WM_HOTKEY4:
-                        this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 190) as List<SGWindow>;
-                        if(tmpList.Count() > 0) tmpList.First().Activate();
-                        break;
-                    case Win32API.WM_HOTKEY5:
-                        this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 182) as List<SGWindow>;
-                        if(tmpList.Count() > 0) tmpList.First().Activate();
-                        break;
+                    //case Win32API.WM_HOTKEY1:
+                    //    this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 228) as List<SGWindow>;
+                    //    if(tmpList.Count() > 0)
+                    //    {
+                    //        tmpList.First().Activate();
+                    //    }
+                    //    else
+                    //    {
+                    //        SGWindow.sgList.First().Activate();
+                    //    }
+                    //    break;
+                    //case Win32API.WM_HOTKEY2:
+                    //    this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 197) as List<SGWindow>;
+                    //    if(tmpList.Count() > 0) tmpList.First().Activate();
+                    //    break;
+                    //case Win32API.WM_HOTKEY3:
+                    //    this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 216) as List<SGWindow>;
+                    //    if(tmpList.Count() > 0) tmpList.First().Activate();
+                    //    break;
+                    //case Win32API.WM_HOTKEY4:
+                    //    this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 190) as List<SGWindow>;
+                    //    if(tmpList.Count() > 0) tmpList.First().Activate();
+                    //    break;
+                    //case Win32API.WM_HOTKEY5:
+                    //    this.tmpList = SGWindow.sgList.Where(x => x.pcCode == 182) as List<SGWindow>;
+                    //    if(tmpList.Count() > 0) tmpList.First().Activate();
+                    //    break;
                     default:
                         break;
                 }
@@ -96,37 +103,37 @@ namespace sglabo
                         sg.job = Job.黒印;
                         sg.ai = new SealMage();
                         sg.IsCenter = false;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY4, Win32API.MOD_ALT, (int)Keys.D4);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY4, Win32API.MOD_ALT, (int)Keys.D4);
                         break;
                     case 197:
                         sg.job = Job.戦士;
                         sg.ai = new Warrior();
                         sg.IsCenter = false;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY2, Win32API.MOD_ALT, (int)Keys.D2);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY2, Win32API.MOD_ALT, (int)Keys.D2);
                         break;
                     case 228:
                         sg.job = Job.精霊;
                         sg.ai = new SpiritMage();
                         sg.IsCenter = true;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY1, Win32API.MOD_ALT, (int)Keys.D1);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY1, Win32API.MOD_ALT, (int)Keys.D1);
                         break;
                     case 216:
                         sg.job = Job.守護;
                         sg.ai = new ProtectionMage();
                         sg.IsCenter = false;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY3, Win32API.MOD_ALT, (int)Keys.D3);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY3, Win32API.MOD_ALT, (int)Keys.D3);
                         break;
                     case 182:
                         sg.job = Job.盗賊;
                         sg.ai = new Thief();
                         sg.IsCenter = false;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY5, Win32API.MOD_ALT, (int)Keys.D5);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY5, Win32API.MOD_ALT, (int)Keys.D5);
                         break;
                     default:
                         sg.job = Job.戦士;
                         sg.ai = new Warrior();
                         sg.IsCenter = false;
-                        Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY1, Win32API.MOD_ALT, (int)Keys.D1);
+                        //Win32API.RegisterHotKey(sg.hWnd, Win32API.WM_HOTKEY1, Win32API.MOD_ALT, (int)Keys.D1);
                         break;
                 }
 
