@@ -57,12 +57,13 @@ namespace sglabo
                         {
                             pc.Activate();
 
-                            mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-
                             try
                             {
+                                mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
                                 var cube = new BattleCube(Core());
-                                pc.ai.UpdateSituation(pc, cube.Scan());
+                                pc.ai.UpdateSituation(pc, cube); // no scan
+
+                                mainForm.SetStatus(Properties.Resources.NowActing);
                                 pc.ai.PlayMove();
                             }
                             catch(Exception e)
