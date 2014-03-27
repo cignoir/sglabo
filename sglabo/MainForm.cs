@@ -130,6 +130,11 @@ namespace sglabo
         {
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_START);
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY1);
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY2);
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY3);
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY4);
+            Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY5);
         }
 
         private void captureWindow_Click(object sender, EventArgs e)
