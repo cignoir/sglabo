@@ -44,8 +44,7 @@ namespace sglabo.AI
                         break;
                     default:
                         // test
-                        Move(Direction.D4);
-                        Move(Direction.D2);
+                        Move(Direction.D5);
                         Look(Direction.D8);
                         break;
                 }
@@ -76,6 +75,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 8;
                 SelectSkill(SkillOrder.S3);
+                SelectTarget();
                 Go();
                 return;
             }
@@ -84,6 +84,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 12;
                 SelectSkill(SkillOrder.S4);
+                SelectTarget();
                 Go();
                 return;
             }
@@ -92,6 +93,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 3;
                 SelectSkill(SkillOrder.S2);
+                SelectTarget();
                 Go();
                 return;
             }
@@ -106,6 +108,7 @@ namespace sglabo.AI
             {
                 sg.ap -= 6;
                 SelectSkill(SkillOrder.S1);
+                SelectTarget();
                 Go();
                 return;
             }

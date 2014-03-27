@@ -280,6 +280,7 @@ namespace sglabo
 
             if(SGWindow.sgList.Count > 0 && SGWindow.sgList.Where(x => x.IsCenter).Count() == 0){
                 SGWindow.sgList.First().IsCenter = true;
+                radioButton1.Checked = true;
             }
 
             SGWindow.MainPC().Activate();
