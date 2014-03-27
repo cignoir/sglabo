@@ -30,10 +30,6 @@ namespace sglabo
         {
             InitializeComponent();
 
-            new InputSimulator().Mouse
-               .MoveMouseTo(0, 0)
-               .MoveMouseBy(401, 320);
-
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_START, Win32API.MOD_ALT, (int)Keys.S);
             Win32API.RegisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP, Win32API.MOD_ALT, (int)Keys.Q);
         }
