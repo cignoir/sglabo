@@ -19,8 +19,8 @@ namespace sglabo.entities
         public const int SCAN_RANGE_Y_MIN = 1;
         public const int SCAN_RANGE_Y_MAX = 4;
 
-        public const int SCAN_RANGE_Z_MIN = 0;
-        public const int SCAN_RANGE_Z_MAX = 4;
+        public const int SCAN_RANGE_Z_MIN = 1;
+        public const int SCAN_RANGE_Z_MAX = 3;
 
         public const int CORE_X = 2;
         public const int CORE_Y = 4;
@@ -37,7 +37,7 @@ namespace sglabo.entities
                 {
                     for(int z = 0; z < 5; z++ )
                     {
-                        cells[x, y, z] = new BattleCubeCell();
+                        cells[x, y, z] = new BattleCubeCell(new GridPosition(x, y, z));
                     }
                 }
             }
@@ -88,6 +88,7 @@ namespace sglabo.entities
                     }
                 }
             }
+
             return this;
         }
 

@@ -27,9 +27,10 @@ namespace sglabo.entities
 
         int pcCode;
 
-        public BattleCubeCell()
+        public BattleCubeCell(GridPosition gPos)
         {
             this.sPos = new ScreenPosition(0, 0);
+            this.gPos = gPos;
         }
 
         public BattleCubeCell(GridPosition gPos, ScreenPosition sPos, int height, bool canMove)
@@ -43,7 +44,7 @@ namespace sglabo.entities
         public Bitmap CaptureName()
         {
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
-            Rectangle rect = new Rectangle(sPos.x - 50, sPos.y - 20, 100, 40);
+            Rectangle rect = new Rectangle(sPos.x - 3 - 50, sPos.y - 10 - 6, 100, 12);
             var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
             bmp.Dispose();
             return copy;

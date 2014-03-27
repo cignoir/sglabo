@@ -50,7 +50,6 @@ namespace sglabo
 
                 if(inBattle)
                 {
-                    mainForm.SetStatus(Properties.Resources.NowMoving);
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
                         if(pc.ai != null)
@@ -63,7 +62,7 @@ namespace sglabo
                                 var cube = new BattleCube(Core());
                                 pc.ai.UpdateSituation(pc, cube); // no scan
 
-                                mainForm.SetStatus(Properties.Resources.NowActing);
+                                mainForm.SetStatus(Properties.Resources.NowMoving);
                                 pc.ai.PlayMove();
                             }
                             catch(Exception e)
@@ -88,6 +87,8 @@ namespace sglabo
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
                             pc.ai.PlaySkill();
+                            
+                            
                         }
                     }
                     Thread.Sleep(1000);
