@@ -122,12 +122,30 @@ namespace sglabo
                 .LeftButtonUp().Sleep(globalSleep);
         }
 
+        public void LeftClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .LeftButtonDown().Sleep(globalSleep * 2)
+                .LeftButtonUp().Sleep(globalSleep);
+        }
+
         public void RightClick()
         {
             Activate();
 
             input.Mouse
-                .RightButtonDown().Sleep(globalSleep)
+                .RightButtonDown().Sleep(globalSleep * 2)
+                .RightButtonUp().Sleep(globalSleep);
+        }
+
+        public void RightClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .RightButtonDown().Sleep(globalSleep * 2)
                 .RightButtonUp().Sleep(globalSleep);
         }
     }

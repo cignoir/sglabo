@@ -26,13 +26,23 @@ namespace sglabo
             windowCount++;
         }
 
+        public void OrganizeItems()
+        {
+            OpenItemWindow();
+            LeftClick(543, 534);
+            CloseItemWindow();
+        }
+
+        public void UseItem(int no = 1)
+        {
+            OpenItemWindow();
+            LeftClick(539, 270);
+            CloseItemWindow();
+        }
+
         public void CloseItemWindow()
         {
-            Activate();
-
-            input.Keyboard
-                .KeyPress(VirtualKeyCode.ESCAPE)
-                .Sleep(globalSleep);
+            OpenItemWindow();
             windowCount--;
         }
 
