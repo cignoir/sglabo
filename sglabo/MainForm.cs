@@ -24,7 +24,7 @@ namespace sglabo
         public static bool isBattleTaskRunning = false;
         public static bool isStarted = false;
         public static Direction fieldMovingDirection = Direction.VERTICAL;
-        public static int movingValue = 100;
+        public static int movingValue = 200;
 
         public Thread fieldThread;
         public Thread battleThread;
@@ -141,6 +141,8 @@ namespace sglabo
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            AbortAllThreads();
+
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_START);
             Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY_STOP);
             //Win32API.UnregisterHotKey(this.Handle, Win32API.WM_HOTKEY1);

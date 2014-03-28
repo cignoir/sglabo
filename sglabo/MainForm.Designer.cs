@@ -729,7 +729,7 @@
             this.movingValueTextBox.Name = "movingValueTextBox";
             this.movingValueTextBox.Size = new System.Drawing.Size(52, 19);
             this.movingValueTextBox.TabIndex = 2;
-            this.movingValueTextBox.Text = "100";
+            this.movingValueTextBox.Text = "200";
             this.movingValueTextBox.TextChanged += new System.EventHandler(this.movingValueTextBox_TextChanged);
             // 
             // MainForm

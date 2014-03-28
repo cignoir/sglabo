@@ -13,7 +13,8 @@ namespace sglabo
     {
         SGWindow mainPC;
         InputSimulator input = new InputSimulator();
-        int movingValue = 100;
+        int movingValue = 200;
+        int intervalMS = 500;
 
         public Field()
         {
@@ -40,24 +41,24 @@ namespace sglabo
 
         public void VerticalMove()
         {
-            mainPC.MoveMouseOnLocalTo(400, 200 - movingValue);
+            mainPC.MoveMouseOnLocalTo(400, 300 - movingValue);
             mainPC.LeftClick();
-            Thread.Sleep(1000);
+            Thread.Sleep(intervalMS);
 
-            mainPC.MoveMouseOnLocalTo(400, 200 + movingValue);
+            mainPC.MoveMouseOnLocalTo(400, 300 + movingValue);
             mainPC.LeftClick();
-            Thread.Sleep(1000);
+            Thread.Sleep(intervalMS);
         }
 
         public void HorizontalMove()
         {
-            mainPC.MoveMouseOnLocalTo(400 + movingValue, 200);
+            mainPC.MoveMouseOnLocalTo(400 + movingValue, 300);
             mainPC.LeftClick();
-            Thread.Sleep(1000);
+            Thread.Sleep(intervalMS);
 
-            mainPC.MoveMouseOnLocalTo(400 - movingValue, 200);
+            mainPC.MoveMouseOnLocalTo(400 - movingValue, 300);
             mainPC.LeftClick();
-            Thread.Sleep(1000);
+            Thread.Sleep(intervalMS);
         }
     }
 }

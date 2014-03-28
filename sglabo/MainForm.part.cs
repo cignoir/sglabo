@@ -315,9 +315,8 @@ namespace sglabo
         {
             if(mapPictureBox.Image != null)
             {
-                var image = mapPictureBox.Image;
+                mapPictureBox.Image.Dispose();
                 mapPictureBox.Image = null;
-                image.Dispose();
             }
         }
     }

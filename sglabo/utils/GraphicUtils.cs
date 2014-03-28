@@ -85,6 +85,8 @@ namespace sglabo
         {
             //アクティブなウィンドウのデバイスコンテキストを取得
             IntPtr hWnd = GetForegroundWindow();
+            if(hWnd == IntPtr.Zero) return null;
+
             IntPtr winDC = GetWindowDC(hWnd);
             //ウィンドウの大きさを取得
             RECT winRect = new RECT();
