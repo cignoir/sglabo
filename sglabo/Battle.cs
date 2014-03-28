@@ -107,6 +107,7 @@ namespace sglabo
             MainForm.isBattleTaskRunning = false;
 
             mainForm.DeleteMapImage();
+            turn = 0;
 
             Thread.Sleep(3000);
         }
@@ -176,7 +177,7 @@ namespace sglabo
                     break;
                 case PTSize.MEDIUM:
                 case PTSize.SMALL:
-                    //core = new ScreenPosition(302, 422);
+                    core = new ScreenPosition(335, 416);
                     break;
                 default:
                     break;
