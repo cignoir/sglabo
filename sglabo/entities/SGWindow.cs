@@ -83,7 +83,7 @@ namespace sglabo
 
         public bool IsWaitingForLot()
         {
-            return DetectColor(CaptureRectangle(new Rectangle(0, 300, 800, 300))).red > 1000;
+            return DetectColor(CaptureRectangle(new Rectangle(65, 477, 200, 20))).red > 100;
         }
 
         public bool IsField()
