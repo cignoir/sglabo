@@ -200,6 +200,9 @@ namespace sglabo.AI
                 case SkillOrder.S6:
                     vk = VirtualKeyCode.VK_6;
                     break;
+                case SkillOrder.S10:
+                    vk = VirtualKeyCode.VK_0;
+                    break;
                 default:
                     vk = VirtualKeyCode.VK_1;
                     break;
