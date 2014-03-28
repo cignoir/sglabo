@@ -68,9 +68,9 @@ namespace sglabo.AI
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
             if(sg.ap >= 4 
-                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists86() || cube.Exists84() || cube.Exists88())
-                    || direction == Direction.D4 && (cube.Exists4() || cube.Exists44() || cube.Exists84())
-                    || direction == Direction.D6 && (cube.Exists6() || cube.Exists66() || cube.Exists86())
+                && (direction == Direction.D8 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88())
+                    || direction == Direction.D4 && (cube.NPC4() || cube.NPC44() || cube.NPC84())
+                    || direction == Direction.D6 && (cube.NPC6() || cube.NPC66() || cube.NPC86())
                    )
                 )
             {
@@ -82,9 +82,9 @@ namespace sglabo.AI
             }
 
             if(sg.ap >= 9 
-                && (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6())
-                    || direction == Direction.D6 && (cube.Exists8() || cube.Exists6())
-                    || direction == Direction.D4 && (cube.Exists8() || cube.Exists4())
+                && (direction == Direction.D8 && (cube.NPC8() || cube.NPC4() || cube.NPC6())
+                    || direction == Direction.D6 && (cube.NPC8() || cube.NPC6())
+                    || direction == Direction.D4 && (cube.NPC8() || cube.NPC4())
                    )
                 )
             {

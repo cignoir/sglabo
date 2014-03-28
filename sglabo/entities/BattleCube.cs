@@ -76,78 +76,78 @@ namespace sglabo.entities
             return this;
         }
 
-        public bool Exists(int diffX, int diffY){
+        public bool ExistsNPC(int diffX, int diffY){
             return cells[CORE_X + diffX, CORE_Y + diffY].existsNPC;
         }
 
-        public bool Exists8()
+        public bool NPC8()
         {
-            return Exists(0, -1);
+            return ExistsNPC(0, -1);
         }
 
-        public bool Exists88()
+        public bool NPC88()
         {
-            return Exists(0, -2);
+            return ExistsNPC(0, -2);
         }
 
-        public bool Exists888()
+        public bool NPC888()
         {
-            return Exists(0, -3);
+            return ExistsNPC(0, -3);
         }
 
-        public bool Exists8888()
+        public bool NPC8888()
         {
-            return Exists(0, -4);
+            return ExistsNPC(0, -4);
         }
 
-        public bool Exists6()
+        public bool NPC6()
         {
-            return Exists(1, 0);
+            return ExistsNPC(1, 0);
         }
 
-        public bool Exists66()
+        public bool NPC66()
         {
-            return Exists(2, 0);
+            return ExistsNPC(2, 0);
         }
 
-        public bool Exists4()
+        public bool NPC4()
         {
-            return Exists(-1, 0);
+            return ExistsNPC(-1, 0);
         }
 
-        public bool Exists44()
+        public bool NPC44()
         {
-            return Exists(-2, 0);
+            return ExistsNPC(-2, 0);
         }
 
-        public bool Exists86()
+        public bool NPC86()
         {
-            return Exists(1, -1);
+            return ExistsNPC(1, -1);
         }
 
-        public bool Exists84()
+        public bool NPC84()
         {
-            return Exists(-1, -1);
+            return ExistsNPC(-1, -1);
         }
 
-        public bool Exists886()
+        public bool NPC886()
         {
-            return Exists(1, -2);
+            return ExistsNPC(1, -2);
         }
 
-        public bool Exists884()
+        public bool NPC884()
         {
-            return Exists(-1, -2);
+            return ExistsNPC(-1, -2);
         }
 
-        public bool Exists8886()
+        public bool NPC8886()
         {
-            return Exists(1, -3);
+            return ExistsNPC(1, -3);
         }
 
         public bool Exists8884()
         {
-            return Exists(-1, -3);
+            return ExistsNPC(-1, -3);
         }
        
     }

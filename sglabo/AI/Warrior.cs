@@ -74,80 +74,108 @@ namespace sglabo.AI
 
             if(direction == Direction.D8)
             {
-                //if(sg.ap >= 8 && ((cube.Exists8() && cube.Exists88()) || (cube.Exists88() && cube.Exists888()) || (cube.Exists8() && cube.Exists888())))
-                //{
-                //    sg.ap -= 8;
-                //    SelectSkill(SkillOrder.S3);
-                //    SelectTarget();
-                //    Go();
-                //    return;
-                //}
-
-                //if(sg.ap >= 12 && ((cube.Exists8() && cube.Exists86()) || (cube.Exists8() && cube.Exists84()) || (cube.Exists84() && cube.Exists86())))
-                //{
-                //    sg.ap -= 12;
-                //    SelectSkill(SkillOrder.S4);
-                //    SelectTarget();
-                //    Go();
-                //    return;
-                //}
-
-                //if(sg.ap >= 6 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
-                //{
-                //    sg.ap -= 6;
-                //    SelectSkill(SkillOrder.S1);
-                //    SelectTarget();
-                //    Go();
-                //    return;
-                //}
-
-                if(sg.ap >= 3 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84()))
+                // スティンガー
+                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88(), cube.NPC888()) >= 2)
                 {
-                    sg.ap -= 3;
-                    var ex8 = cube.Exists8();
-                    var ex4 = cube.Exists4();
-                    var ex6 = cube.Exists6();
-                    var ex86 = cube.Exists86();
-                    var ex84 = cube.Exists84();
-                    SelectSkill(SkillOrder.S2);
-                    SelectTarget();
-                    Go();
-                    return;
-                }
+                    var inputQueue = new LinkedList<Direction>();
+                    if(cube.NPC8()) inputQueue.AddLast(Direction.D8);
+                    if(cube.NPC88()) inputQueue.AddLast(Direction.D8);
+                    if(cube.NPC888()) inputQueue.AddLast(Direction.D8);
 
-
-            }
-            else if(direction == Direction.D4)
-            {
-                if(sg.ap >= 8 && ((cube.Exists8() && cube.Exists88()) || (cube.Exists88() && cube.Exists888()) || (cube.Exists8() && cube.Exists888())))
-                {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S3);
-                    SelectTarget();
+                    SelectTarget(inputQueue);
                     Go();
                     return;
                 }
 
-                if(sg.ap >= 3 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84()))
+                // ストラッシュ
+                if(sg.ap >= 12 && CountTrue(cube.NPC8(), cube.NPC86(), cube.NPC84()) >= 2)
                 {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S2);
+                    sg.ap -= 12;
+                    SelectSkill(SkillOrder.S4);
                     SelectTarget();
                     Go();
                     return;
                 }
 
-                if(sg.ap >= 6
-                    && (
-                        (direction == Direction.D8 && (cube.Exists8() || cube.Exists4() || cube.Exists6() || cube.Exists86() || cube.Exists84() || cube.Exists88()))
-                        || (direction == Direction.D6 && (cube.Exists8() || cube.Exists6() || cube.Exists86() || cube.Exists66()))
-                        || (direction == Direction.D4 && (cube.Exists8() || cube.Exists4() || cube.Exists84() || cube.Exists44()))
-                        )
-                  )
+                // バーチカルウェブ
+                if(sg.ap >= 6 && (cube.NPC8() || cube.NPC4() || cube.NPC6() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
                 {
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S1);
-                    SelectTarget();
+
+                    if(cube.NPC88())        SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86())   SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84())   SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC6())    SelectTarget(Direction.D6);
+                    else if(cube.NPC4())    SelectTarget(Direction.D4);
+                    else if(cube.NPC8())    SelectTarget(Direction.D8);
+                    
+                    Go();
+                    return;
+                }
+
+                // サイドウェブ
+                if(sg.ap >= 3 && (cube.NPC8() || cube.NPC4() || cube.NPC6() || cube.NPC86() || cube.NPC84() || cube.NPC44() || cube.NPC66()))
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC66())        SelectTarget(Direction.D6, Direction.D6);
+                    else if(cube.NPC44())   SelectTarget(Direction.D4, Direction.D4);
+                    else if(cube.NPC86())   SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84())   SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC6())    SelectTarget(Direction.D6);
+                    else if(cube.NPC4())    SelectTarget(Direction.D4);
+                    else if(cube.NPC8())    SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+            }
+            else if(direction == Direction.D4)
+            {
+                // スティンガー
+                if(sg.ap >= 8 && CountTrue(cube.NPC4(), cube.NPC44()) >= 2)
+                {
+                    var inputQueue = new LinkedList<Direction>();
+                    if(cube.NPC4()) inputQueue.AddLast(Direction.D4);
+                    if(cube.NPC44()) inputQueue.AddLast(Direction.D4);
+
+                    sg.ap -= 8;
+                    SelectSkill(SkillOrder.S3);
+                    SelectTarget(inputQueue);
+                    Go();
+                    return;
+                }
+
+                // バーチカルウェブ
+                if(sg.ap >= 6 && (cube.NPC8() || cube.NPC4() || cube.NPC84() || cube.NPC44()))
+                {
+                    sg.ap -= 6;
+                    SelectSkill(SkillOrder.S1);
+
+                    if(cube.NPC44()) SelectTarget(Direction.D4, Direction.D4);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+
+                // サイドウェブ
+                if(sg.ap >= 3 && (cube.NPC8() || cube.NPC4() || cube.NPC84() || cube.NPC88()))
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+
                     Go();
                     return;
                 }

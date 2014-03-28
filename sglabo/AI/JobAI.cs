@@ -119,13 +119,13 @@ namespace sglabo.AI
             switch(d)
             {
                 case Direction.D8:
-                    shouldStack = direction == Direction.D8 && cube.Exists8() && !cube.Exists88() && !cube.Exists888();
+                    shouldStack = direction == Direction.D8 && cube.NPC8() && !cube.NPC88() && !cube.NPC888();
                     break;
                 case Direction.D6:
-                    shouldStack = direction == Direction.D6 && cube.Exists6() && !cube.Exists66();
+                    shouldStack = direction == Direction.D6 && cube.NPC6() && !cube.NPC66();
                     break;
                 case Direction.D4:
-                    shouldStack = direction == Direction.D4 && cube.Exists4() && !cube.Exists44();
+                    shouldStack = direction == Direction.D4 && cube.NPC4() && !cube.NPC44();
                     break;
                 default:
                     break;
@@ -214,12 +214,44 @@ namespace sglabo.AI
 
         public void SelectTarget(params Direction[] inputQueue)
         {
-            foreach(Direction direction in inputQueue){
-                Move(direction, true);
+            if(inputQueue.Length > 0)
+            {
+                Ready();
+
+                foreach(Direction direction in inputQueue)
+                {
+                    Move(direction, true);
+                }
             }
 
             Enter();
             Enter();
+        }
+
+        public void SelectTarget(LinkedList<Direction> inputQueue = null)
+        {
+            if(inputQueue != null)
+            {
+                Ready();
+
+                foreach(Direction direction in inputQueue)
+                {
+                    Move(direction, true);
+                }
+            }
+
+            Enter();
+            Enter();
+        }
+
+        public int CountTrue(params bool[] bools)
+        {
+            int cnt = 0;
+            foreach(bool b in bools)
+            {
+                cnt += b ? 1 : 0;
+            }
+            return cnt;
         }
     }
 }
