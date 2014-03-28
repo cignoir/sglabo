@@ -153,11 +153,11 @@ namespace sglabo.AI
                         return;
                     }
 
-                    if(sg.ap >= 6 && !cube.NPC84())
+                    if(sg.ap >= 6 && !cube.NPC44())
                     {
                         sg.ap -= 6;
                         SelectSkill(Battle.turn < 4 ? SkillOrder.S2 : SkillOrder.S3);
-                        SelectTarget(Direction.D8, Direction.D4);
+                        SelectTarget(Direction.D4, Direction.D4);
                         Go();
                         return;
                     }

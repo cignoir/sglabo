@@ -71,14 +71,14 @@ namespace sglabo.AI
             if(direction == Direction.D8)
             {
                 //// リトルフォース84
-                //if(sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
-                //{
-                //    sg.ap -= 3;
-                //    SelectSkill(SkillOrder.S1);
-                //    SelectTarget(Direction.D8, Direction.D4);
-                //    Go();
-                //    return;
-                //}
+                if(Battle.mapCode == 5409959 && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S1);
+                    SelectTarget(Direction.D8, Direction.D4);
+                    Go();
+                    return;
+                }
                 //// リトルフォース86
                 //if(sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC6(), cube.NPC86(), cube.NPC886(), cube.NPC866()) >= 2)
                 //{
@@ -124,15 +124,15 @@ namespace sglabo.AI
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S2);
 
-                    if(cube.NPC8888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC8888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
                     else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
 
                     Go();
                     return;
