@@ -25,11 +25,14 @@ namespace sglabo
         public static bool isStarted = false;
         public static Direction fieldMovingDirection = Direction.VERTICAL;
         public static int movingValue = 200;
-        public static int battleCount = 0;
+        public static int battleCount = 1;
 
         public Thread fieldThread;
         public Thread battleThread;
         public string areaSelectorText;
+
+        public bool itemOrganized = false;
+        public bool highPotionUsed = false;
 
         public MainForm()
         {
@@ -114,6 +117,9 @@ namespace sglabo
                 if(NoThreadsWorking())
                 {
                     battleCount++;
+                    highPotionUsed = false;
+                    itemOrganized = false;
+
                     battleThread = new Thread(new ThreadStart(new Battle(this).Run));
                     battleThread.IsBackground = false;
                     battleThread.Start();
@@ -123,20 +129,20 @@ namespace sglabo
             {
                 SetStatus(Properties.Resources.Field);
 
-                if(battleCount % 5 == 0)
+                if(!highPotionUsed && battleCount % 10 == 0)
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.戦士 || x.job == Job.盗賊))
                     {
-                        pc.UseItem();
+                        highPotionUsed = pc.UseItem();
                     }
                 }
 
-                if(battleCount % 10 == 0)
+                if(!itemOrganized && battleCount % 10 == 0)
                 {
                     foreach(SGWindow pc in SGWindow.sgList)
                     {
                         // アイテムの整頓
-                        pc.OrganizeItems();
+                        itemOrganized = pc.OrganizeItems();
                     }
                 }
 

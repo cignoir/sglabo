@@ -26,18 +26,20 @@ namespace sglabo
             windowCount++;
         }
 
-        public void OrganizeItems()
+        public bool OrganizeItems()
         {
             OpenItemWindow();
             LeftClick(543, 534);
             CloseItemWindow();
+            return true;
         }
 
-        public void UseItem(int no = 1)
+        public bool UseItem(int no = 1)
         {
             OpenItemWindow();
-            LeftClick(539, 270);
+            LeftDoubleClick(539, 270);
             CloseItemWindow();
+            return true;
         }
 
         public void CloseItemWindow()

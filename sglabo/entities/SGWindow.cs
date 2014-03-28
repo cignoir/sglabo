@@ -118,7 +118,7 @@ namespace sglabo
             Activate();
 
             input.Mouse
-                .LeftButtonDown().Sleep(globalSleep * 2)
+                .LeftButtonDown().Sleep(globalSleep)
                 .LeftButtonUp().Sleep(globalSleep);
         }
 
@@ -127,8 +127,19 @@ namespace sglabo
             MoveMouseOnLocalTo(x, y);
 
             input.Mouse
-                .LeftButtonDown().Sleep(globalSleep * 2)
+                .LeftButtonDown().Sleep(globalSleep)
                 .LeftButtonUp().Sleep(globalSleep);
+        }
+
+        public void LeftDoubleClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .LeftButtonDown().Sleep(50)
+                .LeftButtonUp()
+                .LeftButtonDown().Sleep(50)
+                .LeftButtonUp();
         }
 
         public void RightClick()
@@ -136,7 +147,7 @@ namespace sglabo
             Activate();
 
             input.Mouse
-                .RightButtonDown().Sleep(globalSleep * 2)
+                .RightButtonDown().Sleep(globalSleep)
                 .RightButtonUp().Sleep(globalSleep);
         }
 
@@ -145,7 +156,7 @@ namespace sglabo
             MoveMouseOnLocalTo(x, y);
 
             input.Mouse
-                .RightButtonDown().Sleep(globalSleep * 2)
+                .RightButtonDown().Sleep(globalSleep)
                 .RightButtonUp().Sleep(globalSleep);
         }
     }
