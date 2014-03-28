@@ -74,10 +74,10 @@ namespace sglabo.AI
                     sg.ap -= 4;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    if(cube.NPC8()) SelectTarget(Direction.D8);
                     else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
 
                     Go();
                     return;
@@ -105,9 +105,9 @@ namespace sglabo.AI
                     sg.ap -= 4;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
-                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
                     else if(cube.NPC6()) SelectTarget(Direction.D6);
+                    else if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
 
                     Go();
                     return;
@@ -119,9 +119,8 @@ namespace sglabo.AI
                     sg.ap -= 9;
                     SelectSkill(SkillOrder.S2);
 
-                    if(cube.NPC6()) SelectTarget(Direction.D6);
-                    else if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC6()) SelectTarget(Direction.D6);
 
                     Go();
                     return;

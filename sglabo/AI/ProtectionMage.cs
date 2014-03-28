@@ -62,6 +62,22 @@ namespace sglabo.AI
         {
             if(Battle.turn % 2 == 1)
             {
+                if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
+                {
+                    sg.ap -= 16;
+                    SelectSkill(SkillOrder.S8);
+                    if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                    else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
                 if(sg.ap >= 8)
                 {
                     sg.ap -= 8;
@@ -77,14 +93,14 @@ namespace sglabo.AI
                 {
                     sg.ap -= 16;
                     SelectSkill(SkillOrder.S8);
-                    if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
                     else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                     Go();
                     return;
                 }
