@@ -135,9 +135,29 @@ namespace sglabo.entities
             return ExistsNPC(1, -2);
         }
 
+        public bool NPC8866()
+        {
+            return ExistsNPC(2, -2);
+        }
+
+        public bool NPC8844()
+        {
+            return ExistsNPC(-2, -2);
+        }
+
         public bool NPC884()
         {
             return ExistsNPC(-1, -2);
+        }
+
+        public bool NPC844()
+        {
+            return ExistsNPC(-2, -1);
+        }
+
+        public bool NPC866()
+        {
+            return ExistsNPC(2, -1);
         }
 
         public bool NPC8886()
@@ -145,7 +165,7 @@ namespace sglabo.entities
             return ExistsNPC(1, -3);
         }
 
-        public bool Exists8884()
+        public bool NPC8884()
         {
             return ExistsNPC(-1, -3);
         }
