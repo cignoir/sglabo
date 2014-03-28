@@ -100,22 +100,31 @@ namespace sglabo.AI
             {
                 if(direction == Direction.D8)
                 {
+                    if(sg.ap >= 9 && !cube.NPC884() && !cube.NPC888())
+                    {
+                        sg.ap -= 9;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        Go();
+                        return;
+                    }
+
                     if(Battle.turn % 2 == 1)
                     {
-                        if(sg.ap >= 9 && !cube.NPC888())
-                        {
-                            sg.ap -= 9;
-                            SelectSkill(SkillOrder.S1);
-                            SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                            Go();
-                            return;
-                        }
-
                         if(sg.ap >= 9 && !cube.NPC884())
                         {
                             sg.ap -= 9;
                             SelectSkill(SkillOrder.S1);
                             SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 9 && !cube.NPC888())
+                        {
+                            sg.ap -= 9;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                             Go();
                             return;
                         }
@@ -123,20 +132,21 @@ namespace sglabo.AI
 
                     if(Battle.turn % 2 == 0)
                     {
-                        if(sg.ap >= 9 && !cube.NPC884())
-                        {
-                            sg.ap -= 9;
-                            SelectSkill(SkillOrder.S1);
-                            SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                            Go();
-                            return;
-                        }
 
                         if(sg.ap >= 9 && !cube.NPC888())
                         {
                             sg.ap -= 9;
                             SelectSkill(SkillOrder.S1);
                             SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 9 && !cube.NPC884())
+                        {
+                            sg.ap -= 9;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                             Go();
                             return;
                         }

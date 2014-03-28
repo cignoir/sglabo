@@ -73,7 +73,7 @@ namespace sglabo.AI
             }
             else
             {
-                if(sg.ap >= 16)
+                if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
                 {
                     sg.ap -= 16;
                     SelectSkill(SkillOrder.S8);
@@ -84,8 +84,7 @@ namespace sglabo.AI
                     else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
                     else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                     else if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8844()) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC8866()) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                    else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
                     Go();
                     return;
                 }
