@@ -201,13 +201,13 @@ namespace sglabo.AI
                     vk = VirtualKeyCode.VK_6;
                     break;
                 case SkillOrder.S7:
-                    vk = VirtualKeyCode.VK_6;
+                    vk = VirtualKeyCode.VK_7;
                     break;
                 case SkillOrder.S8:
-                    vk = VirtualKeyCode.VK_6;
+                    vk = VirtualKeyCode.VK_8;
                     break;
                 case SkillOrder.S9:
-                    vk = VirtualKeyCode.VK_6;
+                    vk = VirtualKeyCode.VK_9;
                     break;
                 case SkillOrder.S10:
                     vk = VirtualKeyCode.VK_0;
