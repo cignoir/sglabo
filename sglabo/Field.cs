@@ -43,9 +43,11 @@ namespace sglabo
         {
             mainPC.MoveMouseOnLocalTo(400, 300 - movingValue);
             mainPC.LeftClick();
+            mainPC.LeftClick();
             Thread.Sleep(intervalMS);
 
             mainPC.MoveMouseOnLocalTo(400, 300 + movingValue);
+            mainPC.LeftClick();
             mainPC.LeftClick();
             Thread.Sleep(intervalMS);
         }
@@ -54,9 +56,11 @@ namespace sglabo
         {
             mainPC.MoveMouseOnLocalTo(400 + movingValue, 300);
             mainPC.LeftClick();
+            mainPC.LeftClick();
             Thread.Sleep(intervalMS);
 
             mainPC.MoveMouseOnLocalTo(400 - movingValue, 300);
+            mainPC.LeftClick();
             mainPC.LeftClick();
             Thread.Sleep(intervalMS);
         }
