@@ -66,35 +66,67 @@ namespace sglabo.AI
             // 2. ライトニングディルク
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
-
-            if(sg.ap >= 4 
-                && (direction == Direction.D8 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88())
-                    || direction == Direction.D4 && (cube.NPC4() || cube.NPC44() || cube.NPC84())
-                    || direction == Direction.D6 && (cube.NPC6() || cube.NPC66() || cube.NPC86())
-                   )
-                )
+            if(direction == Direction.D8)
             {
-                sg.ap -= 4;
-                SelectSkill(SkillOrder.S1);
-                SelectTarget();
-                Go();
-                return;
-            }
+                // ダイアゴナル
+                if(sg.ap >= 4 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
+                {
+                    sg.ap -= 4;
+                    SelectSkill(SkillOrder.S1);
 
-            if(sg.ap >= 9 
-                && (direction == Direction.D8 && (cube.NPC8() || cube.NPC4() || cube.NPC6())
-                    || direction == Direction.D6 && (cube.NPC8() || cube.NPC6())
-                    || direction == Direction.D4 && (cube.NPC8() || cube.NPC4())
-                   )
-                )
+                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+
+                // ライトニングディルク
+                if(sg.ap >= 9 && (cube.NPC8() || cube.NPC4() || cube.NPC6()))
+                {
+                    sg.ap -= 9;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC6()) SelectTarget(Direction.D6);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+            }
+            else if(direction == Direction.D6)
             {
-                sg.ap -= 9;
-                SelectSkill(SkillOrder.S2);
-                SelectTarget();
-                Go();
-                return;
-            }
+                // ダイアゴナル
+                if(sg.ap >= 4 && (cube.NPC6() || cube.NPC86() || cube.NPC66()))
+                {
+                    sg.ap -= 4;
+                    SelectSkill(SkillOrder.S1);
 
+                    if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC6()) SelectTarget(Direction.D6);
+
+                    Go();
+                    return;
+                }
+
+                // ライトニングディルク
+                if(sg.ap >= 9 && (cube.NPC8() || cube.NPC4() || cube.NPC6()))
+                {
+                    sg.ap -= 9;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC6()) SelectTarget(Direction.D6);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+            }
 
             Go();
         }
