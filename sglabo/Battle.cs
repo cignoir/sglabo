@@ -106,6 +106,8 @@ namespace sglabo
             mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
 
+            mainForm.DeleteMapImage();
+
             Thread.Sleep(3000);
         }
 

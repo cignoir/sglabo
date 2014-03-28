@@ -297,5 +297,15 @@ namespace sglabo
         {
             mapPictureBox.Image = bmp;
         }
+
+        public void DeleteMapImage()
+        {
+            if(mapPictureBox.Image != null)
+            {
+                var image = mapPictureBox.Image;
+                mapPictureBox.Image = null;
+                image.Dispose();
+            }
+        }
     }
 }
