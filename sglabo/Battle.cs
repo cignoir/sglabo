@@ -43,10 +43,6 @@ namespace sglabo
             {
                 turn++;
 
-                foreach(SGWindow sg in SGWindow.sgList){
-                    sg.ap += 10;
-                }
-
                 mainForm.SetStatus(Properties.Resources.WaitingForMovingPhase);
                 if(turn > 1) LoopWait(loopLimit);
 
@@ -54,22 +50,25 @@ namespace sglabo
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                     {
+                        pc.Activate();
+                        pc.ap += 10;
+
                         if(pc.ai != null)
                         {
-                            pc.Activate();
+                            if(turn == 1) pc.ai.TopView();
 
                             try
                             {
                                 mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
                                 var cube = new BattleCube();
-                                pc.ai.UpdateSituation(pc, cube); // no scan
+                                pc.ai.UpdateSituation(pc, cube);
 
                                 mainForm.SetStatus(Properties.Resources.NowMoving);
                                 pc.ai.PlayMove();
                             }
                             catch(Exception e)
                             {
-                                MessageBox.Show(e.Source + ":" + e.Message + ":" + e.StackTrace);
+                                MessageBox.Show(e.Source + "\n" + e.Message + "\n" + e.StackTrace);
                             }
                         }
                     }
@@ -89,23 +88,6 @@ namespace sglabo
                             mainForm.SetStatus(Properties.Resources.NowActing);
                             pc.ai.UpdateSituation(pc, cube.Scan());
 
-                            if(pc.job == Job.精霊 && turn == 2)
-                            {
-                                string dest = "";
-                                for(int x = BattleCube.SCAN_RANGE_X_MIN; x <= BattleCube.SCAN_RANGE_X_MAX; x++)
-                                {
-                                    for(int y = BattleCube.SCAN_RANGE_Y_MIN; y <= BattleCube.SCAN_RANGE_Y_MAX; y++)
-                                    {
-                                        for(int z = BattleCube.SCAN_RANGE_Z_MIN; z <= BattleCube.SCAN_RANGE_Z_MAX; z++)
-                                        {
-                                            var res = pc.ai.cube.cells[x, y, z].existsNPC;
-                                            dest += String.Format("({0},{1},{2})({3},{4})={5}\n", x, y, z, pc.ai.cube.cells[x, y, z].sPos.x, pc.ai.cube.cells[x, y, z].sPos.y, res.ToString());
-                                        }
-                                    }
-                                }
-                                pc.Capture().Save(@"C:\dest.bmp");
-                                File.WriteAllText(@"C:\dest.txt", dest);
-                            }
                             pc.ai.PlaySkill();
                         }
                     }
@@ -123,7 +105,6 @@ namespace sglabo
             }
             mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
-            JobAI.IsFirstInput = true;
 
             Thread.Sleep(3000);
         }
@@ -193,7 +174,7 @@ namespace sglabo
                     break;
                 case PTSize.MEDIUM:
                 case PTSize.SMALL:
-                    core = new ScreenPosition(302, 422);
+                    //core = new ScreenPosition(302, 422);
                     break;
                 default:
                     break;

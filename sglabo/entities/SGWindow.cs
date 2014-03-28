@@ -30,7 +30,6 @@ namespace sglabo
         public JobAI ai;
         public int ap;
         public bool auto = true;
-        public GridPosition gPos;
 
         long x;
         long y;

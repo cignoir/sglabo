@@ -26,8 +26,6 @@ namespace sglabo.AI
 
         protected Direction direction = Direction.D8;
 
-        public static bool IsFirstInput = true;
-
         public JobAI()
         {
 
@@ -51,7 +49,7 @@ namespace sglabo.AI
             input.Mouse
                 .LeftButtonClick().Sleep(globalSleep)
                 .RightButtonClick().Sleep(globalSleep)
-                .RightButtonClick();
+                .RightButtonClick().Sleep(globalSleep);
 
             Press(VirtualKeyCode.UP);
         }
@@ -79,16 +77,16 @@ namespace sglabo.AI
             switch(direction)
             {
                 case Direction.D8:
-                    vk = VirtualKeyCode.UP;
+                    vk = VirtualKeyCode.DOWN;
                     break;
                 case Direction.D4:
-                    vk = VirtualKeyCode.LEFT;
-                    break;
-                case Direction.D6:
                     vk = VirtualKeyCode.RIGHT;
                     break;
+                case Direction.D6:
+                    vk = VirtualKeyCode.LEFT;
+                    break;
                 case Direction.D2:
-                    vk = VirtualKeyCode.DOWN;
+                    vk = VirtualKeyCode.UP;
                     break;
                 case Direction.D5:
                     vk = VirtualKeyCode.RETURN;
@@ -106,41 +104,6 @@ namespace sglabo.AI
             {
                 Press(VirtualKeyCode.RETURN);
             }
-        }
-
-        public void MoveTo(GridPosition g)
-        {
-            if(g.x < sg.gPos.x)
-            {
-                for(int i = sg.gPos.x; i > g.x; i--)
-                {
-                    Move(Direction.D4);
-                }
-            }
-            else if(g.x > sg.gPos.x)
-            {
-                for(int i = sg.gPos.x; i < g.x; i++)
-                {
-                    Move(Direction.D6);
-                }
-            }
-
-            if(g.y < sg.gPos.y)
-            {
-                for(int i = sg.gPos.y; i > g.y; i--)
-                {
-                    Move(Direction.D8);
-                }
-            }
-            else if(g.y > sg.gPos.y)
-            {
-                for(int i = sg.gPos.y; i < g.y; i++)
-                {
-                    Move(Direction.D2);
-                }
-            }
-
-            Enter();
         }
 
         public void Look(Direction direction)
@@ -197,6 +160,11 @@ namespace sglabo.AI
                 default:
                     break;
             }
+        }
+
+        public void TopView()
+        {
+            Press(VirtualKeyCode.HOME);
         }
 
         public void Enter()

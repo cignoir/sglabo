@@ -25,8 +25,6 @@ namespace sglabo.entities
         public bool sealedCross = false;
         public bool sealedDot = false;
 
-        int pcCode;
-
         public BattleCubeCell(GridPosition gPos)
         {
             this.sPos = new ScreenPosition(0, 0);
@@ -44,43 +42,20 @@ namespace sglabo.entities
         public Bitmap CaptureName()
         {
             Bitmap bmp = GraphicUtils.CaptureActiveWindow();
-            Rectangle rect = new Rectangle(sPos.x - 12, sPos.y - 12, 24, 24);
+            Rectangle rect = new Rectangle(sPos.x - 6, sPos.y - 6, 12, 12);
             var copy = bmp.Clone(rect, PixelFormat.Format32bppArgb);
             bmp.Dispose();
             return copy;
         }
 
-        private void InitDinamicInfo()
-        {
-            existsPC = false;
-            existsNPC = false;
-            pcCode = 0;
-        }
-
         public void Scan()
         {
-            InitDinamicInfo();
-
             var color = DetectColor(CaptureName());
-            if(color.yellow > 0 && color.brown > 0 && color.enemyPink > 0)
-            {
-                existsNPC = true;
-            }
-            else if(color.brown > 0 && color.white > 0 && color.yellow < 1)
-            {
-                if(SGWindow.sgList.Where(x => x.pcCode == color.brown).Count() > 0)
-                {
-                    existsPC = true;
-                    pcCode = color.brown;
-
-                    // 要調査: pcCodeが一致しないことがある可能性について
-                    //var pc = SGWindow.sgList.Where(x => x.pcCode == pcCode).First();
-                    //if(pc != null) pc.gPos = this.gPos;
-                }
-            }
+            existsNPC = color.yellow > 0 && color.brown > 0;
+            existsPC = color.brown > 0 && color.white > 0 && color.yellow == 0;
         }
 
-        public SGColor DetectColor(Bitmap bmp)
+        public SGColor DetectColor(Bitmap bmp, bool shouldBeDispose = true)
         {
             BitmapData bmpdata = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
@@ -117,7 +92,10 @@ namespace sglabo.entities
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
             bmp.UnlockBits(bmpdata);
-            bmp.Dispose();
+            if(shouldBeDispose)
+            {
+                bmp.Dispose();
+            }
 
             return new SGColor(whiteCount, yellowCount, brownCount, pinkCount, greenCount, redCount, enemyPinkCount);
         }

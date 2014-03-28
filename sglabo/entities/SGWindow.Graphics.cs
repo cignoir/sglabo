@@ -93,7 +93,7 @@ namespace sglabo
                 if(r == 102 && g == 34 && b == 0) brownCount++;
                 if(r == 255 && g == 120 && b == 255) pinkCount++;
                 if(r == 102 && g == 221 && b == 204) greenCount++;
-                if(r == 255 && g == 0 && b == 0) redCount++;//245,105,80
+                if(r == 255 && g == 0 && b == 0) redCount++;
                 if(r == 245 && g == 105 && b == 80) enemyPinkCount++;
             }
             Marshal.Copy(ba, 0, bmpdata.Scan0, ba.Length);
