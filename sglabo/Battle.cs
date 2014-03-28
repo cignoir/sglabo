@@ -30,8 +30,12 @@ namespace sglabo
             mainPC = SGWindow.MainPC();
             mainPC.Activate();
 
+            mainPC.RightClick();
+            mainPC.RightClick();
+            mainPC.MoveMouseOnLocalTo(404, 316);
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
             Thread.Sleep(2000);
+            
             mapCode = DetectMap(area);
         }
 

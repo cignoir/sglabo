@@ -219,12 +219,31 @@ namespace sglabo.AI
         {
             if(inputQueue.Length > 0)
             {
-                Ready();
+                int gx = 2;
+                int gy = 4;
 
                 foreach(Direction direction in inputQueue)
                 {
-                    Move(direction, true);
+                    switch(direction)
+                    {
+                        case Direction.D8:
+                            gy--;
+                            break;
+                        case Direction.D6:
+                            gx++;
+                            break;
+                        case Direction.D4:
+                            gx--;
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
+                var sPos = cube.cells[gx, gy].sPos;
+                sg.MoveMouseOnLocalTo(sPos.x, sPos.y);
+                sg.LeftClick();
+                sg.LeftClick();
             }
 
             Enter();

@@ -118,8 +118,17 @@ namespace sglabo
             Activate();
 
             input.Mouse
-                .LeftButtonDown().Sleep(globalSleep)
+                .LeftButtonDown().Sleep(globalSleep * 2)
                 .LeftButtonUp().Sleep(globalSleep);
+        }
+
+        public void RightClick()
+        {
+            Activate();
+
+            input.Mouse
+                .RightButtonDown().Sleep(globalSleep)
+                .RightButtonUp().Sleep(globalSleep);
         }
     }
 }

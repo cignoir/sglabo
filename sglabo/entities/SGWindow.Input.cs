@@ -88,8 +88,8 @@ namespace sglabo
             Activate();
 
             input.Keyboard
-                .KeyDown(VirtualKeyCode.END)
-                .Sleep(globalSleep);
+                .KeyDown(VirtualKeyCode.END).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.END).Sleep(globalSleep);
         }
 
         
@@ -99,7 +99,10 @@ namespace sglabo
             Activate();
 
             input.Keyboard
-                .KeyPress(VirtualKeyCode.RETURN).Sleep(globalSleep);
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
+                .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
     }

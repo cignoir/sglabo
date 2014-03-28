@@ -76,7 +76,7 @@ namespace sglabo.AI
                 if(sg.ap >= 16)
                 {
                     sg.ap -= 16;
-                    SelectSkill(SkillOrder.S10);
+                    SelectSkill(SkillOrder.S8);
                     if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);

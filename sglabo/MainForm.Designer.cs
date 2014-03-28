@@ -83,9 +83,9 @@
             this.codeLabel5 = new System.Windows.Forms.Label();
             this.mapPictureBox = new System.Windows.Forms.PictureBox();
             this.moveGroup = new System.Windows.Forms.GroupBox();
-            this.vMoveButton = new System.Windows.Forms.RadioButton();
-            this.hMoveButton = new System.Windows.Forms.RadioButton();
             this.movingValueTextBox = new System.Windows.Forms.TextBox();
+            this.hMoveButton = new System.Windows.Forms.RadioButton();
+            this.vMoveButton = new System.Windows.Forms.RadioButton();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -698,6 +698,26 @@
             this.moveGroup.TabStop = false;
             this.moveGroup.Text = "フィールド移動";
             // 
+            // movingValueTextBox
+            // 
+            this.movingValueTextBox.Location = new System.Drawing.Point(134, 11);
+            this.movingValueTextBox.Name = "movingValueTextBox";
+            this.movingValueTextBox.Size = new System.Drawing.Size(52, 19);
+            this.movingValueTextBox.TabIndex = 2;
+            this.movingValueTextBox.Text = "260";
+            this.movingValueTextBox.TextChanged += new System.EventHandler(this.movingValueTextBox_TextChanged);
+            // 
+            // hMoveButton
+            // 
+            this.hMoveButton.AutoSize = true;
+            this.hMoveButton.Location = new System.Drawing.Point(67, 12);
+            this.hMoveButton.Name = "hMoveButton";
+            this.hMoveButton.Size = new System.Drawing.Size(47, 16);
+            this.hMoveButton.TabIndex = 1;
+            this.hMoveButton.Text = "水平";
+            this.hMoveButton.UseVisualStyleBackColor = true;
+            this.hMoveButton.CheckedChanged += new System.EventHandler(this.hMoveButton_CheckedChanged);
+            // 
             // vMoveButton
             // 
             this.vMoveButton.AutoSize = true;
@@ -710,27 +730,6 @@
             this.vMoveButton.Text = "垂直";
             this.vMoveButton.UseVisualStyleBackColor = true;
             this.vMoveButton.CheckedChanged += new System.EventHandler(this.vMoveButton_CheckedChanged);
-            // 
-            // hMoveButton
-            // 
-            this.hMoveButton.AutoSize = true;
-            this.hMoveButton.Location = new System.Drawing.Point(67, 12);
-            this.hMoveButton.Name = "hMoveButton";
-            this.hMoveButton.Size = new System.Drawing.Size(47, 16);
-            this.hMoveButton.TabIndex = 1;
-            this.hMoveButton.TabStop = true;
-            this.hMoveButton.Text = "水平";
-            this.hMoveButton.UseVisualStyleBackColor = true;
-            this.hMoveButton.CheckedChanged += new System.EventHandler(this.hMoveButton_CheckedChanged);
-            // 
-            // movingValueTextBox
-            // 
-            this.movingValueTextBox.Location = new System.Drawing.Point(134, 11);
-            this.movingValueTextBox.Name = "movingValueTextBox";
-            this.movingValueTextBox.Size = new System.Drawing.Size(52, 19);
-            this.movingValueTextBox.TabIndex = 2;
-            this.movingValueTextBox.Text = "200";
-            this.movingValueTextBox.TextChanged += new System.EventHandler(this.movingValueTextBox_TextChanged);
             // 
             // MainForm
             // 

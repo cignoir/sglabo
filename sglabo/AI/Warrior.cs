@@ -75,12 +75,11 @@ namespace sglabo.AI
             if(direction == Direction.D8)
             {
                 // スティンガー
-                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88(), cube.NPC888()) >= 2)
+                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
                 {
                     var inputQueue = new LinkedList<Direction>();
                     if(cube.NPC8()) inputQueue.AddLast(Direction.D8);
                     if(cube.NPC88()) inputQueue.AddLast(Direction.D8);
-                    if(cube.NPC888()) inputQueue.AddLast(Direction.D8);
 
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S3);

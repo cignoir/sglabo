@@ -78,6 +78,7 @@ namespace sglabo
             if(fieldThread != null && fieldThread.IsAlive) fieldThread.Abort();
             if(battleThread != null && battleThread.IsAlive) battleThread.Abort();
             if(NoThreadsWorking()) isBattleTaskRunning = false;
+            Battle.turn = 0;
         }
 
         private bool NoThreadsWorking()
