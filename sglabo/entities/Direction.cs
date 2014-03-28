@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace sglabo.entities
 {
-    enum Direction
+    public enum Direction
     {
         NE, NW, SE, SW, D8, D4, D6, D2, D5,
-        DUMMY
+        DUMMY,
+        VERTICAL, HORIZONTAL
     }
 }

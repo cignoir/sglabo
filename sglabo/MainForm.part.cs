@@ -28,15 +28,15 @@ namespace sglabo
 
                         if(!isStarted)
                         {
-                            if(thread != null) thread.Abort();
-                            isBattleTaskRunning = false;
+                            AbortAllThreads();
+
                             isStarted = false;
                             SetStatus(Properties.Resources.ProcessStopped);
                         }
                         break;
                     case Win32API.WM_HOTKEY_STOP:
-                        if(thread != null) thread.Abort();
-                        isBattleTaskRunning = false;
+                        AbortAllThreads();
+
                         isStarted = false;
                         SetStatus(Properties.Resources.ProcessStopped);
                         break;
@@ -71,6 +71,19 @@ namespace sglabo
                         break;
                 }
             }
+        }
+
+        private void AbortAllThreads()
+        {
+            if(fieldThread != null && fieldThread.IsAlive) fieldThread.Abort();
+            if(battleThread != null && battleThread.IsAlive) battleThread.Abort();
+            if(NoThreadsWorking()) isBattleTaskRunning = false;
+        }
+
+        private bool NoThreadsWorking()
+        {
+            return (battleThread == null || (battleThread != null && !battleThread.IsAlive))
+                    && (fieldThread == null || (fieldThread != null && !fieldThread.IsAlive));
         }
 
         public void SetStatus(string message)

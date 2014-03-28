@@ -82,6 +82,10 @@
             this.codeLabel4 = new System.Windows.Forms.Label();
             this.codeLabel5 = new System.Windows.Forms.Label();
             this.mapPictureBox = new System.Windows.Forms.PictureBox();
+            this.moveGroup = new System.Windows.Forms.GroupBox();
+            this.vMoveButton = new System.Windows.Forms.RadioButton();
+            this.hMoveButton = new System.Windows.Forms.RadioButton();
+            this.movingValueTextBox = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,6 +100,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
+            this.moveGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // captureButton
@@ -681,11 +686,58 @@
             this.mapPictureBox.TabIndex = 24;
             this.mapPictureBox.TabStop = false;
             // 
+            // moveGroup
+            // 
+            this.moveGroup.Controls.Add(this.movingValueTextBox);
+            this.moveGroup.Controls.Add(this.hMoveButton);
+            this.moveGroup.Controls.Add(this.vMoveButton);
+            this.moveGroup.Location = new System.Drawing.Point(199, 10);
+            this.moveGroup.Name = "moveGroup";
+            this.moveGroup.Size = new System.Drawing.Size(192, 34);
+            this.moveGroup.TabIndex = 25;
+            this.moveGroup.TabStop = false;
+            this.moveGroup.Text = "フィールド移動";
+            // 
+            // vMoveButton
+            // 
+            this.vMoveButton.AutoSize = true;
+            this.vMoveButton.Checked = true;
+            this.vMoveButton.Location = new System.Drawing.Point(14, 12);
+            this.vMoveButton.Name = "vMoveButton";
+            this.vMoveButton.Size = new System.Drawing.Size(47, 16);
+            this.vMoveButton.TabIndex = 0;
+            this.vMoveButton.TabStop = true;
+            this.vMoveButton.Text = "垂直";
+            this.vMoveButton.UseVisualStyleBackColor = true;
+            this.vMoveButton.CheckedChanged += new System.EventHandler(this.vMoveButton_CheckedChanged);
+            // 
+            // hMoveButton
+            // 
+            this.hMoveButton.AutoSize = true;
+            this.hMoveButton.Location = new System.Drawing.Point(67, 12);
+            this.hMoveButton.Name = "hMoveButton";
+            this.hMoveButton.Size = new System.Drawing.Size(47, 16);
+            this.hMoveButton.TabIndex = 1;
+            this.hMoveButton.TabStop = true;
+            this.hMoveButton.Text = "水平";
+            this.hMoveButton.UseVisualStyleBackColor = true;
+            this.hMoveButton.CheckedChanged += new System.EventHandler(this.hMoveButton_CheckedChanged);
+            // 
+            // movingValueTextBox
+            // 
+            this.movingValueTextBox.Location = new System.Drawing.Point(134, 11);
+            this.movingValueTextBox.Name = "movingValueTextBox";
+            this.movingValueTextBox.Size = new System.Drawing.Size(52, 19);
+            this.movingValueTextBox.TabIndex = 2;
+            this.movingValueTextBox.Text = "100";
+            this.movingValueTextBox.TextChanged += new System.EventHandler(this.movingValueTextBox_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 328);
+            this.Controls.Add(this.moveGroup);
             this.Controls.Add(this.mapPictureBox);
             this.Controls.Add(this.codeLabel5);
             this.Controls.Add(this.codeLabel4);
@@ -733,6 +785,8 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).EndInit();
+            this.moveGroup.ResumeLayout(false);
+            this.moveGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,6 +846,10 @@
         private System.Windows.Forms.Label codeLabel4;
         private System.Windows.Forms.Label codeLabel5;
         private System.Windows.Forms.PictureBox mapPictureBox;
+        private System.Windows.Forms.GroupBox moveGroup;
+        private System.Windows.Forms.RadioButton hMoveButton;
+        private System.Windows.Forms.RadioButton vMoveButton;
+        private System.Windows.Forms.TextBox movingValueTextBox;
     }
 }
 

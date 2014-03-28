@@ -128,6 +128,7 @@
     <Compile Include="entities\ScreenPosition.cs" />
     <Compile Include="AI\Warrior.cs" />
     <Compile Include="entities\SkillOrder.cs" />
+    <Compile Include="Field.cs" />
     <Compile Include="MainForm.part.cs">
       <SubType>Form</SubType>
     </Compile>

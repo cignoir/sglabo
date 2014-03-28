@@ -23,7 +23,11 @@ namespace sglabo
         List<PictureBox> pictureBoxes = new List<PictureBox>();
         public static bool isBattleTaskRunning = false;
         public static bool isStarted = false;
-        public Thread thread;
+        public static Direction fieldMovingDirection = Direction.VERTICAL;
+        public static int movingValue = 100;
+
+        public Thread fieldThread;
+        public Thread battleThread;
         public string areaSelectorText;
 
         public MainForm()
@@ -101,18 +105,27 @@ namespace sglabo
             if(!isBattleTaskRunning && sg.IsWaitingForBattleInput())
             {
                 SetStatus(Properties.Resources.BattleStart);
-                if(thread != null && thread.IsAlive) thread.Abort();
+
+                AbortAllThreads();
 
                 areaSelectorText = areaSelector.Text;
 
-                thread = new Thread(new ThreadStart(new Battle(this).Run));
-                thread.IsBackground = false;
-                thread.Start();
+                if(NoThreadsWorking())
+                {
+                    battleThread = new Thread(new ThreadStart(new Battle(this).Run));
+                    battleThread.IsBackground = false;
+                    battleThread.Start();
+                }
             }
-            else
+            else if(sg.IsField())
             {
-                // フィールド移動
                 SetStatus(Properties.Resources.Field);
+                if(NoThreadsWorking())
+                {
+                    fieldThread = new Thread(new ThreadStart(new Field().Run));
+                    fieldThread.IsBackground = false;
+                    fieldThread.Start();
+                }
             }
         }
 
@@ -335,6 +348,23 @@ namespace sglabo
             }
         }
         #endregion
+
+        private void vMoveButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(vMoveButton.Checked) fieldMovingDirection = Direction.VERTICAL;
+            if(hMoveButton.Checked) fieldMovingDirection = Direction.HORIZONTAL;
+        }
+
+        private void hMoveButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(vMoveButton.Checked) fieldMovingDirection = Direction.VERTICAL;
+            if(hMoveButton.Checked) fieldMovingDirection = Direction.HORIZONTAL;
+        }
+
+        private void movingValueTextBox_TextChanged(object sender, EventArgs e)
+        {
+            movingValue = int.Parse(movingValueTextBox.Text);
+        }
 
     }
 }

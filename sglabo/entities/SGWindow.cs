@@ -109,9 +109,17 @@ namespace sglabo
         public void MoveMouseOnLocalTo(int x, int y)
         {
             GraphicUtils.Activate(Win32API.GetDesktopWindow());
-            var input = new InputSimulator();
             input.Mouse.MoveMouseTo((sPos.x + x) * 65535 / 1920, (sPos.y + y) * 65535 / 1080);
             Activate();
+        }
+
+        public void LeftClick()
+        {
+            Activate();
+
+            input.Mouse
+                .LeftButtonDown().Sleep(globalSleep)
+                .LeftButtonUp().Sleep(globalSleep);
         }
     }
 }
