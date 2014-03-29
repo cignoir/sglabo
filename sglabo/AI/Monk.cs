@@ -22,10 +22,10 @@ namespace sglabo.AI
 
         override public void PlayMove()
         {
-            Ready();
-
             if(Battle.turn == 1)
             {
+                Ready();
+
                 switch(Battle.mapCode)
                 {
                     case 21448090:
@@ -43,18 +43,18 @@ namespace sglabo.AI
                         break;
                     default:
                         // test
-                        Move(Direction.D4);
-                        Move(Direction.D2);
+                        Move(Direction.D5);
+                        //Move(Direction.D2);
                         Look(Direction.D8);
                         break;
                 }
             }
             else
             {
-                if(ShouldStack(Direction.D8))
-                {
-                    Stack(Direction.D8);
-                }
+                //if(ShouldStack(Direction.D8))
+                //{
+                //    Stack(Direction.D8);
+                //}
             }
 
             Go();

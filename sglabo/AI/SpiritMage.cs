@@ -22,10 +22,10 @@ namespace sglabo.AI
 
         override public void PlayMove()
         {
-            Ready();
-
             if(Battle.turn == 1)
             {
+                Ready();
+
                 switch(Battle.mapCode)
                 {
                     case 21448090:
@@ -41,18 +41,18 @@ namespace sglabo.AI
                         break;
                     default:
                         // test
-                        Move(Direction.D4);
-                        Move(Direction.D2);
+                        Move(Direction.D5);
+                        //Move(Direction.D2);
                         Look(Direction.D8);
                         break;
                 }
             }
             else
             {
-                if(ShouldStack(Direction.D8))
-                {
-                    Stack(Direction.D8);
-                }
+                //if(ShouldStack(Direction.D8))
+                //{
+                //    Stack(Direction.D8);
+                //}
             }
 
             Go();
@@ -68,28 +68,28 @@ namespace sglabo.AI
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
-            // リーフブレード888
-            if(sg.ap >= 24 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
-            {
-                sg.ap -= 24;
-                SelectSkill(SkillOrder.S5);
-                SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                Go();
-                return;
-            }
-
-            // アクアサービスボール888
-            if(sg.ap >= 18 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
-            {
-                sg.ap -= 18;
-                SelectSkill(SkillOrder.S4);
-                SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                Go();
-                return;
-            }
-
             if(direction == Direction.D8)
             {
+                // リーフブレード888
+                if(sg.ap >= 24 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
+                {
+                    sg.ap -= 24;
+                    SelectSkill(SkillOrder.S5);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                // アクアサービスボール888
+                if(sg.ap >= 18 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
+                {
+                    sg.ap -= 18;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
                 //// リトルフォース84
                 if(Battle.mapCode == 5409959 && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
                 {
@@ -134,6 +134,24 @@ namespace sglabo.AI
                     else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
                     else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
 
+                    Go();
+                    return;
+                }
+
+                if(sg.ap >= 3 && (cube.NPC888() || cube.NPC88() || cube.NPC8() || cube.NPC886() || cube.NPC884()))
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S1);
+                    SelectTarget(Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                if(Battle.mapCode == 5409959 && sg.ap >= 3 && (cube.NPC84() || cube.NPC884() || cube.NPC844() || cube.NPC8()))
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S1);
+                    SelectTarget(Direction.D8, Direction.D4);
                     Go();
                     return;
                 }
