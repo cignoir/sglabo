@@ -68,6 +68,26 @@ namespace sglabo.AI
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
+            // リーフブレード888
+            if(sg.ap >= 24 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
+            {
+                sg.ap -= 24;
+                SelectSkill(SkillOrder.S5);
+                SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                Go();
+                return;
+            }
+
+            // アクアサービスボール888
+            if(sg.ap >= 18 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
+            {
+                sg.ap -= 18;
+                SelectSkill(SkillOrder.S4);
+                SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                Go();
+                return;
+            }
+
             if(direction == Direction.D8)
             {
                 //// リトルフォース84
@@ -95,26 +115,6 @@ namespace sglabo.AI
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);
                     SelectTarget(Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
-
-                // リーフブレード888
-                if(sg.ap >= 24 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
-                {
-                    sg.ap -= 24;
-                    SelectSkill(SkillOrder.S5);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
-
-                // アクアサービスボール888
-                if(sg.ap >= 18 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
-                {
-                    sg.ap -= 18;
-                    SelectSkill(SkillOrder.S4);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     Go();
                     return;
                 }

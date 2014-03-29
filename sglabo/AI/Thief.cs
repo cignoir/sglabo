@@ -51,7 +51,18 @@ namespace sglabo.AI
             }
             else
             {
-                if(ShouldStack(Direction.D8))
+                if(cube.NPC8())
+                {
+                    Move(Direction.D5);
+                    Look(Direction.D8);
+                }
+                else if(cube.PC66())
+                {
+                    Move(Direction.D8);
+                    Move(Direction.D8);
+                    Look(Direction.D8);
+                }
+                else if(ShouldStack(Direction.D8))
                 {
                     Stack(Direction.D8);
                 }

@@ -75,18 +75,14 @@ namespace sglabo.AI
             if(direction == Direction.D8)
             {
                 // スティンガー
-                //if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
-                //{
-                //    var inputQueue = new LinkedList<Direction>();
-                //    if(cube.NPC8()) inputQueue.AddLast(Direction.D8);
-                //    if(cube.NPC88()) inputQueue.AddLast(Direction.D8);
-
-                //    sg.ap -= 8;
-                //    SelectSkill(SkillOrder.S3);
-                //    SelectTarget(inputQueue);
-                //    Go();
-                //    return;
-                //}
+                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
+                {
+                    sg.ap -= 8;
+                    SelectSkill(SkillOrder.S3);
+                    SelectTarget(Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
 
                 // ストラッシュ
                 if(sg.ap >= 12 && CountTrue(cube.NPC8(), cube.NPC86(), cube.NPC84()) >= 2)
