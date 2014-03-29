@@ -105,11 +105,12 @@ namespace sglabo.AI
                     return;
                 }
 
-                if(sg.ap >= 3 && cube.NPC88())
+                if(sg.ap >= 3 && cube.NPC88() && cube.NPC4())
                 {
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S3);
-                    SelectTarget(Direction.D8, Direction.D8);
+                    if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                     Go();
                     return;
                 }
