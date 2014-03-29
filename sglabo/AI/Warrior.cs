@@ -44,6 +44,7 @@ namespace sglabo.AI
                         break;
                     default:
                         // test
+                        TopView();
                         Move(Direction.D5);
                         //Move(Direction.D2);
                         Look(Direction.D8);
