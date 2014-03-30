@@ -64,7 +64,7 @@ namespace sglabo.AI
             // 1. リトルフォース
             // 2. アクアボール
             // 3. ウィンドエッジ
-            // 4. アクアサービスボール
+            // 4. ロックミサイル
             // 5. リーフブレード
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
@@ -76,16 +76,6 @@ namespace sglabo.AI
                 {
                     sg.ap -= 24;
                     SelectSkill(SkillOrder.S5);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
-
-                // アクアサービスボール888
-                if(sg.ap >= 18 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)
-                {
-                    sg.ap -= 18;
-                    SelectSkill(SkillOrder.S4);
                     SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     Go();
                     return;
@@ -153,6 +143,18 @@ namespace sglabo.AI
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);
                     SelectTarget(Direction.D8, Direction.D4);
+                    Go();
+                    return;
+                }
+
+                if(sg.ap >= 18 && (cube.NPC844() || cube.NPC8844() || cube.NPC866() || cube.NPC8866()))
+                {
+                    sg.ap -= 18;
+                    SelectSkill(SkillOrder.S4);
+                    if(cube.NPC844()) SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                    else if(cube.NPC8844()) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                    else if(cube.NPC866()) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                    else if(cube.NPC8866()) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
                     Go();
                     return;
                 }

@@ -56,6 +56,7 @@ namespace sglabo
                     {
                         pc.Activate();
                         pc.ap += 10;
+                        if(pc.job == Job.盗賊) pc.ap -= 1;
 
                         if(pc.ai != null)
                         {

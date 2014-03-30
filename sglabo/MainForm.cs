@@ -33,6 +33,7 @@ namespace sglabo
 
         public bool itemOrganized = false;
         public bool highPotionUsed = false;
+        public bool kinashiUsed = false;
 
         public MainForm()
         {
@@ -119,6 +120,7 @@ namespace sglabo
                     battleCount++;
                     highPotionUsed = false;
                     itemOrganized = false;
+                    kinashiUsed = false;
 
                     battleThread = new Thread(new ThreadStart(new Battle(this).Run));
                     battleThread.IsBackground = false;
@@ -145,6 +147,15 @@ namespace sglabo
                         itemOrganized = pc.OrganizeItems();
                     }
                 }
+
+                if(!kinashiUsed && battleCount % 20 == 0)
+                {
+                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
+                    {
+                        kinashiUsed = pc.UseItem();
+                    }
+                }
+
 
                 if(NoThreadsWorking())
                 {

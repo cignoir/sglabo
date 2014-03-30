@@ -109,7 +109,7 @@ namespace sglabo
                 var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
                 pictureBox.Image = sg.pcName;
 
-                // FIXME
+                // FIXME pcCodeをenumに
                 var index = int.Parse(pictureBox.Name.Substring(pictureBox.Name.Length - 1, 1));
                 switch(sg.pcCode)
                 {
