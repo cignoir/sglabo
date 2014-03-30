@@ -131,7 +131,7 @@ namespace sglabo
             {
                 SetStatus(Properties.Resources.Field);
 
-                if(!highPotionUsed && battleCount % 6 == 0)
+                if(!highPotionUsed && battleCount % 8 == 0)
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.戦士 || x.job == Job.盗賊))
                     {
