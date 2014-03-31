@@ -32,8 +32,7 @@ namespace sglabo.AI
                         // ナビアA
                         Move(Direction.D8);
                         Move(Direction.D8);
-                        Move(Direction.D8);
-                        Look(Direction.D6);
+                        Look(Direction.D8);
                         break;
                     case 5409959:
                         // ナビアB
@@ -45,7 +44,6 @@ namespace sglabo.AI
                         // test
                         TopView();
                         Move(Direction.D5);
-                        //Move(Direction.D2);
                         Look(Direction.D8);
                         break;
                 }

@@ -32,7 +32,7 @@ namespace sglabo
         public string areaSelectorText;
 
         public bool itemOrganized = false;
-        public bool highPotionUsed = false;
+        //public bool highPotionUsed = false;
         public bool kinashiUsed = false;
 
         public MainForm()
@@ -118,7 +118,7 @@ namespace sglabo
                 if(NoThreadsWorking())
                 {
                     battleCount++;
-                    highPotionUsed = false;
+                    //highPotionUsed = false;
                     itemOrganized = false;
                     kinashiUsed = false;
 
@@ -131,13 +131,13 @@ namespace sglabo
             {
                 SetStatus(Properties.Resources.Field);
 
-                if(!highPotionUsed && battleCount % 8 == 0)
-                {
-                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.戦士 || x.job == Job.盗賊))
-                    {
-                        highPotionUsed = pc.UseItem();
-                    }
-                }
+                //if(!highPotionUsed && battleCount % 8 == 0)
+                //{
+                //    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.戦士 || x.job == Job.盗賊))
+                //    {
+                //        highPotionUsed = pc.UseItem();
+                //    }
+                //}
 
                 if(!itemOrganized && battleCount % 5 == 0)
                 {

@@ -61,25 +61,22 @@ namespace sglabo.AI
 
         override public void PlaySkill()
         {
-            if(Battle.turn % 2 == 1)
-            {
-                if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
-                {
-                    sg.ap -= 16;
-                    SelectSkill(SkillOrder.S8);
-                    if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
+            /*
+             * 1. プチリカバー
+             * 2. リカバー
+             * 3. ハイリカバー
+             * 4. リカバーボール
+             * 5. プチリカバースクエア
+             * 6. リカバースクエア
+             * 7. ガードアセント
+             * 8. メンタルトリート
+             * 9. セントハリケーン
+             * 10. ベアリングシフト
+             */
 
-                if(sg.ap >= 8)
+            if(Battle.mapCode == 21448090)
+            {
+                if(Battle.turn == 1 || Battle.turn == 7)
                 {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S1);
@@ -87,33 +84,94 @@ namespace sglabo.AI
                     Go();
                     return;
                 }
-            }
-            else
-            {
-                if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
+                else if(Battle.turn == 2 || Battle.turn == 3 || Battle.turn == 5)
                 {
-                    sg.ap -= 16;
-                    SelectSkill(SkillOrder.S8);
-                    if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                     Go();
                     return;
                 }
-
-                if(sg.ap >= 3 && cube.NPC88() && cube.NPC4())
+                else if(Battle.turn == 4)
                 {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S3);
-                    if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S6);
+                    SelectTarget(Direction.D8, Direction.D4, Direction.D4);
                     Go();
                     return;
+                }
+                else if(Battle.turn == 6)
+                {
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                    Go();
+                    return;
+                }
+                else if(Battle.turn >= 8)
+                {
+                    if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
+                    {
+                        sg.ap -= 16;
+                        SelectSkill(SkillOrder.S9);
+                        if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+                }
+            }
+            else if(Battle.mapCode == 5409959)
+            {
+                if(Battle.turn == 1 || Battle.turn == 7)
+                {
+                    sg.ap -= 8;
+                    SelectSkill(SkillOrder.S1);
+                    SelectTarget(Direction.D8);
+                    Go();
+                    return;
+                }
+                else if(Battle.turn == 2 || Battle.turn == 3 || Battle.turn == 5)
+                {
+                    Go();
+                    return;
+                }
+                else if(Battle.turn == 4)
+                {
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                    Go();
+                    return;
+                }
+                else if(Battle.turn == 6)
+                {
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                    Go();
+                    return;
+                }
+                else if(Battle.turn >= 8)
+                {
+                    if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
+                    {
+                        sg.ap -= 16;
+                        SelectSkill(SkillOrder.S9);
+                        if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
                 }
             }
 
