@@ -26,6 +26,15 @@ namespace sglabo.AI
 
         protected Direction direction = Direction.D8;
 
+        protected bool seal888 = false;
+        protected bool seal886 = false;
+        protected bool seal884 = false;
+        protected bool seal88 = false;
+        protected bool seal84 = false;
+        protected bool seal86 = false;
+        protected bool seal44 = false;
+        protected bool seal844 = false;
+
         public JobAI()
         {
 
@@ -222,6 +231,23 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+        }
+
+        public void InitSeal()
+        {
+            seal888 = false;
+            seal886 = false;
+            seal884 = false;
+            seal88 = false;
+            seal84 = false;
+            seal86 = false;
+            seal44 = false;
+            seal844 = false;
+        }
+
+        public int SealCost()
+        {
+           return  sg.job == Job.黒印 || sg.job == Job.錬金 ? new List<bool> { seal888, seal886, seal884, seal88, seal84, seal86, seal44, seal844 }.Where(x => x).Count() * 2 : 0;
         }
 
         public void SelectTarget(params Direction[] inputQueue)

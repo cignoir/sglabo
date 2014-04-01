@@ -43,6 +43,7 @@ namespace sglabo
         {
             mainPC.Activate();
 
+
             while(inBattle)
             {
                 turn++;
@@ -56,11 +57,16 @@ namespace sglabo
                     {
                         pc.Activate();
                         pc.ap += 10;
+                        pc.ap -= pc.ai.SealCost();
                         if(pc.job == Job.盗賊) pc.ap -= 1;
 
                         if(pc.ai != null)
                         {
-                            if(turn == 1) pc.ai.TopView();
+                            if(turn == 1)
+                            {
+                                pc.ai.TopView();
+                                if(pc.job == Job.黒印 || pc.job == Job.錬金) pc.ai.InitSeal();
+                            }
 
                             try
                             {
