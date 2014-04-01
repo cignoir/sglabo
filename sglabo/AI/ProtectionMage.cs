@@ -69,9 +69,7 @@ namespace sglabo.AI
              * 5. プチリカバースクエア
              * 6. リカバースクエア
              * 7. ガードアセント
-             * 8. メンタルトリート
-             * 9. セントハリケーン
-             * 10. ベアリングシフト
+             * 8. セントハリケーン
              */
 
             if(Battle.mapCode == 21448090)
@@ -110,7 +108,7 @@ namespace sglabo.AI
                     if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
                     {
                         sg.ap -= 16;
-                        SelectSkill(SkillOrder.S9);
+                        SelectSkill(SkillOrder.S8);
                         if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
@@ -160,7 +158,7 @@ namespace sglabo.AI
                     if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
                     {
                         sg.ap -= 16;
-                        SelectSkill(SkillOrder.S9);
+                        SelectSkill(SkillOrder.S8);
                         if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);

@@ -247,7 +247,9 @@ namespace sglabo.AI
 
         public int SealCost()
         {
-           return  sg.job == Job.黒印 || sg.job == Job.錬金 ? new List<bool> { seal888, seal886, seal884, seal88, seal84, seal86, seal44, seal844 }.Where(x => x).Count() * 2 : 0;
+            var sealedList = new List<bool> { seal888, seal886, seal884, seal88, seal84, seal86, seal44, seal844 }.Where(x => x);
+            var sealedCount = sealedList != null ? sealedList.Count() : 0;
+            return sg != null && (sg.job == Job.黒印 || sg.job == Job.錬金) ? sealedCount * 2 : 0;
         }
 
         public void SelectTarget(params Direction[] inputQueue)

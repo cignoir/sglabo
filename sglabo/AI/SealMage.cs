@@ -71,6 +71,13 @@ namespace sglabo.AI
             if(cube.NPC84()) seal84 = false;
             if(cube.NPC44()) seal44 = false;
 
+            if(!cube.PC8() && !cube.PC4())
+            {
+                // イレギュラー回避
+                Go();
+                return;
+            }
+
 
             if(Battle.turn == 2)
             {

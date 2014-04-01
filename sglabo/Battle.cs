@@ -57,11 +57,18 @@ namespace sglabo
                     {
                         pc.Activate();
                         pc.ap += 10;
-                        pc.ap -= pc.ai.SealCost();
                         if(pc.job == Job.盗賊) pc.ap -= 1;
 
                         if(pc.ai != null)
                         {
+                            try
+                            {
+                                pc.ap -= pc.ai.SealCost();
+                            } catch(Exception e)
+                            {
+                                MessageBox.Show(e.Message + "\n" + e.StackTrace);
+                            }
+
                             if(turn == 1)
                             {
                                 pc.ai.TopView();
