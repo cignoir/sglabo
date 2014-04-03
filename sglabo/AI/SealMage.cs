@@ -87,7 +87,7 @@ namespace sglabo.AI
                     {
                         sg.ap -= 6;
                         seal88 = true;
-                        SelectSkill(Battle.turn < 4 ? SkillOrder.S2 : SkillOrder.S3);
+                        SelectSkill(SkillOrder.S2);
                         SelectTarget(Direction.D8, Direction.D8);
                         Go();
                         return;
@@ -97,7 +97,7 @@ namespace sglabo.AI
                     {
                         sg.ap -= 6;
                         seal84 = true;
-                        SelectSkill(Battle.turn < 4 ? SkillOrder.S2 : SkillOrder.S3);
+                        SelectSkill(SkillOrder.S2);
                         SelectTarget(Direction.D8, Direction.D4);
                         Go();
                         return;
@@ -109,7 +109,7 @@ namespace sglabo.AI
                     {
                         sg.ap -= 6;
                         seal44 = true;
-                        SelectSkill(Battle.turn < 4 ? SkillOrder.S2 : SkillOrder.S3);
+                        SelectSkill(SkillOrder.S2);
                         SelectTarget(Direction.D4, Direction.D4);
                         Go();
                         return;
@@ -157,7 +157,7 @@ namespace sglabo.AI
                     {
                         sg.ap -= 6;
                         seal44 = true;
-                        SelectSkill(Battle.turn < 4 ? SkillOrder.S2 : SkillOrder.S3);
+                        SelectSkill(SkillOrder.S2);
                         SelectTarget(Direction.D4, Direction.D4);
                         Go();
                         return;
