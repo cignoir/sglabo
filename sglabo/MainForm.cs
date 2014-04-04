@@ -45,30 +45,32 @@ namespace sglabo
 
         private void captureButton_Click(object sender, EventArgs e)
         {
-            if(SGWindow.sgList.Count == 0) return;
+            try
+            {
+                if(SGWindow.sgList.Count == 0) return;
  
-            var sg = SGWindow.MainPC();
-            sg.Activate();
+                var sg = SGWindow.MainPC();
+                sg.Activate();
 
-            if(textBox1.Text.Length != 0)
-            {
-                var rectInfo = textBox1.Text.Split(',');
-                int x = int.Parse(rectInfo[0]);
-                int y = int.Parse(rectInfo[1]);
-                int width = int.Parse(rectInfo[2]);
-                int height = int.Parse(rectInfo[3]);
+                if(textBox1.Text.Length != 0)
+                {
+                    var rectInfo = textBox1.Text.Split(',');
+                    int x = int.Parse(rectInfo[0]);
+                    int y = int.Parse(rectInfo[1]);
+                    int width = int.Parse(rectInfo[2]);
+                    int height = int.Parse(rectInfo[3]);
 
-                var rect = new Rectangle(x, y, width, height);
-                var bmp = sg.CaptureRectangle(rect);
-                var code = GraphicUtils.GenerateUniqueCode(bmp).ToString();
-                bmp.Save(@"C:\" + code + ".bmp");
-                statusLabel.Text = Properties.Resources.MapCodeGenerated + ":" + code;
-                Clipboard.SetDataObject(code);
+                    var rect = new Rectangle(x, y, width, height);
+                    var bmp = sg.CaptureRectangle(rect);
+                    var code = GraphicUtils.GenerateUniqueCode(bmp.Clone() as Bitmap).ToString();
+                    bmp.Save(String.Format(@"C:\{0}.bmp", code));
+                    statusLabel.Text = Properties.Resources.MapCodeGenerated + ":" + code;
+                    Clipboard.SetDataObject(code);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                sg.CapturePCNameFromStatus();
-                sg.IsWaitingForLot();
+                MessageBox.Show(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.Source);
             }
         }
 
