@@ -39,6 +39,24 @@ namespace sglabo.AI
                         Move(Direction.D8);
                         Look(Direction.D8);
                         break;
+                    case 9346174: // グランドロンA
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, false);
+                        Look(Direction.D8);
+                        break;
+                    case 266499533: // グランドロンB
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, false);
+                        Look(Direction.D8);
+                        break;
+                    case 209593538: // グランドロンC
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, false);
+                        Look(Direction.D8);
+                        break;
                     default:
                         // test
                         TopView();

@@ -39,11 +39,25 @@ namespace sglabo.AI
                         Move(Direction.D8);
                         Look(Direction.D8);
                         break;
+                    case 9346174: // グランドロンA
+                        Move(Direction.D4);
+                        Move(Direction.D8);
+                        Look(Direction.D8);
+                        break;
+                    case 266499533: // グランドロンB
+                        Move(Direction.D4);
+                        Move(Direction.D8);
+                        Look(Direction.D8);
+                        break;
+                    case 209593538: // グランドロンC
+                        Move(Direction.D4);
+                        Move(Direction.D8);
+                        Look(Direction.D8);
+                        break;
                     default:
                         // test
                         TopView();
                         Move(Direction.D5);
-                        //Move(Direction.D2);
                         Look(Direction.D8);
                         break;
                 }
@@ -171,6 +185,10 @@ namespace sglabo.AI
                         return;
                     }
                 }
+            }
+            else if(Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538)
+            {
+
             }
 
             Go();

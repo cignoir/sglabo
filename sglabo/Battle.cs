@@ -172,6 +172,14 @@ namespace sglabo
                         case PTSize.SMALL: break;
                     }
                     break;
+                case Area.グランドロン :
+                    switch(ptSize)
+                    {
+                        case PTSize.LARGE: bmp = sg.CaptureRectangle(new Rectangle(573, 248, 40, 40)); break;
+                        case PTSize.MEDIUM: break;
+                        case PTSize.SMALL: break;
+                    }
+                    break;
                 default:
                     break;
             }

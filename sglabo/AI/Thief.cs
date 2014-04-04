@@ -40,6 +40,25 @@ namespace sglabo.AI
                         Move(Direction.D8);
                         Look(Direction.D8);
                         break;
+                    case 9346174: // グランドロンA
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Look(Direction.D8);
+                        break;
+                    case 266499533: // グランドロンB
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, false);
+                        Look(Direction.D8);
+                        break;
+                    case 209593538: // グランドロンC
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8);
+                        Move(Direction.D8, false);
+                        Look(Direction.D8);
+                        break;
                     default:
                         // test
                         TopView();
@@ -78,7 +97,7 @@ namespace sglabo.AI
             // 2. ライトニングディルク
 
             /* 順番を組み替えやすいように、あえて else if を使っていない */
-            if(direction == Direction.D8)
+            if(Battle.mapCode == 21448090 || Battle.mapCode == 5409959)
             {
                 // ダイアゴナル
                 if(sg.ap >= 4 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
@@ -109,17 +128,18 @@ namespace sglabo.AI
                     return;
                 }
             }
-            else if(direction == Direction.D6)
+            else if(Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538)
             {
                 // ダイアゴナル
-                if(sg.ap >= 4 && (cube.NPC6() || cube.NPC86() || cube.NPC66()))
+                if(sg.ap >= 4 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
                 {
                     sg.ap -= 4;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC6()) SelectTarget(Direction.D6);
-                    else if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
+                    if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
 
                     Go();
                     return;
@@ -131,8 +151,9 @@ namespace sglabo.AI
                     sg.ap -= 9;
                     SelectSkill(SkillOrder.S2);
 
-                    if(cube.NPC8()) SelectTarget(Direction.D8);
-                    else if(cube.NPC6()) SelectTarget(Direction.D6);
+                    if(cube.NPC6()) SelectTarget(Direction.D6);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
 
                     Go();
                     return;

@@ -9,7 +9,8 @@ namespace sglabo.entities
     enum Area
     {
         ルデンヌ大森林, ナビア北限地帯, シュロ陸峡,
-        イレネイド山脈
+        イレネイド山脈,
+        グランドロン
     }
 
     class AreaConverter
