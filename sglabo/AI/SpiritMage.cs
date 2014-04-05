@@ -70,7 +70,7 @@ namespace sglabo.AI
             {
                 if(Battle.IsGrandron() && ShouldStack(Direction.D8))
                 {
-                    Ready();
+                    Ready(false);
                     Stack(Direction.D8);
                 }
             }
@@ -110,7 +110,7 @@ namespace sglabo.AI
                 }
 
                 //// リトルフォース84
-                if(Battle.mapCode == 5409959 && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
+                if((Battle.mapCode == 5409959 || Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
                 {
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);
@@ -134,6 +134,17 @@ namespace sglabo.AI
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);
                     SelectTarget(Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                if(sg.ap >= 18 && (Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && (cube.NPC8888() || cube.NPC88884() || cube.NPC88886()))
+                {
+                    sg.ap -= 18;
+                    SelectSkill(SkillOrder.S6);
+                    if(cube.NPC8888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC88886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D6);
                     Go();
                     return;
                 }

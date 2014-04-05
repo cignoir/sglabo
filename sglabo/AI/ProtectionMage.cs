@@ -186,20 +186,20 @@ namespace sglabo.AI
             }
             else if(Battle.IsGrandron())
             {
-                if(Battle.turn % 6 == 0)
+                if(Battle.turn % 4 == 0)
                 {
                     sg.ap -= 26;
-                    SelectSkill(SkillOrder.S4);
+                    SelectSkill(SkillOrder.S5);
                     SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     Go();
                     return;
                 }
 
-                if(Battle.turn % 3 == 0)
+                if(Battle.turn % 2 == 0)
                 {
                     sg.ap -= 26;
-                    SelectSkill(SkillOrder.S6);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                    SelectSkill(SkillOrder.S5);
+                    SelectTarget(Direction.D8, Direction.D4, Direction.D4);
                     Go();
                     return;
                 }

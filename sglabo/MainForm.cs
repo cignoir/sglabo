@@ -412,5 +412,10 @@ namespace sglabo
 
         }
 
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            manualMove = checkBox6.Checked;
+        }
+
     }
 }

@@ -54,19 +54,20 @@ namespace sglabo.AI
             this.cube = cube;
         }
 
-        public void Ready()
+        public void Ready(bool withKeyboardInput = true)
         {
-            Enter();
-            ESC();
-            ESC();
-
             sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
                 .LeftButtonClick().Sleep(globalSleep)
                 .RightButtonClick().Sleep(globalSleep)
                 .RightButtonClick().Sleep(globalSleep);
 
-            Press(VirtualKeyCode.UP);
+            if(withKeyboardInput)
+            {
+                input.Keyboard
+                    .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep).Sleep(globalSleep)
+                    .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
+            }
         }
 
         public void Press(VirtualKeyCode vk)
@@ -255,7 +256,7 @@ namespace sglabo.AI
 
         public int SealCost()
         {
-            var sealedList = new List<bool> { seal888, seal886, seal884, seal88, seal84, seal86, seal44, seal844 }.Where(x => x);
+            var sealedList = new List<bool> { seal888, seal886, seal884, seal866, seal88, seal84, seal86, seal44, seal844 }.Where(x => x);
             var sealedCount = sealedList != null ? sealedList.Count() : 0;
             return sg != null && (sg.job == Job.黒印 || sg.job == Job.錬金) ? sealedCount * 2 : 0;
         }

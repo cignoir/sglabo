@@ -34,7 +34,7 @@ namespace sglabo
             mainPC.RightClick();
             mainPC.MoveMouseOnLocalTo(404, 316);
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             
             mapCode = DetectMap(area);
         }
@@ -63,13 +63,7 @@ namespace sglabo
 
                             if(pc.ai != null)
                             {
-                                try
-                                {
-                                    pc.ap -= pc.ai.SealCost();
-                                } catch(Exception e)
-                                {
-                                    MessageBox.Show(e.Message + "\n" + e.StackTrace);
-                                }
+                                pc.ap -= pc.ai.SealCost();
 
                                 if(turn == 1)
                                 {

@@ -13,6 +13,8 @@ namespace sglabo
 {
     public partial class MainForm: Form
     {
+
+        public static bool manualMove = false;
         List<SGWindow> tmpList = new List<SGWindow>();
 
         protected override void WndProc(ref Message m)

@@ -67,7 +67,11 @@ namespace sglabo.AI
             }
             else
             {
-                if(Battle.IsGrandron() && ShouldStack(Direction.D8)) Stack(Direction.D8);
+                if(Battle.IsGrandron() && ShouldStack(Direction.D8))
+                {
+                    Ready(false);
+                    Stack(Direction.D8);
+                }
             }
 
             Go();

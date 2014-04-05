@@ -86,6 +86,7 @@
             this.movingValueTextBox = new System.Windows.Forms.TextBox();
             this.hMoveButton = new System.Windows.Forms.RadioButton();
             this.vMoveButton = new System.Windows.Forms.RadioButton();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -687,19 +688,20 @@
             // 
             // moveGroup
             // 
+            this.moveGroup.Controls.Add(this.checkBox6);
             this.moveGroup.Controls.Add(this.movingValueTextBox);
             this.moveGroup.Controls.Add(this.hMoveButton);
             this.moveGroup.Controls.Add(this.vMoveButton);
             this.moveGroup.Location = new System.Drawing.Point(199, 10);
             this.moveGroup.Name = "moveGroup";
-            this.moveGroup.Size = new System.Drawing.Size(192, 34);
+            this.moveGroup.Size = new System.Drawing.Size(246, 34);
             this.moveGroup.TabIndex = 25;
             this.moveGroup.TabStop = false;
             this.moveGroup.Text = "フィールド移動";
             // 
             // movingValueTextBox
             // 
-            this.movingValueTextBox.Location = new System.Drawing.Point(134, 11);
+            this.movingValueTextBox.Location = new System.Drawing.Point(121, 11);
             this.movingValueTextBox.Name = "movingValueTextBox";
             this.movingValueTextBox.Size = new System.Drawing.Size(52, 19);
             this.movingValueTextBox.TabIndex = 2;
@@ -730,12 +732,22 @@
             this.vMoveButton.UseVisualStyleBackColor = true;
             this.vMoveButton.CheckedChanged += new System.EventHandler(this.vMoveButton_CheckedChanged);
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(194, 12);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(33, 16);
+            this.checkBox6.TabIndex = 3;
+            this.checkBox6.Text = "M";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 328);
-            this.Controls.Add(this.moveGroup);
             this.Controls.Add(this.mapPictureBox);
             this.Controls.Add(this.codeLabel5);
             this.Controls.Add(this.codeLabel4);
@@ -760,6 +772,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.detectColorButton);
             this.Controls.Add(this.captureButton);
+            this.Controls.Add(this.moveGroup);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "sglabo";
@@ -848,6 +861,7 @@
         private System.Windows.Forms.RadioButton hMoveButton;
         private System.Windows.Forms.RadioButton vMoveButton;
         private System.Windows.Forms.TextBox movingValueTextBox;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }
 

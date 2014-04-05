@@ -26,7 +26,7 @@ namespace sglabo
         {
             mainPC.Activate();
 
-            while(MainForm.isStarted && !MainForm.isBattleTaskRunning)
+            while(MainForm.isStarted && !MainForm.isBattleTaskRunning && !MainForm.manualMove)
             {
                 if(MainForm.fieldMovingDirection == Direction.VERTICAL)
                 {
