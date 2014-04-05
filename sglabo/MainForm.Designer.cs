@@ -236,15 +236,14 @@
             this.areaSelector.FormattingEnabled = true;
             this.areaSelector.Items.AddRange(new object[] {
             "ルデンヌ大森林",
-            "イレネイド山脈",
             "ナビア北限地帯",
-            "シュロ陸峡",
             "グランドロン"});
             this.areaSelector.Location = new System.Drawing.Point(54, 12);
             this.areaSelector.Name = "areaSelector";
             this.areaSelector.Size = new System.Drawing.Size(121, 20);
             this.areaSelector.TabIndex = 8;
-            this.areaSelector.Text = "ナビア北限地帯";
+            this.areaSelector.Text = "グランドロン";
+            this.areaSelector.SelectedIndexChanged += new System.EventHandler(this.areaSelector_SelectedIndexChanged);
             // 
             // label1
             // 

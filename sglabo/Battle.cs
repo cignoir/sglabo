@@ -183,7 +183,6 @@ namespace sglabo
                 default:
                     break;
             }
-
             if(bmp != null){
                 mainForm.ShowMapImage(bmp.Clone() as Bitmap);
             }
@@ -210,6 +209,11 @@ namespace sglabo
                     break;
             }
             return core;
+        }
+
+        public static bool IsGrandron()
+        {
+            return Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538;
         }
     }
 }

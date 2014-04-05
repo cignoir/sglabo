@@ -70,10 +70,7 @@ namespace sglabo.AI
             }
             else
             {
-                //if(ShouldStack(Direction.D8))
-                //{
-                //    Stack(Direction.D8);
-                //}
+                if(Battle.IsGrandron() && ShouldStack(Direction.D8)) Stack(Direction.D8);
             }
 
             Go();
@@ -82,11 +79,9 @@ namespace sglabo.AI
         override public void PlaySkill()
         {
             // 1. バーチカルウェブ 
-            // 2. サイドウェブ
-            // 3. スティンガー
-            // 4. ストラッシュ
-            // 5. クレセント
-            // 6. リボルバースティング
+            // 2. スティンガー
+            // 3. ストラッシュ
+            // 4. リボルバースティング
             
             /* 順番を組み替えやすいように、あえて else if を使っていない */
 
@@ -96,7 +91,7 @@ namespace sglabo.AI
                 if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
                 {
                     sg.ap -= 8;
-                    SelectSkill(SkillOrder.S3);
+                    SelectSkill(SkillOrder.S2);
                     SelectTarget(Direction.D8, Direction.D8);
                     Go();
                     return;
@@ -106,7 +101,7 @@ namespace sglabo.AI
                 if(sg.ap >= 12 && CountTrue(cube.NPC8(), cube.NPC86(), cube.NPC84()) >= 2)
                 {
                     sg.ap -= 12;
-                    SelectSkill(SkillOrder.S4);
+                    SelectSkill(SkillOrder.S3);
                     SelectTarget();
                     Go();
                     return;
@@ -128,24 +123,6 @@ namespace sglabo.AI
                     Go();
                     return;
                 }
-
-                // サイドウェブ
-                if(sg.ap >= 3 && (cube.NPC8() || cube.NPC4() || cube.NPC6() || cube.NPC86() || cube.NPC84() || cube.NPC44() || cube.NPC66()))
-                {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S2);
-
-                    if(cube.NPC66())        SelectTarget(Direction.D6, Direction.D6);
-                    else if(cube.NPC44())   SelectTarget(Direction.D4, Direction.D4);
-                    else if(cube.NPC86())   SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC84())   SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC6())    SelectTarget(Direction.D6);
-                    else if(cube.NPC4())    SelectTarget(Direction.D4);
-                    else if(cube.NPC8())    SelectTarget(Direction.D8);
-
-                    Go();
-                    return;
-                }
             }
             else if(Battle.mapCode == 5409959)
             {
@@ -153,7 +130,7 @@ namespace sglabo.AI
                 if(sg.ap >= 8 && CountTrue(cube.NPC4(), cube.NPC44()) >= 2)
                 {
                     sg.ap -= 8;
-                    SelectSkill(SkillOrder.S3);
+                    SelectSkill(SkillOrder.S2);
                     SelectTarget(Direction.D4, Direction.D4);
                     Go();
                     return;
@@ -173,22 +150,8 @@ namespace sglabo.AI
                     Go();
                     return;
                 }
-
-                // サイドウェブ
-                if(sg.ap >= 3 && (cube.NPC8() || cube.NPC4() || cube.NPC84()))
-                {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S2);
-
-                    if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
-
-                    Go();
-                    return;
-                }
             }
-            else if(Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538)
+            else if(Battle.IsGrandron())
             {
                 // スティンガー
                 if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)

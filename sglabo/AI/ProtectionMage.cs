@@ -41,12 +41,10 @@ namespace sglabo.AI
                         break;
                     case 9346174: // グランドロンA
                         Move(Direction.D4);
-                        Move(Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 266499533: // グランドロンB
                         Move(Direction.D4);
-                        Move(Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 209593538: // グランドロンC
@@ -186,9 +184,25 @@ namespace sglabo.AI
                     }
                 }
             }
-            else if(Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538)
+            else if(Battle.IsGrandron())
             {
+                if(Battle.turn % 6 == 0)
+                {
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
 
+                if(Battle.turn % 3 == 0)
+                {
+                    sg.ap -= 26;
+                    SelectSkill(SkillOrder.S6);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                    Go();
+                    return;
+                }
             }
 
             Go();

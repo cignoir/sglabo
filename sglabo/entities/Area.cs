@@ -30,6 +30,9 @@ namespace sglabo.entities
                 case "シュロ陸峡":
                     area = Area.シュロ陸峡;
                     break;
+                case "グランドロン":
+                    area = Area.グランドロン;
+                    break;
                 default:
                     area = Area.ルデンヌ大森林;
                     break;

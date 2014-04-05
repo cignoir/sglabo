@@ -407,5 +407,10 @@ namespace sglabo
             movingValue = int.Parse(movingValueTextBox.Text);
         }
 
+        private void areaSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

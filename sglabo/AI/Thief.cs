@@ -48,8 +48,6 @@ namespace sglabo.AI
                     case 266499533: // グランドロンB
                         Move(Direction.D8);
                         Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
                         Look(Direction.D8);
                         break;
                     case 209593538: // グランドロンC
@@ -69,23 +67,7 @@ namespace sglabo.AI
             }
             else
             {
-                if(cube.NPC8())
-                {
-                    Ready();
-                    Move(Direction.D5);
-                    Look(Direction.D8);
-                }
-                else if(direction == Direction.D6 && cube.PC66())
-                {
-                    Ready();
-                    Move(Direction.D8);
-                    Move(Direction.D8);
-                    Look(Direction.D8);
-                }
-                //else if(ShouldStack(Direction.D8))
-                //{
-                //    Stack(Direction.D8);
-                //}
+                if(Battle.IsGrandron() && ShouldStack(Direction.D8)) Stack(Direction.D8);
             }
 
             Go();
@@ -128,7 +110,7 @@ namespace sglabo.AI
                     return;
                 }
             }
-            else if(Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538)
+            else if(Battle.IsGrandron())
             {
                 // ダイアゴナル
                 if(sg.ap >= 4 && (cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC88()))

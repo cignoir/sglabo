@@ -29,10 +29,12 @@ namespace sglabo.AI
         protected bool seal888 = false;
         protected bool seal886 = false;
         protected bool seal884 = false;
+        protected bool seal866 = false;
         protected bool seal88 = false;
         protected bool seal84 = false;
         protected bool seal86 = false;
         protected bool seal44 = false;
+        protected bool seal66 = false;
         protected bool seal844 = false;
 
         public JobAI()
@@ -54,6 +56,10 @@ namespace sglabo.AI
 
         public void Ready()
         {
+            Enter();
+            ESC();
+            ESC();
+
             sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
                 .LeftButtonClick().Sleep(globalSleep)
@@ -128,7 +134,7 @@ namespace sglabo.AI
             switch(d)
             {
                 case Direction.D8:
-                    shouldStack = direction == Direction.D8 && cube.NPC8() && !cube.NPC88() && !cube.NPC888();
+                    shouldStack = direction == Direction.D8 && cube.NPC8() && !cube.NPC88();
                     break;
                 case Direction.D6:
                     shouldStack = direction == Direction.D6 && cube.NPC6() && !cube.NPC66();
@@ -242,7 +248,9 @@ namespace sglabo.AI
             seal84 = false;
             seal86 = false;
             seal44 = false;
+            seal66 = false;
             seal844 = false;
+            seal866 = false;
         }
 
         public int SealCost()
