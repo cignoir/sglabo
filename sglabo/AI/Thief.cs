@@ -30,31 +30,24 @@ namespace sglabo.AI
                 {
                     case 21448090:
                         // ナビアA
-                        Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 5409959:
                         // ナビアB
-                        Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 9346174: // グランドロンA
-                        Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 266499533: // グランドロンB
-                        Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 209593538: // グランドロンC
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     default:
@@ -67,11 +60,11 @@ namespace sglabo.AI
             }
             else
             {
-                if(Battle.IsGrandron() && ShouldStack(Direction.D8))
-                {
-                    Ready(false);
-                    Stack(Direction.D8);
-                }
+                //if(Battle.IsGrandron() && ShouldStack(Direction.D8))
+                //{
+                //    Ready(false);
+                //    Stack(Direction.D8);
+                //}
             }
 
             Go();

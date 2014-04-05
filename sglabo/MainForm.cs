@@ -150,7 +150,7 @@ namespace sglabo
                     }
                 }
 
-                if(!kinashiUsed && battleCount % 20 == 0)
+                if(!kinashiUsed && battleCount % 30 == 0)
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
                     {

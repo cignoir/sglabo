@@ -56,16 +56,23 @@ namespace sglabo.AI
 
         public void Ready(bool withKeyboardInput = true)
         {
+            input.Keyboard
+                .KeyUp(VirtualKeyCode.UP)
+                .KeyUp(VirtualKeyCode.DOWN)
+                .KeyUp(VirtualKeyCode.LEFT)
+                .KeyUp(VirtualKeyCode.RIGHT);
+
             sg.MoveMouseOnLocalTo(cube.core.x, cube.core.y);
             input.Mouse
                 .LeftButtonClick().Sleep(globalSleep)
                 .RightButtonClick().Sleep(globalSleep)
+                .LeftButtonClick().Sleep(globalSleep)
                 .RightButtonClick().Sleep(globalSleep);
 
             if(withKeyboardInput)
             {
                 input.Keyboard
-                    .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep).Sleep(globalSleep)
+                    .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep * 2)
                     .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
             }
         }
@@ -87,8 +94,13 @@ namespace sglabo.AI
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
         }
 
-        public void Move(Direction direction, bool withEnter = true)
+        public void Look(Direction direction, bool maxMoved = false)
         {
+            if(!maxMoved)
+            {
+                sg.LeftClick();
+            }
+
             VirtualKeyCode vk = VirtualKeyCode.SPACE;
             switch(direction)
             {
@@ -116,16 +128,7 @@ namespace sglabo.AI
                 Press(vk);
             }
 
-            if(withEnter)
-            {
-                Press(VirtualKeyCode.RETURN);
-            }
-        }
-
-        public void Look(Direction direction)
-        {
-            Enter();
-            Move(direction);
+            Press(VirtualKeyCode.RETURN);
             this.direction = direction;
         }
 
@@ -155,7 +158,7 @@ namespace sglabo.AI
             {
                 case Direction.D8:
                     Move(Direction.D8);
-                    Move(Direction.D2);
+                    Move(Direction.D5);
                     Look(Direction.D8);
                     break;
                 case Direction.D6:
@@ -261,6 +264,42 @@ namespace sglabo.AI
             return sg != null && (sg.job == Job.黒印 || sg.job == Job.錬金) ? sealedCount * 2 : 0;
         }
 
+        public void Move(params Direction[] inputQueue)
+        {
+            if(inputQueue.Length > 0)
+            {
+                int gx = 2;
+                int gy = 4;
+
+                foreach(Direction direction in inputQueue)
+                {
+                    switch(direction)
+                    {
+                        case Direction.D8:
+                            gy--;
+                            break;
+                        case Direction.D6:
+                            gx++;
+                            break;
+                        case Direction.D4:
+                            gx--;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                var sPos = cube.cells[gx, gy].sPos;
+                sg.MoveMouseOnLocalTo(sPos.x, sPos.y);
+                sg.LeftClick();
+            }
+        }
+
+        public void Fix()
+        {
+            sg.LeftClick();
+        }
+
         public void SelectTarget(params Direction[] inputQueue)
         {
             if(inputQueue.Length > 0)
@@ -290,22 +329,6 @@ namespace sglabo.AI
                 sg.MoveMouseOnLocalTo(sPos.x, sPos.y);
                 sg.LeftClick();
                 sg.LeftClick();
-            }
-
-            Enter();
-            Enter();
-        }
-
-        public void SelectTarget(LinkedList<Direction> inputQueue = null)
-        {
-            if(inputQueue != null)
-            {
-                Ready();
-
-                foreach(Direction direction in inputQueue)
-                {
-                    Move(direction, true);
-                }
             }
 
             Enter();

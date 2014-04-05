@@ -35,8 +35,7 @@ namespace sglabo.AI
                         break;
                     case 5409959:
                         // ナビアB
-                        Move(Direction.D6);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D6);
                         Look(Direction.D8);
                         break;
                     case 9346174: // グランドロンA
@@ -48,9 +47,8 @@ namespace sglabo.AI
                         Look(Direction.D8);
                         break;
                     case 209593538: // グランドロンC
-                        Move(Direction.D4);
-                        Move(Direction.D8);
-                        Look(Direction.D8);
+                        Move(Direction.D8, Direction.D4, Direction.D4);
+                        Look(Direction.D8, true);
                         break;
                     default:
                         // test
@@ -186,22 +184,45 @@ namespace sglabo.AI
             }
             else if(Battle.IsGrandron())
             {
-                if(Battle.turn % 4 == 0)
+                if(Battle.mapCode == 209593538)
                 {
-                    sg.ap -= 26;
-                    SelectSkill(SkillOrder.S5);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
+                    if(Battle.turn % 4 == 0)
+                    {
+                        sg.ap -= 20;
+                        SelectSkill(SkillOrder.S5);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        Go();
+                        return;
+                    }
 
-                if(Battle.turn % 2 == 0)
+                    if(Battle.turn % 2 == 0)
+                    {
+                        sg.ap -= 20;
+                        SelectSkill(SkillOrder.S5);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        Go();
+                        return;
+                    }
+                }
+                else
                 {
-                    sg.ap -= 26;
-                    SelectSkill(SkillOrder.S5);
-                    SelectTarget(Direction.D8, Direction.D4, Direction.D4);
-                    Go();
-                    return;
+                    if(Battle.turn % 4 == 0)
+                    {
+                        sg.ap -= 26;
+                        SelectSkill(SkillOrder.S5);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+
+                    if(Battle.turn % 2 == 0)
+                    {
+                        sg.ap -= 26;
+                        SelectSkill(SkillOrder.S5);
+                        SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                        Go();
+                        return;
+                    }
                 }
             }
 

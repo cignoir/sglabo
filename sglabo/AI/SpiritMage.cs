@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using sglabo.entities;
 
@@ -24,6 +25,7 @@ namespace sglabo.AI
         {
             if(Battle.turn == 1)
             {
+                Thread.Sleep(1000);
                 Ready();
 
                 switch(Battle.mapCode)
@@ -35,27 +37,20 @@ namespace sglabo.AI
                         break;
                     case 5409959:
                         // ナビアB
-                        Move(Direction.D8);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D8);
                         Look(Direction.D8);
                         break;
                     case 9346174: // グランドロンA
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
-                        Look(Direction.D8);
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8, true);
                         break;
                     case 266499533: // グランドロンB
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
-                        Look(Direction.D8);
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8, true);
                         break;
                     case 209593538: // グランドロンC
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
-                        Look(Direction.D8);
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8, true);
                         break;
                     default:
                         // test
@@ -68,11 +63,11 @@ namespace sglabo.AI
             }
             else
             {
-                if(Battle.IsGrandron() && ShouldStack(Direction.D8))
-                {
-                    Ready(false);
-                    Stack(Direction.D8);
-                }
+                //if(Battle.IsGrandron() && ShouldStack(Direction.D8))
+                //{
+                //    Ready(false);
+                //    Stack(Direction.D8);
+                //}
             }
 
             Go();
@@ -110,7 +105,7 @@ namespace sglabo.AI
                 }
 
                 //// リトルフォース84
-                if((Battle.mapCode == 5409959 || Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
+                if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && sg.ap >= 3 && CountTrue(cube.NPC8(), cube.NPC4(), cube.NPC84(), cube.NPC884(), cube.NPC844()) >= 2)
                 {
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);

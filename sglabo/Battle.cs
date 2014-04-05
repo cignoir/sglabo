@@ -34,7 +34,7 @@ namespace sglabo
             mainPC.RightClick();
             mainPC.MoveMouseOnLocalTo(404, 316);
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
             
             mapCode = DetectMap(area);
         }

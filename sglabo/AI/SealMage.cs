@@ -30,33 +30,25 @@ namespace sglabo.AI
                 {
                     case 21448090:
                         // ナビアA
-                        Move(Direction.D4);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D4);
                         Look(Direction.D8);
                         break;
                     case 5409959:
                         // ナビアB
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
+                        Move(Direction.D8, Direction.D8, Direction.D8);
                         Look(Direction.D4);
                         break;
                     case 9346174: // グランドロンA 池
-                        Move(Direction.D6);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D6);
                         Look(Direction.D8);
                         break;
                     case 266499533: // グランドロンB 枝
-                        Move(Direction.D6);
-                        Move(Direction.D8);
+                        Move(Direction.D8, Direction.D6);
                         Look(Direction.D8);
                         break;
                     case 209593538: // グランドロンC
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8);
-                        Move(Direction.D8, false);
-                        Look(Direction.D6);
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8);
                         break;
                     default:
                         // test
@@ -90,7 +82,7 @@ namespace sglabo.AI
             if(cube.NPC44()) seal44 = false;
             if(cube.NPC66()) seal66 = false;
 
-            if(!(cube.PC8() || cube.PC4() || cube.PC6()))
+            if(Battle.mapCode != 209593538 && !(cube.PC8() || cube.PC4() || cube.PC6()))
             {
                 // イレギュラー回避
                 Go();
@@ -223,12 +215,28 @@ namespace sglabo.AI
 
                 if(Battle.mapCode == 209593538)
                 {
-                    if(sg.ap >= 9 && !cube.NPC866() && !seal866)
+                    if(sg.ap >= 9 && !cube.NPC86() && !seal86)
                     {
                         sg.ap -= 9;
-                        seal866 = true;
+                        seal86 = true;
                         SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                        SelectTarget(Direction.D8, Direction.D6);
+                        Go();
+                        return;
+                    }
+
+                    if(sg.ap >= 16 && (cube.NPC888() || cube.NPC8884() || cube.NPC8886() || cube.NPC88844() || cube.NPC88866() || cube.NPC88() || cube.NPC884() || cube.NPC886()))
+                    {
+                        sg.ap -= 16;
+                        SelectSkill(SkillOrder.S4);
+                        if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                         Go();
                         return;
                     }
