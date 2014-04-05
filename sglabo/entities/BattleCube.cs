@@ -101,20 +101,20 @@ namespace sglabo.entities
             return ExistsNPC(0, -4);
         }
 
-        public bool NPC88888()
-        {
-            return ExistsNPC(0, -5);
-        }
+        //public bool NPC88888()
+        //{
+        //    return ExistsNPC(0, -5);
+        //}
 
-        public bool NPC888884()
-        {
-            return ExistsNPC(-1, -5);
-        }
+        //public bool NPC888884()
+        //{
+        //    return ExistsNPC(-1, -5);
+        //}
 
-        public bool NPC8888844()
-        {
-            return ExistsNPC(-2, -5);
-        }
+        //public bool NPC8888844()
+        //{
+        //    return ExistsNPC(-2, -5);
+        //}
 
         public bool NPC888886()
         {

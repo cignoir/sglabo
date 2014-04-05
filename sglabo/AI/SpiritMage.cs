@@ -68,7 +68,11 @@ namespace sglabo.AI
             }
             else
             {
-                if(Battle.IsGrandron() && ShouldStack(Direction.D8)) Stack(Direction.D8);
+                if(Battle.IsGrandron() && ShouldStack(Direction.D8))
+                {
+                    Ready();
+                    Stack(Direction.D8);
+                }
             }
 
             Go();
@@ -86,14 +90,14 @@ namespace sglabo.AI
 
             if(direction == Direction.D8)
             {
-                if(sg.ap >= 34 && (cube.NPC88888() || cube.NPC888884() || cube.NPC8888844() || cube.NPC888886() || cube.NPC8888866()))
-                {
-                    sg.ap -= 34;
-                    SelectSkill(SkillOrder.S8);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
+                //if(sg.ap >= 34 && (cube.NPC88888() || cube.NPC888884() || cube.NPC8888844() || cube.NPC888886() || cube.NPC8888866()))
+                //{
+                //    sg.ap -= 34;
+                //    SelectSkill(SkillOrder.S8);
+                //    SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                //    Go();
+                //    return;
+                //}
 
                 // リーフブレード888
                 if(sg.ap >= 24 && cube.NPC888() && CountTrue(cube.NPC888(), cube.NPC8886(), cube.NPC8884(), cube.NPC8888(), cube.NPC88()) >= 2)

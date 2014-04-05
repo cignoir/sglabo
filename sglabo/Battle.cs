@@ -34,7 +34,7 @@ namespace sglabo
             mainPC.RightClick();
             mainPC.MoveMouseOnLocalTo(404, 316);
             Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             
             mapCode = DetectMap(area);
         }
@@ -53,64 +53,72 @@ namespace sglabo
 
                 if(inBattle)
                 {
-                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
+                    try
                     {
-                        pc.Activate();
-                        pc.ap += 10;
-                        if(pc.job == Job.盗賊) pc.ap -= 1;
-
-                        if(pc.ai != null)
-                        {
-                            try
-                            {
-                                pc.ap -= pc.ai.SealCost();
-                            } catch(Exception e)
-                            {
-                                MessageBox.Show(e.Message + "\n" + e.StackTrace);
-                            }
-
-                            if(turn == 1)
-                            {
-                                pc.ai.TopView();
-                                if(pc.job == Job.黒印 || pc.job == Job.錬金) pc.ai.InitSeal();
-                            }
-
-                            try
-                            {
-                                mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                                var cube = new BattleCube();
-                                pc.ai.UpdateSituation(pc, cube);
-
-                                mainForm.SetStatus(Properties.Resources.NowMoving);
-                                pc.ai.PlayMove();
-                            }
-                            catch(Exception e)
-                            {
-                                MessageBox.Show(e.Source + "\n" + e.Message + "\n" + e.StackTrace);
-                            }
-                        }
-                    }
-                    Thread.Sleep(2000);
-
-                    mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
-                    LoopWait(loopLimit);
-
-                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
-                    {
-                        if(pc.ai != null)
+                        foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                         {
                             pc.Activate();
+                            pc.ap += 10;
+                            if(pc.job == Job.盗賊) pc.ap -= 1;
 
-                            mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
-                            var cube = new BattleCube();
-                    
-                            mainForm.SetStatus(Properties.Resources.NowActing);
-                            pc.ai.UpdateSituation(pc, cube.Scan());
+                            if(pc.ai != null)
+                            {
+                                try
+                                {
+                                    pc.ap -= pc.ai.SealCost();
+                                } catch(Exception e)
+                                {
+                                    MessageBox.Show(e.Message + "\n" + e.StackTrace);
+                                }
 
-                            pc.ai.PlaySkill();
+                                if(turn == 1)
+                                {
+                                    pc.ai.TopView();
+                                    if(pc.job == Job.黒印 || pc.job == Job.錬金) pc.ai.InitSeal();
+                                }
+
+                                try
+                                {
+                                    mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
+                                    var cube = new BattleCube();
+                                    pc.ai.UpdateSituation(pc, cube.Scan());
+
+                                    mainForm.SetStatus(Properties.Resources.NowMoving);
+                                    pc.ai.PlayMove();
+                                }
+                                catch(Exception e)
+                                {
+                                    MessageBox.Show(e.Source + "\n" + e.Message + "\n" + e.StackTrace);
+                                }
+                            }
                         }
+                        Thread.Sleep(2000);
+
+                        mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
+                        LoopWait(loopLimit);
+
+                        foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
+                        {
+                            if(pc.ai != null)
+                            {
+                                pc.Activate();
+
+                                mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
+                                var cube = new BattleCube();
+                    
+                                mainForm.SetStatus(Properties.Resources.NowActing);
+                                pc.ai.UpdateSituation(pc, cube.Scan());
+
+                                pc.ai.PlaySkill();
+                            }
+                        }
+                        Thread.Sleep(2000);
+
                     }
-                    Thread.Sleep(2000);
+                    catch(Exception e)
+                    {
+                        MessageBox.Show(e.Message + "\r\n" + e.StackTrace);
+                    }
                 }
             }
             
