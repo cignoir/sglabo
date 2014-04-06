@@ -186,6 +186,15 @@ namespace sglabo.AI
             {
                 if(Battle.mapCode == 209593538)
                 {
+                    if(Battle.turn % 6 == 0)
+                    {
+                        sg.ap -= 8;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D5);
+                        Go();
+                        return;
+                    }
+
                     if(Battle.turn % 4 == 0)
                     {
                         sg.ap -= 20;
@@ -206,6 +215,15 @@ namespace sglabo.AI
                 }
                 else
                 {
+                    if(Battle.turn % 6 == 0)
+                    {
+                        sg.ap -= 8;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D5);
+                        Go();
+                        return;
+                    }
+
                     if(Battle.turn % 4 == 0)
                     {
                         sg.ap -= 26;
