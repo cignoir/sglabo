@@ -75,7 +75,7 @@ namespace sglabo
                                 {
                                     mainForm.SetStatus(Properties.Resources.ScanningBattleMap);
                                     var cube = new BattleCube();
-                                    pc.ai.UpdateSituation(pc, cube.Scan());
+                                    pc.ai.UpdateSituation(pc, cube);
 
                                     mainForm.SetStatus(Properties.Resources.NowMoving);
                                     pc.ai.PlayMove();
