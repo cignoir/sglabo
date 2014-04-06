@@ -118,7 +118,7 @@ namespace sglabo
             Activate();
 
             input.Mouse
-                .LeftButtonDown().Sleep(globalSleep)
+                .LeftButtonDown().Sleep(globalSleep * 2)
                 .LeftButtonUp().Sleep(globalSleep);
         }
 
@@ -129,6 +129,15 @@ namespace sglabo
             input.Mouse
                 .LeftButtonDown().Sleep(globalSleep)
                 .LeftButtonUp().Sleep(globalSleep);
+        }
+
+        public void LeftDoubleClick()
+        {
+            input.Mouse
+                .LeftButtonDown().Sleep(100)
+                .LeftButtonUp().Sleep(5)
+                .LeftButtonDown().Sleep(80)
+                .LeftButtonUp().Sleep(5);
         }
 
         public void LeftDoubleClick(int x, int y)

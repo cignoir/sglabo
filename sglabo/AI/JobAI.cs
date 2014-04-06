@@ -126,6 +126,7 @@ namespace sglabo.AI
             if(vk != VirtualKeyCode.SPACE)
             {
                 Press(vk);
+                Press(vk);
             }
 
             Press(VirtualKeyCode.RETURN);
@@ -241,6 +242,7 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
+            Thread.Sleep(200);
         }
 
         public void InitSeal()
@@ -326,13 +328,23 @@ namespace sglabo.AI
                 }
 
                 var sPos = cube.cells[gx, gy].sPos;
-                sg.MoveMouseOnLocalTo(sPos.x, sPos.y);
+                sg.MoveMouseOnLocalTo(sPos.x + 3, sPos.y + 10);
+
                 sg.LeftClick();
-                sg.LeftClick();
+                sg.RightClick();
+
+                sg.LeftDoubleClick();
+                sg.LeftDoubleClick();
+
+                //sg.LeftClick();
+                //sg.RightClick();
+
+                //sg.LeftDoubleClick();
+                //sg.LeftDoubleClick();
             }
 
-            Enter();
-            Enter();
+            //Enter();
+            //Enter();
         }
 
         public int CountTrue(params bool[] bools)

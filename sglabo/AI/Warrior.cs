@@ -97,7 +97,7 @@ namespace sglabo.AI
                 {
                     sg.ap -= 12;
                     SelectSkill(SkillOrder.S3);
-                    SelectTarget();
+                    SelectTarget(Direction.D5);
                     Go();
                     return;
                 }
@@ -163,7 +163,7 @@ namespace sglabo.AI
                 {
                     sg.ap -= 12;
                     SelectSkill(SkillOrder.S3);
-                    SelectTarget();
+                    SelectTarget(Direction.D5);
                     Go();
                     return;
                 }

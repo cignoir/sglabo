@@ -36,7 +36,7 @@ namespace sglabo.AI
                     case 5409959:
                         // ナビアB
                         Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D4);
+                        Look(Direction.D4, true);
                         break;
                     case 9346174: // グランドロンA 池
                         Move(Direction.D8, Direction.D6);
