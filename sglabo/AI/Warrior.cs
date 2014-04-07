@@ -148,11 +148,28 @@ namespace sglabo.AI
             }
             else if(Battle.IsGrandron())
             {
+                // リボルバースティング
                 if(sg.ap >= 25 && cube.NPC8888())
                 {
                     sg.ap -= 25;
                     SelectSkill(SkillOrder.S4);
                     SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                // スワローカット
+                if(sg.ap >= 12 && (cube.NPC4() || cube.NPC84() || cube.NPC8() || cube.NPC86() || cube.NPC6()))
+                {
+                    sg.ap -= 12;
+                    SelectSkill(SkillOrder.S6);
+
+                    if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC6()) SelectTarget(Direction.D6);
+
                     Go();
                     return;
                 }
