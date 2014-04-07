@@ -87,6 +87,7 @@
             this.hMoveButton = new System.Windows.Forms.RadioButton();
             this.vMoveButton = new System.Windows.Forms.RadioButton();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.kinashiCheckBox = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,7 +107,7 @@
             // 
             // captureButton
             // 
-            this.captureButton.Location = new System.Drawing.Point(532, 10);
+            this.captureButton.Location = new System.Drawing.Point(634, 10);
             this.captureButton.Name = "captureButton";
             this.captureButton.Size = new System.Drawing.Size(94, 23);
             this.captureButton.TabIndex = 0;
@@ -116,7 +117,7 @@
             // 
             // detectColorButton
             // 
-            this.detectColorButton.Location = new System.Drawing.Point(532, 99);
+            this.detectColorButton.Location = new System.Drawing.Point(634, 99);
             this.detectColorButton.Name = "detectColorButton";
             this.detectColorButton.Size = new System.Drawing.Size(94, 23);
             this.detectColorButton.TabIndex = 2;
@@ -130,7 +131,7 @@
             this.statusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 306);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(637, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(740, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -195,7 +196,7 @@
             // 
             // refleshButton
             // 
-            this.refleshButton.Location = new System.Drawing.Point(532, 128);
+            this.refleshButton.Location = new System.Drawing.Point(634, 128);
             this.refleshButton.Name = "refleshButton";
             this.refleshButton.Size = new System.Drawing.Size(94, 23);
             this.refleshButton.TabIndex = 5;
@@ -211,7 +212,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(531, 156);
+            this.startButton.Location = new System.Drawing.Point(633, 156);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(94, 23);
             this.startButton.TabIndex = 6;
@@ -226,7 +227,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(451, 12);
+            this.textBox1.Location = new System.Drawing.Point(553, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 7;
@@ -629,7 +630,7 @@
             // 
             // captureWindow
             // 
-            this.captureWindow.Location = new System.Drawing.Point(532, 40);
+            this.captureWindow.Location = new System.Drawing.Point(634, 40);
             this.captureWindow.Name = "captureWindow";
             this.captureWindow.Size = new System.Drawing.Size(93, 23);
             this.captureWindow.TabIndex = 18;
@@ -679,7 +680,7 @@
             // 
             // mapPictureBox
             // 
-            this.mapPictureBox.Location = new System.Drawing.Point(532, 194);
+            this.mapPictureBox.Location = new System.Drawing.Point(634, 194);
             this.mapPictureBox.Name = "mapPictureBox";
             this.mapPictureBox.Size = new System.Drawing.Size(94, 96);
             this.mapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -688,7 +689,6 @@
             // 
             // moveGroup
             // 
-            this.moveGroup.Controls.Add(this.checkBox6);
             this.moveGroup.Controls.Add(this.movingValueTextBox);
             this.moveGroup.Controls.Add(this.hMoveButton);
             this.moveGroup.Controls.Add(this.vMoveButton);
@@ -735,19 +735,32 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(194, 12);
+            this.checkBox6.Location = new System.Drawing.Point(474, 55);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(33, 16);
+            this.checkBox6.Size = new System.Drawing.Size(93, 16);
             this.checkBox6.TabIndex = 3;
-            this.checkBox6.Text = "M";
+            this.checkBox6.Text = "戦闘のみ自動";
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // kinashiCheckBox
+            // 
+            this.kinashiCheckBox.AutoSize = true;
+            this.kinashiCheckBox.Location = new System.Drawing.Point(474, 77);
+            this.kinashiCheckBox.Name = "kinashiCheckBox";
+            this.kinashiCheckBox.Size = new System.Drawing.Size(98, 16);
+            this.kinashiCheckBox.TabIndex = 26;
+            this.kinashiCheckBox.Text = "やる気なし使用";
+            this.kinashiCheckBox.UseVisualStyleBackColor = true;
+            this.kinashiCheckBox.CheckedChanged += new System.EventHandler(this.kinashiCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 328);
+            this.ClientSize = new System.Drawing.Size(740, 328);
+            this.Controls.Add(this.checkBox6);
+            this.Controls.Add(this.kinashiCheckBox);
             this.Controls.Add(this.mapPictureBox);
             this.Controls.Add(this.codeLabel5);
             this.Controls.Add(this.codeLabel4);
@@ -862,6 +875,7 @@
         private System.Windows.Forms.RadioButton vMoveButton;
         private System.Windows.Forms.TextBox movingValueTextBox;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox kinashiCheckBox;
     }
 }
 
