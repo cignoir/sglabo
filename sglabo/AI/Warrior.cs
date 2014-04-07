@@ -159,11 +159,13 @@ namespace sglabo.AI
                 }
 
                 // スティンガー
-                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
+                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88(), cube.NPC888()) >= 2)
                 {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S2);
-                    SelectTarget(Direction.D8, Direction.D8);
+                    if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
                     Go();
                     return;
                 }

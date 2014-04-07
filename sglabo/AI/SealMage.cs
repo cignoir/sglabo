@@ -230,12 +230,12 @@ namespace sglabo.AI
                         sg.ap -= 16;
                         SelectSkill(SkillOrder.S4);
                         if(cube.NPC884()) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                        else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC88844()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                        else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                        else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                        else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC8884()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                         else if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88866()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC8886()) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC886()) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
                         else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
                         Go();
                         return;

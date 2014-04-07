@@ -155,23 +155,6 @@ namespace sglabo.AI
                     return;
                 }
 
-                // リルボム
-                if(sg.ap >= 24 && (cube.NPC88() || cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC44() || cube.NPC66() || cube.NPC4() || cube.NPC6()))
-                {
-                    sg.ap -= 24;
-                    SelectSkill(SkillOrder.S7);
-                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
-                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC44()) SelectTarget(Direction.D4, Direction.D4);
-                    else if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
-                    else if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC6()) SelectTarget(Direction.D6);
-                    Go();
-                    return;
-                }
-
                 if(sg.ap >= 6 && (cube.NPC8888() || cube.NPC888() || cube.NPC88() || cube.NPC86() || cube.NPC84() || cube.NPC886() || cube.NPC884() || cube.NPC8884() || cube.NPC8886()))
                 {
                     sg.ap -= 6;
@@ -209,6 +192,7 @@ namespace sglabo.AI
                     return;
                 }
 
+                // ロックミサイル
                 if(sg.ap >= 18 && (cube.NPC844() || cube.NPC8844() || cube.NPC866() || cube.NPC8866()))
                 {
                     sg.ap -= 18;
@@ -217,6 +201,23 @@ namespace sglabo.AI
                     else if(cube.NPC8844()) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
                     else if(cube.NPC866()) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
                     else if(cube.NPC8866()) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                    Go();
+                    return;
+                }
+
+                // リルボム
+                if(sg.ap >= 24 && (cube.NPC88() || cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC44() || cube.NPC66() || cube.NPC4() || cube.NPC6()))
+                {
+                    sg.ap -= 24;
+                    SelectSkill(SkillOrder.S7);
+                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC44()) SelectTarget(Direction.D4, Direction.D4);
+                    else if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC6()) SelectTarget(Direction.D6);
                     Go();
                     return;
                 }
