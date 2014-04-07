@@ -735,7 +735,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(537, 50);
+            this.checkBox6.Location = new System.Drawing.Point(531, 55);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(93, 16);
             this.checkBox6.TabIndex = 3;
@@ -746,7 +746,7 @@
             // kinashiCheckBox
             // 
             this.kinashiCheckBox.AutoSize = true;
-            this.kinashiCheckBox.Location = new System.Drawing.Point(537, 72);
+            this.kinashiCheckBox.Location = new System.Drawing.Point(531, 77);
             this.kinashiCheckBox.Name = "kinashiCheckBox";
             this.kinashiCheckBox.Size = new System.Drawing.Size(98, 16);
             this.kinashiCheckBox.TabIndex = 26;
