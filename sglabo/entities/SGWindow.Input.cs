@@ -43,7 +43,7 @@ namespace sglabo
                     LeftDoubleClick(539, 270);
                     break;
                 case 2:
-                    LeftDoubleClick(539, 270);
+                    LeftDoubleClick(608, 270);
                     break;
                 default:
                     break;
