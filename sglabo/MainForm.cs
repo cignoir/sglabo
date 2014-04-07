@@ -26,6 +26,7 @@ namespace sglabo
         public static Direction fieldMovingDirection = Direction.VERTICAL;
         public static int movingValue = 200;
         public static int battleCount = 1;
+        public static bool shouldUseKinashi = false;
 
         public Thread fieldThread;
         public Thread battleThread;
@@ -150,7 +151,7 @@ namespace sglabo
                     }
                 }
 
-                if(!kinashiUsed && battleCount % 20 == 0)
+                if(shouldUseKinashi && !kinashiUsed && battleCount % 20 == 0)
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
                     {
@@ -422,6 +423,11 @@ namespace sglabo
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
             manualMove = checkBox6.Checked;
+        }
+
+        private void kinashiCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            shouldUseKinashi = kinashiCheckBox.Checked;
         }
 
     }
