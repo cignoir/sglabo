@@ -41,7 +41,7 @@ namespace sglabo
 
         public void VerticalMove()
         {
-            mainPC.MoveMouseOnLocalTo(400, 300 - movingValue);
+            mainPC.MoveMouseOnLocalTo(400 - 15, 300 - movingValue);
             mainPC.LeftClick();
             mainPC.LeftClick();
             Thread.Sleep(intervalMS);

@@ -183,7 +183,7 @@ namespace sglabo.AI
                     return;
                 }
 
-                if((Battle.mapCode == 5409959 || Battle.mapCode == 9346174 || Battle.mapCode == 266499533 ) && sg.ap >= 3 && (cube.NPC84() || cube.NPC884() || cube.NPC844() || cube.NPC8()))
+                if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && sg.ap >= 3 && (cube.NPC84() || cube.NPC884() || cube.NPC844() || cube.NPC8() || cube.NPC4()))
                 {
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);

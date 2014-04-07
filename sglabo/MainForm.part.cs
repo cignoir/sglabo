@@ -108,6 +108,8 @@ namespace sglabo
                 var sg = new SGWindow(proc, SGWindow.sgList.Count == 0);
                 SGWindow.sgList.Add(sg);
 
+                sg.currentHP = sg.ReadHP();
+
                 var pictureBox = pictureBoxes.Where(x => x.Image == null).First();
                 pictureBox.Image = sg.pcName;
 

@@ -139,6 +139,8 @@
     </Compile>
     <Compile Include="entities\SGColor.cs" />
     <Compile Include="entities\SGWindow.Graphics.cs" />
+    <Compile Include="SGAddress.cs" />
+    <Compile Include="SGItem.cs" />
     <Compile Include="utils\GraphicUtils.cs" />
     <Compile Include="utils\InputSimulatorExamples.cs" />
     <Compile Include="MainForm.cs">
@@ -196,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\memory4cs\memory4cs\memory4cs.csproj">
+      <Project>{9856050c-88ab-48a1-b3d7-3ff1f1437d3a}</Project>
+      <Name>memory4cs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

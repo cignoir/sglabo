@@ -154,10 +154,17 @@ namespace sglabo
                 {
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
                     {
-                        kinashiUsed = pc.UseItem();
+                        kinashiUsed = pc.UseItem(SGItem.YARUKINASHI);
                     }
                 }
 
+                foreach(SGWindow pc in SGWindow.sgList)
+                {
+                    while(pc.ReadHP() < 300)
+                    {
+                        pc.UseItem(SGItem.HIGHPOTION);
+                    }
+                }
 
                 if(NoThreadsWorking())
                 {

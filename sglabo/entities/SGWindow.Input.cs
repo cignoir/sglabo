@@ -37,7 +37,17 @@ namespace sglabo
         public bool UseItem(int no = 1)
         {
             OpenItemWindow();
-            LeftDoubleClick(539, 270);
+            switch(no)
+            {
+                case 1:
+                    LeftDoubleClick(539, 270);
+                    break;
+                case 2:
+                    LeftDoubleClick(539, 270);
+                    break;
+                default:
+                    break;
+            }
             CloseItemWindow();
             return true;
         }

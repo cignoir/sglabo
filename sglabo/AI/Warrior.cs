@@ -148,6 +148,15 @@ namespace sglabo.AI
             }
             else if(Battle.IsGrandron())
             {
+                if(sg.ap >= 25 && cube.NPC8888())
+                {
+                    sg.ap -= 25;
+                    SelectSkill(SkillOrder.S4);
+                    SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
                 // スティンガー
                 if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
                 {

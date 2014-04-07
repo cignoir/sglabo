@@ -13,6 +13,8 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using sglabo.AI;
+using memory4cs;
+using System.Globalization;
 
 namespace sglabo
 {
@@ -30,6 +32,8 @@ namespace sglabo
         public JobAI ai;
         public int ap;
         public bool auto = true;
+        public int currentHP = 0;
+        public Memory memory;
 
         long x;
         long y;
@@ -48,11 +52,18 @@ namespace sglabo
             SetScreenPosition();
             this.IsCenter = isCenter;
 
+            this.memory = new Memory(proc.Id);
+
             if(IsField())
             {
                 pcName = CapturePCNameFromStatus();
                 pcCode = DetectColor(pcName, false).brown;
             }
+        }
+
+        public int ReadHP()
+        {
+            return memory.ReadInt(SGAddress.STATUS_CURRENT_HP, 2);
         }
 
         public void Activate()
