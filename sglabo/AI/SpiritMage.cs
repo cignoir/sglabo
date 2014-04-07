@@ -133,6 +133,7 @@ namespace sglabo.AI
                     return;
                 }
 
+                // スパークボール
                 if(sg.ap >= 18 && (Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && (cube.NPC8888() || cube.NPC88884() || cube.NPC88886()))
                 {
                     sg.ap -= 18;
@@ -144,11 +145,29 @@ namespace sglabo.AI
                     return;
                 }
 
+                // ウィンドエッジ
                 if(sg.ap >= 6 && cube.NPC888())
                 {
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S3);
                     SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                // リルボム
+                if(sg.ap >= 24 && (cube.NPC88() || cube.NPC8() || cube.NPC86() || cube.NPC84() || cube.NPC44() || cube.NPC66() || cube.NPC4() || cube.NPC6()))
+                {
+                    sg.ap -= 24;
+                    SelectSkill(SkillOrder.S7);
+                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC44()) SelectTarget(Direction.D4, Direction.D4);
+                    else if(cube.NPC66()) SelectTarget(Direction.D6, Direction.D6);
+                    else if(cube.NPC4()) SelectTarget(Direction.D4);
+                    else if(cube.NPC6()) SelectTarget(Direction.D6);
                     Go();
                     return;
                 }
