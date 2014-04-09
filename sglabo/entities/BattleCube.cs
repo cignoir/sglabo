@@ -111,105 +111,28 @@ namespace sglabo.entities
             return cells[CORE_X + diffX, CORE_Y + diffY].existsPC;
         }
 
-        public bool PC8()
-        {
-            return ExistsPC(0, -1);
-        }
-
-        public bool PC88()
-        {
-            return ExistsPC(0, -2);
-        }
-
-        public bool PC888()
-        {
-            return ExistsPC(0, -3);
-        }
-
-        public bool PC8888()
-        {
-            return ExistsPC(0, -4);
-        }
-
-        public bool PC6()
-        {
-            return ExistsPC(1, 0);
-        }
-
-        public bool PC66()
-        {
-            return ExistsPC(2, 0);
-        }
-
-        public bool PC4()
-        {
-            return ExistsPC(-1, 0);
-        }
-
-        public bool PC44()
-        {
-            return ExistsPC(-2, 0);
-        }
-
-        public bool PC86()
-        {
-            return ExistsPC(1, -1);
-        }
-
-        public bool PC84()
-        {
-            return ExistsPC(-1, -1);
-        }
-
-        public bool PC886()
-        {
-            return ExistsPC(1, -2);
-        }
-
-        public bool PC8866()
-        {
-            return ExistsPC(2, -2);
-        }
-
-        public bool PC8844()
-        {
-            return ExistsPC(-2, -2);
-        }
-
-        public bool PC88866()
-        {
-            return ExistsPC(2, -3);
-        }
-
-        public bool PC88844()
-        {
-            return ExistsPC(-2, -3);
-        }
-
-        public bool PC884()
-        {
-            return ExistsPC(-1, -2);
-        }
-
-        public bool PC844()
-        {
-            return ExistsPC(-2, -1);
-        }
-
-        public bool PC866()
-        {
-            return ExistsPC(2, -1);
-        }
-
-        public bool PC8886()
-        {
-            return ExistsPC(1, -3);
-        }
-
-        public bool PC8884()
-        {
-            return ExistsPC(-1, -3);
-        }
+        public bool PC8 { get { return ExistsPC(0, -1); } }
+        public bool PC88 { get { return ExistsPC(0, -2); } }
+        public bool PC888 { get { return ExistsPC(0, -3); } }
+        public bool PC8888 { get { return ExistsPC(0, -4); } }
+        public bool PC88884 { get { return ExistsPC(-1, -4); } }
+        public bool PC88886 { get { return ExistsPC(1, -4); } }
+        public bool PC6 { get { return ExistsPC(1, 0); } }
+        public bool PC66 { get { return ExistsPC(2, 0); } }
+        public bool PC4 { get { return ExistsPC(-1, 0); } }
+        public bool PC44 { get { return ExistsPC(-2, 0); } }
+        public bool PC86 { get { return ExistsPC(1, -1); } }
+        public bool PC84 { get { return ExistsPC(-1, -1); } }
+        public bool PC886 { get { return ExistsPC(1, -2); } }
+        public bool PC8866 { get { return ExistsPC(2, -2); } }
+        public bool PC8844 { get { return ExistsPC(-2, -2); } }
+        public bool PC88866 { get { return ExistsPC(2, -3); } }
+        public bool PC88844 { get { return ExistsPC(-2, -3); } }
+        public bool PC884 { get { return ExistsPC(-1, -2); } }
+        public bool PC844 { get { return ExistsPC(-2, -1); } }
+        public bool PC866 { get { return ExistsPC(2, -1); } }
+        public bool PC8886 { get { return ExistsPC(1, -3); } }
+        public bool PC8884 { get { return ExistsPC(-1, -3); } }
         #endregion
     }
 }

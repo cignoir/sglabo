@@ -82,7 +82,7 @@ namespace sglabo.AI
             if(cube.NPC44) seal44 = false;
             if(cube.NPC66) seal66 = false;
 
-            if(Battle.mapCode != 209593538 && !(cube.PC8() || cube.PC4() || cube.PC6()))
+            if(Battle.mapCode != 209593538 && !(cube.PC8 || cube.PC4 || cube.PC6))
             {
                 // イレギュラー回避
                 Go();
