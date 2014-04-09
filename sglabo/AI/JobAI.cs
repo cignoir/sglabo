@@ -141,13 +141,13 @@ namespace sglabo.AI
             switch(d)
             {
                 case Direction.D8:
-                    shouldStack = direction == Direction.D8 && cube.NPC8() && !cube.NPC88();
+                    shouldStack = direction == Direction.D8 && cube.NPC8 && !cube.NPC88;
                     break;
                 case Direction.D6:
-                    shouldStack = direction == Direction.D6 && cube.NPC6() && !cube.NPC66();
+                    shouldStack = direction == Direction.D6 && cube.NPC6 && !cube.NPC66;
                     break;
                 case Direction.D4:
-                    shouldStack = direction == Direction.D4 && cube.NPC4() && !cube.NPC44();
+                    shouldStack = direction == Direction.D4 && cube.NPC4 && !cube.NPC44;
                     break;
                 default:
                     break;
@@ -244,7 +244,7 @@ namespace sglabo.AI
                 .KeyDown(vk).Sleep(globalSleep)
                 .KeyUp(vk).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.LCONTROL).Sleep(globalSleep);
-            Thread.Sleep(200);
+            Thread.Sleep(500);
         }
 
         public void InitSeal()
