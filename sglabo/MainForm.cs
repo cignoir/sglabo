@@ -27,6 +27,7 @@ namespace sglabo
         public static int movingValue = 200;
         public static int battleCount = 1;
         public static bool shouldUseKinashi = false;
+        public static int deathCount = 0;
 
         public Thread fieldThread;
         public Thread battleThread;
@@ -156,6 +157,16 @@ namespace sglabo
                     foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
                     {
                         kinashiUsed = pc.UseItem(SGItem.YARUKINASHI);
+                    }
+                }
+
+                if(sg.ReadHP() == 1)
+                {
+                    deathCount++;
+                    if(deathCount > 2)
+                    {
+                        AbortAllThreads();
+                        Application.Exit();
                     }
                 }
 
