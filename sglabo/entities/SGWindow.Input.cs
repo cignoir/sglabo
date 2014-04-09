@@ -127,5 +127,67 @@ namespace sglabo
                 .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
         }
 
+        public void MoveMouseOnLocalTo(int x, int y)
+        {
+            GraphicUtils.Activate(Win32API.GetDesktopWindow());
+            input.Mouse.MoveMouseTo((sPos.x + x) * 65535 / 1920, (sPos.y + y) * 65535 / 1080);
+            Activate();
+        }
+
+        public void LeftClick()
+        {
+            Activate();
+
+            input.Mouse
+                .LeftButtonDown().Sleep(globalSleep * 2)
+                .LeftButtonUp().Sleep(globalSleep);
+        }
+
+        public void LeftClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .LeftButtonDown().Sleep(globalSleep)
+                .LeftButtonUp().Sleep(globalSleep);
+        }
+
+        public void LeftDoubleClick()
+        {
+            input.Mouse
+                .LeftButtonDown().Sleep(100)
+                .LeftButtonUp().Sleep(5)
+                .LeftButtonDown().Sleep(80)
+                .LeftButtonUp().Sleep(5);
+        }
+
+        public void LeftDoubleClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .LeftButtonDown().Sleep(50)
+                .LeftButtonUp()
+                .LeftButtonDown().Sleep(50)
+                .LeftButtonUp();
+        }
+
+        public void RightClick()
+        {
+            Activate();
+
+            input.Mouse
+                .RightButtonDown().Sleep(globalSleep)
+                .RightButtonUp().Sleep(globalSleep);
+        }
+
+        public void RightClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .RightButtonDown().Sleep(globalSleep)
+                .RightButtonUp().Sleep(globalSleep);
+        }
     }
 }
