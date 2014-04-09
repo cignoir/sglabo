@@ -81,140 +81,28 @@ namespace sglabo.entities
             return cells[CORE_X + diffX, CORE_Y + diffY].existsNPC;
         }
 
-        public bool NPC8()
-        {
-            return ExistsNPC(0, -1);
-        }
-
-        public bool NPC88()
-        {
-            return ExistsNPC(0, -2);
-        }
-
-        public bool NPC888()
-        {
-            return ExistsNPC(0, -3);
-        }
-
-        public bool NPC8888()
-        {
-            return ExistsNPC(0, -4);
-        }
-
-        public bool NPC88884()
-        {
-            return ExistsNPC(-1, -4);
-        }
-
-        public bool NPC88886()
-        {
-            return ExistsNPC(1, -4);
-        }
-
-        //public bool NPC88888()
-        //{
-        //    return ExistsNPC(0, -5);
-        //}
-
-        //public bool NPC888884()
-        //{
-        //    return ExistsNPC(-1, -5);
-        //}
-
-        //public bool NPC8888844()
-        //{
-        //    return ExistsNPC(-2, -5);
-        //}
-
-        public bool NPC888886()
-        {
-            return ExistsNPC(1, -5);
-        }
-
-        public bool NPC8888866()
-        {
-            return ExistsNPC(2, -5);
-        }
-
-        public bool NPC6()
-        {
-            return ExistsNPC(1, 0);
-        }
-
-        public bool NPC66()
-        {
-            return ExistsNPC(2, 0);
-        }
-
-        public bool NPC4()
-        {
-            return ExistsNPC(-1, 0);
-        }
-
-        public bool NPC44()
-        {
-            return ExistsNPC(-2, 0);
-        }
-
-        public bool NPC86()
-        {
-            return ExistsNPC(1, -1);
-        }
-
-        public bool NPC84()
-        {
-            return ExistsNPC(-1, -1);
-        }
-
-        public bool NPC886()
-        {
-            return ExistsNPC(1, -2);
-        }
-
-        public bool NPC8866()
-        {
-            return ExistsNPC(2, -2);
-        }
-
-        public bool NPC8844()
-        {
-            return ExistsNPC(-2, -2);
-        }
-
-        public bool NPC88866()
-        {
-            return ExistsNPC(2, -3);
-        }
-
-        public bool NPC88844()
-        {
-            return ExistsNPC(-2, -3);
-        }
-
-        public bool NPC884()
-        {
-            return ExistsNPC(-1, -2);
-        }
-
-        public bool NPC844()
-        {
-            return ExistsNPC(-2, -1);
-        }
-
-        public bool NPC866()
-        {
-            return ExistsNPC(2, -1);
-        }
-
-        public bool NPC8886()
-        {
-            return ExistsNPC(1, -3);
-        }
-
-        public bool NPC8884()
-        {
-            return ExistsNPC(-1, -3);
-        }
+        public bool NPC8 { get { return ExistsNPC(0, -1); } }
+        public bool NPC88 { get { return ExistsNPC(0, -2); } }
+        public bool NPC888 { get { return ExistsNPC(0, -3); } }
+        public bool NPC8888 { get { return ExistsNPC(0, -4); } }
+        public bool NPC88884 { get { return ExistsNPC(-1, -4); } }
+        public bool NPC88886 { get { return ExistsNPC(1, -4); } }
+        public bool NPC6 { get { return ExistsNPC(1, 0); } }
+        public bool NPC66 { get { return ExistsNPC(2, 0); } }
+        public bool NPC4 { get { return ExistsNPC(-1, 0); } }
+        public bool NPC44 { get { return ExistsNPC(-2, 0); } }
+        public bool NPC86 { get { return ExistsNPC(1, -1); } }
+        public bool NPC84 { get { return ExistsNPC(-1, -1); } }
+        public bool NPC886 { get { return ExistsNPC(1, -2); } }
+        public bool NPC8866 { get { return ExistsNPC(2, -2); } }
+        public bool NPC8844 { get { return ExistsNPC(-2, -2); } }
+        public bool NPC88866 { get { return ExistsNPC(2, -3); } }
+        public bool NPC88844 { get { return ExistsNPC(-2, -3); } }
+        public bool NPC884 { get { return ExistsNPC(-1, -2); } }
+        public bool NPC844 { get { return ExistsNPC(-2, -1); } }
+        public bool NPC866 { get { return ExistsNPC(2, -1); } }
+        public bool NPC8886 { get { return ExistsNPC(1, -3); } }
+        public bool NPC8884 { get { return ExistsNPC(-1, -3); } }
         #endregion
 
         #region PC

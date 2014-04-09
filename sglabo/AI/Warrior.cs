@@ -83,7 +83,7 @@ namespace sglabo.AI
             if(Battle.mapCode == 21448090)
             {
                 // スティンガー
-                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88()) >= 2)
+                if(sg.ap >= 8 && CountTrue(cube.NPC8, cube.NPC88) >= 2)
                 {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S2);
@@ -93,7 +93,7 @@ namespace sglabo.AI
                 }
 
                 // ストラッシュ
-                if(sg.ap >= 12 && CountTrue(cube.NPC8(), cube.NPC86(), cube.NPC84()) >= 2)
+                if(sg.ap >= 12 && CountTrue(cube.NPC8, cube.NPC86, cube.NPC84) >= 2)
                 {
                     sg.ap -= 12;
                     SelectSkill(SkillOrder.S3);
@@ -103,17 +103,17 @@ namespace sglabo.AI
                 }
 
                 // バーチカルウェブ
-                if(sg.ap >= 6 && (cube.NPC8() || cube.NPC4() || cube.NPC6() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
+                if(sg.ap >= 6 && (cube.NPC8 || cube.NPC4 || cube.NPC6 || cube.NPC86 || cube.NPC84 || cube.NPC88))
                 {
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC88())        SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC86())   SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC84())   SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC6())    SelectTarget(Direction.D6);
-                    else if(cube.NPC4())    SelectTarget(Direction.D4);
-                    else if(cube.NPC8())    SelectTarget(Direction.D8);
+                    if(cube.NPC88)        SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86)   SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84)   SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC6)    SelectTarget(Direction.D6);
+                    else if(cube.NPC4)    SelectTarget(Direction.D4);
+                    else if(cube.NPC8)    SelectTarget(Direction.D8);
                     
                     Go();
                     return;
@@ -122,7 +122,7 @@ namespace sglabo.AI
             else if(Battle.mapCode == 5409959)
             {
                 // スティンガー
-                if(sg.ap >= 8 && CountTrue(cube.NPC4(), cube.NPC44()) >= 2)
+                if(sg.ap >= 8 && CountTrue(cube.NPC4, cube.NPC44) >= 2)
                 {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S2);
@@ -132,15 +132,15 @@ namespace sglabo.AI
                 }
 
                 // バーチカルウェブ
-                if(sg.ap >= 6 && (cube.NPC8() || cube.NPC4() || cube.NPC84() || cube.NPC44()))
+                if(sg.ap >= 6 && (cube.NPC8 || cube.NPC4 || cube.NPC84 || cube.NPC44))
                 {
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC44()) SelectTarget(Direction.D4, Direction.D4);
-                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    if(cube.NPC44) SelectTarget(Direction.D4, Direction.D4);
+                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC4) SelectTarget(Direction.D4);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
 
                     Go();
                     return;
@@ -149,7 +149,7 @@ namespace sglabo.AI
             else if(Battle.IsGrandron())
             {
                 // リボルバースティング
-                if(sg.ap >= 25 && cube.NPC8888())
+                if(sg.ap >= 25 && cube.NPC8888)
                 {
                     sg.ap -= 25;
                     SelectSkill(SkillOrder.S4);
@@ -159,19 +159,19 @@ namespace sglabo.AI
                 }
 
                 // スティンガー
-                if(sg.ap >= 8 && CountTrue(cube.NPC8(), cube.NPC88(), cube.NPC888()) >= 2)
+                if(sg.ap >= 8 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888) >= 2)
                 {
                     sg.ap -= 8;
                     SelectSkill(SkillOrder.S2);
-                    if(cube.NPC888()) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
                     Go();
                     return;
                 }
 
                 // ストラッシュ
-                if(sg.ap >= 12 && CountTrue(cube.NPC8(), cube.NPC86(), cube.NPC84()) >= 2)
+                if(sg.ap >= 12 && CountTrue(cube.NPC8, cube.NPC86, cube.NPC84) >= 2)
                 {
                     sg.ap -= 12;
                     SelectSkill(SkillOrder.S3);
@@ -181,33 +181,33 @@ namespace sglabo.AI
                 }
 
                 // スワローカット
-                if(sg.ap >= 12 && (cube.NPC4() || cube.NPC84() || cube.NPC8() || cube.NPC86() || cube.NPC6()))
+                if(sg.ap >= 12 && (cube.NPC4 || cube.NPC84 || cube.NPC8 || cube.NPC86 || cube.NPC6))
                 {
                     sg.ap -= 12;
                     SelectSkill(SkillOrder.S6);
 
-                    if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
-                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC6()) SelectTarget(Direction.D6);
+                    if(cube.NPC4) SelectTarget(Direction.D4);
+                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
+                    else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC6) SelectTarget(Direction.D6);
 
                     Go();
                     return;
                 }
 
                 // バーチカルウェブ
-                if(sg.ap >= 6 && (cube.NPC8() || cube.NPC4() || cube.NPC6() || cube.NPC86() || cube.NPC84() || cube.NPC88()))
+                if(sg.ap >= 6 && (cube.NPC8 || cube.NPC4 || cube.NPC6 || cube.NPC86 || cube.NPC84 || cube.NPC88))
                 {
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S1);
 
-                    if(cube.NPC88()) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC86()) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC84()) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC6()) SelectTarget(Direction.D6);
-                    else if(cube.NPC4()) SelectTarget(Direction.D4);
-                    else if(cube.NPC8()) SelectTarget(Direction.D8);
+                    if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                    else if(cube.NPC6) SelectTarget(Direction.D6);
+                    else if(cube.NPC4) SelectTarget(Direction.D4);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
 
                     Go();
                     return;
