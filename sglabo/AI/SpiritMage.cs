@@ -134,13 +134,15 @@ namespace sglabo.AI
                 }
 
                 // スパークボール
-                if(sg.ap >= 18 && (Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && (cube.NPC8888 || cube.NPC88884 || cube.NPC88886))
+                if(sg.ap >= 18 && (Battle.mapCode == 9346174 || Battle.mapCode == 266499533) && (cube.NPC8888 || cube.NPC88884 || cube.NPC88886 || cube.NPC8884 || cube.NPC8886))
                 {
                     sg.ap -= 18;
                     SelectSkill(SkillOrder.S6);
                     if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC88884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC88886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
                     Go();
                     return;
                 }
