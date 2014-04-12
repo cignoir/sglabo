@@ -224,10 +224,10 @@ namespace sglabo.AI
                 //    return;
                 //}
 
-                // アメ
-                if(sg.ap >= 34 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                // ハリ
+                if(sg.ap >= 14 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
                 {
-                    sg.ap -= 34;
+                    sg.ap -= 14;
                     SelectSkill(SkillOrder.S7);
                     if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);

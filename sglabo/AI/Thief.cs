@@ -78,6 +78,20 @@ namespace sglabo.AI
             /* 順番を組み替えやすいように、あえて else if を使っていない */
             if(Battle.mapCode == 21448090 || Battle.mapCode == 5409959)
             {
+                // ライトニングディルク
+                if(sg.ap >= 9 && (cube.NPC8 || cube.NPC4 || cube.NPC6))
+                {
+                    sg.ap -= 9;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC6) SelectTarget(Direction.D6);
+                    else if(cube.NPC4) SelectTarget(Direction.D4);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+
                 // ダイアゴナル
                 if(sg.ap >= 4 && (cube.NPC8 || cube.NPC86 || cube.NPC84 || cube.NPC88))
                 {
@@ -93,22 +107,23 @@ namespace sglabo.AI
                     return;
                 }
 
-                // ライトニングディルク
-                if(sg.ap >= 9 && (cube.NPC8 || cube.NPC4 || cube.NPC6))
-                {
-                    sg.ap -= 9;
-                    SelectSkill(SkillOrder.S2);
-
-                    if(cube.NPC6) SelectTarget(Direction.D6);
-                    else if(cube.NPC4) SelectTarget(Direction.D4);
-                    else if(cube.NPC8) SelectTarget(Direction.D8);
-
-                    Go();
-                    return;
-                }
             }
             else if(Battle.IsGrandron())
             {
+                // ライトニングディルク
+                if(sg.ap >= 9 && (cube.NPC8 || cube.NPC4 || cube.NPC6))
+                {
+                    sg.ap -= 9;
+                    SelectSkill(SkillOrder.S2);
+
+                    if(cube.NPC6) SelectTarget(Direction.D6);
+                    else if(cube.NPC4) SelectTarget(Direction.D4);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
+
+                    Go();
+                    return;
+                }
+
                 // ダイアゴナル
                 if(sg.ap >= 4 && (cube.NPC8 || cube.NPC86 || cube.NPC84 || cube.NPC88))
                 {
@@ -124,19 +139,6 @@ namespace sglabo.AI
                     return;
                 }
 
-                // ライトニングディルク
-                if(sg.ap >= 9 && (cube.NPC8 || cube.NPC4 || cube.NPC6))
-                {
-                    sg.ap -= 9;
-                    SelectSkill(SkillOrder.S2);
-
-                    if(cube.NPC6) SelectTarget(Direction.D6);
-                    else if(cube.NPC4) SelectTarget(Direction.D4);
-                    else if(cube.NPC8) SelectTarget(Direction.D8);
-
-                    Go();
-                    return;
-                }
             }
 
             Go();
