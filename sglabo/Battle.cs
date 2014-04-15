@@ -58,8 +58,8 @@ namespace sglabo
                         foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                         {
                             pc.Activate();
-                            pc.ap += 10;
-                            if(pc.job == Job.盗賊) pc.ap -= 1;
+                            pc.ap = turn == 1 ? 10 : pc.ap + 10;
+                            //if(pc.job == Job.盗賊) pc.ap -= 1; // ファミ
 
                             if(pc.ai != null)
                             {
