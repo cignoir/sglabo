@@ -130,7 +130,7 @@ namespace sglabo
             mainForm.DeleteMapImage();
             turn = 0;
 
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
         }
 
         private void LoopWait(int limit = 100)

@@ -75,8 +75,6 @@ namespace sglabo.AI
                     .KeyDown(VirtualKeyCode.UP).Sleep(globalSleep * 2)
                     .KeyUp(VirtualKeyCode.UP).Sleep(globalSleep);
             }
-
-            Thread.Sleep(300);
         }
 
         public void Press(VirtualKeyCode vk)
