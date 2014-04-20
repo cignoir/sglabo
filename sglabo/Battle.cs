@@ -136,6 +136,11 @@ namespace sglabo
             firstMatch = !firstMatch;
 
             Thread.Sleep(2000);
+
+            if(mainForm.RealBattleCount >= mainForm.BattleLimit)
+            {
+                Application.Exit();
+            }
         }
 
         private void LoopWait(int limit = 100)

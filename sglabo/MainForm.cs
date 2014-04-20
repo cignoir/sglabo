@@ -36,6 +36,9 @@ namespace sglabo
         public bool itemOrganized = false;
         public bool kinashiUsed = false;
 
+        public int BattleLimit { get { return int.Parse(battleLimitText.Text); } }
+        public int RealBattleCount { get { return battleCount - 1; } }
+
         public MainForm()
         {
             InitializeComponent();
@@ -143,12 +146,7 @@ namespace sglabo
                         }
                     }
 
-                    int battleLimit = int.Parse(battleLimitText.Text);
-                    if(battleCount >= battleLimit)
-                    {
-                        AbortAllThreads();
-                        Application.Exit();
-                    }
+                    
 
                     // NPCと会話
                     if(Battle.firstMatch)
