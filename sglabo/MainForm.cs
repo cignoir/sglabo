@@ -34,7 +34,6 @@ namespace sglabo
         public string areaSelectorText;
 
         public bool itemOrganized = false;
-        //public bool highPotionUsed = false;
         public bool kinashiUsed = false;
 
         public MainForm()
@@ -122,7 +121,6 @@ namespace sglabo
                 if(NoThreadsWorking())
                 {
                     battleCount++;
-                    //highPotionUsed = false;
                     itemOrganized = false;
                     kinashiUsed = false;
 
@@ -134,55 +132,101 @@ namespace sglabo
             else if(sg.IsField())
             {
                 SetStatus(Properties.Resources.Field);
-
-                //if(!highPotionUsed && battleCount % 8 == 0)
-                //{
-                //    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.戦士 || x.job == Job.盗賊))
-                //    {
-                //        highPotionUsed = pc.UseItem();
-                //    }
-                //}
-
-                if(!itemOrganized && battleCount % 5 == 0)
+                if(Battle.IsBattleArena())
                 {
+                    if(!itemOrganized && battleCount % 10 == 0)
+                    {
+                        foreach(SGWindow pc in SGWindow.sgList)
+                        {
+                            // アイテムの整頓
+                            itemOrganized = pc.OrganizeItems();
+                        }
+                    }
+
+                    // NPCと会話
+                    if(Battle.firstMatch)
+                    {
+                        sg.Activate();
+
+                        sg.CloseAllWindows();
+
+                        // 報酬受領
+                        sg.RightClick(313, 341);
+                        Thread.Sleep(1000);
+                        sg.LeftClick(402, 393);
+                        Thread.Sleep(1000);
+                        sg.CloseAllWindows();
+
+                        // 開始
+                        sg.RightClick(313, 341);
+                        Thread.Sleep(1000);
+
+                        sg.LeftClick(402, 393);
+                        Thread.Sleep(1000);
+
+                        sg.LeftClick(402, 393);
+                        Thread.Sleep(1000);
+
+                        sg.LeftClick(353, 421);
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        sg.Activate();
+
+                        sg.RightClick(313, 341);
+                        Thread.Sleep(1000);
+
+                        sg.LeftClick(402, 393);
+                        Thread.Sleep(1000);
+
+                        sg.LeftClick(353, 421);
+                        Thread.Sleep(1000);
+                    }
+                }
+                else
+                {
+                    if(!itemOrganized && battleCount % 5 == 0)
+                    {
+                        foreach(SGWindow pc in SGWindow.sgList)
+                        {
+                            // アイテムの整頓
+                            itemOrganized = pc.OrganizeItems();
+                        }
+                    }
+
+                    if(shouldUseKinashi && !kinashiUsed && battleCount % 20 == 0)
+                    {
+                        foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
+                        {
+                            kinashiUsed = pc.UseItem(SGItem.YARUKINASHI);
+                        }
+                    }
+
+                    if(sg.ReadHP() == 1)
+                    {
+                        deathCount++;
+                        if(deathCount > 2)
+                        {
+                            AbortAllThreads();
+                            Application.Exit();
+                        }
+                    }
+
                     foreach(SGWindow pc in SGWindow.sgList)
                     {
-                        // アイテムの整頓
-                        itemOrganized = pc.OrganizeItems();
+                        while(pc.ReadHP() < 300)
+                        {
+                            pc.UseItem(SGItem.HIGHPOTION);
+                        }
                     }
-                }
 
-                if(shouldUseKinashi && !kinashiUsed && battleCount % 20 == 0)
-                {
-                    foreach(SGWindow pc in SGWindow.sgList.Where(x => x.job == Job.精霊))
+                    if(NoThreadsWorking())
                     {
-                        kinashiUsed = pc.UseItem(SGItem.YARUKINASHI);
+                        fieldThread = new Thread(new ThreadStart(new Field().Run));
+                        fieldThread.IsBackground = false;
+                        fieldThread.Start();
                     }
-                }
-
-                if(sg.ReadHP() == 1)
-                {
-                    deathCount++;
-                    if(deathCount > 2)
-                    {
-                        AbortAllThreads();
-                        Application.Exit();
-                    }
-                }
-
-                foreach(SGWindow pc in SGWindow.sgList)
-                {
-                    while(pc.ReadHP() < 300)
-                    {
-                        pc.UseItem(SGItem.HIGHPOTION);
-                    }
-                }
-
-                if(NoThreadsWorking())
-                {
-                    fieldThread = new Thread(new ThreadStart(new Field().Run));
-                    fieldThread.IsBackground = false;
-                    fieldThread.Start();
                 }
             }
         }

@@ -133,6 +133,8 @@ namespace sglabo
             mainForm.DeleteMapImage();
             turn = 0;
 
+            firstMatch = !firstMatch;
+
             Thread.Sleep(2000);
         }
 
