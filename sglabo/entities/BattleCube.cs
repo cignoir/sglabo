@@ -32,35 +32,70 @@ namespace sglabo.entities
                 }
             }
 
-            cells[0, 0].sPos = new ScreenPosition(460, 51);
-            cells[1, 0].sPos = new ScreenPosition(508, 87);
-            cells[2, 0].sPos = new ScreenPosition(556, 124);
-            cells[3, 0].sPos = new ScreenPosition(603, 162);
-            cells[4, 0].sPos = new ScreenPosition(649, 202);
+            if(Battle.IsBattleArena())
+            {
+                cells[0, 0].sPos = new ScreenPosition(455, 89);
+                cells[1, 0].sPos = new ScreenPosition(492, 118);
+                cells[2, 0].sPos = new ScreenPosition(533, 152);
+                cells[3, 0].sPos = new ScreenPosition(574, 184);
+                cells[4, 0].sPos = new ScreenPosition(615, 217);
 
-            cells[0, 1].sPos = new ScreenPosition(422, 96);
-            cells[1, 1].sPos = new ScreenPosition(470, 134);
-            cells[2, 1].sPos = new ScreenPosition(517, 173);
-            cells[3, 1].sPos = new ScreenPosition(564, 211);
-            cells[4, 1].sPos = new ScreenPosition(611, 249);
+                cells[0, 1].sPos = new ScreenPosition(418, 128);
+                cells[1, 1].sPos = new ScreenPosition(459, 159);
+                cells[2, 1].sPos = new ScreenPosition(500, 193);
+                cells[3, 1].sPos = new ScreenPosition(542, 226);
+                cells[4, 1].sPos = new ScreenPosition(582, 258);
 
-            cells[0, 2].sPos = new ScreenPosition(385, 144);
-            cells[1, 2].sPos = new ScreenPosition(432, 182);
-            cells[2, 2].sPos = new ScreenPosition(479, 221);
-            cells[3, 2].sPos = new ScreenPosition(525, 260);
-            cells[4, 2].sPos = new ScreenPosition(572, 297);
+                cells[0, 2].sPos = new ScreenPosition(385, 168);
+                cells[1, 2].sPos = new ScreenPosition(427, 201);
+                cells[2, 2].sPos = new ScreenPosition(468, 234);
+                cells[3, 2].sPos = new ScreenPosition(509, 266);
+                cells[4, 2].sPos = new ScreenPosition(550, 330);
 
-            cells[0, 3].sPos = new ScreenPosition(347, 193);
-            cells[1, 3].sPos = new ScreenPosition(394, 232);
-            cells[2, 3].sPos = new ScreenPosition(441, 269);
-            cells[3, 3].sPos = new ScreenPosition(488, 306);
-            cells[4, 3].sPos = new ScreenPosition(535, 344);
+                cells[0, 3].sPos = new ScreenPosition(353, 210);
+                cells[1, 3].sPos = new ScreenPosition(394, 242);
+                cells[2, 3].sPos = new ScreenPosition(435, 275);
+                cells[3, 3].sPos = new ScreenPosition(477, 308);
+                cells[4, 3].sPos = new ScreenPosition(518, 341);
 
-            cells[0, 4].sPos = new ScreenPosition(310, 241);
-            cells[1, 4].sPos = new ScreenPosition(357, 279);
-            cells[2, 4].sPos = new ScreenPosition(404, 316);
-            cells[3, 4].sPos = new ScreenPosition(451, 353);
-            cells[4, 4].sPos = new ScreenPosition(498, 391);
+                cells[0, 4].sPos = new ScreenPosition(320, 251);
+                cells[1, 4].sPos = new ScreenPosition(362, 284);
+                cells[2, 4].sPos = new ScreenPosition(402, 317);
+                cells[3, 4].sPos = new ScreenPosition(444, 351);
+                cells[4, 4].sPos = new ScreenPosition(485, 383);
+            }
+            else
+            {
+                cells[0, 0].sPos = new ScreenPosition(460, 51);
+                cells[1, 0].sPos = new ScreenPosition(508, 87);
+                cells[2, 0].sPos = new ScreenPosition(556, 124);
+                cells[3, 0].sPos = new ScreenPosition(603, 162);
+                cells[4, 0].sPos = new ScreenPosition(649, 202);
+
+                cells[0, 1].sPos = new ScreenPosition(422, 96);
+                cells[1, 1].sPos = new ScreenPosition(470, 134);
+                cells[2, 1].sPos = new ScreenPosition(517, 173);
+                cells[3, 1].sPos = new ScreenPosition(564, 211);
+                cells[4, 1].sPos = new ScreenPosition(611, 249);
+
+                cells[0, 2].sPos = new ScreenPosition(385, 144);
+                cells[1, 2].sPos = new ScreenPosition(432, 182);
+                cells[2, 2].sPos = new ScreenPosition(479, 221);
+                cells[3, 2].sPos = new ScreenPosition(525, 260);
+                cells[4, 2].sPos = new ScreenPosition(572, 297);
+
+                cells[0, 3].sPos = new ScreenPosition(347, 193);
+                cells[1, 3].sPos = new ScreenPosition(394, 232);
+                cells[2, 3].sPos = new ScreenPosition(441, 269);
+                cells[3, 3].sPos = new ScreenPosition(488, 306);
+                cells[4, 3].sPos = new ScreenPosition(535, 344);
+
+                cells[0, 4].sPos = new ScreenPosition(310, 241);
+                cells[1, 4].sPos = new ScreenPosition(357, 279);
+                cells[2, 4].sPos = new ScreenPosition(404, 316);
+                cells[3, 4].sPos = new ScreenPosition(451, 353);
+                cells[4, 4].sPos = new ScreenPosition(498, 391);
+            }
         }
 
         public BattleCube Scan()
