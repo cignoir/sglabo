@@ -35,7 +35,7 @@ namespace sglabo.AI
                     else
                     {
                         Move(Direction.D8, Direction.D8);
-                        Look(Direction.D8);
+                        Look(Direction.D8, true);
                     }
                 }
                 else
