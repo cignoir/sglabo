@@ -302,7 +302,7 @@ namespace sglabo.AI
                 }
                 else
                 {
-                    if(sg.ap >= 9 && !cube.NPC886 && !seal886)
+                    if(sg.ap >= 9 && !cube.NPC886 && !seal886 && Battle.area != Area.戦豹の試練)
                     {
                         sg.ap -= 9;
                         seal886 = true;
