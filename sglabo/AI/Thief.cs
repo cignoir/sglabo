@@ -31,12 +31,12 @@ namespace sglabo.AI
                     if(Battle.firstMatch)
                     {
                         Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D8, true);
+                        Look(Direction.D8);
                     }
                     else
                     {
                         Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D8, true);
+                        Look(Direction.D8);
                     }
                 }
                 else

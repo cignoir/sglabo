@@ -472,7 +472,16 @@ namespace sglabo
 
         private void areaSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch(areaSelector.Text)
+            {
+                case "戦豹の試練":
+                case "猛虎の試練":
+                case "荒獅子の試練":
+                    Battle.area = AreaConverter.ConvertFrom(areaSelector.Text);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)

@@ -262,14 +262,29 @@ namespace sglabo.AI
             #region 闘錬
             if(Battle.IsBattleArena())
             {
-                if(sg.ap >= 9 && !cube.NPC888 && !seal888)
+                if(Battle.firstMatch)
                 {
-                    sg.ap -= 9;
-                    seal888 = true;
-                    SelectSkill(SkillOrder.S1);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
+                    if(sg.ap >= 9 && !cube.NPC88 && !seal88)
+                    {
+                        sg.ap -= 9;
+                        seal888 = true;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+                }
+                else
+                {
+                    if(sg.ap >= 9 && !cube.NPC888 && !seal888)
+                    {
+                        sg.ap -= 9;
+                        seal888 = true;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
                 }
 
                 if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
