@@ -28,15 +28,31 @@ namespace sglabo.AI
                 Ready();
                 if(Battle.IsBattleArena())
                 {
-                    if(Battle.firstMatch)
+                    if(Battle.area == Area.戦豹の試練)
                     {
-                        Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D8, true);
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
                     }
-                    else
+                    else if(Battle.area == Area.猛虎の試練)
                     {
-                        Move(Direction.D8, Direction.D8);
-                        Look(Direction.D8, true);
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8);
+                            Look(Direction.D8, true);
+                        }
                     }
                 }
                 else
@@ -99,88 +115,233 @@ namespace sglabo.AI
 
             if(Battle.IsBattleArena())
             {
-                // リトルフォース88
-                if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
+                if(Battle.area == Area.戦豹の試練)
                 {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S1);
-                    SelectTarget(Direction.D8, Direction.D8);
-                    Go();
-                    return;
+                    // リトルフォース88
+                    if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
+                    {
+                        sg.ap -= 3;
+                        SelectSkill(SkillOrder.S1);
+                        SelectTarget(Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+
+                    // スパークボール
+                    if(sg.ap >= 18 && Battle.firstMatch && (cube.NPC8888 || cube.NPC88884 || cube.NPC88886 || cube.NPC8884 || cube.NPC8886))
+                    {
+                        sg.ap -= 18;
+                        SelectSkill(SkillOrder.S6);
+                        if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC88886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        Go();
+                        return;
+                    }
+
+                    // ウィンドエッジ
+                    if(sg.ap >= 6 && Battle.firstMatch && cube.NPC888)
+                    {
+                        sg.ap -= 6;
+                        SelectSkill(SkillOrder.S3);
+                        SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+
+                    // アクア
+                    if(sg.ap >= 6 && (cube.NPC8888 || cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884 || cube.NPC8884 || cube.NPC8886))
+                    {
+                        sg.ap -= 6;
+                        SelectSkill(SkillOrder.S2);
+
+                        if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                        else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                        else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+
+                        Go();
+                        return;
+                    }
+
+                    // ロックミサイル
+                    if(sg.ap >= 18 && (cube.NPC844 || cube.NPC8844 || cube.NPC866 || cube.NPC8866))
+                    {
+                        sg.ap -= 18;
+                        SelectSkill(SkillOrder.S4);
+                        if(cube.NPC844) SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC8844) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC866) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC8866) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        Go();
+                        return;
+                    }
+
+                    // アメ
+                    if(sg.ap >= 34 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                    {
+                        sg.ap -= 34;
+                        SelectSkill(SkillOrder.S7);
+                        if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                        else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                        Go();
+                        return;
+                    }
+
                 }
-
-                // スパークボール
-                if(sg.ap >= 18 && Battle.firstMatch && (cube.NPC8888 || cube.NPC88884 || cube.NPC88886 || cube.NPC8884 || cube.NPC8886))
+                else if(Battle.area == Area.猛虎の試練)
                 {
-                    sg.ap -= 18;
-                    SelectSkill(SkillOrder.S6);
-                    if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC88886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    Go();
-                    return;
-                }
+                    if(Battle.firstMatch)
+                    {
+                        // リトルフォース88
+                        if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
+                        {
+                            sg.ap -= 3;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
 
-                // ウィンドエッジ
-                if(sg.ap >= 6 && Battle.firstMatch && cube.NPC888)
-                {
-                    sg.ap -= 6;
-                    SelectSkill(SkillOrder.S3);
-                    SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    Go();
-                    return;
-                }
+                        // スパークボール
+                        if(sg.ap >= 18 && Battle.firstMatch && (cube.NPC8888 || cube.NPC88884 || cube.NPC88886 || cube.NPC8884 || cube.NPC8886))
+                        {
+                            sg.ap -= 18;
+                            SelectSkill(SkillOrder.S6);
+                            if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC88884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC88886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            Go();
+                            return;
+                        }
 
-                // アクア
-                if(sg.ap >= 6 && (cube.NPC8888 || cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884 || cube.NPC8884 || cube.NPC8886))
-                {
-                    sg.ap -= 6;
-                    SelectSkill(SkillOrder.S2);
+                        // ウィンドエッジ
+                        if(sg.ap >= 6 && Battle.firstMatch && cube.NPC888)
+                        {
+                            sg.ap -= 6;
+                            SelectSkill(SkillOrder.S3);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
 
-                    if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
-                    else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                        // アクア
+                        if(sg.ap >= 6 && (cube.NPC8888 || cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884 || cube.NPC8884 || cube.NPC8886))
+                        {
+                            sg.ap -= 6;
+                            SelectSkill(SkillOrder.S2);
 
-                    Go();
-                    return;
-                }
+                            if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                            else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
 
-                // ロックミサイル
-                if(sg.ap >= 18 && (cube.NPC844 || cube.NPC8844 || cube.NPC866 || cube.NPC8866))
-                {
-                    sg.ap -= 18;
-                    SelectSkill(SkillOrder.S4);
-                    if(cube.NPC844) SelectTarget(Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC8844) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC866) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC8866) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    Go();
-                    return;
-                }
+                            Go();
+                            return;
+                        }
 
-                // アメ
-                if(sg.ap >= 34 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
-                {
-                    sg.ap -= 34;
-                    SelectSkill(SkillOrder.S7);
-                    if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
-                    Go();
-                    return;
+                        // ロックミサイル
+                        if(sg.ap >= 18 && (cube.NPC844 || cube.NPC8844 || cube.NPC866 || cube.NPC8866))
+                        {
+                            sg.ap -= 18;
+                            SelectSkill(SkillOrder.S4);
+                            if(cube.NPC844) SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC8844) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC866) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC8866) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            Go();
+                            return;
+                        }
+
+                        // アメ
+                        if(sg.ap >= 34 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                        {
+                            sg.ap -= 34;
+                            SelectSkill(SkillOrder.S7);
+                            if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        // アクア
+                        if(sg.ap >= 6 && (cube.NPC8888 || cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884 || cube.NPC8884 || cube.NPC8886))
+                        {
+                            sg.ap -= 6;
+                            SelectSkill(SkillOrder.S2);
+
+                            if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                            else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+
+                            Go();
+                            return;
+                        }
+
+                        // ロックミサイル
+                        if(sg.ap >= 18 && (cube.NPC844 || cube.NPC8844 || cube.NPC866 || cube.NPC8866))
+                        {
+                            sg.ap -= 18;
+                            SelectSkill(SkillOrder.S4);
+                            if(cube.NPC844) SelectTarget(Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC8844) SelectTarget(Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC866) SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC8866) SelectTarget(Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            Go();
+                            return;
+                        }
+
+                        // アメ
+                        if(sg.ap >= 34 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                        {
+                            sg.ap -= 34;
+                            SelectSkill(SkillOrder.S7);
+                            if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+                    }
                 }
             }
             else

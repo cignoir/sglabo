@@ -28,15 +28,31 @@ namespace sglabo.AI
 
                 if(Battle.IsBattleArena())
                 {
-                    if(Battle.firstMatch)
+                    if(Battle.area == Area.戦豹の試練)
                     {
-                        Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D8);
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
                     }
-                    else
+                    else if(Battle.area == Area.猛虎の試練)
                     {
-                        Move(Direction.D8, Direction.D8, Direction.D8);
-                        Look(Direction.D8);
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8, Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
                     }
                 }
                 else
