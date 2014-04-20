@@ -17,10 +17,13 @@ namespace sglabo
         MainForm mainForm;
 
         public static int turn;
+        public static Area area;
         public static int mapCode;
         public SGWindow mainPC;
         int loopLimit = 100;
         public bool inBattle = true;
+
+        public static bool firstMatch = true;
 
         public Battle(MainForm mainForm)
         {
@@ -33,10 +36,10 @@ namespace sglabo
             mainPC.RightClick();
             mainPC.RightClick();
             mainPC.MoveMouseOnLocalTo(404, 316);
-            Area area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
+            area = AreaConverter.ConvertFrom(mainForm.areaSelectorText);
             Thread.Sleep(1000);
-            
-            mapCode = DetectMap(area);
+
+            if(!IsBattleArena()) mapCode = DetectMap(area);
         }
 
         public void Run()
@@ -216,6 +219,11 @@ namespace sglabo
         public static bool IsGrandron()
         {
             return Battle.mapCode == 9346174 || Battle.mapCode == 266499533 || Battle.mapCode == 209593538;
+        }
+
+        public static bool IsBattleArena()
+        {
+            return area == Area.戦豹の試練 || area == Area.猛虎の試練 || area == Area.荒獅子の試練;
         }
     }
 }
