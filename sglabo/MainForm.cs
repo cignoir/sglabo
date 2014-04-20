@@ -137,7 +137,7 @@ namespace sglabo
                 SetStatus(Properties.Resources.Field);
                 if(Battle.IsBattleArena())
                 {
-                    if(!itemOrganized && battleCount % 10 == 0)
+                    if(!itemOrganized && battleCount % 2 == 0)
                     {
                         foreach(SGWindow pc in SGWindow.sgList)
                         {
