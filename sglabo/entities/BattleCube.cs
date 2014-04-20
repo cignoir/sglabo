@@ -121,7 +121,9 @@ namespace sglabo.entities
         public bool NPC888 { get { return ExistsNPC(0, -3); } }
         public bool NPC8888 { get { return ExistsNPC(0, -4); } }
         public bool NPC88884 { get { return ExistsNPC(-1, -4); } }
+        public bool NPC888844 { get { return ExistsNPC(-2, -4); } }
         public bool NPC88886 { get { return ExistsNPC(1, -4); } }
+        public bool NPC888866 { get { return ExistsNPC(2, -4); } }
         public bool NPC6 { get { return ExistsNPC(1, 0); } }
         public bool NPC66 { get { return ExistsNPC(2, 0); } }
         public bool NPC4 { get { return ExistsNPC(-1, 0); } }
@@ -152,6 +154,8 @@ namespace sglabo.entities
         public bool PC8888 { get { return ExistsPC(0, -4); } }
         public bool PC88884 { get { return ExistsPC(-1, -4); } }
         public bool PC88886 { get { return ExistsPC(1, -4); } }
+        public bool PC888844 { get { return ExistsPC(-2, -4); } }
+        public bool PC888866 { get { return ExistsPC(2, -4); } }
         public bool PC6 { get { return ExistsPC(1, 0); } }
         public bool PC66 { get { return ExistsPC(2, 0); } }
         public bool PC4 { get { return ExistsPC(-1, 0); } }

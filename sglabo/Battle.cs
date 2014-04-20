@@ -62,7 +62,7 @@ namespace sglabo
                         {
                             pc.Activate();
                             pc.ap = turn == 1 ? 10 : pc.ap + 10;
-                            //if(pc.job == Job.盗賊) pc.ap -= 1; // ファミ
+                            if(Battle.IsBattleArena() && (pc.job == Job.戦士 || pc.job == Job.盗賊)) pc.ap -= 1; // ファミ
 
                             if(pc.ai != null)
                             {
