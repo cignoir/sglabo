@@ -239,7 +239,10 @@
             this.areaSelector.Items.AddRange(new object[] {
             "ルデンヌ大森林",
             "ナビア北限地帯",
-            "グランドロン"});
+            "グランドロン",
+            "戦豹の試練",
+            "猛虎の試練",
+            "荒獅子の試練"});
             this.areaSelector.Location = new System.Drawing.Point(54, 12);
             this.areaSelector.Name = "areaSelector";
             this.areaSelector.Size = new System.Drawing.Size(121, 20);

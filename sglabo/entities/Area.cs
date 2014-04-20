@@ -10,7 +10,10 @@ namespace sglabo.entities
     {
         ルデンヌ大森林, ナビア北限地帯, シュロ陸峡,
         イレネイド山脈,
-        グランドロン
+        グランドロン,
+        戦豹の試練,
+        猛虎の試練,
+        荒獅子の試練
     }
 
     class AreaConverter
@@ -32,6 +35,15 @@ namespace sglabo.entities
                     break;
                 case "グランドロン":
                     area = Area.グランドロン;
+                    break;
+                case "戦豹の試練":
+                    area = Area.戦豹の試練;
+                    break;
+                case "猛虎の試練":
+                    area = Area.猛虎の試練;
+                    break;
+                case "荒獅子の試練":
+                    area = Area.荒獅子の試練;
                     break;
                 default:
                     area = Area.ルデンヌ大森林;
