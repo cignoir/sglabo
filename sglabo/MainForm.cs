@@ -146,11 +146,11 @@ namespace sglabo
                         }
                     }
 
-                    
-
                     // NPCと会話
                     if(Battle.firstMatch)
                     {
+                        if(RealBattleCount >= BattleLimit) Application.Exit();
+
                         sg.Activate();
 
                         sg.CloseAllWindows();
@@ -177,6 +177,8 @@ namespace sglabo
                     }
                     else
                     {
+                        if(RealBattleCount >= BattleLimit) Application.Exit();
+
                         sg.Activate();
 
                         sg.RightClick(313, 341);

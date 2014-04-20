@@ -127,6 +127,8 @@ namespace sglabo
                     pc.ItemLot();
                 }
             }
+            if(mainForm.RealBattleCount >= mainForm.BattleLimit) Application.Exit();
+
             mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
 
@@ -137,10 +139,6 @@ namespace sglabo
 
             Thread.Sleep(2000);
 
-            if(mainForm.RealBattleCount >= mainForm.BattleLimit)
-            {
-                Application.Exit();
-            }
         }
 
         private void LoopWait(int limit = 100)
