@@ -341,6 +341,16 @@ namespace sglabo.AI
                             Go();
                             return;
                         }
+
+                        // ライン
+                        if(sg.ap >= 34 && (cube.NPC8888 || cube.NPC888866 || cube.NPC888844 || cube.NPC88884 || cube.NPC88886))
+                        {
+                            sg.ap -= 34;
+                            SelectSkill(SkillOrder.S8);
+                            if(cube.NPC8888 || cube.NPC888866 || cube.NPC888844 || cube.NPC88884 || cube.NPC88886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
                     }
                 }
             }
