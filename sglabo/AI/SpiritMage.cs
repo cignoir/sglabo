@@ -100,7 +100,7 @@ namespace sglabo.AI
             if(Battle.IsBattleArena())
             {
                 // リトルフォース88
-                if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 2)
+                if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
                 {
                     sg.ap -= 3;
                     SelectSkill(SkillOrder.S1);
@@ -139,25 +139,16 @@ namespace sglabo.AI
                     sg.ap -= 6;
                     SelectSkill(SkillOrder.S2);
 
-                    if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
                     else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
                     else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
                     else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
                     else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
 
-                    Go();
-                    return;
-                }
-
-                if(sg.ap >= 3 && (cube.NPC888 || cube.NPC88 || cube.NPC8 || cube.NPC886 || cube.NPC884))
-                {
-                    sg.ap -= 3;
-                    SelectSkill(SkillOrder.S1);
-                    SelectTarget(Direction.D8, Direction.D8);
                     Go();
                     return;
                 }

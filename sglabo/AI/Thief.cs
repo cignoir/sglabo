@@ -115,8 +115,8 @@ namespace sglabo.AI
                     SelectSkill(SkillOrder.S1);
 
                     if(cube.NPC8) SelectTarget(Direction.D8);
-                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
                     else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
                     else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
 
                     Go();
