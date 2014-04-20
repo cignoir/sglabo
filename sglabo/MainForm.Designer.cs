@@ -88,6 +88,8 @@
             this.vMoveButton = new System.Windows.Forms.RadioButton();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.kinashiCheckBox = new System.Windows.Forms.CheckBox();
+            this.battleLimitText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -757,11 +759,30 @@
             this.kinashiCheckBox.UseVisualStyleBackColor = true;
             this.kinashiCheckBox.CheckedChanged += new System.EventHandler(this.kinashiCheckBox_CheckedChanged);
             // 
+            // battleLimitText
+            // 
+            this.battleLimitText.Location = new System.Drawing.Point(592, 101);
+            this.battleLimitText.Name = "battleLimitText";
+            this.battleLimitText.Size = new System.Drawing.Size(32, 19);
+            this.battleLimitText.TabIndex = 27;
+            this.battleLimitText.Text = "100";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(529, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "戦闘回数";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 328);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.battleLimitText);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.kinashiCheckBox);
             this.Controls.Add(this.mapPictureBox);
@@ -879,6 +900,8 @@
         private System.Windows.Forms.TextBox movingValueTextBox;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.CheckBox kinashiCheckBox;
+        private System.Windows.Forms.TextBox battleLimitText;
+        private System.Windows.Forms.Label label4;
     }
 }
 

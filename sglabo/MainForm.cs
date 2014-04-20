@@ -143,6 +143,13 @@ namespace sglabo
                         }
                     }
 
+                    int battleLimit = int.Parse(battleLimitText.Text);
+                    if(battleCount >= battleLimit)
+                    {
+                        AbortAllThreads();
+                        Application.Exit();
+                    }
+
                     // NPCと会話
                     if(Battle.firstMatch)
                     {
