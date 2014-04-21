@@ -127,7 +127,7 @@ namespace sglabo
                     pc.ItemLot();
                 }
             }
-            if(mainForm.RealBattleCount >= mainForm.BattleLimit) Application.Exit();
+            if(mainForm.RealBattleCount >= mainForm.BattleLimit) mainForm.Close();
 
             mainForm.SetStatus(Properties.Resources.BattleEnd);
             MainForm.isBattleTaskRunning = false;
