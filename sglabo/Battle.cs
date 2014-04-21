@@ -50,6 +50,7 @@ namespace sglabo
             while(inBattle)
             {
                 turn++;
+                if(turn >= 30) mainForm.Close();
 
                 mainForm.SetStatus(Properties.Resources.WaitingForMovingPhase);
                 if(turn > 1) LoopWait(loopLimit);
