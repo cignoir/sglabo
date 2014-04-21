@@ -89,7 +89,7 @@ namespace sglabo
                                 }
                             }
                         }
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
 
                         mainForm.SetStatus(Properties.Resources.WaitingForActionPhase);
                         LoopWait(loopLimit);
@@ -109,7 +109,7 @@ namespace sglabo
                                 pc.ai.PlaySkill();
                             }
                         }
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
 
                     }
                     catch(Exception e)
