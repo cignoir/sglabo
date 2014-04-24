@@ -118,7 +118,7 @@ namespace sglabo.AI
                 if(Battle.area == Area.戦豹の試練)
                 {
                     // リトルフォース88
-                    if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
+                    if(CanLittleForce88())
                     {
                         sg.ap -= 3;
                         SelectSkill(SkillOrder.S1);
@@ -207,7 +207,7 @@ namespace sglabo.AI
                     if(Battle.firstMatch)
                     {
                         // リトルフォース88
-                        if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 1)
+                        if(CanLittleForce88())
                         {
                             sg.ap -= 3;
                             SelectSkill(SkillOrder.S1);
@@ -378,7 +378,7 @@ namespace sglabo.AI
                     }
 
                     //// リトルフォース84
-                    if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC4, cube.NPC84, cube.NPC884, cube.NPC844) >= 2)
+                    if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && CanLittleForce84(2))
                     {
                         sg.ap -= 3;
                         SelectSkill(SkillOrder.S1);
@@ -397,7 +397,7 @@ namespace sglabo.AI
                     //}
 
                     // リトルフォース88
-                    if(sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= 2)
+                    if(CanLittleForce88(2))
                     {
                         sg.ap -= 3;
                         SelectSkill(SkillOrder.S1);
@@ -449,7 +449,7 @@ namespace sglabo.AI
                         return;
                     }
 
-                    if(sg.ap >= 3 && (cube.NPC888 || cube.NPC88 || cube.NPC8 || cube.NPC886 || cube.NPC884))
+                    if(CanLittleForce88())
                     {
                         sg.ap -= 3;
                         SelectSkill(SkillOrder.S1);
@@ -458,7 +458,7 @@ namespace sglabo.AI
                         return;
                     }
 
-                    if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && sg.ap >= 3 && (cube.NPC84 || cube.NPC884 || cube.NPC844 || cube.NPC8 || cube.NPC4))
+                    if((Battle.mapCode == 5409959 || Battle.IsGrandron()) && CanLittleForce84())
                     {
                         sg.ap -= 3;
                         SelectSkill(SkillOrder.S1);
@@ -517,6 +517,16 @@ namespace sglabo.AI
             }
 
             Go();
+        }
+
+        public bool CanLittleForce88(int minNPCCount = 1)
+        {
+            return sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC88, cube.NPC888, cube.NPC886, cube.NPC884) >= minNPCCount && CountTrue(cube.PC8, cube.PC88, cube.PC888, cube.PC886, cube.PC884) == 0;
+        }
+
+        public bool CanLittleForce84(int minNPCCount = 1)
+        {
+            return sg.ap >= 3 && CountTrue(cube.NPC8, cube.NPC4, cube.NPC84, cube.NPC884, cube.NPC844) >= minNPCCount && CountTrue(cube.PC8, cube.PC4, cube.PC84, cube.PC884, cube.PC844) == 0;
         }
     }
 }
