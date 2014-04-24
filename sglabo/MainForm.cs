@@ -35,6 +35,7 @@ namespace sglabo
 
         public bool itemOrganized = false;
         public bool kinashiUsed = false;
+        public bool talkedWithNPC = false;
 
         public int BattleLimit { get { return int.Parse(battleLimitText.Text); } }
         public int RealBattleCount { get { return battleCount - 1; } }
@@ -137,7 +138,7 @@ namespace sglabo
             else if(sg.IsField())
             {
                 SetStatus(Properties.Resources.Field);
-                if(Battle.IsBattleArena())
+                if(Battle.IsBattleArena() && !talkedWithNPC)
                 {
                     if(!itemOrganized && battleCount % 2 == 0)
                     {
@@ -192,6 +193,8 @@ namespace sglabo
                         sg.LeftClick(353, 421);
                         Thread.Sleep(1000);
                     }
+
+                    talkedWithNPC = true;
                 }
                 else
                 {

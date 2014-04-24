@@ -145,9 +145,42 @@ namespace sglabo
             turn = 0;
 
             firstMatch = !firstMatch;
+            mainForm.talkedWithNPC = false;
 
             Thread.Sleep(2000);
 
+            // 戦豹交換
+            if(mainForm.RealBattleCount == 20 && Battle.area == Area.猛虎の試練 && !mainForm.shouldLot)
+            {
+                mainPC.Activate();
+                // NPCの座標へ移動
+
+                // キャラ別
+                foreach(SGWindow pc in SGWindow.sgList)
+                {
+                    pc.OrganizeItems();
+
+                    // 話しかける
+                    switch(pc.job)
+                    {
+                        case Job.精霊:
+                            break;
+                        case Job.戦士:
+                            break;
+                        case Job.盗賊:
+                            break;
+                        case Job.守護:
+                            break;
+                        case Job.黒印:
+                            break;
+                    }
+
+                    // 交換ダイアログ操作
+                }
+
+                mainPC.Activate();
+                // 元の位置へ移動
+            }
         }
 
         private void LoopWait(int limit = 100)
