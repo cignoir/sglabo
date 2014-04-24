@@ -129,6 +129,7 @@ namespace sglabo
         {
             Activate();
             LeftClick(165, 206);
+            ItemLot();
         }
 
         public void MoveMouseOnLocalTo(int x, int y)

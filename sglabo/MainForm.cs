@@ -138,64 +138,68 @@ namespace sglabo
             else if(sg.IsField())
             {
                 SetStatus(Properties.Resources.Field);
-                if(Battle.IsBattleArena() && !talkedWithNPC)
+                if(Battle.IsBattleArena())
                 {
-                    if(!itemOrganized && battleCount % 2 == 0)
+                    if(!talkedWithNPC)
                     {
-                        foreach(SGWindow pc in SGWindow.sgList)
+                        Thread.Sleep(1000);
+                        if(!itemOrganized && battleCount % 2 == 0)
                         {
-                            // アイテムの整頓
-                            itemOrganized = pc.OrganizeItems();
+                            foreach(SGWindow pc in SGWindow.sgList)
+                            {
+                                // アイテムの整頓
+                                itemOrganized = pc.OrganizeItems();
+                            }
                         }
+
+                        // NPCと会話
+                        var talkingSleep = 2000;
+                        if(Battle.firstMatch)
+                        {
+                            if(RealBattleCount >= BattleLimit) Application.Exit();
+
+                            sg.Activate();
+
+                            sg.CloseAllWindows();
+
+                            // 報酬受領
+                            sg.RightClick(313, 341);
+                            Thread.Sleep(talkingSleep);
+                            sg.LeftClick(402, 393);
+                            Thread.Sleep(talkingSleep);
+                            sg.CloseAllWindows();
+
+                            // 開始
+                            sg.RightClick(313, 341);
+                            Thread.Sleep(talkingSleep);
+
+                            sg.LeftClick(402, 393);
+                            Thread.Sleep(talkingSleep);
+
+                            sg.LeftClick(402, 393);
+                            Thread.Sleep(talkingSleep);
+
+                            sg.LeftClick(353, 421);
+                            Thread.Sleep(talkingSleep);
+                        }
+                        else
+                        {
+                            if(RealBattleCount >= BattleLimit) Application.Exit();
+
+                            sg.Activate();
+
+                            sg.RightClick(313, 341);
+                            Thread.Sleep(talkingSleep);
+
+                            sg.LeftClick(402, 393);
+                            Thread.Sleep(talkingSleep);
+
+                            sg.LeftClick(353, 421);
+                            Thread.Sleep(talkingSleep);
+                        }
+
+                        talkedWithNPC = true;
                     }
-
-                    // NPCと会話
-                    var talkingSleep = 2000;
-                    if(Battle.firstMatch)
-                    {
-                        if(RealBattleCount >= BattleLimit) Application.Exit();
-
-                        sg.Activate();
-
-                        sg.CloseAllWindows();
-
-                        // 報酬受領
-                        sg.RightClick(313, 341);
-                        Thread.Sleep(talkingSleep);
-                        sg.LeftClick(402, 393);
-                        Thread.Sleep(talkingSleep);
-                        sg.CloseAllWindows();
-
-                        // 開始
-                        sg.RightClick(313, 341);
-                        Thread.Sleep(talkingSleep);
-
-                        sg.LeftClick(402, 393);
-                        Thread.Sleep(talkingSleep);
-
-                        sg.LeftClick(402, 393);
-                        Thread.Sleep(talkingSleep);
-
-                        sg.LeftClick(353, 421);
-                        Thread.Sleep(talkingSleep);
-                    }
-                    else
-                    {
-                        if(RealBattleCount >= BattleLimit) Application.Exit();
-
-                        sg.Activate();
-
-                        sg.RightClick(313, 341);
-                        Thread.Sleep(talkingSleep);
-
-                        sg.LeftClick(402, 393);
-                        Thread.Sleep(talkingSleep);
-
-                        sg.LeftClick(353, 421);
-                        Thread.Sleep(talkingSleep);
-                    }
-
-                    talkedWithNPC = true;
                 }
                 else
                 {
