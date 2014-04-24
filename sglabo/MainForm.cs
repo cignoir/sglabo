@@ -150,6 +150,7 @@ namespace sglabo
                     }
 
                     // NPCと会話
+                    var talkingSleep = 2000;
                     if(Battle.firstMatch)
                     {
                         if(RealBattleCount >= BattleLimit) Application.Exit();
@@ -160,23 +161,23 @@ namespace sglabo
 
                         // 報酬受領
                         sg.RightClick(313, 341);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
                         sg.LeftClick(402, 393);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
                         sg.CloseAllWindows();
 
                         // 開始
                         sg.RightClick(313, 341);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
 
                         sg.LeftClick(402, 393);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
 
                         sg.LeftClick(402, 393);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
 
                         sg.LeftClick(353, 421);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
                     }
                     else
                     {
@@ -185,13 +186,13 @@ namespace sglabo
                         sg.Activate();
 
                         sg.RightClick(313, 341);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
 
                         sg.LeftClick(402, 393);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
 
                         sg.LeftClick(353, 421);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(talkingSleep);
                     }
 
                     talkedWithNPC = true;
