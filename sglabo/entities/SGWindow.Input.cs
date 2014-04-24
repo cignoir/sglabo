@@ -114,8 +114,6 @@ namespace sglabo
                 .KeyUp(VirtualKeyCode.END).Sleep(globalSleep);
         }
 
-        
-
         public void ItemLot()
         {
             Activate();
@@ -125,6 +123,12 @@ namespace sglabo
                 .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep)
                 .KeyDown(VirtualKeyCode.RETURN).Sleep(globalSleep)
                 .KeyUp(VirtualKeyCode.RETURN).Sleep(globalSleep);
+        }
+
+        public void ItemPass()
+        {
+            Activate();
+            LeftClick(165, 206);
         }
 
         public void MoveMouseOnLocalTo(int x, int y)

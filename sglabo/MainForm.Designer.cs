@@ -90,6 +90,7 @@
             this.kinashiCheckBox = new System.Windows.Forms.CheckBox();
             this.battleLimitText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lotCheckBox = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -776,11 +777,25 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "戦闘回数";
             // 
+            // lotCheckBox
+            // 
+            this.lotCheckBox.AutoSize = true;
+            this.lotCheckBox.Checked = true;
+            this.lotCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.lotCheckBox.Location = new System.Drawing.Point(531, 126);
+            this.lotCheckBox.Name = "lotCheckBox";
+            this.lotCheckBox.Size = new System.Drawing.Size(48, 16);
+            this.lotCheckBox.TabIndex = 29;
+            this.lotCheckBox.Text = "ロット";
+            this.lotCheckBox.UseVisualStyleBackColor = true;
+            this.lotCheckBox.CheckedChanged += new System.EventHandler(this.lotCheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 328);
+            this.Controls.Add(this.lotCheckBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.battleLimitText);
             this.Controls.Add(this.checkBox6);
@@ -901,6 +916,7 @@
         private System.Windows.Forms.CheckBox kinashiCheckBox;
         private System.Windows.Forms.TextBox battleLimitText;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox lotCheckBox;
     }
 }
 

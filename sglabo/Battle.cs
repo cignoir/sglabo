@@ -125,7 +125,15 @@ namespace sglabo
                 foreach(SGWindow pc in SGWindow.sgList.Where(x => x.auto))
                 {
                     pc.Activate();
-                    pc.ItemLot();
+
+                    if(mainForm.shouldLot)
+                    {
+                        pc.ItemLot();
+                    }
+                    else
+                    {
+                        pc.ItemPass();
+                    }
                 }
             }
             if(mainForm.RealBattleCount >= mainForm.BattleLimit) mainForm.Close();

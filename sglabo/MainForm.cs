@@ -39,6 +39,8 @@ namespace sglabo
         public int BattleLimit { get { return int.Parse(battleLimitText.Text); } }
         public int RealBattleCount { get { return battleCount - 1; } }
 
+        public bool shouldLot = true;
+
         public MainForm()
         {
             InitializeComponent();
@@ -499,6 +501,11 @@ namespace sglabo
         private void kinashiCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             shouldUseKinashi = kinashiCheckBox.Checked;
+        }
+
+        private void lotCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            shouldLot = lotCheckBox.Checked;
         }
 
     }
