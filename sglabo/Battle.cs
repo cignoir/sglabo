@@ -150,7 +150,7 @@ namespace sglabo
             Thread.Sleep(2000);
 
             // 戦豹交換
-            if(mainForm.RealBattleCount == 20 && Battle.area == Area.猛虎の試練 && !mainForm.shouldLot)
+            if(mainForm.RealBattleCount == 40 && Battle.area == Area.猛虎の試練 && !mainForm.shouldLot)
             {
                 mainPC.Activate();
                 // NPCの座標へ移動
