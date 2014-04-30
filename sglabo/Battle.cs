@@ -154,7 +154,11 @@ namespace sglabo
             {
                 mainPC.Activate();
                 // NPCの座標へ移動
-
+                mainPC.LeftClick(770, 540);
+                Thread.Sleep(4000);
+                mainPC.LeftClick(358, 292);
+                Thread.Sleep(2000);
+                
                 // キャラ別
                 foreach(SGWindow pc in SGWindow.sgList)
                 {
@@ -164,22 +168,37 @@ namespace sglabo
                     switch(pc.job)
                     {
                         case Job.精霊:
+                            pc.RightClick(479, 356);
                             break;
                         case Job.戦士:
+                            pc.RightClick(454, 334);
                             break;
                         case Job.盗賊:
+                            pc.RightClick(434, 317);
                             break;
                         case Job.守護:
+                            pc.RightClick(454, 334);
                             break;
                         case Job.黒印:
+                            pc.RightClick(479, 356);
                             break;
                     }
+                    Thread.Sleep(1000);
 
                     // 交換ダイアログ操作
+                    pc.LeftClick(403, 394);
+                    Thread.Sleep(1000);
+                    pc.LeftClick(407, 278);
+                    Thread.Sleep(1000);
+                    pc.LeftClick(358, 393);
+                    Thread.Sleep(1000);
+
                 }
 
                 mainPC.Activate();
                 // 元の位置へ移動
+                mainPC.LeftClick(121, 182);
+                Thread.Sleep(4000);
             }
         }
 
