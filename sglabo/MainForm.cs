@@ -156,7 +156,7 @@ namespace sglabo
                         var talkingSleep = 2000;
                         if(Battle.firstMatch)
                         {
-                            if(RealBattleCount >= BattleLimit) Application.Exit();
+                            if(BattleLimit != 0 && RealBattleCount >= BattleLimit) Application.Exit();
 
                             sg.Activate();
 
@@ -184,7 +184,7 @@ namespace sglabo
                         }
                         else
                         {
-                            if(RealBattleCount >= BattleLimit) Application.Exit();
+                            if(BattleLimit != 0 && RealBattleCount >= BattleLimit) Application.Exit();
 
                             sg.Activate();
 
