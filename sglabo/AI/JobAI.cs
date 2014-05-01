@@ -160,7 +160,7 @@ namespace sglabo.AI
                 case Direction.D8:
                     Move(Direction.D8);
                     Move(Direction.D5);
-                    Look(Direction.D8);
+                    Look(Direction.D8, true); // 3歩前提
                     break;
                 case Direction.D6:
                     Move(Direction.D6);
