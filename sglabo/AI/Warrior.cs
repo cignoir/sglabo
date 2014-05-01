@@ -92,11 +92,17 @@ namespace sglabo.AI
             }
             else
             {
-                //if(Battle.IsGrandron() && ShouldStack(Direction.D8))
-                //{
-                //    Ready(false);
-                //    Stack(Direction.D8);
-                //}
+                if(Battle.turn == 2)
+                {
+                    if(Battle.area == Area.猛虎の試練)
+                    {
+                        if(!Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8);
+                        }
+                    }
+                }
             }
 
             Go();
