@@ -91,6 +91,7 @@
             this.battleLimitText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lotCheckBox = new System.Windows.Forms.CheckBox();
+            this.exchangeRewardsButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -790,11 +791,22 @@
             this.lotCheckBox.UseVisualStyleBackColor = true;
             this.lotCheckBox.CheckedChanged += new System.EventHandler(this.lotCheckBox_CheckedChanged);
             // 
+            // exchangeRewardsButton
+            // 
+            this.exchangeRewardsButton.Location = new System.Drawing.Point(531, 149);
+            this.exchangeRewardsButton.Name = "exchangeRewardsButton";
+            this.exchangeRewardsButton.Size = new System.Drawing.Size(93, 23);
+            this.exchangeRewardsButton.TabIndex = 30;
+            this.exchangeRewardsButton.Text = "戦豹交換";
+            this.exchangeRewardsButton.UseVisualStyleBackColor = true;
+            this.exchangeRewardsButton.Click += new System.EventHandler(this.exchangeRewardsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 328);
+            this.Controls.Add(this.exchangeRewardsButton);
             this.Controls.Add(this.lotCheckBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.battleLimitText);
@@ -917,6 +929,7 @@
         private System.Windows.Forms.TextBox battleLimitText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox lotCheckBox;
+        private System.Windows.Forms.Button exchangeRewardsButton;
     }
 }
 
