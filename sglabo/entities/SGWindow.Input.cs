@@ -148,6 +148,15 @@ namespace sglabo
                 .LeftButtonUp().Sleep(globalSleep);
         }
 
+        public void ShortLeftClick(int x, int y)
+        {
+            MoveMouseOnLocalTo(x, y);
+
+            input.Mouse
+                .LeftButtonDown().Sleep(50)
+                .LeftButtonUp();
+        }
+
         public void LeftClick(int x, int y)
         {
             MoveMouseOnLocalTo(x, y);

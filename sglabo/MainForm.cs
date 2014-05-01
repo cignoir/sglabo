@@ -521,9 +521,9 @@ namespace sglabo
             var mainPC = SGWindow.MainPC();
             mainPC.Activate();
             // NPCの座標へ移動
-            mainPC.LeftClick(770, 540);
+            mainPC.ShortLeftClick(770, 540);
             Thread.Sleep(4000);
-            mainPC.LeftClick(358, 292);
+            mainPC.ShortLeftClick(358, 292);
             Thread.Sleep(2000);
 
             // キャラ別
@@ -564,7 +564,7 @@ namespace sglabo
 
             mainPC.Activate();
             // 元の位置へ移動
-            mainPC.LeftClick(121, 182);
+            mainPC.ShortLeftClick(121, 182);
             Thread.Sleep(4000);
         }
 
