@@ -127,6 +127,8 @@ namespace sglabo
                 if(NoThreadsWorking())
                 {
                     battleCount++;
+                    battleCountLabel.Text = RealBattleCount.ToString();
+
                     itemOrganized = false;
                     kinashiUsed = false;
 

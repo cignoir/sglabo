@@ -92,6 +92,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lotCheckBox = new System.Windows.Forms.CheckBox();
             this.exchangeRewardsButton = new System.Windows.Forms.Button();
+            this.battleCountLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -801,11 +802,21 @@
             this.exchangeRewardsButton.UseVisualStyleBackColor = true;
             this.exchangeRewardsButton.Click += new System.EventHandler(this.exchangeRewardsButton_Click);
             // 
+            // battleCountLabel
+            // 
+            this.battleCountLabel.AutoSize = true;
+            this.battleCountLabel.Location = new System.Drawing.Point(632, 104);
+            this.battleCountLabel.Name = "battleCountLabel";
+            this.battleCountLabel.Size = new System.Drawing.Size(11, 12);
+            this.battleCountLabel.TabIndex = 31;
+            this.battleCountLabel.Text = "0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 328);
+            this.Controls.Add(this.battleCountLabel);
             this.Controls.Add(this.exchangeRewardsButton);
             this.Controls.Add(this.lotCheckBox);
             this.Controls.Add(this.label4);
@@ -930,6 +941,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox lotCheckBox;
         private System.Windows.Forms.Button exchangeRewardsButton;
+        private System.Windows.Forms.Label battleCountLabel;
     }
 }
 
