@@ -92,7 +92,7 @@ namespace sglabo.AI
             }
             else
             {
-                if(Battle.turn == 2)
+                if(Battle.turn == 5)
                 {
                     if(Battle.area == Area.猛虎の試練)
                     {
