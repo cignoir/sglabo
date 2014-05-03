@@ -93,6 +93,7 @@
             this.lotCheckBox = new System.Windows.Forms.CheckBox();
             this.exchangeRewardsButton = new System.Windows.Forms.Button();
             this.battleCountLabel = new System.Windows.Forms.Label();
+            this.exchangeCheckBox = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -811,11 +812,22 @@
             this.battleCountLabel.TabIndex = 31;
             this.battleCountLabel.Text = "0";
             // 
+            // exchangeCheckBox
+            // 
+            this.exchangeCheckBox.AutoSize = true;
+            this.exchangeCheckBox.Location = new System.Drawing.Point(531, 178);
+            this.exchangeCheckBox.Name = "exchangeCheckBox";
+            this.exchangeCheckBox.Size = new System.Drawing.Size(101, 16);
+            this.exchangeCheckBox.TabIndex = 32;
+            this.exchangeCheckBox.Text = "戦豹交換するか";
+            this.exchangeCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 328);
+            this.Controls.Add(this.exchangeCheckBox);
             this.Controls.Add(this.battleCountLabel);
             this.Controls.Add(this.exchangeRewardsButton);
             this.Controls.Add(this.lotCheckBox);
@@ -942,6 +954,7 @@
         private System.Windows.Forms.CheckBox lotCheckBox;
         private System.Windows.Forms.Button exchangeRewardsButton;
         private System.Windows.Forms.Label battleCountLabel;
+        private System.Windows.Forms.CheckBox exchangeCheckBox;
     }
 }
 

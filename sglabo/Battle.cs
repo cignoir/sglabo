@@ -150,7 +150,7 @@ namespace sglabo
             Thread.Sleep(2000);
 
             // 戦豹交換
-            if(mainForm.RealBattleCount % 40 == 0 && Battle.area == Area.猛虎の試練 && !mainForm.shouldLot)
+            if(mainForm.CanExchangeRewards && mainForm.RealBattleCount % 40 == 0 && Battle.area == Area.猛虎の試練 && !mainForm.shouldLot)
             {
                 Thread.Sleep(5000);
                 mainPC.Activate();

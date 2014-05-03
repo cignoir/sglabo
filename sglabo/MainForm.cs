@@ -39,6 +39,7 @@ namespace sglabo
 
         public int BattleLimit { get { return int.Parse(battleLimitText.Text); } }
         public int RealBattleCount { get { return battleCount - 1; } }
+        public bool CanExchangeRewards { get { return exchangeCheckBox.Checked; } }
 
         public bool shouldLot = true;
 
