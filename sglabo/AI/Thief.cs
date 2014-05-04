@@ -43,16 +43,13 @@ namespace sglabo.AI
                     }
                     else if(Battle.area == Area.猛虎の試練)
                     {
-                        if(Battle.firstMatch)
-                        {
-                            Move(Direction.D8, Direction.D8, Direction.D8);
-                            Look(Direction.D8, true);
-                        }
-                        else
-                        {
-                            Move(Direction.D8, Direction.D8, Direction.D8);
-                            Look(Direction.D8, true);
-                        }
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8, true);
+                    }
+                    else if(Battle.area == Area.荒獅子の試練)
+                    {
+                        Move(Direction.D8, Direction.D8, Direction.D8);
+                        Look(Direction.D8, true);
                     }
                 }
                 else

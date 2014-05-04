@@ -53,6 +53,19 @@ namespace sglabo.AI
                             Look(Direction.D8, true);
                         }
                     }
+                    else if(Battle.area == Area.荒獅子の試練)
+                    {
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8);
+                        }
+                    }
                 }
                 else
                 {
@@ -278,75 +291,188 @@ namespace sglabo.AI
             #region 闘錬
             if(Battle.IsBattleArena())
             {
-                if(Battle.firstMatch)
+                if(Battle.area == Area.荒獅子の試練)
                 {
-                    if(sg.ap >= 9 && !cube.NPC88 && !seal88)
+                    if(Battle.firstMatch)
                     {
-                        sg.ap -= 9;
-                        seal88 = true;
-                        SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D8);
-                        Go();
-                        return;
-                    }
+                        if(Battle.turn == 1)
+                        {
+                            if(sg.ap >= 2 && !cube.NPC88 && !seal88)
+                            {
+                                sg.ap -= 2;
+                                seal88 = true;
+                                SelectSkill(SkillOrder.S7);
+                                SelectTarget(Direction.D8, Direction.D8);
+                                Go();
+                                return;
+                            }
+                        }
 
-                    if(sg.ap >= 9 && !cube.NPC886 && !seal886)
+                        // アクア
+                        if(sg.ap >= 9 && (cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884))
+                        {
+                            sg.ap -= 9;
+                            SelectSkill(SkillOrder.S3);
+
+                            if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                            else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                        {
+                            sg.ap -= 16;
+                            SelectSkill(SkillOrder.S4);
+                            if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            Go();
+                            return;
+                        }
+                    }
+                    else
                     {
-                        sg.ap -= 9;
-                        seal886 = true;
-                        SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                        Go();
-                        return;
+                        if(Battle.turn == 1)
+                        {
+                            if(sg.ap >= 6 && !cube.NPC866 && !seal866)
+                            {
+                                sg.ap -= 6;
+                                seal866 = true;
+                                SelectSkill(SkillOrder.S2);
+                                SelectTarget(Direction.D8, Direction.D6, Direction.D6);
+                                Go();
+                                return;
+                            }
+                        }
+
+                        // アクア
+                        if(sg.ap >= 9 && (cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884))
+                        {
+                            sg.ap -= 9;
+                            SelectSkill(SkillOrder.S3);
+
+                            if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
+                            else if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+
+                            Go();
+                            return;
+                        }
+
+                        // DF
+                        if(sg.ap >= 12 && cube.NPC8888)
+                        {
+                            sg.ap -= 12;
+                            SelectSkill(SkillOrder.S8);
+                            if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+
+                        // DH
+                        if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                        {
+                            sg.ap -= 16;
+                            SelectSkill(SkillOrder.S4);
+                            if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                            else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                            else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                            else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                            else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                            Go();
+                            return;
+                        }
                     }
                 }
                 else
                 {
-                    if(sg.ap >= 9 && !cube.NPC886 && !seal886 && Battle.area != Area.戦豹の試練)
+                    if(Battle.firstMatch)
                     {
-                        sg.ap -= 9;
-                        seal886 = true;
-                        SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        if(sg.ap >= 9 && !cube.NPC88 && !seal88)
+                        {
+                            sg.ap -= 9;
+                            seal88 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 9 && !cube.NPC886 && !seal886)
+                        {
+                            sg.ap -= 9;
+                            seal886 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            Go();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if(sg.ap >= 9 && !cube.NPC886 && !seal886 && Battle.area != Area.戦豹の試練)
+                        {
+                            sg.ap -= 9;
+                            seal886 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 9 && !cube.NPC888 && !seal888)
+                        {
+                            sg.ap -= 9;
+                            seal888 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+
+                        if(sg.ap >= 9 && !cube.NPC88 && !seal88)
+                        {
+                            sg.ap -= 9;
+                            seal88 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+                    }
+
+                    if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                    {
+                        sg.ap -= 16;
+                        SelectSkill(SkillOrder.S4);
+                        if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                        else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                        else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                        else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                        else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                        else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
                         Go();
                         return;
                     }
-
-                    if(sg.ap >= 9 && !cube.NPC888 && !seal888)
-                    {
-                        sg.ap -= 9;
-                        seal888 = true;
-                        SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                        Go();
-                        return;
-                    }
-
-                    if(sg.ap >= 9 && !cube.NPC88 && !seal88)
-                    {
-                        sg.ap -= 9;
-                        seal88 = true;
-                        SelectSkill(SkillOrder.S1);
-                        SelectTarget(Direction.D8, Direction.D8);
-                        Go();
-                        return;
-                    }
-                }
-
-                if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
-                {
-                    sg.ap -= 16;
-                    SelectSkill(SkillOrder.S4);
-                    if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
-                    else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
-                    else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
-                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
-                    else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
-                    else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
-                    Go();
-                    return;
                 }
             }
             #endregion

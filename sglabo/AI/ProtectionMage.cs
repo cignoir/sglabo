@@ -53,6 +53,19 @@ namespace sglabo.AI
                             Look(Direction.D8, true);
                         }
                     }
+                    else if(Battle.area == Area.荒獅子の試練)
+                    {
+                        if(Battle.firstMatch)
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8, true);
+                        }
+                        else
+                        {
+                            Move(Direction.D8, Direction.D8);
+                            Look(Direction.D8);
+                        }
+                    }
                 }
                 else
                 {
@@ -113,7 +126,48 @@ namespace sglabo.AI
              * 8. セントハリケーン
              */
 
-            if(Battle.mapCode == 21448090)
+            if(Battle.area == Area.荒獅子の試練)
+            {
+                // LB
+                if(sg.ap >= 3 && (cube.NPC88 || cube.NPC8))
+                {
+                    sg.ap -= 3;
+                    SelectSkill(SkillOrder.S9);
+
+                    if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC8) SelectTarget(Direction.D8);
+                    Go();
+                    return;
+                }
+
+                // SF
+                if(sg.ap >= 12 && cube.NPC8888)
+                {
+                    sg.ap -= 12;
+                    SelectSkill(SkillOrder.S10);
+                    if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                    Go();
+                    return;
+                }
+
+                // SH
+                if(sg.ap >= 16 && (cube.NPC888 || cube.NPC8884 || cube.NPC8886 || cube.NPC88844 || cube.NPC88866 || cube.NPC88 || cube.NPC884 || cube.NPC886))
+                {
+                    sg.ap -= 16;
+                    SelectSkill(SkillOrder.S8);
+                    if(cube.NPC888) SelectTarget(Direction.D8, Direction.D8, Direction.D8);
+                    else if(cube.NPC88) SelectTarget(Direction.D8, Direction.D8);
+                    else if(cube.NPC884) SelectTarget(Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC886) SelectTarget(Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC8884) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4);
+                    else if(cube.NPC8886) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6);
+                    else if(cube.NPC88866) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D6, Direction.D6);
+                    else if(cube.NPC88844) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D4, Direction.D4);
+                    Go();
+                    return;
+                }
+            }
+            else if(Battle.mapCode == 21448090)
             {
                 if(Battle.turn == 1 || Battle.turn == 7)
                 {
