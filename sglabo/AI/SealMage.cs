@@ -374,11 +374,12 @@ namespace sglabo.AI
                         }
 
                         // DF
-                        if(!Battle.firstMatch && sg.ap >= 12 && cube.NPC8888)
+                        if(!Battle.firstMatch && sg.ap >= 12 && (cube.NPC8888 || cube.NPC8))
                         {
                             sg.ap -= 12;
                             SelectSkill(SkillOrder.S8);
                             if(cube.NPC8888) SelectTarget(Direction.D8, Direction.D8, Direction.D8, Direction.D8);
+                            else if(cube.NPC8) SelectTarget(Direction.D8);
                             Go();
                             return;
                         }
