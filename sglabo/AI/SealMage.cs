@@ -374,7 +374,7 @@ namespace sglabo.AI
                         }
 
                         // DF
-                        if(sg.ap >= 12 && cube.NPC8888)
+                        if(!Battle.firstMatch && sg.ap >= 12 && cube.NPC8888)
                         {
                             sg.ap -= 12;
                             SelectSkill(SkillOrder.S8);

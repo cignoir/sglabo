@@ -216,18 +216,6 @@ namespace sglabo.AI
                     Go();
                     return;
                 }
-
-                if(sg.ap >= 3 && (cube.NPC84 || cube.NPC86))
-                {
-                    sg.ap -= 8;
-                    SelectSkill(SkillOrder.S3);
-
-                    if(cube.NPC86) SelectTarget(Direction.D8, Direction.D6);
-                    else if(cube.NPC84) SelectTarget(Direction.D8, Direction.D4);
-
-                    Go();
-                    return;
-                }
             }
 
             Go();
