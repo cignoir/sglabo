@@ -356,6 +356,16 @@ namespace sglabo.AI
                             }
                         }
 
+                        if(sg.ap >= 9 && cube.NPC8 && !cube.NPC88 && !seal88)
+                        {
+                            sg.ap -= 9;
+                            seal88 = true;
+                            SelectSkill(SkillOrder.S1);
+                            SelectTarget(Direction.D8, Direction.D8);
+                            Go();
+                            return;
+                        }
+
                         // アクア
                         if(sg.ap >= 9 && (cube.NPC888 || cube.NPC88 || cube.NPC86 || cube.NPC84 || cube.NPC886 || cube.NPC884))
                         {
